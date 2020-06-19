@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "WorldSplash",
-    "slug": "WorldSplash",
+    "name": "Flags Coloring",
+    "slug": "FlagsColoring",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "landscape",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -23,6 +23,11 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.upsurf.worldsplash",
+      "versionCode": 1,
+      "permissions": []
     }
   }
 }
