@@ -20,7 +20,8 @@ function ContinentScreen({ route, navigation }) {
             ['mk', 'North Macedonia'], ['mt', 'Malta'], ['nl', 'Netherlands'],
             ['no', 'Norway'], ['pl', 'Poland'], ['pt', 'Portugal'],
             ['ro', 'Romania'], ['rs', 'Serbia'], ['va', 'Vatican City'],
-            ['si', 'Slovenia'], ['se', 'Sweden'], ['sk', 'Slovakia']   
+            ['si', 'Slovenia'], ['se', 'Sweden'], ['sk', 'Slovakia'],
+            ['md', 'Moldova'], ['ua', 'Ukraine'], ['fo', 'Faroe Islands']  
         ],
         NA: [ ['us', 'United States'], ['ca', 'Canada'], ['mx', 'Mexico'] ],
         SA: [ 
@@ -36,7 +37,17 @@ function ContinentScreen({ route, navigation }) {
             ['nz', 'New Zealand'], ['pg', 'Papua New Guinea'], ['sb', 'Solomon Islands'],
             ['vu', 'Vanuatu']
         ],
-        AS: [ ['jp', 'Japan'], ['ru', 'Russia'], ['cn', 'China'] ],
+        AS: [
+            ['af', 'Afghanistan'], ['ae', 'United Arab Emirates'], ['am', 'Armenia'],
+            ['az', 'Azerbaijan'], ['bd', 'Bangladesh'], ['bn', 'Brunei'],
+            ['bt', 'Bhutan'], ['id', 'Indonesia'], ['in', 'India'],
+            ['ir', 'Iran'], ['iq', 'Iraq'], ['il', 'Israel'],
+            ['jo', 'Jordan'], ['kz', 'Kazakhstan'], ['kg', 'Kyrgyzstan'],
+            ['kh', 'Cambodia'], ['kr', 'Korea'], ['kw', 'Kuwait'],
+            ['la', 'Laos'], ['lb', 'Lebanon'], ['lk', 'Sri Lanka'],
+            ['mm', 'Myanmar'], ['mn', 'Mongolia'], ['mv', 'Maldives'],
+            ['jp', 'Japan'], ['ru', 'Russia'], ['cn', 'China']
+        ],
         AF: [ ['eg', 'Egypt'], ['ao', 'Angola'], ['mg', 'Madagascar'] ]
     };
 
@@ -57,6 +68,7 @@ function ContinentScreen({ route, navigation }) {
             ee: 0,
             es: 0,
             fi: 1,
+            fo: 1,
             fr: 1,
             hr: 0,
             hu: 0,
@@ -67,7 +79,9 @@ function ContinentScreen({ route, navigation }) {
             it: 0,
             li: 0,
             lt: 0,
+            lu: 0,
             lv: 0,
+            md: 0,
             me: 1,
             mk: 1,
             mt: 1,
@@ -80,8 +94,9 @@ function ContinentScreen({ route, navigation }) {
             si: 0,
             se: 1,
             sk: 0,
-            completedCountries: 18,
-            totalCountries: 44
+            ua: 1,
+            completedCountries: 20,
+            totalCountries: 46
         },
         
         NA: {
@@ -128,11 +143,35 @@ function ContinentScreen({ route, navigation }) {
         },
 
         AS: {
+            af: 1,
+            ae: 1,
+            am: 0,
+            az: 1,
+            bd: 0,
+            bn: 0,
+            bt: 0,
+            id: 1,
+            in: 1,
+            ir: 0,
+            iq: 1,
+            il: 1,
+            jo: 1,
+            kz: 1,
+            kg: 0,
+            kh: 0,
+            kr: 1,
+            kw: 0,
+            la: 0,
+            lb: 0,
+            lk: 1,
+            mm: 0,
+            mn: 1,
+            mv: 1,
             jp: 1,
             ru: 1,
             cn: 1,
-            completedCountries: 3,
-            totalCountries: 4
+            completedCountries: 16,
+            totalCountries: 27
         },
 
         AF:  {

@@ -109,6 +109,14 @@ class CountryScreen extends React.Component {
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="500" height="81.818" transform="translate(0 109.091)"/>
                             <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="83.333" height="300" transform="translate(138.889)"/>
                         </Svg>
+            case 'fo':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="75" height="300" transform="translate(141.667)"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="500" height="75" transform="translate(0 112.5)"/>
+                            <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} width="37.5" height="300" transform="translate(161.875)"/>
+                            <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} width="500" height="37.5" transform="translate(0 131.25)"/>
+                        </Svg>
             case 'fr':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
@@ -118,15 +126,15 @@ class CountryScreen extends React.Component {
             case 'gb':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
-                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} id="Path_9105" data-name="Path 9105" d="M0,0,499.523,300m0-300L0,300" stroke="#fff" stroke-width="50.896"/>
-                            <Path id="Path_9106" data-name="Path 9106" d="M0,0,499.523,300m0-300L0,300" stroke="#c8102e" stroke-width="33.93"/>
-                            <Path id="Path_9108" data-name="Path 9108" d="M249.762,0V300M0,150H499.523" stroke="#fff" stroke-width="84.826"/>
-                            <Path id="Path_9109" data-name="Path 9109" d="M249.762,0V300M0,150H499.523" stroke="#c8102e" stroke-width="50.896"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M0,0,499.523,300m0-300L0,300" stroke="#fff" stroke-width="50.896"/>
+                            <Path d="M0,0,499.523,300m0-300L0,300" stroke="#c8102e" stroke-width="33.93"/>
+                            <Path d="M249.762,0V300M0,150H499.523" stroke="#fff" stroke-width="84.826"/>
+                            <Path d="M249.762,0V300M0,150H499.523" stroke="#c8102e" stroke-width="50.896"/>
                         </Svg>
             case 'gr':
                 return <Svg d="surface1" width="100%" height="100%" viewBox="0 0 500 300">
-                            <Rect id="Rectangle_261" data-name="Rectangle 261" width="500" height="300" fill="#0d5eaf"/>
-                            <Path id="Path_9110" data-name="Path 9110" d="M92.591,0V183.332M0,83.332H185.187m0-33.332H500M185.187,116.668H500M0,183.332H500M0,250H500" fill="none" stroke="#fff" stroke-width="33.333"/>
+                            <Rect width="500" height="300" fill="#0d5eaf"/>
+                            <Path d="M92.591,0V183.332M0,83.332H185.187m0-33.332H500M185.187,116.668H500M0,183.332H500M0,250H500" fill="none" stroke="#fff" stroke-width="33.333"/>
                         </Svg>
             case 'hr':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
@@ -182,6 +190,14 @@ class CountryScreen extends React.Component {
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M0,0H500V300H0"/>
                             <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M0,240H500v60H0" transform="translate(0 -120)"/>
                         </Svg>
+            case 'md':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="333" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="167" height="300"/>
+                            <Image width="134" height="168" transform="translate(183 066)" href={require('../assets/flag_badges/eu/md.png')}/>
+                        </Svg>
+              
             case 'me':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M0,0H500V300H0Z"/>
@@ -251,12 +267,17 @@ class CountryScreen extends React.Component {
                             <Rect width="500" height="100" fill="#fff"/>
                             <Image width="78" height="100" transform="translate(111 50)" href={require('../assets/flag_badges/eu/si.png')}/>
                         </Svg>
+            case 'ua':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="500" height="150" y="150"/>
+                        </Svg>
             case 'sk':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="500" height="200"/>
                             <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="500" height="100"/>
-                            <G id="Group_409" data-name="Group 409" transform="translate(107.301 68.25)">
+                            <G transform="translate(107.301 68.25)">
                                 <Path d="M67.21,164.865C40.32,151.913,1.855,126.2,1.855,75.349S4.287,1.365,4.287,1.365H130.135s2.432,23.128,2.432,73.984S94.1,151.913,67.21,164.865Z" transform="translate(-1.855 -1.365)" fill="#fff"/>
                                 <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M61.922,151.5C37.252,139.617,1.963,116.031,1.963,69.374S4.194,1.5,4.194,1.5H119.651s2.231,21.218,2.231,67.874S86.594,139.617,61.922,151.5Z" transform="translate(3.433 5.25)"/>
                                 <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} d="M44.3,51.827c6.68.108,19.713.37,31.318-3.514,0,0-.307,4.153-.307,8.99s.307,8.991.307,8.991c-10.645-3.562-23.79-3.636-31.317-3.541v25.77H33.748V62.754c-7.527-.1-20.673-.021-31.318,3.541,0,0,.306-4.152.306-8.991s-.306-8.99-.306-8.99c11.6,3.883,24.638,3.622,31.318,3.514V35.643A74.058,74.058,0,0,0,8.967,39.2s.307-4.153.307-8.991-.307-8.991-.307-8.991a74.056,74.056,0,0,0,24.754,3.557c-.313-10.249-3.3-23.166-3.3-23.166s6.145.479,8.6.479,8.6-.479,8.6-.479-2.985,12.917-3.3,23.165a74.041,74.041,0,0,0,24.754-3.557s-.307,4.153-.307,8.991.307,8.991.307,8.991A74.06,74.06,0,0,0,44.3,35.642V51.826Z" transform="translate(26.332 10.565)"/>
@@ -533,11 +554,86 @@ class CountryScreen extends React.Component {
                         </Svg>
             case 'ne':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                            <Rect id="Rectangle_289" data-name="Rectangle 289" width="500" height="300" fill="#0db02b"/>
-                            <Rect id="Rectangle_290" data-name="Rectangle 290" width="500" height="200" fill="#fff"/>
-                            <Rect id="Rectangle_291" data-name="Rectangle 291" width="500" height="100" fill="#e05206"/>
-                            <Circle id="Ellipse_120" data-name="Ellipse 120" cx="42.5" cy="42.5" r="42.5" transform="translate(207.5 107.5)" fill="#e05206"/>
+                            <Rect width="500" height="300" fill="#0db02b"/>
+                            <Rect width="500" height="200" fill="#fff"/>
+                            <Rect width="500" height="100" fill="#e05206"/>
+                            <Circle cx="42.5" cy="42.5" r="42.5" transform="translate(207.5 107.5)" fill="#e05206"/>
                         </Svg>
+            // AS
+            case 'ae':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect id="green" width="500" height="100" fill="#00732f"/>
+                            <Rect id="Rectangle_462" data-name="Rectangle 462" width="500" height="100" transform="translate(0 100)" fill="#fff"/>
+                            <Rect id="Rectangle_463" data-name="Rectangle 463" width="500" height="100" transform="translate(0 200)"/>
+                            <Rect id="red" width="125.502" height="300" fill="red"/>
+                        </Svg>
+            case 'af':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect id="Rectangle_496" data-name="Rectangle 496" width="166.6" height="300" transform="translate(332)" fill="#090"/>
+                            <Rect id="Rectangle_497" data-name="Rectangle 497" width="166.6" height="300" transform="translate(167)" fill="#bf0000"/>
+                            <Rect id="Rectangle_498" data-name="Rectangle 498" width="166.6" height="300"/>
+                            <Image id="af-2" data-name="af" width="139" height="140" transform="translate(181 80)" href={require('../assets/flag_badges/as/af.png')}/>
+                        </Svg>
+            case 'am':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect id="Rectangle_531" data-name="Rectangle 531" width="500" height="300" fill="#f2a800"/>
+                            <Rect id="Rectangle_532" data-name="Rectangle 532" width="500" height="200" fill="#0033a0"/>
+                            <Rect id="Rectangle_533" data-name="Rectangle 533" width="500" height="100" fill="#d90012"/>
+                        </Svg>
+            case 'az':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect id="Rectangle_538" data-name="Rectangle 538" width="500" height="300" fill="#3f9c35"/>
+                            <Rect id="Rectangle_539" data-name="Rectangle 539" width="500" height="200" fill="#ed2939"/>
+                            <Rect id="Rectangle_540" data-name="Rectangle 540" width="500" height="100" fill="#00b9e4"/>
+                            <G id="Group_725" data-name="Group 725" transform="translate(-43)">
+                                <Circle id="Ellipse_182" data-name="Ellipse 182" cx="45" cy="45" r="45" transform="translate(233 105)" fill="#fff"/>
+                                <Circle id="Ellipse_183" data-name="Ellipse 183" cx="37.5" cy="37.5" r="37.5" transform="translate(250.5 112.5)" fill="#ed2939"/>
+                                <Path id="Path_13229" data-name="Path 13229" d="M655,250l4.784,13.452,12.894-6.129-6.129,12.894L680,275l-13.452,4.784,6.129,12.894-12.894-6.129L655,300l-4.784-13.452-12.894,6.129,6.129-12.894L630,275l13.452-4.784-6.129-12.894,12.894,6.129Z" transform="translate(-327 -125)" fill="#fff"/>
+                            </G>
+                        </Svg>
+            case 'bd':
+                return <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect id="Rectangle_543" data-name="Rectangle 543" width="500" height="300" fill="#006a4e"/>
+                            <Circle id="Ellipse_184" data-name="Ellipse 184" cx="100" cy="100" r="100" transform="translate(125 50)" fill="#f42a41"/>
+                        </Svg>
+            case 'bn':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect id="Rectangle_546" data-name="Rectangle 546" width="500" height="300" fill="#f7e017"/>
+                            <Path id="Path_13230" data-name="Path 13230" d="M0,50V183.333l500,62.5V175Z" transform="translate(0 -29.167)" fill="#fff"/>
+                            <Path id="Path_13231" data-name="Path 13231" d="M0,220v62.5l500,125V345Z" transform="translate(0 -128.333)"/>
+                            <Image id="bn-2" data-name="bn" width="201" height="176" transform="translate(150 62)" href={require('../assets/flag_badges/as/bn.png')}/>
+                        </Svg>
+            case 'bt':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect id="Rectangle_549" data-name="Rectangle 549" width="500" height="300" fill="#ffd520"/>
+                            <Path id="Path_13285" data-name="Path 13285" d="M0,300H500V0Z" fill="#ff4e12"/>
+                            <Image id="bt-2" data-name="bt" width="331" height="227" transform="translate(85 40)" />
+                        </Svg>
+            case 'cd':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect id="Rectangle_552" data-name="Rectangle 552" width="500" height="300" fill="#007fff"/>
+                            <Path id="Path_13739" data-name="Path 13739" d="M22.5,60ZM468.75,0,0,225v75H31.25L500,75V0H468.75" fill="#f7d618"/>
+                            <Path id="Path_13740" data-name="Path 13740" d="M500,0,0,240v60H0L500,60V0" fill="#ce1021"/>
+                            <Path id="Path_13741" data-name="Path 13741" d="M18,60H60L73,18,86,60h42L94,86l13,42L73,102,39,128,52,86Z" fill="#f7d618"/>
+                        </Svg>
+            case 'hk':
+                return <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect width="100%" height="100%" fill="#de2910"/>
+                            <G transform="translate(-20 -20) scale(0.6)">
+                                <G id="petal">
+                                    <Path d="m 449.96406,299.9134 c -105.26305,-44.48626 -58.60174,-181.58185 42.06956,-174.6907 -20.36609,10.46694 -23.31775,29.99772 -11.68704,48.09021 13.02444,20.2558 -1.19897,52.84856 -18.80577,60.7674 -28.93485,13.02443 -34.72791,47.74999 -11.57675,65.83309 z" fill="#fff"/>
+                                    <Path d="m 444.27188,200.91974 -5.91976,9.29378 -2.14454,-10.8142 -10.67812,-2.75928 9.62461,-5.3895 -0.67104,-10.99955 8.08542,7.48945 10.25578,-4.04271 -4.61053,10.00942 7.00143,8.50541 z" fill="#de2910"/>
+                                    <Path d="m 450.56002,298.75902 c -12.73114,-6.53451 -22.9963,-20.15491 -27.46839,-36.43134 -5.11498,-18.66969 -2.17269,-38.74247 8.08308,-55.03768 l -2.20789,-1.39371 c -10.64057,16.92871 -13.69313,37.74293 -8.38575,57.11886 4.72784,17.22201 15.21355,31.09815 28.78703,38.06438 z" fill="#de2910"/>
+                                </G>
+                                <Use href="#petal" transform="rotate(72 450,300)"/>
+                                <Use href="#petal" transform="rotate(144 450,300)"/>
+                                <Use href="#petal" transform="rotate(216 450,300)"/>
+                                <Use href="#petal" transform="rotate(288 450,300)"/>
+                            </G>
+                        </Svg>
+            
+              
+              
         }
     }
     
