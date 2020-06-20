@@ -23,8 +23,19 @@ function ContinentScreen({ route, navigation }) {
             ['si', 'Slovenia'], ['se', 'Sweden'], ['sk', 'Slovakia']   
         ],
         NA: [ ['us', 'United States'], ['ca', 'Canada'], ['mx', 'Mexico'] ],
-        SA: [ ['br', 'Brazilia'], ['ar', 'Argentina'], ['pe', 'Perou'] ],
-        OC: [ ['au', 'Australia'], ['nz', 'New Zealand'], ['pg', 'Papua New Guinea']],
+        SA: [ 
+            ['aw', 'Aruba'], ['ar', 'Argentina'], ['bo', 'Bolivia'], 
+            ['br', 'Brazilia'], ['cl', 'Chile'], ['co', 'Colombia'], 
+            ['cw', 'Curaco'], ['ec', 'Ecuador'], ['gy', 'Guyana'],
+			['py', 'Paraguay'], ['sr', 'Suriname'], ['fk', 'Falkland Islands'],
+			['ve', 'Venezuela'], ['gf', 'French Guiana'], ['pe', 'Perou'],
+			['gd', 'Grenada'], ['tt', 'Trinidad and Tobago'], ['uy', 'Uruguay']
+        ],
+        OC: [
+            ['au', 'Australia'], ['fj', 'Fiji'], ['nc', 'New Caledonia'],
+            ['nz', 'New Zealand'], ['pg', 'Papua New Guinea'], ['sb', 'Solomon Islands'],
+            ['vu', 'Vanuatu']
+        ],
         AS: [ ['jp', 'Japan'], ['ru', 'Russia'], ['cn', 'China'] ],
         AF: [ ['eg', 'Egypt'], ['ao', 'Angola'], ['mg', 'Madagascar'] ]
     };
@@ -82,19 +93,38 @@ function ContinentScreen({ route, navigation }) {
         },
 
         SA: {
-            br: 0,
+            aw: 1,
             ar: 1,
+            bo: 0,
+            br: 0,
+            cl: 1,
             pe: 1,
-            completedCountries: 2,
-            totalCountries: 3
+            co: 0,
+            cw: 1,
+            ec: 0,
+            fk: 1,
+            gd: 0,
+            gy: 0,
+            py: 1,
+            sr: 1,
+            tt: 0,
+            uy: 1,
+            ve: 1,
+            gf: 1,            
+            completedCountries: 11,
+            totalCountries: 18
         },
 
         OC: {
             au: 0,
+            fj: 1,
+            nc: 1,
             nz: 1,
             pg: 1,
-            completedCountries: 3,
-            totalCountries: 4
+            sb: 0,
+            vu: 0,
+            completedCountries: 4,
+            totalCountries: 7
         },
 
         AS: {

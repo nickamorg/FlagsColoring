@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ImageBackground } from 'react-native';
-import Svg, {G, Path, Rect, Circle, Image} from 'react-native-svg';
+import Svg, {G, Path, Rect, Circle, Image, Use} from 'react-native-svg';
 
 class CountryScreen extends React.Component {
     constructor(props) {
@@ -287,16 +287,117 @@ class CountryScreen extends React.Component {
             case 'ar':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
-                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="500" height="100.002" transform="translate(0 100.002)"/>
-                            <Image width="93" height="90" transform="translate(204 105)" href={require('../assets/flag_badges/sa/ar.png')}/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} y="100" width="500" height="100"/>
+                            <G transform="translate(15 0) scale(0.6)">
+                                <G id="rays">
+                                    <Path id="ray1" stroke-width="1.1116" stroke="#85340a" fill="#f6b40e" d="m396.84 251.31l28.454 61.992s0.4896 1.185 1.28 0.8586c0.7902-0.3267 0.2988-1.5116 0.2988-1.5116l-23.715-63.956m-0.68 24.12c-0.3465 9.4278 5.4526 14.613 4.6943 23.032-0.7569 8.42 3.8673 13.18 4.9396 16.454 1.0733 3.2744-1.16 5.2323-0.198 5.6982 0.96336 0.4662 3.07-2.1207 2.3833-6.7756-0.68675-4.6549-4.2204-6.0368-3.3898-16.32 0.83-10.283-4.206-12.678-2.98-22.058"/>
+                                    <Use href="#ray1" transform="rotate(22.5 400,250)"/>
+                                    <Use href="#ray1" transform="rotate(45 400,250)"/>
+                                    <Use href="#ray1" transform="rotate(67.5 400,250)"/>
+                                    <Path id="ray2" fill="#85340a" d="m404.31 274.41c0.45334 9.0538 5.5867 13.063 4.5787 21.314 2.2133-6.5249-3.1233-11.583-2.82-21.22m-7.6487-23.757l19.487 42.577-16.329-43.887"/>
+                                    <Use href="#ray2" transform="rotate(22.5 400,250)"/>
+                                    <Use href="#ray2" transform="rotate(45 400,250)"/>
+                                    <Use href="#ray2" transform="rotate(67.5 400,250)"/>
+                                </G>
+                                <Use href="#rays" transform="rotate(90 400,250)"/>
+                                <Use href="#rays" transform="rotate(180 400,250)"/>
+                                <Use href="#rays" transform="rotate(270 400,250)"/>
+                                <Circle r="27.778" stroke="#85340a" cy="250" cx="400" stroke-width="1.5" fill="#f6b40e"/>
+                                <Path id="loweyecontour" fill="#843511" d="m409.47 244.06c-1.8967 0.00003-3.7131 0.82183-4.7812 2.5312 2.1367 1.9227 6.8565 2.1318 10.062-0.21875-1.3883-1.4954-3.3845-2.3125-5.2812-2.3125zm-0.0312 0.4375c1.8462-0.0335 3.5717 0.81446 3.8125 1.6562-2.1367 2.3504-5.5508 2.1463-7.6875 0.4375 0.9348-1.4957 2.4391-2.0677 3.875-2.0938z"/>
+                                <Use href="#uppalpebra" transform="matrix(-1 0 0 1 800.25 0)"/>
+                                <Use href="#eyebrow_nose" transform="matrix(-1 0 0 1 800.25 0)"/>
+                                <Use href="#pupil" transform="translate(18.862)"/>
+                                <Use href="#lowpalpebra" transform="matrix(-1 0 0 1 800.25 0)"/>
+                                <Path d="m395.75 253.84c-0.91341 0.16668-1.5625 0.97727-1.5625 1.9062 0 1.0614 0.87748 1.9062 1.9375 1.9062 0.62667 0 1.2025-0.2968 1.5625-0.8125 0.73952 0.55614 1.7646 0.61511 2.3125 0.625 0.0843 0.002 0.19312 0 0.25 0 0.54791-0.01 1.573-0.0689 2.3125-0.625 0.36 0.5157 0.93583 0.8125 1.5625 0.8125 1.06 0 1.9375-0.84488 1.9375-1.9062 0-0.92898-0.64918-1.7396-1.5625-1.9062 0.513 0.1809 0.84375 0.6765 0.84375 1.2188 0 0.7074-0.57124 1.2812-1.2812 1.2812-0.6804 0-1.2413-0.54015-1.2812-1.2188-0.20862 0.41637-1.0341 1.6551-2.6562 1.7188-1.6222-0.0636-2.4476-1.3024-2.6562-1.7188-0.04 0.6786-0.60085 1.2188-1.2812 1.2188-0.71001 0-1.2812-0.57385-1.2812-1.2812 0-0.54225 0.33075-1.0378 0.84375-1.2188z" fill="#85340a"/>
+                                <Path d="m397.84 259.53c-2.138 0-2.9829 1.9368-4.9062 3.2188 1.0687-0.42633 1.9096-1.2693 3.4062-2.125 1.496-0.85442 2.7717 0.1875 3.625 0.1875h0.0312c0.8532 0 2.129-1.0416 3.625-0.1875 1.4967 0.8559 2.3688 1.6987 3.4375 2.125-1.9233-1.282-2.7996-3.2188-4.9375-3.2188-0.4266 0-1.2716 0.23055-2.125 0.65625h-0.0312c-0.85334-0.42642-1.6983-0.65625-2.125-0.65625z" fill="#85340a"/>
+                                <Path d="m397.12 262.06c-0.8439 0.0374-1.9596 0.20675-3.5625 0.6875 3.8473-0.85434 4.6962 0.4375 6.4062 0.4375h0.0312c1.71 0 2.5588-1.292 6.4062-0.4375-4.2744-1.282-5.1242-0.4375-6.4062-0.4375h-0.0312c-0.80125 0-1.4372-0.3124-2.8438-0.25z" fill="#85340a"/>
+                                <Path d="m393.75 262.72c-0.24819 0.003-0.51871 0.005-0.8125 0.0312 4.488 0.42766 2.3306 3 7.0312 3h0.0312c4.7007 0 2.5745-2.5724 7.0625-3-4.7007-0.4266-3.2146 2.3438-7.0625 2.3438h-0.0312c-3.6075 0-2.4959-2.4215-6.2188-2.375z" fill="#85340a"/>
+                                <Path d="m403.85 269.66c0-2.1234-1.7233-3.8465-3.8463-3.8465-2.1233 0-3.8463 1.723-3.8463 3.8465 0.423-1.781 2.0166-3.0393 3.8463-3.0393 1.8333 0 3.424 1.2586 3.8463 3.0393v0 0z" fill="#85340a"/>
+                                <Path id="eyebrow_nose" fill="#85340a" d="m382.73 244.02c4.9146-4.2729 11.11-4.9147 14.53-1.7086 0.837 1.1207 1.3733 2.319 1.5934 3.5696 0.4302 2.433-0.3303 5.0617-2.2367 7.7559 0.2151-0.001 0.6435 0.2124 0.8568 0.4266 1.6967-3.244 2.2967-6.5761 1.74-9.7454-0.1458-0.828-0.3735-1.643-0.6696-2.4357-4.7007-3.8452-11.11-4.2729-15.811 2.1377z"/>
+                                <Path id="uppalpebra" fill="#85340a" d="m390.42 242.74c2.7767 0 3.4186 0.6417 4.7007 1.71 1.2833 1.0683 1.9233 0.8541 2.1367 1.0683 0.2124 0.2142 0 0.8541-0.4266 0.6399s-1.2833-0.6399-2.5633-1.7086c-1.2833-1.0696-2.5633-1.0683-3.8463-1.0683-3.8463 0-5.983 3.2046-6.4094 2.9907-0.4266-0.2142 2.1367-3.6325 6.4094-3.6325z"/>
+                                <Use href="#loweyecontour" transform="translate(-19.181)"/>
+                            </G>
+                    </Svg>
+                
+            case 'aw':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M0,0H500V300H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M0,12H500V28.667H0V45.333H500V62H0Z" transform="translate(0 188)"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M55.939,35.106,45.523,1.35,35.106,35.106,1.35,45.523,35.106,55.939,45.523,89.7,55.939,55.939,89.7,45.523Z" transform="translate(21.144 21.144)" stroke="#fff" stroke-miterlimit="10" stroke-width="0.2"/>
+                        </Svg>  
+            case 'bo':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M0,0H500V300H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M0,0H500V200H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M0,0H500V100H0Z"/>
+                            <Image width="121" height="88" transform="translate(189 106)" href={require('../assets/flag_badges/sa/bo.png')}/>
                         </Svg>
-                    
             case 'br':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M0,0H500V300H0Z"/>
                             <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M36.379,150,214,263.57,391.621,150,214,36.43Zm0,0" transform="translate(36)"/>
                             <Image width="150" height="150" transform="translate(175 75)" href={require('../assets/flag_badges/sa/br.png')}/>
                         </Svg>
+            case 'co':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="500" height="225"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="500" height="150"/>
+                        </Svg>
+            case 'cl':
+                return <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M496,296H-4V-4H496Z" transform="translate(4 4)"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M162.667,146H496V-4H-4V146Z" transform="translate(4 4)"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M146,146H-4V-4H146Z" transform="translate(4 4)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M371.072,191.459l21.754,66.952-56.953-41.379h70.4l-56.953,41.379Z" transform="translate(-296.061 -153.459)"/>
+                        </Svg>
+            case 'cw':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M0,22.5H500V60H0Z" transform="translate(0 165)"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M368.292,191.459l20.036,61.664-52.455-38.11h64.838l-52.455,38.11Z" transform="translate(-268.281 -125.459)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M359.724,191.459l14.741,45.367-38.592-28.038h47.7l-38.592,28.038Z" transform="translate(-309.713 -166.459)"/>
+                        </Svg>
+            case 'ec':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M0,0H500V300H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M0,0H500V225H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M0,0H500V150H0Z"/>
+                            <Image width="134" height="151" transform="translate(183 75)" href={require('../assets/flag_badges/sa/ec.png')}/>
+                        </Svg>
+            case 'gd':
+                return <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <G transform="translate(-717 -217)">
+                                <Rect width="500" height="300" transform="translate(717 216.998)" fill="#ce1126"/>
+                                <Rect width="416" height="216" transform="translate(759 258.998)" fill="#007a5e"/>
+                                <Path fill="#FCD116" d="M42,42H458L42,258H458Z" transform="translate(717 216.998)"/>
+                                <Circle cx="36" cy="36" r="36" transform="translate(931 330.998)" fill="#ce1126"/>
+                                <Path d="M67.749,150.41c4.5,8.39,13.265,17.52,20.916,20.73.123-8.52-2.9-19.44-7.034-28.14l-13.882,7.41Z" transform="translate(717 216.998)" fill="#ce1126"/>
+                                <Path fill="#FCD116" d="M60.112,121.63c6.529,13.61-16.933,46.08,22.156,53.69-4.822-6.58-7.931-17.44-6.755-26.16,8.2,3.12,16.83,12.25,20.317,19.23,10.23-37.15-26.24-34.89-35.718-46.76Z" transform="translate(717 216.998)"/>
+                                <Path fill="#FCD116" d="M367.235,191.459l19.382,59.653-50.744-36.868H398.6l-50.744,36.868Z" transform="translate(599.777 142.541)"/>
+                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(487.326 026.841)"/>
+                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(612.326 026.841)"/>
+                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(737.326 026.841)"/>
+                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(487.326 284.641)"/>
+                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(612.326 284.641)"/>
+                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(737.326 284.641)"/>
+                            </G>
+                        </Svg>
+            case 'gf':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="333.2" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="166.6" height="300"/>
+                        </Svg>
+            case 'gy':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M 0,0 L 500,150 L 0,300 z"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M 0,13.05 L 456,150 L 0,286.95 z"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M 0,0 L 250,150 L 0,300 z"/>
+                            <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} d="M 0,17.5 L 220.85,150 L 0,282.5 z"/>
+                        </Svg>
+                
             case 'pe':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M0,0H166.6V300H0Z"/>
@@ -304,7 +405,87 @@ class CountryScreen extends React.Component {
                             <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M0,0H166.6V300H0Z" transform="translate(332.2)"/>
                             <Image width="134" height="122" transform="translate(183 89)" href={require('../assets/flag_badges/sa/pe.png')}/>
                         </Svg>
-            
+            case 'py':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="500" height="200"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="500" height="100"/>
+                            <Image width="78" height="78" transform="translate(211 111)" href={require('../assets/flag_badges/sa/py.png')}/>
+                        </Svg>
+            case 'sr':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="500" height="180" transform="translate(0 60)"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="500" height="120" transform="translate(0 90)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M392.936,191.459,428.2,300l-92.331-67.082H450L357.669,300Z" transform="translate(-142.936 -95.729)"/>
+                        </Svg>
+              
+             case 'tt':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M0,0,347.078,300H500L152.921,0Z"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M1.529,0,348.607,300H450.556L103.477,0Z" transform="translate(23.958)"/>
+                        </Svg>
+            case 'uy':
+                return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} width="500" height="300"/>
+                            <G transform="translate(0 33.333)">
+                                <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} width="332.334" height="33.333" transform="translate(166.667)"/>
+                                <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} width="332.334" height="33.333" transform="translate(166.667 66.667)"/>
+                                <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} width="500" height="33.333" transform="translate(0 133.333)"/>
+                                <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} width="500" height="33.333" transform="translate(0 200)"/>
+                            </G>
+                            <G transform="translate(20.589 20.589)" onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]}>
+                                <G id="u" transform="translate(0 42.78)">
+                                    <G id="t" transform="translate(34.511 19.964)">
+                                        <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                            <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" transform="translate(0)"/>
+                                            <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" stroke-width="0.066"/>
+                                        </G>
+                                        <Path d="M10.34,0h11l-11,60.5L-.66,0h11V60.5" transform="translate(17.893)" stroke="#000" stroke-miterlimit="20" stroke-width="0.066"/>
+                                    </G>
+                                    <G transform="translate(42.78 0) rotate(45)">
+                                        <Use href="#t" transform="translate(-34.511 -19.964)"/>
+                                    </G>
+                                </G>
+                                <G transform="translate(82.709) rotate(90)">
+                                    <Use href="#u" transform="translate(0 -42.78)"/>
+                                </G>
+                                <G transform="translate(125.489 125.489) rotate(180)">
+                                    <G transform="translate(0 42.78)">
+                                        <Use href="#u" transform="translate(0 -42.78)"/>
+                                    </G>
+                                    <G transform="translate(82.709) rotate(90)">
+                                        <Use href="#u" transform="translate(0 -42.78)"/>
+                                    </G>
+                                </G>
+                                <Circle cx="20.167" cy="20.167" r="20.167" transform="translate(42.578 42.578)" stroke="#000" stroke-miterlimit="20" stroke-width="0.066"/>
+                            </G>
+                            <G transform="translate(68.483 72.318)" fill="#000000">
+                                <G id="right" transform="translate(13.933 0)">
+                                    <Path d="M12.856,2.288c-1.283,1.467-2.017-1.1-6.6-1.1S.939,3.938.206,3.388,4.056-.462,5.523-.645,11.206.638,12.856,2.288M7.539,3.938c1.283,1.1.183,3.483-1.1,3.483s-3.667-2.2-2.567-3.667" transform="translate(2.911 0.661)"/>
+                                    <Path d="M.209,2.127C.392-.073,2.226-.44,5.159-.44s4.217,2.2,5.317,2.75C9.192,2.31,8.092.477,5.159.477S2.226.477.209,2.31m.55.367c.733-1.1,1.65,1.1,3.667,1.1a6.69,6.69,0,0,0,4.4-1.467c1.283-.917-1.833,2.2-3.85,2.2S.209,3.41.759,2.677" transform="translate(4.191 4.122)"/>
+                                    <Path d="M11.128,3.087c2.383-1.283.917-3.117,0-3.483.367.367,1.833,2.2,0,3.483m-10.267,11c1.1,0,1.467-.367,2.933-.367S8.745,15.737,10.762,15c-4.217,1.65-2.567.55-9.9.55H-.055m11.55,1.1a21.373,21.373,0,0,0-2.017-2.933c1.467,1.1,1.833,1.65,2.017,2.933M.862,18.487c4.583,0,3.85-.917,9.9-3.483-4.4.55-5.317,2.017-9.9,2.017H-.055M.862,11.7c1.283,0,1.65-.917,3.117-.917a8.3,8.3,0,0,1,4.4,1.283,2.617,2.617,0,0,0-2.017-1.65c-1.467-.183-.917-2.567-2.567-2.933,0,.733.55.55.733,1.65,0,.917-1.65.917-2.017,0C2.878,10.6,1.778,10.6.862,10.6" transform="translate(0.055 4.812)"/>
+                                </G>
+                                <Use href="#right" transform="translate(30 0.399) scale(-1,1)"/>
+                                <Path d="M1.591.836c-.917,0-3.3.55,0,.55s.917-.55,0-.55" transform="translate(13.259 24.113)"/>
+                            </G>
+                        </Svg>
+              
+            case 've':
+                return <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M0,0H500V300H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M0,0H500V200H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M0,0H500V100H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M12.508,0l7.73,23.791L0,9.087H25.015L4.778,23.791Z" transform="matrix(0.999, 0.035, -0.035, 0.999, 143.36, 165.8)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M12.508,0l7.73,23.791L0,9.087H25.015L4.778,23.791Z" transform="translate(166.068 135.409) rotate(22)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M12.508,0l7.73,23.791L0,9.087H25.015L4.778,23.791Z" transform="translate(198.983 113.915) rotate(42)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M12.508,0l7.73,23.791L0,9.087H25.015L4.778,23.791Z" transform="translate(238.566 104.1) rotate(62)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M12.508,0l7.73,23.791L0,9.087H25.015L4.778,23.791Z" transform="translate(278.66 107.1) rotate(82)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M12.508,0l7.73,23.791L0,9.087H25.015L4.778,23.791Z" transform="translate(296.252 114.569) rotate(30)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M12.508,0l7.73,23.791L0,9.087H25.015L4.778,23.791Z" transform="translate(329.214 134.099) rotate(50)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M12.508,0l7.73,23.791L0,9.087H25.015L4.778,23.791Z" transform="matrix(0.999, -0.035, 0.035, 0.999, 331.451, 166.672)"/>
+                        </Svg>
             // AF
             case 'eg':
                 return  <Svg width="100%" height="100%" viewBox="0 0 500 300">
@@ -369,9 +550,9 @@ class CountryScreen extends React.Component {
                 <ImageBackground source={require('../es_back.png')} style={{height: '100%', width:'100%'}} imageStyle={{ width:'100%', height:'100%', opacity:0.3, resizeMode : 'repeat', overflow : 'visible', backfaceVisibility: 'visible', flex : 1}}>
                     <View style={{height: '20%', paddingTop: 20}}>
                         <View style={{height: '100%', flexDirection:'row', flex: 1, justifyContent: 'center'}}>
-                                <Svg key={0} onPress={() => { this.changeColor(0) }} width={this.state.colors[0] == this.state.currColor? '50' : '40' } height={this.state.colors[0] == this.state.currColor? '50' : '40' } viewBox='0 0 29.854 30'>
+                                {/* <Svg key={0} onPress={() => { this.changeColor(0) }} width={this.state.colors[0] == this.state.currColor? '50' : '40' } height={this.state.colors[0] == this.state.currColor? '50' : '40' } viewBox='0 0 29.854 30'>
                                     <Path d='M30.624,10.453c.074.178.122.293,0,0-.285-.687-.115-.278,0,0-.8-1.92-3.541-2.707-5.013-1.031a9.712,9.712,0,0,0-1.221,2.429c-.461.969-1.925,1.9-3,1.362a7.557,7.557,0,0,0,1.933-1.563,2.425,2.425,0,0,0,.44-2.6,2.138,2.138,0,0,0-2.184-.878c-.907.2-1.233.956-1.477,1.76-.293.961-.618,1.438-1.692,1.279-.722-.107-2-.541-1.937-1.458A6.24,6.24,0,0,1,17.692,7.1a8.8,8.8,0,0,0,1.476-2.917A3.266,3.266,0,0,0,16.452.026c-2.089-.271-3.29,1.48-3.063,3.425a20.961,20.961,0,0,0,.85,2.647,7.434,7.434,0,0,1-.156,3.444,2.635,2.635,0,0,1-1.626,1.983c-.958.285-1.429-.556-1.547-1.343-.187-1.247-.765-2.442-2.234-2.1A2.423,2.423,0,0,0,6.892,9.851a2.766,2.766,0,0,0,.819,2.519c.307.376,1.127,1.125,1.041,1.679-.145.934-2-.171-2.3-.4a3.732,3.732,0,0,0-2.728-1.038,3.3,3.3,0,0,0-2.406,1.742c-.984,1.919.448,4,2.237,4.75,2,.838,3.784-.519,5.815-.519.4,0,1.647.033,1.438.732-.276.92-1.311,1.381-2.129,1.688A3.235,3.235,0,0,0,6.629,22.6a2.393,2.393,0,0,0,.532,2.581c1.24,1.322,3.435,1.759,4.757.313a5.939,5.939,0,0,0,1.1-2.285c.069-.21.223-.918.578-.769.541.229.095.9-.106,1.2-1.052,1.562-.2,3.755,1.905,3.26a1.737,1.737,0,0,0,1.372-1.472c.125-.908-.4-2.1.655-2.633.855-.435.729,1.338.7,1.745a8,8,0,0,0,.289,3.129c.623,1.913,2.787,3.2,4.488,1.621a3.251,3.251,0,0,0-.214-4.973c-.692-.543-3.727-1.8-2.081-2.908,1.68-1.131,5.05,1.535,5.819-1.2a1.689,1.689,0,0,0-.9-1.972,2.884,2.884,0,0,0-1.655-.155c-.3.045-1.057.348-1.21-.058-.652-1.742,2.46-3.321,3.771-3.415,1.217-.088,2.41.117,3.418-.751A2.984,2.984,0,0,0,30.624,10.453ZM3.717,14.675c-.655.041-1.175.252-1.205-.238s.476-.92,1.131-.96a1.071,1.071,0,0,1,1.241.813C4.914,14.78,4.372,14.634,3.717,14.675Zm5.494-5.4c-.393.024-.7.151-.723-.143s.286-.552.679-.576a.642.642,0,0,1,.744.488C9.93,9.342,9.6,9.255,9.212,9.279Zm-.14,15.8c-.529.165-1.135-.274-1.356-.981a1.208,1.208,0,0,1,.557-1.578c.528-.165.515.468.735,1.174S9.6,24.915,9.071,25.08ZM16.094,2.155c-.74,0-1.34.2-1.34-.352s.6-1,1.34-1,1.341.448,1.341,1S16.834,2.155,16.094,2.155Zm4.691,24.8c.221.707.592,1.219.064,1.384s-1.135-.274-1.356-.981a1.208,1.208,0,0,1,.557-1.578C20.577,25.611,20.564,26.244,20.785,26.951Zm6.907-16.433c-.739.046-1.326.284-1.36-.269s.537-1.037,1.276-1.083a1.208,1.208,0,0,1,1.4.917C29.042,10.635,28.431,10.472,27.692,10.517Z' transform='translate(-1.002 0.002)' fill={this.state.colors[0]}/>
-                                </Svg>
+                                </Svg> */}
                                 <Svg key={1} onPress={() => { this.changeColor(1) }} width={this.state.colors[1] == this.state.currColor? '50' : '40' } height={this.state.colors[1] == this.state.currColor? '50' : '40' } viewBox='0 0 29.854 30'>
                                     <Path d='M30.624,10.453c.074.178.122.293,0,0-.285-.687-.115-.278,0,0-.8-1.92-3.541-2.707-5.013-1.031a9.712,9.712,0,0,0-1.221,2.429c-.461.969-1.925,1.9-3,1.362a7.557,7.557,0,0,0,1.933-1.563,2.425,2.425,0,0,0,.44-2.6,2.138,2.138,0,0,0-2.184-.878c-.907.2-1.233.956-1.477,1.76-.293.961-.618,1.438-1.692,1.279-.722-.107-2-.541-1.937-1.458A6.24,6.24,0,0,1,17.692,7.1a8.8,8.8,0,0,0,1.476-2.917A3.266,3.266,0,0,0,16.452.026c-2.089-.271-3.29,1.48-3.063,3.425a20.961,20.961,0,0,0,.85,2.647,7.434,7.434,0,0,1-.156,3.444,2.635,2.635,0,0,1-1.626,1.983c-.958.285-1.429-.556-1.547-1.343-.187-1.247-.765-2.442-2.234-2.1A2.423,2.423,0,0,0,6.892,9.851a2.766,2.766,0,0,0,.819,2.519c.307.376,1.127,1.125,1.041,1.679-.145.934-2-.171-2.3-.4a3.732,3.732,0,0,0-2.728-1.038,3.3,3.3,0,0,0-2.406,1.742c-.984,1.919.448,4,2.237,4.75,2,.838,3.784-.519,5.815-.519.4,0,1.647.033,1.438.732-.276.92-1.311,1.381-2.129,1.688A3.235,3.235,0,0,0,6.629,22.6a2.393,2.393,0,0,0,.532,2.581c1.24,1.322,3.435,1.759,4.757.313a5.939,5.939,0,0,0,1.1-2.285c.069-.21.223-.918.578-.769.541.229.095.9-.106,1.2-1.052,1.562-.2,3.755,1.905,3.26a1.737,1.737,0,0,0,1.372-1.472c.125-.908-.4-2.1.655-2.633.855-.435.729,1.338.7,1.745a8,8,0,0,0,.289,3.129c.623,1.913,2.787,3.2,4.488,1.621a3.251,3.251,0,0,0-.214-4.973c-.692-.543-3.727-1.8-2.081-2.908,1.68-1.131,5.05,1.535,5.819-1.2a1.689,1.689,0,0,0-.9-1.972,2.884,2.884,0,0,0-1.655-.155c-.3.045-1.057.348-1.21-.058-.652-1.742,2.46-3.321,3.771-3.415,1.217-.088,2.41.117,3.418-.751A2.984,2.984,0,0,0,30.624,10.453ZM3.717,14.675c-.655.041-1.175.252-1.205-.238s.476-.92,1.131-.96a1.071,1.071,0,0,1,1.241.813C4.914,14.78,4.372,14.634,3.717,14.675Zm5.494-5.4c-.393.024-.7.151-.723-.143s.286-.552.679-.576a.642.642,0,0,1,.744.488C9.93,9.342,9.6,9.255,9.212,9.279Zm-.14,15.8c-.529.165-1.135-.274-1.356-.981a1.208,1.208,0,0,1,.557-1.578c.528-.165.515.468.735,1.174S9.6,24.915,9.071,25.08ZM16.094,2.155c-.74,0-1.34.2-1.34-.352s.6-1,1.34-1,1.341.448,1.341,1S16.834,2.155,16.094,2.155Zm4.691,24.8c.221.707.592,1.219.064,1.384s-1.135-.274-1.356-.981a1.208,1.208,0,0,1,.557-1.578C20.577,25.611,20.564,26.244,20.785,26.951Zm6.907-16.433c-.739.046-1.326.284-1.36-.269s.537-1.037,1.276-1.083a1.208,1.208,0,0,1,1.4.917C29.042,10.635,28.431,10.472,27.692,10.517Z' transform='translate(-1.002 0.002)' fill={this.state.colors[1]}/>
                                 </Svg>
