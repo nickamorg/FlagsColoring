@@ -38,7 +38,7 @@ function ContinentScreen({ route, navigation }) {
             ['vu', 'Vanuatu']
         ],
         AS: [
-            ['af', 'Afghanistan'], ['ae', 'United Arab Emirates'], ['am', 'Armenia'],
+            ['ae', 'United Arab Emirates'], ['af', 'Afghanistan'], ['am', 'Armenia'],
             ['az', 'Azerbaijan'], ['bd', 'Bangladesh'], ['bn', 'Brunei'],
             ['bt', 'Bhutan'], ['id', 'Indonesia'], ['in', 'India'],
             ['ir', 'Iran'], ['iq', 'Iraq'], ['il', 'Israel'],
@@ -46,7 +46,14 @@ function ContinentScreen({ route, navigation }) {
             ['kh', 'Cambodia'], ['kr', 'Korea'], ['kw', 'Kuwait'],
             ['la', 'Laos'], ['lb', 'Lebanon'], ['lk', 'Sri Lanka'],
             ['mm', 'Myanmar'], ['mn', 'Mongolia'], ['mv', 'Maldives'],
-            ['jp', 'Japan'], ['ru', 'Russia'], ['cn', 'China']
+            ['my', 'Malaysia'], ['np', 'Nepal'], ['om', 'Oman'],
+            ['ph', 'Philippines'], ['pk', 'Pakistan'], ['qa', 'Qatar'],
+            ['sa', 'Saudi Arabia'], ['sy', 'Syria'], ['th', 'Thailand'],
+            ['tj', 'Tajikistan'], ['tm', 'Turkmenistan'], ['tl', 'Timor-Leste'],
+            ['tr', 'Turkey'], ['tw', 'Taiwan'], ['uz', 'Uzbekistan'],
+            ['vn', 'Vietnam'], ['ye', 'Yemen'], ['hk', 'Hong Kong'],
+            ['jp', 'Japan'], ['ru', 'Russia'], ['cn', 'China'],
+            ['cd', 'Democratic Republic of the Congo'], ['sg', 'Singapore']
         ],
         AF: [ ['eg', 'Egypt'], ['ao', 'Angola'], ['mg', 'Madagascar'] ]
     };
