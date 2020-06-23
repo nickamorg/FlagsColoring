@@ -4,6 +4,9 @@ import Svg, {G, Path, Rect, Circle, Image, Use, Polygon, Defs, ClipPath} from 'r
 import { flagColors } from '../src/flagColors';
 
 class CountryScreen extends React.Component {
+    defaultColors = ['#3B3B3B', '#646464', '#A2A2A2', '#847A7A', '#1F1A1A', '#81878F'];
+    appliedColorsHistory = [];
+
     constructor(props) {
         super(props);
         this.state = {
@@ -19,47 +22,88 @@ class CountryScreen extends React.Component {
     }
     
     initflagColors(countryID) {
-        console.log(flagColors);
         console.log("countryID " + countryID);
-        var defaultColors = ['#3B3B3B', '#646464', '#A2A2A2', '#847A7A', '#1F1A1A', '#81878F'];
 
-        if(flagColors[countryID] === undefined) {
+        if (flagColors[countryID] === undefined) {
             this.state.colors = ['black', '#3C3B6E', '#FF0000', '#2200FF', '#B22234', '#46FF00', '#FFA800', '#00FFFF', '#949494', 'white'];
             this.state.correctColors = ['#FF0000', '#2200FF', '#A2A2A2', '#847A7A', '#1F1A1A', '#81878F']
             this.state.appliedColors = ['#3B3B3B', '#646464', '#A2A2A2', '#847A7A', '#1F1A1A', '#81878F'];
         } else {
             this.state.colors = [...new Set(flagColors[countryID])];
+            
+            var randomColors = this.getRandomColors(this.state.countryID);
+            this.state.colors.push(randomColors[0]);
+            
+            if(this.state.colors.length < 8) {
+                this.state.colors.push(randomColors[1]);
+                this.state.colors.push(randomColors[2]);
+            }
+            if (this.state.colors.length % 2 == 0) this.state.colors.push(randomColors[4]);
+            
+            this.state.colors.sort(function() {
+                return .5 - Math.random();
+            });
+
+
             this.state.correctColors = flagColors[countryID];
 
-            for(var i = 0; i < this.state.correctColors.length; i++) {
-                this.state.appliedColors[i] = defaultColors[i];
+            for (var i = 0; i < this.state.correctColors.length; i++) {
+                this.state.appliedColors[i] = this.defaultColors[i];
             }
         }
+        this.state.currColor = this.state.colors[(this.state.colors.length / 2 >> 0)];
+    }
 
-        this.state.currColor = this.state.colors[0];
+    clearFlagColors() {
+        for (var i = 0; i < this.state.correctColors.length; i++) {
+            this.state.appliedColors[i] = this.defaultColors[i];
+        }
+        this.setState(this.state.appliedColors);
     }
 
     changeColor(index) {
+        if (this.state.currColor === this.state.colors[index]) return;
+
         this.state.currColor = this.state.colors[index];
-        
         this.setState(this.state.appliedColors);
     }
 
     applySelectedColor(index) {
+        if (this.state.appliedColors[index] === this.state.currColor) return;
+        
+        this.appliedColorsHistory.push([index, this.state.appliedColors[index]]);
         this.state.appliedColors[index] = this.state.currColor;
-
         this.setState(this.state.appliedColors);
     }
 
+    undoAppliedColor() {
+        if (this.appliedColorsHistory.length === 0) return;
+
+        this.state.appliedColors[this.appliedColorsHistory[this.appliedColorsHistory.length - 1][0]] = this.appliedColorsHistory[this.appliedColorsHistory.length - 1][1];
+        this.appliedColorsHistory.pop();
+        this.setState(this.state.appliedColors);
+    }
+
+    getRandomColors(countryID) {
+        var keys = Object.keys(flagColors);
+        // return (countryID.charAt(0).charCodeAt(0) + countryID.charAt(1).charCodeAt(0)) / keys.length >> 0;
+        var colors1 = flagColors[keys[countryID.charAt(0).charCodeAt(0) / keys.length >> 0]];
+        var colors2 = flagColors[keys[countryID.charAt(1).charCodeAt(0) / keys.length >> 0]];
+        var colors3 = flagColors[keys[(countryID.charAt(0).charCodeAt(0) + countryID.charAt(1).charCodeAt(0)) / keys.length >> 0]];
+
+
+        return [...new Set(colors1.concat(colors2).concat(colors3))];
+    }
+
     verify() {
-        if(JSON.stringify(this.state.appliedColors) === JSON.stringify(this.state.correctColors)) {
+        if (JSON.stringify(this.state.appliedColors) === JSON.stringify(this.state.correctColors)) {
             alert("Solved");
             return;
         }
 
         var strokeNone = [];
         var strokeColors = [];
-        for(var i = 0; i < this.state.correctColors.length; i++) {
+        for (var i = 0; i < this.state.correctColors.length; i++) {
             strokeNone[i] = 'none';
             strokeColors[i] = this.state.appliedColors[i] === this.state.correctColors[i] ? "none": "red";
         }
@@ -67,7 +111,7 @@ class CountryScreen extends React.Component {
         this.state.applyStroke = strokeNone;
 
         var id = setInterval( function(self){
-            if(JSON.stringify(self.state.applyStroke) === JSON.stringify(strokeColors)) {
+            if (JSON.stringify(self.state.applyStroke) === JSON.stringify(strokeColors)) {
                 self.state.applyStroke = strokeNone;
             } else {
                 self.state.applyStroke = strokeColors;
@@ -1313,7 +1357,7 @@ class CountryScreen extends React.Component {
                     </View>
                     <View style={{height: '80%', flexDirection: 'row', flex: 1, justifyContent: 'center'}}>
                         <View style={{height:'100%', width: '15%', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                            <Svg width="55" height="55" viewBox="0 0 55 55">
+                            <Svg onPress={() => { this.undoAppliedColor() }} width="55" height="55" viewBox="0 0 55 55">
                                 <Path d="M27.5,0A27.5,27.5,0,1,1,0,27.5,27.5,27.5,0,0,1,27.5,0Z" fill="#006994"/>
                                 <G transform="translate(-39 -66)">
                                     <Path d="M18.549,8.576a16.493,16.493,0,0,0-10.875,4.1L2,7V21.185H16.185L10.48,15.48a12.563,12.563,0,0,1,20.048,5.706l3.735-1.229A16.571,16.571,0,0,0,18.549,8.576Z" transform="translate(49 76.815)" fill="#e3e340"/>
@@ -1322,7 +1366,7 @@ class CountryScreen extends React.Component {
 
                             <View style={{height:20}}></View>
 
-                            <Svg width="55" height="55" viewBox="0 0 55 55">
+                            <Svg onPress={() => { this.clearFlagColors() }} width="55" height="55" viewBox="0 0 55 55">
                                 <Path d="M27.5,0A27.5,27.5,0,1,1,0,27.5,27.5,27.5,0,0,1,27.5,0Z" fill="#006994"/>
                                 <G transform="translate(-597 -32)">
                                     <Path d="M28.1,7.326,25.769,5l-9.222,9.222L7.326,5,5,7.326l9.222,9.222L5,25.769,7.326,28.1l9.222-9.222L25.769,28.1,28.1,25.769l-9.222-9.222Z" transform="translate(608 43)" fill="#e3e340"/>
