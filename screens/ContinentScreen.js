@@ -198,7 +198,7 @@ function ContinentScreen({ route, navigation }) {
 
     for (let i = 0; i < countryIDs[continentID].length; i++) {
         countrySvgs.push(
-            <TouchableOpacity key={countryIDs[continentID][i][0]} onPress={() => navigation.navigate('Country', {countryID: countryIDs[continentID][i][0], countryTitle: countryIDs[continentID][i][1]})} activeOpacity={1} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: 36, borderWidth: 10, backgroundColor: '#006994', marginRight:(i == countryIDs[continentID].length - 1) ? 50 : 0}}>        
+            <TouchableOpacity key={countryIDs[continentID][i][0]} onPress={() => navigation.navigate('Country', {countryID: countryIDs[continentID][i][0], countryTitle: countryIDs[continentID][i][1], continentID: continentID})} activeOpacity={1} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: 36, borderWidth: 10, backgroundColor: '#006994', marginRight:(i == countryIDs[continentID].length - 1) ? 50 : 0}}>        
                 <CountryComponent isCompleted={savedStatus[continentID][countryIDs[continentID][i][0]]} countryID={countryIDs[continentID][i][0]} continentID={continentID}></CountryComponent>
                 <Text style={{position: 'absolute', bottom:10, color: '#E3E340', fontWeight: 'bold', padding: 5, borderRadius: 5}}>{countryIDs[continentID][i][1]}</Text>
             </TouchableOpacity>
@@ -227,17 +227,17 @@ function ContinentScreen({ route, navigation }) {
     function getContinentalIcon(continentID) {
         switch(continentID) {
             case 'EU':
-                return <Image style={{position: 'absolute', left: 0, height: 24, width: 25, marginLeft: 20, marginTop: 25}} source={require('../assets/conrinents/eu.png')}/>
+                return <Image style={{position: 'absolute', left: 0, height: 24, width: 25, marginLeft: 20, marginTop: 25}} source={require('../assets/continents/eu.png')}/>
             case 'NA':
-                return <Image style={{position: 'absolute', left: 0, height: 24, width: 31, marginLeft: 15, marginTop: 27}} source={require('../assets/conrinents/na.png')}/>
+                return <Image style={{position: 'absolute', left: 0, height: 24, width: 31, marginLeft: 15, marginTop: 27}} source={require('../assets/continents/na.png')}/>
             case 'SA':
-                return <Image style={{position: 'absolute', left: 0, height: 25, width: 15, marginLeft: 25, marginTop: 29}} source={require('../assets/conrinents/sa.png')}/>
+                return <Image style={{position: 'absolute', left: 0, height: 25, width: 15, marginLeft: 25, marginTop: 29}} source={require('../assets/continents/sa.png')}/>
             case 'AF':
-                return <Image style={{position: 'absolute', left: 0, height: 25, width: 21, marginLeft: 20, marginTop: 25}} source={require('../assets/conrinents/af.png')}/>
+                return <Image style={{position: 'absolute', left: 0, height: 25, width: 21, marginLeft: 20, marginTop: 25}} source={require('../assets/continents/af.png')}/>
             case 'OC':
-                return <Image style={{position: 'absolute', left: 0, height: 20, width: 25, marginLeft: 22, marginTop: 30}} source={require('../assets/conrinents/oc.png')}/>
+                return <Image style={{position: 'absolute', left: 0, height: 20, width: 25, marginLeft: 22, marginTop: 30}} source={require('../assets/continents/oc.png')}/>
             case 'AS': 
-                return <Image style={{position: 'absolute', left: 0, height: 20, width: 28, marginLeft: 15, marginTop: 30}} source={require('../assets/conrinents/as.png')}/>;
+                return <Image style={{position: 'absolute', left: 0, height: 20, width: 28, marginLeft: 15, marginTop: 30}} source={require('../assets/continents/as.png')}/>;
         }
     }
 

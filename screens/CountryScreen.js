@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ImageBackground } from 'react-native';
 import Svg, {G, Path, Rect, Circle, Image, Use, Polygon, Defs, ClipPath} from 'react-native-svg';
 import { flagColors } from '../src/flagColors';
+import { backgroundImgs } from '../src/backgroundImgs';
 
 class CountryScreen extends React.Component {
     defaultColors = ['#3B3B3B', '#646464', '#A2A2A2', '#847A7A', '#1F1A1A', '#81878F'];
@@ -15,7 +16,8 @@ class CountryScreen extends React.Component {
             appliedColors: [],
             correctColors: [],
             applyStroke: ['none', 'none', 'none'],
-            countryID: props.route.params.countryID
+            countryID: props.route.params.countryID,
+            continentID: props.route.params.continentID
         };
         
         this.initflagColors(this.state.countryID);
@@ -135,7 +137,7 @@ class CountryScreen extends React.Component {
             ad: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -148,7 +150,7 @@ class CountryScreen extends React.Component {
             al: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -160,7 +162,7 @@ class CountryScreen extends React.Component {
             at: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -172,7 +174,7 @@ class CountryScreen extends React.Component {
             be: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -184,7 +186,7 @@ class CountryScreen extends React.Component {
             bg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -196,7 +198,7 @@ class CountryScreen extends React.Component {
             by: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -208,7 +210,7 @@ class CountryScreen extends React.Component {
             ch: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -220,7 +222,7 @@ class CountryScreen extends React.Component {
             cy: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -233,7 +235,7 @@ class CountryScreen extends React.Component {
             cz: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -245,7 +247,7 @@ class CountryScreen extends React.Component {
             de: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -257,7 +259,7 @@ class CountryScreen extends React.Component {
             dk: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -269,7 +271,7 @@ class CountryScreen extends React.Component {
             ee: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -281,7 +283,7 @@ class CountryScreen extends React.Component {
             es: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -294,7 +296,7 @@ class CountryScreen extends React.Component {
             fi: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -306,7 +308,7 @@ class CountryScreen extends React.Component {
             fo: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -320,7 +322,7 @@ class CountryScreen extends React.Component {
             fr: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -332,7 +334,7 @@ class CountryScreen extends React.Component {
             gb: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -344,6 +346,12 @@ class CountryScreen extends React.Component {
                 	</G>
                 </Svg>,
             gr: <Svg d="surface1" width="100%" height="100%" viewBox="0 0 500 300">
+                    <Defs>
+                        <ClipPath id="clip-path">
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                        </ClipPath>
+                    </Defs>
+                    <G clipPath="url(#clip-path)">
                         <G id="Group_831" data-name="Group 831" transform="translate(-16138 -14548)">
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="316.127" height="33.333" transform="translate(16321.869 14548)"/>
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="315" height="33.33" transform="translate(16322.995 14581.3)"/>
@@ -361,12 +369,13 @@ class CountryScreen extends React.Component {
                             <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" width="185" height="33.33" transform="translate(16138 14614.667)"/>
                             <Rect onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" width="33.33" height="166.66" transform="translate(16213.075 14548)"/>
                         </G>
+                    </G>
                 </Svg>
 ,
             hr: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -379,7 +388,7 @@ class CountryScreen extends React.Component {
             hu: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -391,7 +400,7 @@ class CountryScreen extends React.Component {
             ie: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -403,7 +412,7 @@ class CountryScreen extends React.Component {
             is: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -415,7 +424,7 @@ class CountryScreen extends React.Component {
             it: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -427,7 +436,7 @@ class CountryScreen extends React.Component {
             li: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -439,7 +448,7 @@ class CountryScreen extends React.Component {
             lt: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -451,7 +460,7 @@ class CountryScreen extends React.Component {
             lu: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -463,7 +472,7 @@ class CountryScreen extends React.Component {
             lv: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -475,7 +484,7 @@ class CountryScreen extends React.Component {
             md: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -488,7 +497,7 @@ class CountryScreen extends React.Component {
             me: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -500,7 +509,7 @@ class CountryScreen extends React.Component {
             mk: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -513,7 +522,7 @@ class CountryScreen extends React.Component {
             mt: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -525,7 +534,7 @@ class CountryScreen extends React.Component {
             nl: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -537,7 +546,7 @@ class CountryScreen extends React.Component {
             no: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -551,7 +560,7 @@ class CountryScreen extends React.Component {
             pl: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -562,7 +571,7 @@ class CountryScreen extends React.Component {
             pt: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -574,7 +583,7 @@ class CountryScreen extends React.Component {
             ro: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -586,7 +595,7 @@ class CountryScreen extends React.Component {
             rs: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -599,7 +608,7 @@ class CountryScreen extends React.Component {
             se: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -611,7 +620,7 @@ class CountryScreen extends React.Component {
             si: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -624,7 +633,7 @@ class CountryScreen extends React.Component {
             ua: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -635,7 +644,7 @@ class CountryScreen extends React.Component {
             sk: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -653,7 +662,7 @@ class CountryScreen extends React.Component {
             va: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -667,7 +676,7 @@ class CountryScreen extends React.Component {
             ca: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -680,7 +689,7 @@ class CountryScreen extends React.Component {
             mx: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -693,7 +702,7 @@ class CountryScreen extends React.Component {
             us: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -738,7 +747,7 @@ class CountryScreen extends React.Component {
             ar: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -779,7 +788,7 @@ class CountryScreen extends React.Component {
             aw: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -792,7 +801,7 @@ class CountryScreen extends React.Component {
             bo: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -805,7 +814,7 @@ class CountryScreen extends React.Component {
             br: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -817,7 +826,7 @@ class CountryScreen extends React.Component {
             co: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -829,7 +838,7 @@ class CountryScreen extends React.Component {
             cl: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -842,7 +851,7 @@ class CountryScreen extends React.Component {
             cw: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -855,7 +864,7 @@ class CountryScreen extends React.Component {
             ec: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -868,7 +877,7 @@ class CountryScreen extends React.Component {
             gd: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -892,7 +901,7 @@ class CountryScreen extends React.Component {
             gf: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -904,7 +913,7 @@ class CountryScreen extends React.Component {
             gy: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -918,7 +927,7 @@ class CountryScreen extends React.Component {
             pe: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -931,7 +940,7 @@ class CountryScreen extends React.Component {
             py: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -944,7 +953,7 @@ class CountryScreen extends React.Component {
             sr: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -959,7 +968,7 @@ class CountryScreen extends React.Component {
             tt: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -971,7 +980,7 @@ class CountryScreen extends React.Component {
             uy: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1022,7 +1031,7 @@ class CountryScreen extends React.Component {
             ve: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1044,7 +1053,7 @@ class CountryScreen extends React.Component {
             ao: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1081,7 +1090,7 @@ class CountryScreen extends React.Component {
             eg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1094,7 +1103,7 @@ class CountryScreen extends React.Component {
             mg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1106,7 +1115,7 @@ class CountryScreen extends React.Component {
             ne: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1121,7 +1130,7 @@ class CountryScreen extends React.Component {
             ae: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1134,7 +1143,7 @@ class CountryScreen extends React.Component {
             af: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1147,7 +1156,7 @@ class CountryScreen extends React.Component {
             am: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1159,7 +1168,7 @@ class CountryScreen extends React.Component {
             az: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1176,7 +1185,7 @@ class CountryScreen extends React.Component {
             bd: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1187,7 +1196,7 @@ class CountryScreen extends React.Component {
             bn: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1200,7 +1209,7 @@ class CountryScreen extends React.Component {
             bt: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1212,7 +1221,7 @@ class CountryScreen extends React.Component {
             cd: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1225,7 +1234,7 @@ class CountryScreen extends React.Component {
             cn: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1245,7 +1254,7 @@ class CountryScreen extends React.Component {
             hk: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1266,7 +1275,7 @@ class CountryScreen extends React.Component {
             id: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1277,7 +1286,7 @@ class CountryScreen extends React.Component {
             il: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1294,7 +1303,7 @@ class CountryScreen extends React.Component {
             in: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1328,7 +1337,7 @@ class CountryScreen extends React.Component {
             iq: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1343,7 +1352,7 @@ class CountryScreen extends React.Component {
             ir: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1384,7 +1393,7 @@ class CountryScreen extends React.Component {
             jo: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1398,7 +1407,7 @@ class CountryScreen extends React.Component {
             jp: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1409,7 +1418,7 @@ class CountryScreen extends React.Component {
             kg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1447,7 +1456,7 @@ class CountryScreen extends React.Component {
             kh: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1570,7 +1579,7 @@ class CountryScreen extends React.Component {
             kr: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1593,7 +1602,7 @@ class CountryScreen extends React.Component {
             kw: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1606,7 +1615,7 @@ class CountryScreen extends React.Component {
             kz: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1651,7 +1660,7 @@ class CountryScreen extends React.Component {
             la: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1664,7 +1673,7 @@ class CountryScreen extends React.Component {
             lb: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1677,7 +1686,7 @@ class CountryScreen extends React.Component {
             lk: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1718,7 +1727,7 @@ class CountryScreen extends React.Component {
             mm: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1731,7 +1740,7 @@ class CountryScreen extends React.Component {
             mn: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1762,7 +1771,7 @@ class CountryScreen extends React.Component {
             mv: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1777,7 +1786,7 @@ class CountryScreen extends React.Component {
             my: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1799,7 +1808,7 @@ class CountryScreen extends React.Component {
             np: <Svg width="100%" height="100%" viewBox="-17.582 -4.664 71.571 87.246">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1840,7 +1849,7 @@ class CountryScreen extends React.Component {
             om: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1854,7 +1863,7 @@ class CountryScreen extends React.Component {
             ph: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1889,7 +1898,7 @@ class CountryScreen extends React.Component {
             pk: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1903,7 +1912,7 @@ class CountryScreen extends React.Component {
             qa: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1914,7 +1923,7 @@ class CountryScreen extends React.Component {
             ru: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1926,7 +1935,7 @@ class CountryScreen extends React.Component {
             sa: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1937,7 +1946,7 @@ class CountryScreen extends React.Component {
             sy: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1951,7 +1960,7 @@ class CountryScreen extends React.Component {
             th: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1965,7 +1974,7 @@ class CountryScreen extends React.Component {
             tj: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -1998,7 +2007,7 @@ class CountryScreen extends React.Component {
             tl: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2012,7 +2021,7 @@ class CountryScreen extends React.Component {
             tr: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2025,7 +2034,7 @@ class CountryScreen extends React.Component {
             tw: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2042,7 +2051,7 @@ class CountryScreen extends React.Component {
             vn: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2053,7 +2062,7 @@ class CountryScreen extends React.Component {
             ym: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2065,7 +2074,7 @@ class CountryScreen extends React.Component {
             ye: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2077,7 +2086,7 @@ class CountryScreen extends React.Component {
             sg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2099,7 +2108,7 @@ class CountryScreen extends React.Component {
             nc: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2111,7 +2120,7 @@ class CountryScreen extends React.Component {
             pg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2130,7 +2139,7 @@ class CountryScreen extends React.Component {
             vu: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                     <Defs>
                         <ClipPath id="clip-path">
-                        <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
+                            <Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" stroke-width="1"/>
                         </ClipPath>
                     </Defs>
                     <G clipPath="url(#clip-path)">
@@ -2160,7 +2169,7 @@ class CountryScreen extends React.Component {
     render() {
         return (
             <View style={{height: '100%', backgroundColor: '#0FBEBE'}}>
-                    <ImageBackground source={require('../es_back.png')} style={{height: '100%', width:'100%'}} imageStyle={{ width:'100%', height:'100%', opacity:0.3, resizeMode : 'repeat', overflow : 'visible', backfaceVisibility: 'visible', flex : 1}}>
+                <ImageBackground source={backgroundImgs[this.state.continentID][this.state.countryID]} style={{height: '100%', width:'100%', backgroundColor:"#0FBEBE"}} imageStyle={{ width:'100%', height:'100%', opacity:0.3, resizeMode: "cover", alignSelf: "flex-end", overflow : 'visible', backfaceVisibility: 'visible', flex : 2}}>
                     <View style={{height: '20%', paddingTop: 20}}>
                         <View style={{height: '100%', flexDirection:'row', flex: 1, justifyContent: 'center'}}>
                                 {this.state.colors.length > 0 ?
