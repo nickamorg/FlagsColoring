@@ -59,7 +59,59 @@ const flagColors = {
     // gd
     tt: ['#CE1126', 'white', 'black'],
     // uy
-    zz: ['D52B1E', 'D7141A', '11457E'],
+
+    // OC
+    ae: ['#00732F', 'white', 'black', '#FF0000'],
+    af: ['black', '#BF0000', '#009900'],
+    am: ['#D90012', '#0033A0', '#F2A800'],
+    az: ['#00B9E4', '#ED2939', '#3F9C35', 'white', 'white'],
+    bd: ['#006A4E', '#F42A41'],
+    bn: ['#F7E017', 'white', 'black'],
+    bt: ['#FFD520', '#FF4E12'],
+    id: ['#CE1126', 'white'],
+    in: ['#FF9933', 'white', '#128807'],
+    iq: ['#CE1126', 'white', '#000000', '#007A3D'],
+    il: ['white', '#0038B8', '#0038B8', 'white'],
+    jo: ['black', 'white', '#007A3D', '#CE1126', 'white'],
+    // kz: ['#00AFCA', '#FEC50C'],
+    kg: ['#E8112D', '#FFEF00'],
+    kh: ['#032EA1', '#E00025'],
+    kr: ['white', '#C60C30', '#003478'],
+    kw: ['#007A3D', 'white', '#CE1126', 'black'],
+    la: ['#CE1126', '#002868', '#CE1126', 'white'],
+    lb: ['#ED1C24', 'white', '#ED1C24', '#00A651'],
+    lk: ['#FFB700', '#005641', '#FF5B00', '#8D2029', '#FFB700', '#FFB700'],
+    mm: ['#FECB00', '#34B233', '#EA2839', 'white'],
+    mn: ['#C4272F', '#015197', '#C4272F', '#F9CF02', '#F9CF02'],
+    mv: ['#D21034', '#007E3A', 'white'],
+    my: ['#CC0001', 'white', '#010066', '#FFCC00', '#FFCC00'],
+    np: ['#DC143C', 'white', 'white'],
+    om: ['#DB161B', 'white', '#DB161B', '#008000'],
+    ph: ['#0038A8', '#CE1126', 'white', '#FCD116'],
+    pk: ['white', '#01411C', 'white', 'white'],
+    qa: ['white', '#8D1B3D'],
+    sa: ['#006C35', 'white'],
+    sy: ['#CE1126', 'white', 'black', '#007A3D', '#007A3D'],
+    th: ['#A51931', 'white', '#2D2A4A', 'white', '#A51931'],
+    tj: ['#CC0000', 'white', '#006600'],
+    // tm: 
+    tl: ['#DC241F', '#FFC726', 'black', 'white'],
+    tr: ['#E30A17', 'white', 'white'],
+    tw: ['#D52B1E', '#11457E', 'white'],
+    // uz:
+    vn: ['#DA251D', '#FFFF00'],
+    ye: ['#CE1126', 'white', 'black'],
+    hk: ['#DE2910', 'white'],
+    jp: ['white', '#BC002D'],
+    ru: ['white', '#0039A6', '#D52B1E'],
+    cn: ['#DE2910', '#FFDE00'],
+    cd: ['#007FFF', '#F7D618', '#CE1021', '#F7D618'],
+    sg: ['#ED2939', 'white', 'white'],
+
+    // NA
+    ca: ['#FF0000', 'white', '#FF0000', '#FF0000'],
+    mx: ['#006847', 'white', '#CE1126'],
+    us: ['#B22234', 'white', '#3C3B6E']
 }
 
 export { flagColors }; 

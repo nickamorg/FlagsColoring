@@ -362,14 +362,52 @@ class CountryScreen extends React.Component {
 
             // NA
             ca: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="250" height="300" transform="translate(125)" />
-                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M402.339,46.875,385.283,85.05c-1.935,4.149-5.4,3.764-8.871,1.447l-12.348-7.673,9.2,58.636c1.935,10.713-4.274,10.713-7.339,6.081L344.378,114.59l-3.5,14.7a4.217,4.217,0,0,1-4.839,3.476l-27.251-6.875,7.158,31.227c1.532,6.948,2.727,9.825-1.547,11.658l-9.713,5.478L351.6,219.98a8.252,8.252,0,0,1,2.134,7.657l-4.106,16.168c16.152-2.234,30.624-5.6,46.785-7.666,1.427-.183,3.815,2.642,3.805,4.626L398.076,300h7.853l-1.236-59.107c-.01-1.984,2.157-4.936,3.584-4.753,16.16,2.07,30.633,5.431,46.785,7.666l-4.106-16.168a8.252,8.252,0,0,1,2.134-7.657L500,174.255l-9.713-5.478c-4.274-1.833-3.079-4.709-1.547-11.658l7.158-31.227-27.251,6.875a4.217,4.217,0,0,1-4.839-3.476l-3.5-14.7-21.551,28.951c-3.065,4.632-9.274,4.632-7.339-6.081l9.2-58.636L428.275,86.5c-3.468,2.317-6.935,2.7-8.871-1.447" transform="translate(-152.343 -18.75)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="125" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="250" height="300" x="125"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="125" height="300" x="375"/>
+                    <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M402.339,46.875,385.283,85.05c-1.935,4.149-5.4,3.764-8.871,1.447l-12.348-7.673,9.2,58.636c1.935,10.713-4.274,10.713-7.339,6.081L344.378,114.59l-3.5,14.7a4.217,4.217,0,0,1-4.839,3.476l-27.251-6.875,7.158,31.227c1.532,6.948,2.727,9.825-1.547,11.658l-9.713,5.478L351.6,219.98a8.252,8.252,0,0,1,2.134,7.657l-4.106,16.168c16.152-2.234,30.624-5.6,46.785-7.666,1.427-.183,3.815,2.642,3.805,4.626L398.076,300h7.853l-1.236-59.107c-.01-1.984,2.157-4.936,3.584-4.753,16.16,2.07,30.633,5.431,46.785,7.666l-4.106-16.168a8.252,8.252,0,0,1,2.134-7.657L500,174.255l-9.713-5.478c-4.274-1.833-3.079-4.709-1.547-11.658l7.158-31.227-27.251,6.875a4.217,4.217,0,0,1-4.839-3.476l-3.5-14.7-21.551,28.951c-3.065,4.632-9.274,4.632-7.339-6.081l9.2-58.636L428.275,86.5c-3.468,2.317-6.935,2.7-8.871-1.447" transform="translate(-152.343 -18.75)"/>
                 </Svg>,
             mx: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100.002" transform="translate(0 100.002)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" x="166.667" width="166.667" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" x="333.333" width="166.667" height="300"/>
                     <Image width="93" height="90" transform="translate(204 105)" href={require('../assets/flag_badges/na/mx.png')}/>
+                </Svg>,
+            us: <Svg width="100%" height="100%" viewBox="0 0 500 300">
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="300" height="23.462" transform="translate(199.989)"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} width="300" height="23.462" transform="translate(199.989 23)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="300" height="23.462" transform="translate(199.989 46)"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} width="300" height="23.462" transform="translate(199.989 69)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="300" height="23.462" transform="translate(199.989 92)"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} width="300" height="23.462" transform="translate(199.989 115)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="300" height="23.462" transform="translate(199.989 138)"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} width="500" height="23.462" transform="translate(0 161)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="23.462" transform="translate(0 184)"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} width="500" height="23.462" transform="translate(0 207)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="23.462" transform="translate(0 230)"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} width="500" height="23.462" transform="translate(0 253)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="23.462" transform="translate(0 276)"/>
+                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} d="M0,0H200V161H0ZM0,0"/>
+                    <G fill="#fff">
+                        <G id="s18">
+                            <G id="s9">
+                                <G id="s5">
+                                    <G id="s4">
+                                        <Path id="s" d="M16.668,6.922l4.758,16.7L8.965,13.3h15.4L11.906,23.621Zm0,0" fill="#fff"/>
+                                        <Use href="#s" y="30"/>
+                                        <Use href="#s" y="60"/>
+                                        <Use href="#s" y="90"/>
+                                    </G>
+                                    <Use href="#s" y="120"/>
+                                </G>
+                                <Use href="#s4" x="20" y="15"/>
+                            </G>
+                            <Use href="#s9" x="40"/>
+                        </G>
+                        <Use href="#s18" x="80"/>
+                        <Use href="#s9" x="120"/>
+                        <Use href="#s5" x="160"/>
+                    </G>
                 </Svg>,
 
             // SA
@@ -590,8 +628,8 @@ class CountryScreen extends React.Component {
                         <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M279.663,223.689c-26.035-17.314-42.591-26.663-67.542-40.85-9.8-5.573-25.023-19.582-13.016-43.02.756,15.387,61.569,57.623,87.265,75.988Z" transform="translate(-179.358 -75.011)"/>
                         <Path onPress={() => this.applySelectedColor(0)} stroke={this.state.appliedColors[0]} d="M216.086,167.519c20.045,18.891,45.29,34.3,67.812,51.336" transform="translate(-179.358 -75.011)" fill="none" stroke-linecap="round" stroke-width="1.5"/>
                         <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5"id="c" cx="1.008" cy="1.008" r="1.008" transform="translate(110.034 146.278)"/>
-                        <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5"cx="1.008" cy="1.008" r="1.008" transform="translate(117.454 152.743)"/>
-                        <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5"cx="1.008" cy="1.008" r="1.008" transform="translate(123.972 159.368)"/>
+                        <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" cx="1.008" cy="1.008" r="1.008" transform="translate(117.454 152.743)"/>
+                        <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" cx="1.008" cy="1.008" r="1.008" transform="translate(123.972 159.368)"/>
                     </G>
                 </Svg>,
             mg: <Svg width="100%" height="100%" viewBox="0 0 500 300">
@@ -608,46 +646,46 @@ class CountryScreen extends React.Component {
 
 
             ae: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect id="green" width="500" height="100" fill="#00732f"/>
-                    <Rect id="Rectangle_462" data-name="Rectangle 462" width="500" height="100" transform="translate(0 100)" fill="#fff"/>
-                    <Rect id="Rectangle_463" data-name="Rectangle 463" width="500" height="100" transform="translate(0 200)"/>
-                    <Rect id="red" width="125.502" height="300" fill="red"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="374" height="100" x="125"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="374" height="100" x="125" y="99"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="374" height="100" x="125" y="198"/>
+                    <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="126" height="300"/>
                 </Svg>,
             af: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect id="Rectangle_496" data-name="Rectangle 496" width="166.6" height="300" transform="translate(332)" fill="#090"/>
-                    <Rect id="Rectangle_497" data-name="Rectangle 497" width="166.6" height="300" transform="translate(167)" fill="#bf0000"/>
-                    <Rect id="Rectangle_498" data-name="Rectangle 498" width="166.6" height="300"/>
-                    <Image id="af-2" data-name="af" width="139" height="140" transform="translate(181 80)" href={require('../assets/flag_badges/as/af.png')}/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" x="166.667" width="166.667" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" x="333.333" width="166.667" height="300"/>
+                    <Image width="139" height="140" transform="translate(181 80)" href={require('../assets/flag_badges/as/af.png')}/>
                 </Svg>,
             am: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect id="Rectangle_531" data-name="Rectangle 531" width="500" height="300" fill="#f2a800"/>
-                    <Rect id="Rectangle_532" data-name="Rectangle 532" width="500" height="200" fill="#0033a0"/>
-                    <Rect id="Rectangle_533" data-name="Rectangle 533" width="500" height="100" fill="#d90012"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100" y="99"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" y="198"/>
                 </Svg>,
             az: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect id="Rectangle_538" data-name="Rectangle 538" width="500" height="300" fill="#3f9c35"/>
-                    <Rect id="Rectangle_539" data-name="Rectangle 539" width="500" height="200" fill="#ed2939"/>
-                    <Rect id="Rectangle_540" data-name="Rectangle 540" width="500" height="100" fill="#00b9e4"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100" y="99"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" y="198"/>
                     <G id="Group_725" data-name="Group 725" transform="translate(-43)">
-                        <Circle id="Ellipse_182" data-name="Ellipse 182" cx="45" cy="45" r="45" transform="translate(233 105)" fill="#fff"/>
-                        <Circle id="Ellipse_183" data-name="Ellipse 183" cx="37.5" cy="37.5" r="37.5" transform="translate(250.5 112.5)" fill="#ed2939"/>
-                        <Path id="Path_13229" data-name="Path 13229" d="M655,250l4.784,13.452,12.894-6.129-6.129,12.894L680,275l-13.452,4.784,6.129,12.894-12.894-6.129L655,300l-4.784-13.452-12.894,6.129,6.129-12.894L630,275l13.452-4.784-6.129-12.894,12.894,6.129Z" transform="translate(-327 -125)" fill="#fff"/>
+                        <Circle onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5"  cx="45" cy="45" r="45" transform="translate(233 105)"/>
+                        <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} cx="37.5" cy="37.5" r="37.5" transform="translate(250.5 112.5)"/>
+                        <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M655,250l4.784,13.452,12.894-6.129-6.129,12.894L680,275l-13.452,4.784,6.129,12.894-12.894-6.129L655,300l-4.784-13.452-12.894,6.129,6.129-12.894L630,275l13.452-4.784-6.129-12.894,12.894,6.129Z" transform="translate(-327 -125)"/>
                     </G>
                 </Svg>,
             bd: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect id="Rectangle_543" data-name="Rectangle 543" width="500" height="300" fill="#006a4e"/>
-                    <Circle id="Ellipse_184" data-name="Ellipse 184" cx="100" cy="100" r="100" transform="translate(125 50)" fill="#f42a41"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" cx="100" cy="100" r="100" transform="translate(125 50)"/>
                 </Svg>,
             bn: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect id="Rectangle_546" data-name="Rectangle 546" width="500" height="300" fill="#f7e017"/>
-                    <Path id="Path_13230" data-name="Path 13230" d="M0,50V183.333l500,62.5V175Z" transform="translate(0 -29.167)" fill="#fff"/>
-                    <Path id="Path_13231" data-name="Path 13231" d="M0,220v62.5l500,125V345Z" transform="translate(0 -128.333)"/>
-                    <Image id="bn-2" data-name="bn" width="201" height="176" transform="translate(150 62)" href={require('../assets/flag_badges/as/bn.png')}/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                    <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,50V183.333l500,62.5V175Z" transform="translate(0 -29.167)"/>
+                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,220v62.5l500,125V345Z" transform="translate(0 -128.333)"/>
+                    <Image width="201" height="176" transform="translate(150 62)" href={require('../assets/flag_badges/as/bn.png')}/>
                 </Svg>,
             bt: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect id="Rectangle_549" data-name="Rectangle 549" width="500" height="300" fill="#ffd520"/>
-                    <Path id="Path_13285" data-name="Path 13285" d="M0,300H500V0Z" fill="#ff4e12"/>
-                    <Image id="bt-2" data-name="bt" width="331" height="227" transform="translate(85 40)" />
+                    <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500L0,300H0Z"/>
+                    <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,300H500V0Z"/>
+                    <Image width="331" height="227" transform="translate(85 40)" href={require('../assets/flag_badges/as/bt.png')}/>
                 </Svg>,
             cd: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
@@ -657,7 +695,7 @@ class CountryScreen extends React.Component {
                 </Svg>, 
             cn: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Defs>
-                    <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"id="s" d="M0,-1 0.587785,0.809017 -0.951057,-0.309017H0.951057L-0.587785,0.809017z"/>
+                        <Path id="s" onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="0.1" d="M0,-1 0.587785,0.809017 -0.951057,-0.309017H0.951057L-0.587785,0.809017z"/>
                     </Defs>
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                     <G transform="translate(0 0) scale(15)">
@@ -669,12 +707,12 @@ class CountryScreen extends React.Component {
                     </G>
                 </Svg>,
             hk: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect width="500" height="300" fill="#de2910"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                     <G transform="translate(-20 -20) scale(0.6)">
                         <G id="petal">
-                            <Path d="m 449.96406,299.9134 c -105.26305,-44.48626 -58.60174,-181.58185 42.06956,-174.6907 -20.36609,10.46694 -23.31775,29.99772 -11.68704,48.09021 13.02444,20.2558 -1.19897,52.84856 -18.80577,60.7674 -28.93485,13.02443 -34.72791,47.74999 -11.57675,65.83309 z" fill="#fff"/>
-                            <Path d="m 444.27188,200.91974 -5.91976,9.29378 -2.14454,-10.8142 -10.67812,-2.75928 9.62461,-5.3895 -0.67104,-10.99955 8.08542,7.48945 10.25578,-4.04271 -4.61053,10.00942 7.00143,8.50541 z" fill="#de2910"/>
-                            <Path d="m 450.56002,298.75902 c -12.73114,-6.53451 -22.9963,-20.15491 -27.46839,-36.43134 -5.11498,-18.66969 -2.17269,-38.74247 8.08308,-55.03768 l -2.20789,-1.39371 c -10.64057,16.92871 -13.69313,37.74293 -8.38575,57.11886 4.72784,17.22201 15.21355,31.09815 28.78703,38.06438 z" fill="#de2910"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="m 449.96406,299.9134 c -105.26305,-44.48626 -58.60174,-181.58185 42.06956,-174.6907 -20.36609,10.46694 -23.31775,29.99772 -11.68704,48.09021 13.02444,20.2558 -1.19897,52.84856 -18.80577,60.7674 -28.93485,13.02443 -34.72791,47.74999 -11.57675,65.83309 z"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} d="m 444.27188,200.91974 -5.91976,9.29378 -2.14454,-10.8142 -10.67812,-2.75928 9.62461,-5.3895 -0.67104,-10.99955 8.08542,7.48945 10.25578,-4.04271 -4.61053,10.00942 7.00143,8.50541 z"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} d="m 450.56002,298.75902 c -12.73114,-6.53451 -22.9963,-20.15491 -27.46839,-36.43134 -5.11498,-18.66969 -2.17269,-38.74247 8.08308,-55.03768 l -2.20789,-1.39371 c -10.64057,16.92871 -13.69313,37.74293 -8.38575,57.11886 4.72784,17.22201 15.21355,31.09815 28.78703,38.06438 z"/>
                         </G>
                         <Use href="#petal" transform="rotate(72 450,300)"/>
                         <Use href="#petal" transform="rotate(144 450,300)"/>
@@ -683,15 +721,18 @@ class CountryScreen extends React.Component {
                     </G>
                 </Svg>,
             id: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="150"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" y="150"/>
                 </Svg>,
             il: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                     <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="46.875" transform="translate(0 28.125)"/>
                     <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="46.875" transform="translate(0 225)"/>
-                    <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M22.082-29.141-25.237,52.818H69.4Z" transform="translate(227.918 124.502)" stroke="#0038b8" strokeWidth="5.5"/>
-                    <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M47.319,0,0,81.959H94.638Z" transform="translate(297.319 204.639) rotate(180)" stroke="#0038b8" strokeWidth="5.5"/>
+                    <Path d="M22.082-29.141-25.237,52.818H69.4Z" transform="translate(227.918 124.502)" stroke="#0038b8" strokeWidth="5.5"/>
+                    <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M22.082-29.141-25.237,52.818H69.4Z" transform="translate(227.918 124.502)"/>
+                    <Path d="M47.319,0,0,81.959H94.638Z" transform="translate(297.319 204.639) rotate(180)" stroke="#0038b8" strokeWidth="5.5"/>
+                    <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M47.319,0,0,81.959H94.638Z" transform="translate(297.319 204.639) rotate(180)"/>
+
                 </Svg>,
             in: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
@@ -721,10 +762,10 @@ class CountryScreen extends React.Component {
                     </G>
                 </Svg>,
             iq: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
                     <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100" y="100"/>
                     <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" y="200"/>          
-                    <G transform="translate(5 -15) scale(1.2)" onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]}>
+                    <G transform="translate(5 -15) scale(1.2)" onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]}>
                         <Path d="M246.026 120.178c-.558-.295-1.186-.768-1.395-1.054-.314-.438-.132-.456 1.163-.104 2.318.63 3.814.383 5.298-.873l1.308-1.103 1.54.784c.848.428 1.748.725 2.008.656.667-.176 2.05-1.95 2.005-2.564-.054-.76.587-.568.896.264.615 1.63-.28 3.502-1.865 3.918-.773.2-1.488.127-2.66-.28-1.438-.502-1.684-.494-2.405.058-1.618 1.24-3.87 1.355-5.894.3zm5.734-5.242c-.563-.717-1.24-3.424-1.02-4.088.192-.576.4-.7.914-.527.918.287 1.13.92.993 3.064-.107 1.747-.366 2.206-.886 1.55zM184.244 113c-.185 1.3 2.325 4.568 3.458 5.158-.77.345-1.728.188-2.434.576-3.948 3.948-18.367 18.006-21 21.366 7.8.154 16.448-.106 23.76-.44-.007-5.3 5.018-5.572 8.38-7.502 1.73 2.725 6.075 2.516 6.618 6.617l.01 17.646H136.4c-1.172 5.176-5.844 9.125-12.354 7.5 2.014-2.104 5.405-2.827 6.62-5.734 1.024-6.365-2.046-10.296-4.03-13.906 3.284-1.195 3.782-1.494 7.12-3.737-2.344 7.12 6.1 6.338 12.353 6.175.2-2.417.1-5.27-1.766-5.624 2.396-.87 2.794-1.168 6.62-4.412v9.593l46.14-.1c0-3.002.795-7.824-1.58-7.824-2.27 0-.107 6.173-1.87 6.173h-35.63L158 138.4c1.5-1.5 1.33-1.38 11.648-11.697 1.028-1.03 8.266-7.568 14.6-13.713zm89.06-.264c2.487 1.34 4.457 3.2 7.502 3.972-.354 1.26-1.476 1.76-1.77 3.087v26.9c3.402.75 4.118-1.178 5.737-2.205.442 4.307 3.186 8.53 3.088 11.9H273.3l.002-43.674zm-19.412 14.412l5.296-4.643v23.484l3.814-.006-.118-26.338c1.548-1.55 4.58-3.8 5.338-5.358v42.06l-33.443.012c-.493-8.73-.577-17.77 9.6-15.826v-3.563c-.3-.6-.868.147-.998-.645 1.615-1.617 2.163-2.03 6.538-5.852l.08 15.5 3.857.004c.001.002.036-18.227.036-18.83zM241.34 145.75c.716 1.075 3.154 1.056 3.04-.755-.4-1.493-3.616-.924-3.04.755z"/><Circle cx="144.527" cy="161.369" r="2.042"/><Path d="M207.55 112.78c2.488 1.34 4.457 3.19 7.502 3.97-.353 1.26-1.476 1.76-1.768 3.087v26.91c3.4.75 4.117-1.18 5.736-2.206.44 4.308 3.185 8.528 3.088 11.9h-14.56l.002-43.673z"/>
                     </G>
                 </Svg>,
@@ -751,7 +792,7 @@ class CountryScreen extends React.Component {
                             <Use href="#tb4" x="392"/>
                         </G>
                     </G>
-                    <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"transform="translate(-30 -10) scale(0.9) matrix(45,0,0,45,315,180)">
+                    <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" transform="translate(-30 -10) scale(0.9) matrix(45,0,0,45,315,180)">
                         <G id="emblem_half">
                             <Path d="M-0.54815,0.83638A0.912046,0.912046 0 0,0 0.328544,-0.722384A1,1 0 0,1 -0.54815,0.83638"/>
                             <Path d="M0.618339,0.661409A0.763932,0.763932 0 0,0 0.421644,-0.741049A1,1 0 0,1 0.618339,0.661409"/>
@@ -760,17 +801,18 @@ class CountryScreen extends React.Component {
                         </G>
                         <Use href="#emblem_half" transform="scale(-1,1)"/>
                     </G>
+                    <Image width="110.5" height="79.5" transform="translate(190 110)" href={require('../assets/flag_badges/as/ir.png')}/>
                 </Svg>,
             jo: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100" y="99"/>
-                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" y="198"/>
+                    <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500V100l-302.414-.007Z"/>
+                    <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,0H302V100H0L101.451,50.119Z" transform="translate(198 100)"/>
+                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M199.475,200.222l300.463-.269L500,300H0Z"/>
                     <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M0,0V300L300,150Z"/>
                     <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M121.43,180l4.649,11.775,12.105-3.707-6.308,10.976,10.446,7.153-12.514,1.911.921,12.626-9.3-8.592-9.3,8.592.921-12.626L100.539,206.2l10.446-7.153-6.308-10.976,12.1,3.707Z" transform="translate(-28.725 -51.429)"/>
                 </Svg>,
             jp: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"cx="90" cy="90" r="90" transform="translate(160 60)"/>
+                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" cx="90" cy="90" r="90" transform="translate(160 60)"/>
                 </Svg>,
             kg: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <ClipPath id="c">
@@ -793,7 +835,7 @@ class CountryScreen extends React.Component {
                         <Use href="#r20" transform="rotate(9)"/>
                         <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5"r="54"/>
                         <G transform="scale(2)">
-                            <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"cy="-1.5" r="22.5"/>
+                            <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" cy="-1.5" r="22.5"/>
                         </G>
                         <G onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5"transform="scale(2)" id="x" clipPath="url(#c)">
                             <Path d="M-23.055236,18a37.755236,37.755236 0 1,1 75.510472,0H52.760449a36.260449,36.260449 0 1,0 -72.520898,0z"/>
@@ -922,29 +964,29 @@ class CountryScreen extends React.Component {
             kr: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300" transform="translate(0 0)"/>
                     <G transform="matrix(0.555, -0.832, 0.832, 0.555, 82.343, 123.267)">
-                        <G id="b2" onPress={() => this.applySelectedColor(3)} stroke={this.state.appliedColors[3]} transform="translate(36.765)">
-                            <Path id="b" d="M0,0H73.529M0,18.382H73.529M0,36.765H73.529" strokeWidth="10"/>
+                        <G id="b2" stroke='black' transform="translate(36.765)">
+                            <Path d="M0,0H73.529M0,18.382H73.529M0,36.765H73.529" strokeWidth="10"/>
                             <Path d="M0,0H73.529M0,18.382H73.529M0,36.765H73.529" transform="translate(0 269.608)" strokeWidth="10"/>
                         </G>
                         <Path d="M0,0V61.275" transform="translate(73.529 257.353)" onPress={() => this.applySelectedColor(0)} stroke={this.state.appliedColors[0]} strokeWidth="5"/>
-                        <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"id="Ellipse_186" cx="73.529" cy="73.529" r="73.529" transform="translate(0 79.657)"/>
+                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M73.529,0a36.765,36.765,0,0,0,0,73.529,36.765,36.765,0,1,1,0,73.529A73.529,73.529,0,1,1,73.529,0Z" transform="translate(147 226.657) rotate(180)"/>
                         <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M73.529,0a36.765,36.765,0,0,0,0,73.529,36.765,36.765,0,1,1,0,73.529A73.529,73.529,0,1,1,73.529,0Z" transform="translate(0 79.657)"/>
                     </G>
-                    <G id="Group_773" data-name="Group 773" transform="matrix(-0.555, -0.832, 0.832, -0.555, 143.523, 262.622)">
+                    <G transform="matrix(-0.555, -0.832, 0.832, -0.555, 143.523, 262.622)">
                         <Use href="#b2" transform="translate(-36.765)"/>
                         <Path d="M0,0V18.382m0,229.78v21.446M0,287.99v18.382" transform="translate(36.765 9.191)" onPress={() => this.applySelectedColor(0)} stroke={this.state.appliedColors[0]} strokeWidth="5"/>
                     </G>
                     </Svg>,
             kw: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100" transform="translate(0 100)"/>
-                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" transform="translate(0 200)"/>
+                    <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M-.5,0H500V100H149.8Z"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="350" height="100" x="150" y="99"/>
+                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M149.5,0H500V100H0Z" y="198"/>
                     <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M0,0,150,100V200L0,300Z"/>
                 </Svg>,
             kz: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                     <G transform='scale(0.3)'>
-                        <G id="sun" onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"transform="translate(900, 420)">
+                        <G id="sun" onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" transform="translate(900, 420)">
                             <Circle r="134.5497"/>
                             <G id="r16">
                                 <G id="r4">
@@ -959,14 +1001,14 @@ class CountryScreen extends React.Component {
                             </G>
                             <Use href="#r16" transform="rotate(11.25)"/>
                         </G>
-                        <G id="bird" onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5"transform="translate(-180)">
+                        <G id="bird" onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" transform="translate(-180)">
                             <Path d="M316.94,213.44c-1.08,0.06-2.13,0.2-3.16,0.53-1.41,0.19-2.76,0.68-4.16,0.91l-0.56,0.09-0.94,0.09c0.06,0.26,0.1,0.52,0.1,0.78,0,0.27-0.03,0.53-0.1,0.75-0.06,0.21-0.25,0.47-0.4,0.63-0.2,0.22-0.41,0.41-0.66,0.53-0.24,0.12-0.51,0.17-0.78,0.19-0.27,0.01-0.55,0-0.81-0.1-0.27-0.09-0.52-0.26-0.75-0.46-0.28,0.07-0.57,0.12-0.84,0.15-0.28,0.03-0.54,0.03-0.79,0-0.28-0.08-0.57-0.17-0.84-0.28s-0.53-0.25-0.78-0.41c-1.02,0.6-2.16,1.17-2.78,2.22-0.35,0.48-0.42,1.03-0.5,1.6-0.05,0.7,0.13,1.44,0.43,2.09,0.11,0.19,0.2-0.69,0.54-0.81,0.57-0.47,1.28-0.81,2-1,0.61-0.31,0.53,0.02,0.28,0.5-0.06,0.25-0.4,1.2,0.06,0.72,2.03-0.9,4.28-1.08,6.47-1.25,3.18-0.33,6.37-0.4,9.56-0.44,3,0.04,6,0.08,9,0.19,1.43,0.04,2.87,0.36,4.28,0.12,0.34-0.09,0.87-0.11,1.07-0.31-0.64-0.37-1.39-0.38-2.1-0.47h-5.72c-1.59-0.16-3.25-0.18-4.75-0.78-0.4-0.16-0.77-0.54-1.15-0.13-0.57,0.2-1.18,0.34-1.78,0.38-1.05,0.08-2.1-0.14-3.07-0.53,0.7-0.97,1.54-1.82,2.31-2.72-0.62-0.1-1.22-0.23-1.84-0.38,1.09-0.75,2.1-1.6,3.16-2.4z" transform="scale(3.3333333,3.3333333)"/>
                             <Path d="m1212.2,746.01c-7.2452,4.3503-12.775-3.3623-18.831-5.6752-4.3249,2.3488-4.7288,10.208-8.7706,13.93-4.8342,5.5019-10.76-1.5363-10.318-6.9649-5.7825,4.8741-8.7067,15.922-18.057,14.446-4.4308-3.6151-7.7219-11.201-11.106-2.5636-2.7613,4.2221-10.11,10.229-13.916,3.8533-1.1784-5.6287-4.0008-12.25-7.0634-3.3078-2.1024,6.3247-8.8507,10.978-15.379,8.2088-3.5737-2.9216,2.8649-13.727-1.6841-12.958-6.7998,4.4958-10.753,15.658-20.242,14.764-3.6847-4.1359,2.236-11.144-1.8057-15.735-4.7711,6.1235-10.063,15.089-18.315,15.735-3.9884-3.2319,0.1571-12.501-2.3893-13.873-8.4677,5.0781-17.402,14.128-28.05,11.294,4.1497-15.873,21.49-21.442,36.072-22.68,25.089-3.0835,51.484,2.5863,75.624-6.469,3.9004-2.3734,13.35-5.7392,9.9847-11.244-2.9805-4.3463,7.7529-2.647,8.7855-7.7238-0.639-6.4302,4.9265-5.5452,10.364-6.108,24.376-1.0516,48.455,4.0818,72.758,4.9546,1.8358,11.842-11.301,20.157-21.876,16.5-5.0519,0.81828-12.627-11.615-11.142-2.5698-1.0183,4.7472-0.3056,11.017-4.6433,14.188m-207.4-24.248c5.6435,5.1653,9.6005-0.97254,14.875-3.2155,17.692-6.085,33.128-16.719,48.346-27.344,9.221-7.6305,17.214-17.525,29.597-20,24.155-7.303,49.832-6.4173,74.081-13.157,18.464-25.281,49.825-34.299,76.096-48.831,5.8991-1.8316,8.1781-6.6867,10.062-12.047,10.028-15.83,23.689-29.857,39.845-39.439,7.6441-4.1767,16.764-6.5825,25.418-4.6718-0.6201,10.307-6.5329,19.442-13.672,26.57,5.842-0.12861,10.863-3.8191,16.767-3.6114,2.0233,10.578-9.4007,16.114-15.478,22.7,3.3855,0.78754,16.353,1.7684,9.2865,5.1591-9.0054,6.2497-19.289,10.541-27.602,17.799,7.6694,1.3778,8.5436,3.0082,0.7445,5.782-4.2215,2.8617-12.341,3.8616-13.126,9.4374,5.7939,3.5608-2.6685,7.0964-5.933,8.2546-6.2414,1.4535-12.798,4.1652-4.5067,8.9071-3.1365,4.7384-9.8653,5.7486-15.356,5.2805,1.6661,5.3701,4.0776,11.378-2.8919,13.747-15.624,11.811-33.96,20.402-53.601,22.367,24.536,1.8866,49.807-2.668,70.773-16.011,2.768-3.2727,17.282-6.7896,9.1636-9.5419-3.822-1.5904-12.016-3.3567-12.57-6.2707,11.355-7.006,25.664-4.514,37.88-8.6758,0.3163-3.9551-9.2914-2.8547-12.874-3.7554-8.5427-0.69975-8.0417-2.8803,0.1954-3.6882,10.422-2.759,22.226-3.3028,30.993-10.098-7.1383-3.3066-16.116-0.39512-23.732-3.0955,12.911-5.6498,28.142-6.2167,39.726-14.704,5.2763-5.871-6.7598-4.0356-10.267-3.8931-7.1509,1.2447-10.456-2.1779-2.3324-5.1489,13.871-10.227,31.433-16.871,41.176-31.697,2.3078-3.3186,5.4328-13.319-1.9277-9.7216-9.681,3.2185-18.198,14.101-29.228,10.735,21.733-16.844,42.413-36.02,57.267-59.33,0.7674-6.7232-9.7852-7.4509-12.532-2.172-13.963,13.454-26.6,29.335-44.477,37.77,17.121-16.525,31.276-36.092,43.626-56.372,2.6476-6.0321,9.7642-13.286,5.9021-19.983-6.2255-5.1532-14.013-0.43606-17.248,5.7304-10.854,14.169-19.096,30.708-33.054,42.25,12.219-23.322,24.871-48.148,25.179-75.047-0.037-5.5382-1.1493-13.694-8.6693-12.659-5.9622,1.0681-4.5464,9.9912-7.0042,14.504-5.4111,18.377-7.9508,38.279-19.05,54.371,2.4971-14.934,6.8661-30.5,3.512-45.58-1.5667-6.7396-12.45-3.8412-11.048,2.8288-13.002,65.86-57.194,123.46-114.99,156.78-26.464,14.973-56.023,24.626-86.096,29.002-8.0899,1.7718-16.839,0.73198-24.572,3.4906-18.736,14.367-30.079,38.407-53.802,45.935-10.632,5.2835-24.496,6.3556-32.098,16.233-0.658,1.2632-0.7991,2.7266-0.7739,4.1273"/>
                             <Path d="m1075.8,654.95c-3.5006,6.354-5.5592,13.658-10.06,19.347-13.541-12.321-33.171-11.914-50.347-12.734-14.177-0.75657-29.594-2.0646-40.563-12.176-11.539-9.452-20.958-21.724-33.852-29.393-11.769-3.2001-23.633-7.2042-33.095-15.271-20.22-16.482-31.8-40.937-51.558-57.933-3.7669-3.7078-8.209-6.5812-12.429-9.7268-4.0096,0.97695-2.1955,9.6311-7.1022,5.2194-2.6694-1.8995-9.348-2.0844-9.9492,0.56937,6.0404,7.96,12.087,17.049,12.924,27.23-4.1198,0.4224-11.445-0.87064-13.487,0.66378,5.4715,8.2003,12.484,15.473,20.452,21.263-3.8217,0.61454-11.353,0.27988-12.818,1.8198,7.9092,6.4462,16.391,13.034,26.747,14.69,2.12,2.7948-3.099,8.1901,1.2898,10.576,2.5458,1.0399,10.945,2.7801,5.1592,5.6751-3.9705,2.6755-2.4971,8.9111,2.5797,8.7706,3.2101,1.6391,10.418,2.0412,10.982,4.879-2.8453,2.8956-11.698,6.3288-4.1637,9.0409,7.039,3.904,15.067,6.4384,23.105,6.7168-4.0336,3.3936-9.004,5.3206-13.156,8.5127,18.55,10.877,39.113,18.03,59.433,24.919,8.0909,2.7031,16.274,5.2237,24.661,6.8102-24.369-1.4066-47.922-8.6212-70.116-18.495-11.503-5.0452-23.084-9.9197-34.873-14.265,5.1692-2.6897,11.148-3.3471,16.509-5.6751-11.128-2.2291-23.285-2.9605-33.067-9.0768,1.4997-2.6758,7.1829-2.8021,10.326-4.1642,5.9114-1.416,9.5779-3.1339,1.2438-3.6475-8.4057-2.2812-18.045-1.2576-25.452-6.3278,0.4769-3.04,8.2283-1.9813,11.386-3.2934,3.9751-0.683,8.3958-1.2548,11.573-3.9294-12.994-5.388-29.99-1.5707-40.168-13.046-2.3476-4.3712,7.2884-0.85006,10.033-1.5782,6.9723,0.00003,14.467,2.2158,21.107-0.59559-18.934-8.3124-39.215-16.095-53.655-31.471-1.6039-2.4716-6.4071-9.2249-2.5317-10.06,11.239,1.4869,19.374,13.753,31.396,11.844,1.5973-2.1526-6.9835-5.6809-9.1254-8.7582-17.528-15.041-34.541-31.364-46.825-51.066-0.84492-6.5792,9.4971-7.565,12.22-2.4832,13.405,12.911,25.514,27.977,42.209,36.791,5.9247,2.8724-3.4012-3.4-4.6433-5.6751-15.427-17.914-30.113-36.834-40.895-57.932-1.9299-3.8028-5.1284-10.686,0.64643-12.71,5.7722-2.8919,11.501,1.0476,14.428,6.0066,11.342,14.305,19.688,31.307,33.817,43.225-12.037-23.359-24.889-47.948-25.2-74.828,0.28226-5.2109,0.61728-13.092,7.6832-12.878,5.9331-0.89942,4.9962,6.696,6.941,10.318,5.845,19.747,8.3946,41.121,20.121,58.556-2.5904-14.649-6.4022-29.735-3.8694-44.627,0.58422-4.8898,6.0884-6.37,9.6818-3.4138,2.9046,7.11,3.5106,15.889,6.1574,23.491,15.06,51.519,48.875,96.832,92.941,127.24,36.292,24.891,79.362,39.749,123.32,42.341,3.9698,0.346,7.9556,0.46548,11.932,0.70954"/>
                             <Circle cx="1020" cy="720.887" r="2.367"/>
                             <Circle cx="1019.8" cy="720.507" r="0.965" stroke="#00afca" strokeWidth="0.38127393"/>
                         </G>
-                        <G id="ornament" onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]}>
+                        <G id="ornament" onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5">
                             <G id="oh">
                                 <G id="oq">
                                     <Path d="m120,72.922s-9.6109-8.0762-12.874-4.0253c-5.2494,6.5154,16.14,38.968,16.14,50.396,0,18.759-12.517,23.861-27.973,26.539-10.371,1.7981-27.259-0.752-27.259-0.752,3.1796-4.2726,5.2478-5.5316,10.606-5.8731-5.9648-3.0968-12.039-9.8188-12.039-20.284,0-16.138,6.6434-22.789,6.6434-40.983,0-10.093-8.2759-22.941-8.2759-22.941,14.628,1.464,21.878,15.009,17.753,25.834,2.3286,0.33542,4.4428-0.18873,6.2586-1.9094,1.0706,3.0005-0.61945,6.4832-2.8834,9.4837,1.8233,0.97432,3.1624,0.39003,6.0661-0.20942-0.27536,3.0915-2.1278,6.3758-6.6597,9.4671,13.151-3.4144,21.243,5.7517,21.243,15.347,0,7.248-5.0791,12.443-10.044,12.443-1.6044,0-3.9611-0.66078-5.2908-1.6532-0.93725,1.9948-0.45429,4.6646,0.51121,6.6596-3.6388-0.96187-5.9484-3.1229-4.3043-7.6212-2.7948-0.25675-5.0181-1.2011-6.5305-3.0005,1.5323-1.9624,3.8568-3.0927,6.5305-3.0005-2.035-4.1994,0.23284-6.5505,3.5373-8.456,0,0-2.1015,8.4558,3.2654,8.4558,2.4133,0,4.6122-0.78561,4.6122-4.3421,0-3.097-2.7075-7.387-8.9659-7.1142-6.2586,0.27277-11.332,4.3152-11.332,14.306,0,9.2162,7.4334,13.8,17.229,14.096,8.8338,0.27277,15.501-4.5126,15.501-13.625,0-12.128-17.508-39.773-17.508-50.581,0-8.109,7.2922-12.635,14.427-12.635,9.2518,0,17.058,9.1612,17.058,9.1612l-5.4352,6.8146z"/>
@@ -980,27 +1022,30 @@ class CountryScreen extends React.Component {
                     </G>
                 </Svg>,
             la: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" transform="translate(0 75)"/>
-                    <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5"cx="60" cy="60" r="60" transform="translate(190 90)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="75"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" y="75"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="75" y="225"/>
+                    <Circle onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" cx="60" cy="60" r="60" transform="translate(190 90)"/>
                 </Svg>,
             lb: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" transform="translate(0 75)"/>
-                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M324.382,125c-3.22,6.78-9.283,11.519-15.079,16-.953.832-3.324,2.445-1.6,3.673,1.473-1.647,5.517.534,3.167,2.3-2.105,1.971-5,2.692-7.342,4.318a22.792,22.792,0,0,0-5.811,4.021c-.112,2.69,3.337,1.2,4.736,2.321,1.823,1.948-.773,5.233-3.164,4.481-3.058.094-5.171,2.785-6.327,5.352-2.392,3.7-6.926,4.795-10.534,6.9a69.592,69.592,0,0,0-5.991,3.94c-2.479,1.694-.322,5.05,2.315,4.226,2.846-.284,5.408-2.521,8.355-1.876,2.673.939,3.423,4.432,2.512,6.871-.674,1.952-2.309,3.328-3.62,4.853a15.938,15.938,0,0,1-7.84,4.22,15.559,15.559,0,0,0-7.24,5.031,58.2,58.2,0,0,1-6.787,6.19c-.783,2,1.427,3.7,3.271,3.649,3.883-.245,6.575-3.423,9.882-5.056,2.745-1.234,5.975,1.724,5.3,4.584-.212,2.782-2.817,4.193-5.132,5.049a67.056,67.056,0,0,0-17.966,13.861c-1.085,2.214-4.07,1.562-5.677,3.106-1.046,1.953,1.58,2.983,3.148,2.782,6.735-.81,13.019-3.656,18.973-6.788,2.214-1.059,4.293-2.452,6.6-3.3,2.162-.534,5.177.406,5.564,2.867,0,2.6-2.576,4.036-4.615,5.051-6.285,3.3-13.183,5.128-19.9,7.31-2.515-.7-4.409,3.771-1.651,4.576,2.917,1,6.019.2,9,.067,9.227-1.414,17.3-6.406,25.922-9.634a8.194,8.194,0,0,1,9.588,3.823,9.529,9.529,0,0,1-.26,9.843c-2.964,6.341-7.47,12.169-13.519,15.815-3.8,1.88-8.229,2.6-11.483,5.477-3.01.992,1.508,5.059,2.162,1.831,1.808-2.467,5-3.2,7.892-3.306,4.348-.473,8.966-1.276,12.344-4.286,3.029-2.352,6.014-5.6,10.127-5.648,2.273.27,4.521,2.1,6.83.982,2.02-.924,5.189-.383,5.716,2.1.964,2.905,3.959,4.227,6.334,5.782.86,1.207,3.716,4.32,4.375,1.576-.532-1.958.228-4.953,2.8-4.3,2.243.1,4.38.928,6.619,1.063a11.9,11.9,0,0,1,7.161,5.123c1.165,1.608,3.715,4.372,5.611,2.239,1.176-2.206-1.069-4.045-2.9-4.833a53.909,53.909,0,0,1-7.274-5.933c-3.434-3.208-6.4-7.288-6.946-12.08a51.116,51.116,0,0,1,.273-14.416,5.224,5.224,0,0,1,7.451-3.112c3.86,1.761,7.693,4.281,12.118,4.007,6.394.138,12.965-1.087,19.213.767,6.081,1.915,10.429,7.046,16.352,9.267a2.439,2.439,0,0,0,3.508-1.377,2.865,2.865,0,0,0-1.054-3.626c-6.865-6.929-16.247-10.3-24.189-15.71-2.5-.635-2.956-4.658-.644-5.819,3.039-2.209,7.339-1.181,10.036,1.1a15.124,15.124,0,0,0,7.514,2.335c2.737-.857,1.41-4.816-1.04-5.114-4.439-2.506-7.619-6.62-11.465-9.88-2.214-1.875-4.638-3.773-7.614-4.138a20.12,20.12,0,0,0-4.939-.25c-1.546-1.68.514-4.252,2.513-4.042a29.738,29.738,0,0,0,6.139,0c2.289-.167,4.576-.4,6.873-.42,1.855,1.262,5.56-.919,3.886-3.1-1.828-1.6-4.472-1.463-6.656-2.285a102.582,102.582,0,0,0-11.7-3.075c-2.767-.165-2.426-3.806.006-4.208,1.591-.593,2.975.629,4.5.819,2.609.56,5.3.553,7.91,1.121,2.211-1.091.5-4.322-1.5-4.51-4.72-1.688-8.8-4.733-12.785-7.7-4.4-3.311-8.4-7.139-12.852-10.373-1.616-1-4.267-1.291-4.692-3.511-.15-2.043,2.254-2.973,3.959-2.5,2.418.714,4.672,1.957,7.136,2.568,1.934.329,3.927.9,5.791.657,2.366-1.486-1.015-2.437-2.239-2.952a68.825,68.825,0,0,1-8.8-6.13c-2.4-2.048,2.035-2.953,3.56-2.164,2.55,1.067,2.84-2.649.935-3.584a38.139,38.139,0,0,1-6.214-3.923,27.681,27.681,0,0,0-12.371-5.269,16.847,16.847,0,0,1-12.5-7.763A48.541,48.541,0,0,1,324.382,125Zm-16.654,28.451c2.614.077,2.212,4.788-.361,4.474C304.867,157.764,305.02,152.944,307.727,153.451Zm24.654,2.537c2.543-.455,3.082,4.186.541,4.4C330.275,160.866,329.294,155.694,332.381,155.988Zm-7.221.6c2.579.507,2.12,5-.482,5.038-1.9.424-3.956,1.723-5.882.749-1.566-1.657.7-4.106,2.446-4.645C322.583,157.465,323.817,156.856,325.16,156.592Zm16.619.019c2.485.907,1.608,5.293-1.013,5.237-2.479.332-3.632-3.8-1.321-4.783A6.24,6.24,0,0,1,341.78,156.612Zm-28.035,4.976c1.827,1.739.748,5.094-1.5,5.9-1.624.9-3.838,3.04-5.606,1.282-.96-2.147,1.449-3.765,2.866-4.957A10.86,10.86,0,0,1,313.745,161.588Zm20.867,9.7c2.616,1.235,1.288,5.95-1.583,5.657-2.358-.6-2.05-4.642.325-4.964A6.343,6.343,0,0,0,334.612,171.286Zm-8.3.469c2.446,1.145.578,5.228-1.886,4.64-2.555-.3-2.508-4.792.31-4.387A4.5,4.5,0,0,0,326.311,171.754ZM344.2,174.1c2.681-.832,5.91,1.931,5.039,4.732-1.195,2.172-4.15,2.447-6.267,1.635-2.431-.12-4.066-3.774-1.9-5.321A5.953,5.953,0,0,1,344.2,174.1Zm-39.61.7c2.217-1.206,4.571,2.419,2.686,4.019-1.249,1.836-4.456,2.586-5.87.544C300.235,177.367,302.135,174.016,304.595,174.8Zm-10.23,1.717c2.515.344,4.154,2.629,5.084,4.8.227,2.651-3.685,4.105-5.391,2.176-1.919-1.2-3.6-3.679-2.593-5.977A2.709,2.709,0,0,1,294.365,176.515Zm61.2,9.581c2.73-.719,4.712,3.643,2.368,5.221-2.143,1.946-6.31-.632-5.192-3.41A3.59,3.59,0,0,1,355.567,186.1Zm-34.742,4.976c2.289.292,1.547,4.258-.569,4.125C317.984,194.777,318.5,190.849,320.824,191.073Zm-11.61,2.107c1.867-1.321,4.274,1.9,2.722,3.406C310.075,197.9,307.66,194.724,309.214,193.18Zm18.46.391a8.336,8.336,0,0,1,3.718,6.24c-1.037,2.311-5.042,1.754-5.494-.707A4.585,4.585,0,0,1,327.674,193.57Zm6.442,3.824c2.789-.7,1.788,5.128-.541,3.106A2.277,2.277,0,0,1,334.116,197.395Zm-40.459,4.059c1.847-.541,4.538.028,5.048,2.147.215,1.991-1.975,3.028-3.58,3.521-2.572.793-5.087,2.1-7.853,1.921-2.073-1.185-2.818-3.61-3.557-5.725,2-1.876,4.947-1.325,7.427-1.8C291.98,201.48,292.819,201.46,293.657,201.454Zm62.759,9.132c2.356-1.154,4.888,2.584,2.917,4.33a7.609,7.609,0,0,1-10.164.982c-.355-2.512,2.155-4.337,4.384-4.7A9.1,9.1,0,0,1,356.416,210.586Zm13.238,2.869c2.677-.46,4.784,3.358,2.873,5.333a5.947,5.947,0,0,1-8.588,1.207c-.961-2.261.989-4.617,3.065-5.342C367.9,214.272,368.741,213.786,369.655,213.454Zm-66.564,4.059a4.27,4.27,0,0,1,4.423,4.658c1.795,1.765-1.383,5.054-3.17,3.226-1.575-1.909-1.567-4.5-2.177-6.782C302.14,218.108,302.515,217.451,303.091,217.513Zm19.026,1.424c2.562-1.108,5.877,1.958,4.482,4.553-1,2.113-4.882,1.4-4.753-1.043A10.954,10.954,0,0,1,322.117,218.938ZM312.86,220.6c2.569-.589,4.927,2.741,3.5,4.964C313.8,225.788,312.467,222.748,312.86,220.6Z" transform="translate(-76.27 -50)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="75"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" y="75"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="75" y="225"/>
+                    <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M324.382,125c-3.22,6.78-9.283,11.519-15.079,16-.953.832-3.324,2.445-1.6,3.673,1.473-1.647,5.517.534,3.167,2.3-2.105,1.971-5,2.692-7.342,4.318a22.792,22.792,0,0,0-5.811,4.021c-.112,2.69,3.337,1.2,4.736,2.321,1.823,1.948-.773,5.233-3.164,4.481-3.058.094-5.171,2.785-6.327,5.352-2.392,3.7-6.926,4.795-10.534,6.9a69.592,69.592,0,0,0-5.991,3.94c-2.479,1.694-.322,5.05,2.315,4.226,2.846-.284,5.408-2.521,8.355-1.876,2.673.939,3.423,4.432,2.512,6.871-.674,1.952-2.309,3.328-3.62,4.853a15.938,15.938,0,0,1-7.84,4.22,15.559,15.559,0,0,0-7.24,5.031,58.2,58.2,0,0,1-6.787,6.19c-.783,2,1.427,3.7,3.271,3.649,3.883-.245,6.575-3.423,9.882-5.056,2.745-1.234,5.975,1.724,5.3,4.584-.212,2.782-2.817,4.193-5.132,5.049a67.056,67.056,0,0,0-17.966,13.861c-1.085,2.214-4.07,1.562-5.677,3.106-1.046,1.953,1.58,2.983,3.148,2.782,6.735-.81,13.019-3.656,18.973-6.788,2.214-1.059,4.293-2.452,6.6-3.3,2.162-.534,5.177.406,5.564,2.867,0,2.6-2.576,4.036-4.615,5.051-6.285,3.3-13.183,5.128-19.9,7.31-2.515-.7-4.409,3.771-1.651,4.576,2.917,1,6.019.2,9,.067,9.227-1.414,17.3-6.406,25.922-9.634a8.194,8.194,0,0,1,9.588,3.823,9.529,9.529,0,0,1-.26,9.843c-2.964,6.341-7.47,12.169-13.519,15.815-3.8,1.88-8.229,2.6-11.483,5.477-3.01.992,1.508,5.059,2.162,1.831,1.808-2.467,5-3.2,7.892-3.306,4.348-.473,8.966-1.276,12.344-4.286,3.029-2.352,6.014-5.6,10.127-5.648,2.273.27,4.521,2.1,6.83.982,2.02-.924,5.189-.383,5.716,2.1.964,2.905,3.959,4.227,6.334,5.782.86,1.207,3.716,4.32,4.375,1.576-.532-1.958.228-4.953,2.8-4.3,2.243.1,4.38.928,6.619,1.063a11.9,11.9,0,0,1,7.161,5.123c1.165,1.608,3.715,4.372,5.611,2.239,1.176-2.206-1.069-4.045-2.9-4.833a53.909,53.909,0,0,1-7.274-5.933c-3.434-3.208-6.4-7.288-6.946-12.08a51.116,51.116,0,0,1,.273-14.416,5.224,5.224,0,0,1,7.451-3.112c3.86,1.761,7.693,4.281,12.118,4.007,6.394.138,12.965-1.087,19.213.767,6.081,1.915,10.429,7.046,16.352,9.267a2.439,2.439,0,0,0,3.508-1.377,2.865,2.865,0,0,0-1.054-3.626c-6.865-6.929-16.247-10.3-24.189-15.71-2.5-.635-2.956-4.658-.644-5.819,3.039-2.209,7.339-1.181,10.036,1.1a15.124,15.124,0,0,0,7.514,2.335c2.737-.857,1.41-4.816-1.04-5.114-4.439-2.506-7.619-6.62-11.465-9.88-2.214-1.875-4.638-3.773-7.614-4.138a20.12,20.12,0,0,0-4.939-.25c-1.546-1.68.514-4.252,2.513-4.042a29.738,29.738,0,0,0,6.139,0c2.289-.167,4.576-.4,6.873-.42,1.855,1.262,5.56-.919,3.886-3.1-1.828-1.6-4.472-1.463-6.656-2.285a102.582,102.582,0,0,0-11.7-3.075c-2.767-.165-2.426-3.806.006-4.208,1.591-.593,2.975.629,4.5.819,2.609.56,5.3.553,7.91,1.121,2.211-1.091.5-4.322-1.5-4.51-4.72-1.688-8.8-4.733-12.785-7.7-4.4-3.311-8.4-7.139-12.852-10.373-1.616-1-4.267-1.291-4.692-3.511-.15-2.043,2.254-2.973,3.959-2.5,2.418.714,4.672,1.957,7.136,2.568,1.934.329,3.927.9,5.791.657,2.366-1.486-1.015-2.437-2.239-2.952a68.825,68.825,0,0,1-8.8-6.13c-2.4-2.048,2.035-2.953,3.56-2.164,2.55,1.067,2.84-2.649.935-3.584a38.139,38.139,0,0,1-6.214-3.923,27.681,27.681,0,0,0-12.371-5.269,16.847,16.847,0,0,1-12.5-7.763A48.541,48.541,0,0,1,324.382,125Zm-16.654,28.451c2.614.077,2.212,4.788-.361,4.474C304.867,157.764,305.02,152.944,307.727,153.451Zm24.654,2.537c2.543-.455,3.082,4.186.541,4.4C330.275,160.866,329.294,155.694,332.381,155.988Zm-7.221.6c2.579.507,2.12,5-.482,5.038-1.9.424-3.956,1.723-5.882.749-1.566-1.657.7-4.106,2.446-4.645C322.583,157.465,323.817,156.856,325.16,156.592Zm16.619.019c2.485.907,1.608,5.293-1.013,5.237-2.479.332-3.632-3.8-1.321-4.783A6.24,6.24,0,0,1,341.78,156.612Zm-28.035,4.976c1.827,1.739.748,5.094-1.5,5.9-1.624.9-3.838,3.04-5.606,1.282-.96-2.147,1.449-3.765,2.866-4.957A10.86,10.86,0,0,1,313.745,161.588Zm20.867,9.7c2.616,1.235,1.288,5.95-1.583,5.657-2.358-.6-2.05-4.642.325-4.964A6.343,6.343,0,0,0,334.612,171.286Zm-8.3.469c2.446,1.145.578,5.228-1.886,4.64-2.555-.3-2.508-4.792.31-4.387A4.5,4.5,0,0,0,326.311,171.754ZM344.2,174.1c2.681-.832,5.91,1.931,5.039,4.732-1.195,2.172-4.15,2.447-6.267,1.635-2.431-.12-4.066-3.774-1.9-5.321A5.953,5.953,0,0,1,344.2,174.1Zm-39.61.7c2.217-1.206,4.571,2.419,2.686,4.019-1.249,1.836-4.456,2.586-5.87.544C300.235,177.367,302.135,174.016,304.595,174.8Zm-10.23,1.717c2.515.344,4.154,2.629,5.084,4.8.227,2.651-3.685,4.105-5.391,2.176-1.919-1.2-3.6-3.679-2.593-5.977A2.709,2.709,0,0,1,294.365,176.515Zm61.2,9.581c2.73-.719,4.712,3.643,2.368,5.221-2.143,1.946-6.31-.632-5.192-3.41A3.59,3.59,0,0,1,355.567,186.1Zm-34.742,4.976c2.289.292,1.547,4.258-.569,4.125C317.984,194.777,318.5,190.849,320.824,191.073Zm-11.61,2.107c1.867-1.321,4.274,1.9,2.722,3.406C310.075,197.9,307.66,194.724,309.214,193.18Zm18.46.391a8.336,8.336,0,0,1,3.718,6.24c-1.037,2.311-5.042,1.754-5.494-.707A4.585,4.585,0,0,1,327.674,193.57Zm6.442,3.824c2.789-.7,1.788,5.128-.541,3.106A2.277,2.277,0,0,1,334.116,197.395Zm-40.459,4.059c1.847-.541,4.538.028,5.048,2.147.215,1.991-1.975,3.028-3.58,3.521-2.572.793-5.087,2.1-7.853,1.921-2.073-1.185-2.818-3.61-3.557-5.725,2-1.876,4.947-1.325,7.427-1.8C291.98,201.48,292.819,201.46,293.657,201.454Zm62.759,9.132c2.356-1.154,4.888,2.584,2.917,4.33a7.609,7.609,0,0,1-10.164.982c-.355-2.512,2.155-4.337,4.384-4.7A9.1,9.1,0,0,1,356.416,210.586Zm13.238,2.869c2.677-.46,4.784,3.358,2.873,5.333a5.947,5.947,0,0,1-8.588,1.207c-.961-2.261.989-4.617,3.065-5.342C367.9,214.272,368.741,213.786,369.655,213.454Zm-66.564,4.059a4.27,4.27,0,0,1,4.423,4.658c1.795,1.765-1.383,5.054-3.17,3.226-1.575-1.909-1.567-4.5-2.177-6.782C302.14,218.108,302.515,217.451,303.091,217.513Zm19.026,1.424c2.562-1.108,5.877,1.958,4.482,4.553-1,2.113-4.882,1.4-4.753-1.043A10.954,10.954,0,0,1,322.117,218.938ZM312.86,220.6c2.569-.589,4.927,2.741,3.5,4.964C313.8,225.788,312.467,222.748,312.86,220.6Z" transform="translate(-76.27 -50)"/>
                 </Svg>,
             lk: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                     <G transform="translate(5, 30) scale(0.4)">
-                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]}d="M50,300 215,50H380V550H215z"/>
-                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="165" height="500" x="50" y="50"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="165" height="500" x="50" y="50"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="165" height="500" x="215" y="50"/>
                         <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="725" height="500" x="430" y="50"/>
-                        <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5"id="leaf" d="m1086.1,466.06s6.7982,13.841,14.309,19.48c11.128,8.3556,33.945,7.752,43.629,17.5,11.604,11.495-0.9004,26.682-0.7959,28l0.6363,8.0206s-7.8245,0.0943-11.119,0.60793c-4.9538,0.7724-6.886,4.8032-16.109,4.2045-23.189-1.5052-22.254-22.397-23.566-40.25-1.1646-6.7983-3.8594-15.662-5.3908-22.458-1.313-5.8277-1.5933-15.105-1.5933-15.105z" stroke="#000" strokeWidth="2.12575722"/>
+                        <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" id="leaf" d="m1086.1,466.06s6.7982,13.841,14.309,19.48c11.128,8.3556,33.945,7.752,43.629,17.5,11.604,11.495-0.9004,26.682-0.7959,28l0.6363,8.0206s-7.8245,0.0943-11.119,0.60793c-4.9538,0.7724-6.886,4.8032-16.109,4.2045-23.189-1.5052-22.254-22.397-23.566-40.25-1.1646-6.7983-3.8594-15.662-5.3908-22.458-1.313-5.8277-1.5933-15.105-1.5933-15.105z"/>
                         <Use href="#leaf" transform="matrix(-1,0,0,1,1585,0)"/>
                         <Use href="#leaf" transform="matrix(1,0,0,-1,0,600)"/>
                         <Use href="#leaf" transform="matrix(-1,0,0,-1,1585,600)"/>
                         <Use href="#lion" stroke="#000" strokeWidth="5.5598"/>
-                        <G onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5"id="lion">
+                        <Use href="#lion" stroke={this.state.applyStroke[5]} strokeWidth="5"/>
+                        <G id="lion" onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]}>
                             <Path d="m681.54,479.56,4.3593-2.517,1.8649,2.5215c2.4846,3.3595,9.3595,3.3215,13.921-0.0773l3.4882-2.5985,2.9208,2.5985c3.8402,3.4168,11.012,3.4213,15.591,0.0122,3.206-2.3882,3.653-2.4362,5.7728-0.61944,1.2637,1.0831,4.9702,2.3162,8.2366,2.7402,5.8828,0.76367,5.9719,0.72173,9.4138-4.442,2.8826-4.3245,3.3335-6.0748,2.6456-10.269-0.45593-2.7807-0.9471-7.2562-1.0915-9.9454-0.26119-4.8694-0.23309-4.8997,6.8598-7.3695,3.9171-1.364,8.4514-3.1933,10.076-4.0653,2.8328-1.5202,10.643-10.699,10.643-12.508,0-0.47938-3.0511-1.2137-6.7801-1.632-14.833-1.6637-17.345-9.6288-7.7022-24.423,15.725-24.128,25.215-47.625,25.278-62.593,0.0285-6.6906,0.40945-8.937,1.2692-7.482,3.5135,5.9459-2.7808,30.877-12.316,48.78l-3.8392,7.2089,3.6635-0.84337c2.0149-0.46382,13.861-5.4619,26.325-11.107,34.115-15.451,45.833-18.479,67.911-17.549,18.497,0.77911,26.374,4.3927,39.434,18.09,6.9185,7.2565,13.583,12.449,25.775,20.08,25.975,16.259,27.058,17.667,28.293,36.788,1.2515,19.373,0.62869,20.424-14.024,23.661-12.524,2.7669-20.375,8.6054-22.481,16.717-1.1245,4.3318,1.242,4.4565,7.5561,0.39845l4.6275-2.9741,2.0576,2.9741c2.7051,3.91,8.455,3.9256,13.23,0.0356l3.6067-2.9381,3.6869,2.9381c5.7286,4.565,13.347,3.458,15.497-2.252,0.41335-1.0975,1.5164-0.74587,3.75,1.1953,4.1852,3.6374,14.914,5.1976,16.072,2.3376,0.44221-1.0912-0.3978-3.7862-1.8666-5.9887-6.2419-9.3596-8.1945-13.823-8.2758-18.918-0.11266-7.0863,2.0014-10.505,10.061-16.268,9.7908-7.0008,12.816-16.033,5.3706-16.033-4.5972,0-9.2317-4.0634-12.187-10.686-6.0079-13.461-4.8304-28.552,4.1866-53.657,9.1588-25.5,10.175-30.202,10.211-47.256,0.03-13.789-0.3175-16.174-3.4548-23.734-1.9182-4.6223-5.8102-11.505-8.6489-15.294l-5.1614-6.8903,6.6267-5.49c20.234-16.763,16.095-44.198-8.263-54.769-7.4516-3.2338-9.3134-3.5194-22.372-3.4316-7.8342,0.0527-19.78,1.0836-26.546,2.2911-6.8986,1.2311-18.575,2.2205-26.585,2.2526-12.725,0.0512-14.885-0.26249-19.789-2.8727-5.1132-2.7217-5.9899-4.0139-6.991-10.305-0.20575-1.2931-1.1099-2.5831-2.0089-2.8666-1.7392-0.54841-9.771,6.4223-10.958,9.51-0.58543,1.5235-1.0633,1.4182-2.7808-0.61319-1.1407-1.349-2.7333-4.4487-3.5393-6.8883-2.0267-6.1353,0.46204-10.735,7.6738-14.181l5.5952-2.6741-3.2993-2.0474c-6.8083-4.2248-18.385-1.3347-22.572,5.635-1.1843,1.9715-2.4761,3.5881-2.8706,3.5924-0.39444,0.003-2.6455-1.8765-5.0025-4.1795-8.7904-8.5893-5.7666-21.297,5.9908-25.177,6.2696-2.0689,11.818-0.49068,12.972,3.69,1.7624,6.3826,7.2409-2.0071,6.2584-9.584-0.6533-5.0374-0.55514-5.212,2.9305-5.212,4.8473,0,15.165,6.3619,18.356,11.319,3.7064,5.7573,3.4367,14.823-0.64203,21.58l-3.2027,5.3055,4.1894-0.83896c6.1434-1.2302,12.112-5.0453,15.131-9.6721,3.192-4.8914,3.5352-14.416,0.70469-19.555-2.7429-4.981-2.4284-5.7717,1.6267-4.0885,6.8969,2.8628,10.584,6.0201,13.35,11.431,2.4908,4.8729,2.6298,6.0838,1.2814,11.156-0.83198,3.1291-2.6831,7.246-4.1137,9.1486-2.2274,2.9626-2.3034,3.4593-0.52871,3.4593,3.3052,0,10.206-3.1281,12.658-5.7373,1.2383-1.3182,3.0437-4.564,4.012-7.2129l1.7607-4.8162,2.023,3.6712c2.8609,5.1912,8.4225,9.8627,15.204,12.77,7.293,3.1265,10.33,3.3027,6.5164,0.37792-2.5718-1.9723-7.3109-15.878-5.8747-17.238,0.84508-0.80031,10.747,6.8186,22.053,16.968,10.695,9.6009,17.415,12.746,27.238,12.746,12.548,0.00008,19.854-10.923,14.214-21.251-3.288-6.0216-10.613-6.8581-14.896-1.7011-1.9696,2.3714-2.5103,4.2577-1.9334,6.745,0.7066,3.047,0.4309,3.453-2.3451,3.453-3.6473,0-10.837-4.6664-23.606-15.321-19.471-16.248-43.13-30.02-60.214-35.05-10.963-3.2285-34.383-4.4883-45.528-2.4492-12.062,2.207-26.329,9.1099-34.101,16.499-13.772,13.094-13.991,30.518-0.58141,46.385l3.8411,4.5452-2.6005,4.0394c-3.7831,5.8765-3.4591,13.785,0.80339,19.61,1.8774,2.5656,3.7712,4.6637,4.2085,4.6623,0.43728-0.001,0.91679-1.6508,1.0654-3.6654,0.37644-5.0966,2.5638-8.5113,6.3183-9.8632,3.3816-1.2176,5.5676-0.64252,21.051,5.5376,16.289,6.5015,43.077,6.9484,71.561,1.1938,13.964-2.8211,30.43-2.6552,37.674,0.37962,13.279,5.5631,16.357,20.036,6.5955,31.022-4.2256,4.7559-8.3008,6.6927-21.983,10.448-10.412,2.8575-12.878,3.0472-36.543,2.8109-20.218-0.20184-27.484,0.18642-35.737,1.9096-8.9598,1.8707-14.471,2.0594-40.79,1.3961l-30.431-0.76685,3.3746,2.7943c1.856,1.5368,4.4782,3.4277,5.8271,4.202,2.2952,1.3174,2.2187,1.4944-1.1927,2.7593-2.0049,0.7434-6.4548,1.3516-9.8886,1.3516h-6.2432l-0.84015,5.3057c-0.46215,2.9182-0.42705,6.3252,0.0776,7.5711,0.74459,1.8377,0.46708,2.1016-1.4696,1.3977-1.313-0.47719-4.97-1.4158-8.1265-2.0857-3.1565-0.66995-7.4054-2.0342-9.442-3.0316-3.4248-1.6773-3.8054-1.6322-5.0669,0.60016-1.1264,1.9935-11.702,9.8644-13.254,9.8644-0.25046,0-0.57378-1.5176-0.71843-3.3725-0.14464-1.8549-1.6703-6.6837-3.3904-10.731-1.7202-4.047-3.5162-8.4619-3.9913-9.8109-0.71672-2.035-1.0412-2.1394-1.9056-0.61319-0.573,1.0118-1.4096,3.7711-1.8591,6.1318-0.44947,2.3607-2.043,6.1958-3.5412,8.5224l-2.724,4.2301-1.7374-3.617c-1.8651-3.8828-4.9615-7.9092-6.0825-7.9092-0.37837,0-1.0228,1.2417-1.432,2.7593-0.85453,3.1692-8.197,11.957-9.9903,11.957-0.66041,0-1.2007-2.4834-1.2007-5.5186s-0.5827-5.5186-1.2949-5.5186-1.2949,0.78545-1.2949,1.7454c0,2.3335-6.2706,9.2918-8.3736,9.2918-0.91771,0-2.394,0.82779-3.2807,1.8395-2.3118,2.638-4.2029,2.2678-3.231-0.63242,0.45568-1.3596,0.15939-4.5328-0.65846-7.0516-0.81788-2.5188-1.6875-5.1996-1.9325-5.9573-0.30871-0.95429-2.5558-0.70116-7.3116,0.82362-7.6852,2.4639-10.261,2.028-6.3087-1.0676,1.4449-1.1316,3.6425-5.0514,4.8838-8.7107,1.2412-3.6592,3.0726-6.9061,4.0698-7.2151,1.3963-0.43282,1.322,0.10204-0.32373,2.3272-1.1753,1.5891-2.1404,3.7321-2.1448,4.7624,0,1.0303-0.88884,3.473-1.9656,5.4282-1.0766,1.9552-1.7534,3.7483-1.5039,3.9845,0.24941,0.23626,3.1735-0.87452,6.4978-2.4684l6.0442-2.8979,0.0246,2.5925c0.0142,1.4259,0.74212,5.1875,1.6186,8.3592l1.5937,5.7666,4.1143-1.891c4.2049-1.9326,8.1874-8.8222,8.1874-14.164,0-2.6406,1.5126-2.2353,2.132,0.57128,0.18181,0.8236,1.1312,3.9147,2.1099,6.8692l1.7795,5.3717,2.817-3.3916c1.5494-1.8654,3.4917-5.5244,4.3163-8.131,1.4315-4.5251,3.6793-6.4706,3.6793-3.1845,0,2.368,6.4622,10.861,7.7088,10.131,0.60253-0.35262,1.8023-3.5401,2.6661-7.0833,1.7967-7.3686,4.6952-12.38,6.537-11.302,0.69252,0.40535,0.96225,1.192,0.59929,1.7482-0.36297,0.55613,1.1254,5.3468,3.3075,10.646,2.1821,5.2991,4.3732,10.634,4.8693,11.856,0.797,1.9632,1.5174,1.678,6.1947-2.4527,2.911-2.5708,5.5531-5.4487,5.8713-6.3953,0.48094-1.431,1.1303-1.3786,3.8524,0.31056,3.8067,2.3622,16.605,6.1683,17.593,5.2321,0.37021-0.35059,0.74975-3.7118,0.8435-7.4694l0.17042-6.8319,3.6804,0.76323c2.0242,0.41978,6.2805,0.39398,9.4584-0.0575l5.7779-0.82057-5.1492-3.5327c-2.8322-1.943-5.6958-4.4574-6.3636-5.5875-0.71142-1.204-3.232-2.2263-6.0873-2.469-7.7147-0.65558-21.388-8.3244-21.388-11.996,0-0.68925,1.8938,0.48271,4.2085,2.6043,5.1349,4.7067,12.269,7.6609,18.499,7.6609h4.6621l-2.884-3.8358c-1.6567-2.2034-3.1425-6.3832-3.4914-9.8218-0.55604-5.481-1.1346-6.3525-6.8578-10.331-3.4376-2.3899-7.6957-5.972-9.4622-7.9603l-3.2119-3.615-1.6387,4.2921c-0.90139,2.3607-2.003,4.2921-2.4479,4.2921-0.44494,0-2.1777-1.3797-3.8503-3.0659-1.6728-1.6862-3.3768-3.0596-3.7867-3.0518-0.4101,0.007-1.8919,2.2791-3.2929,5.0474l-2.5474,5.0333-1.9684-2.9012c-1.0827-1.5957-3.64-4.4189-5.6829-6.2738s-3.1174-3.3725-2.3877-3.3725c0.72956,0,3.251,1.9323,5.6033,4.294l4.2765,4.294,1.7405-3.146c1.0328-1.8669,1.4199-4.7346,0.95201-7.0533-0.68203-3.3797-0.5862-3.5761,0.70963-1.4546,0.82408,1.349,3.3259,3.9353,5.5597,5.7473l4.0616,3.2946,2.8028-5.1341c2.7895-5.1094,2.8091-5.1194,4.0782-2.0682,1.6972,4.0805,13.98,14.149,24.437,20.032,1.6118,0.9067,0.9322-2.2112-2.0444-9.3809-0.78834-1.8988-1.4333-5.3219-1.4333-7.607,0-3.39-0.97793-4.8988-5.3136-8.1981-6.2592-4.7632-8.2835-8.1504-9.463-15.835-0.47783-3.1128-1.5732-6.5749-2.4343-7.6935-1.2773-1.6596-1.4884-0.73081-1.1466,5.0465,0.23036,3.8942-0.27608,8.7359-1.1256,10.759l-1.5443,3.6791-1.1938-3.0659c-0.65653-1.6862-3.5605-4.6187-6.4535-6.5166-2.8929-1.8979-4.9233-3.7694-4.5119-4.1589,0.41126-0.38953,3.3874,1.3402,6.6134,3.8437,4.9147,3.814,5.9973,4.227,6.678,2.5471,0.79975-1.9739-0.001-10.562-1.5461-16.563-0.77113-2.9968-0.70366-2.9807,2.9932,0.71559,2.7266,2.7261,4.2342,5.9776,5.4023,11.65,1.4838,7.2068,2.2324,8.4066,8.8962,14.258,4.0018,3.5138,7.4844,6.1913,7.7391,5.9502,0.25458-0.24116,0.75961-9.3307,1.1222-20.199,0.69536-20.841-0.0906-25.8-5.1098-32.239l-2.5788-3.3085,4.054-4.3729c5.2886-5.7045,7.7168-10.277,8.7701-16.515l0.85683-5.0748-4.5751,4.3329c-3.7462,3.5479-5.5352,4.3329-9.8743,4.3329-4.2965,0-5.9749-0.72001-8.8702-3.8052-3.4739-3.7017-9.6295-7.2634-15.549-8.9969-2.1867-0.64031-2.9136-0.3614-2.9136,1.1179,0,1.0841-1.2079,4.2133-2.6842,6.9538l-2.6841,4.9828-5.6238-5.5587c-3.4497-3.4096-7.5436-6.0635-10.589-6.8644-7.7808-2.0462-8.2022-1.843-8.2022,3.954,0,8.7932-3.7543,10.431-10.511,4.5868-5.1508-4.4554-9.4235-5.4241-19.191-4.3505l-7.5435,0.82916,1.3573,3.4054c1.1337,2.8446,0.8782,4.0425-1.5508,7.2732-3.9398,5.2399-9.0624,7.5098-16.948,7.5098-3.6319,0-8.1768,0.75156-10.1,1.6701-1.9232,0.91856-6.7016,1.9768-10.619,2.3517-3.9171,0.37491-8.0922,1.044-9.2778,1.4869-1.8554,0.69306-2.059,0.12189-1.4614-4.098,0.91472-6.4581-3.5965-11.222-10.627-11.222-9.1217,0-13.329,8.1592-9.7568,18.922,0.68749,2.0714,1.5871,5.3381,1.999,7.2593,0.42746,1.9932,4.5362,7.2825,9.5688,12.318,4.8509,4.8537,9.4354,9.9041,10.188,11.223,0.75262,1.3191,3.2407,3.4359,5.529,4.704l4.1608,2.3058-0.5488-4.4519c-0.60318-4.8928,0.46295-5.6604,3.0662-2.2077,0.93053,1.2343,3.2945,3.2293,5.2531,4.4333,3.0853,1.8967,3.561,1.9353,3.561,0.28842,0-1.0454,0.62895-3.4543,1.3976-5.3531l1.3977-3.4523,2.4251,4.6972c1.3338,2.5835,5.6714,8.455,9.639,13.048,7.6986,8.9118,12.389,18.871,9.9683,21.163-0.98194,0.92988-3.6363,0.85791-9.1376-0.24774-4.2646-0.85709-9.5394-1.3101-11.722-1.0068-4.4571,0.61953-4.8082,0.0441-2.067-3.3881,2.8931-3.6226,2.4329-4.2201-3.2508-4.2201-6.5757,0-22.901-3.1522-29.168-5.6319-6.0934-2.4112-7.4993-1.8108-9.2928,3.9686-0.80725,2.601-2.2853,7.3142-3.2844,10.474l-1.8166,5.7444,6.5927-0.6349c3.626-0.3492,8.2897-1.1431,10.364-1.7642,2.0741-0.62112,3.9591-0.95122,4.1889-0.73356,0.22985,0.21769-0.6946,2.4623-2.0543,4.988l-2.4721,4.5922,4.1103-0.8379c2.2608-0.46085,5.662-1.5885,7.5584-2.5059,3.2998-1.5963,3.5648-1.4804,6.1676,2.6973,3.2006,5.1376,5.7611,4.9265,6.3292-0.52181,0.58738-5.6325,2.4401-4.7994,5.9255,2.6645,3.3515,7.1772,6.8385,9.7112,7.5085,5.4565,0.22232-1.4126,2.0278-3.7122,4.012-5.1101,4.0136-2.8276,7.0382-1.9792,8.7723,2.4603,1.795,4.5955-2.2084,9.3323-13.853,16.391-23.327,14.14-36.886,33.479-40.757,58.128-3.4915,22.233,7.4134,45.207,29.29,61.708,10.469,7.8966,27.1,16.231,26.043,13.051-4.4882-13.505-4.3404-39.274,0.2503-43.621,0.68891-0.65244,0.45194,2.0364-0.52663,5.9752-3.645,14.672-2.0615,26.363,7.282,53.763,8.4506,24.782,7.2809,35.373-4.6794,42.374-3.8414,2.2484-6.3146,2.6189-16.643,2.4936-11.207-0.13613-12.428,0.0895-16.026,2.9564-3.4881,2.7798-8.0108,11.906-8.0108,16.165,0,2.3072,2.562,2.0018,7.5966-0.90506z"/>
                             <Path d="m863.45,479.06,4.7011-3.0213,3.1903,3.0213c4.1796,3.9583,9.0759,3.8698,13.094-0.23669,1.7536-1.792,3.3283-3.0336,3.4993-2.7593,0.17093,0.27434,0.95293,1.6025,1.7376,2.9515,0.99334,1.7076,3.0357,2.5662,6.7222,2.8263,4.4417,0.31334,5.6344-0.1165,7.3993-2.6674l2.1038-3.041,4.6277,2.9741c12.669,8.1426,19.42-0.40017,13.758-17.411-2.879-8.6495-1.296-13.512,7.983-24.521,3.9128-4.6423,7.1176-9.5973,7.1215-11.011,0-2.2539-0.72386-2.5559-5.9314-2.4527-4.9834,0.0994-6.4413-0.43585-9.0644-3.3233-4.2665-4.6965-4.013-10.075,0.75623-16.044l3.81-4.7681-6.7596-4.5873c-3.7178-2.5231-10.422-8.4924-14.899-13.265-10.054-10.719-19.939-15.802-32.975-16.955l-8.7404-0.77298,0.0129,6.6158c0.0168,8.5168,4.0137,16.71,14.924,30.588,12.405,15.779,13.271,18.222,13.774,38.846l0.42473,17.442-3.5896,3.4057c-3.2436,3.0773-4.7062,3.47-15.173,4.0736-9.9645,0.57467-12.058,1.0888-14.982,3.6791-3.8836,3.4404-5.0449,5.3118-6.244,10.063-0.69887,2.7688-0.41568,3.3725,1.5825,3.3725,1.3386,0,4.5493-1.3597,7.1349-3.0214z"/>
                             <Path d="m596.82,433.98c1.1086-1.4991,2.0158-3.9198,2.0158-5.3794,0-2.2052,0.98543-2.7937,5.8314-3.4819l5.8314-0.82816-3.889-3.0993c-4.6204-3.6819-5.0478-6.5584-0.97546-6.5647,4.056,0,10.925-4.2118,11.969-7.3279,0.48536-1.4483,0.18013-3.3834-0.69044-4.3769-2.2738-2.5946-6.5486-2.2034-7.3427,0.67204-0.85348,3.091-2.2824,3.0992-5.5219,0.0306-4.8732-4.6153-4.9826-14.169-0.22595-19.732,2.2418-2.6218,2.2218-2.7938-0.6362-5.5005-3.0745-2.9118-5.2702-8.6748-3.826-10.043,0.45957-0.43524,2.8886-0.0884,5.3979,0.77114,3.5656,1.2211,4.9732,1.2396,6.4421,0.0846,4.4496-3.4973-0.37114-7.9944-7.5068-7.0025-2.8718,0.3992-4.0582,0-4.4706-1.4897-0.31195-1.1298-2.8238-2.605-5.6539-3.3204-5.0569-1.2784-5.0926-1.2628-5.0926,2.2213,0,3.8179-2.1794,4.5382-6.3206,2.0889-3.365-1.9903-6.6286-0.44518-6.6286,3.1383,0,3.3434,3.3623,4.9923,9.3882,4.604,4.6219-0.29789,4.7939,3.1391,0.40427,8.0796l-3.1567,3.5529,2.5008,3.5928c3.7037,5.321,3.3919,14.158-0.65433,18.547l-3.1721,3.4409-2.081-2.7593c-2.8919-3.8346-6.8476-3.5776-7.9323,0.51543-0.71028,2.6802-0.12315,3.905,3.2331,6.745,2.2555,1.9086,5.5485,3.4702,7.3178,3.4702,4.3784,0,4.2072,3.4433-0.34417,6.9217l-3.561,2.7216,5.5034,0.85366c3.0269,0.46958,5.5034,1.3529,5.5034,1.9628,0,2.339,3.8141,9.6148,5.0401,9.6148,0.70818,0,2.1948-1.2265,3.3034-2.7256z"/>
@@ -1023,30 +1068,30 @@ class CountryScreen extends React.Component {
                     </G>
                 </Svg>,
             mm: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="150"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" transform="translate(0 150)"/>
-                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" transform="translate(0 100)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100" y="99"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" y="198"/>
                     <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M18,95.74H95.74L119.8,18l24.062,77.74h77.74l-62.933,48.125,24.062,77.74L119.8,173.481,56.87,221.605l24.062-77.74Z" transform="translate(130.197 30)"/>
                 </Svg>,
             mn: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="333.333" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="166.667" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="166.667" height="300" x="166.667"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="166.667" height="300" x="333.333"/>
                     <G transform="translate(-20 0) scale(0.13)">
-                        <G onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]}>
+                        <G onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5">
                             <G transform="scale(5)">
                                 <Circle cx="160" cy="164" r="44"/>
-                                <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5"cx="160" cy="144" r="48"/>
+                                <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke="none" strokeWidth="5" cx="160" cy="144" r="48"/>
                                 <Circle cx="160" cy="152" r="32"/>
                                 <Path d="M140,92a20,20 0 0,0 40,0c0-8-5-9-5-12 0-3,3-7-3-12 3,5-2,6-2,11 0,5,2,5,2,9a4,4 0 0,1-8,0c0-4,4-8,4-14 0-6-1-8-4-13-3-5-8-9-4-13-6,2-3,10-3,15 0,5-4,8-4,14 0,6,3,7,3,11a4,4 0 0,1-8,0c0-4,2-4,2-9 0-5-5-6-2-11-6,5-3,9-3,12 0,3-5,4-5,12Z"/>
                                 <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M72,216V408H112V216ZM208,216V408H248V216ZM120,248V264H200V248ZM120,360V376H200V360ZM120,216H200L160,240ZM120,384H200L160,408Z"/>
                             </G>
-                            <G onPress={() => this.applySelectedColor(2)} stroke={this.state.appliedColors[2]} strokeWidth="24">
-                                <Circle cx="800" cy="1560" r="212"/>
-                                <Path fill="none" d="M800,1348A106,106 0 0,1 800,1560A106,106 0 0,0 800,1772"/>
+                            <G onPress={() => this.applySelectedColor(0)} stroke={this.state.appliedColors[0]} strokeWidth="24">
+                                <Circle stroke={this.state.applyStroke[3]} strokeWidth="20" cx="800" cy="1560" r="212"/>
+                                <Path stroke={this.state.applyStroke[3]} strokeWidth="20" fill="none" d="M800,1348A106,106 0 0,1 800,1560A106,106 0 0,0 800,1772"/>
                             </G>
                         </G>
-                        <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]}>
+                        <G onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]}>
                             <Circle cx="800" cy="1454" r="40"/>
                             <Circle cx="800" cy="1666" r="40"/>
                         </G>
@@ -1056,8 +1101,8 @@ class CountryScreen extends React.Component {
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                     <G transform="translate(100 75)">
                         <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="300" height="150"/>
-                        <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5"cx="50" cy="50" r="50" transform="translate(118.75 25)"/>
-                        <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"cx="50" cy="50" r="50" transform="translate(137.5 25)"/>
+                        <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" cx="50" cy="50" r="50" transform="translate(118.75 25)"/>
+                        <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} cx="50" cy="50" r="50" transform="translate(137.5 25)"/>
                     </G>
                 </Svg>,
             my: <Svg width="100%" height="100%" viewBox="0 0 500 300">
@@ -1078,11 +1123,12 @@ class CountryScreen extends React.Component {
             np: <Svg width="100%" height="100%" viewBox="-17.582 -4.664 71.571 87.246">
                     <G transform="translate(0 5) scale(0.9)">
                         <Use href="#b" stroke="#003893" strokeWidth="5.1646754223"/>
-                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5"id="b" d="M -15,37.5735931288 h 60 L -15,0 v 80 h 60 L -15,20 z"/>
-                        <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]}>
+                        <Path stroke="#003893" strokeWidth="2" id="b" d="M -15,37.5735931288 h 60 L -15,0 v 80 h 60 L -15,20 z"/>
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="2" id="b" d="M -15,37.5735931288 h 60 L -15,0 v 80 h 60 L -15,20 z"/>
+                        <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="0.1">
                             <Path d="M -11.9502769431,23.4834957055 A 12.8400974233,12.8400974233 0 0,0 11.9502769431,23.4834957055 A 11.9502769431 11.9502769431 0 0,1 -11.9502769431,23.4834957055"/>
                             <G transform="translate(0,29.0445562765) scale(5.5610605710)">
-                                <Circle r="1"/>
+                                <Circle r="1" strokeWidth="0.2"/>
                                 <G id="jags6">
                                     <G id="jags3">
                                         <Path id="jag" d="M 0.195090322016,-0.980785280403 L 0,-1.388784109750 L -0.195090322016,-0.980785280403" transform="rotate(11.25)"/>
@@ -1093,8 +1139,8 @@ class CountryScreen extends React.Component {
                                 </G>
                                 <Use href="#jags6" transform="scale(-1, 1)"/>
                             </G>
-                            <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5"transform="translate(0,58.7867965644) scale(8.1433982822)">
-                                <Circle r="1"/>
+                            <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="0.1" transform="translate(0,58.7867965644) scale(8.1433982822)">
+                                <Circle r="1" strokeWidth="0.2"/>
                                 <G id="rays4">
                                     <G id="rays2">
                                         <Path id="ray" d="M 0.258819045103,0.965925826289 L 0,1.576749285537 L -0.258819045103,0.965925826289"/>
@@ -1109,17 +1155,18 @@ class CountryScreen extends React.Component {
                     </G>
                 </Svg>,
             om: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="600" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="350" height="100" transform="translate(150)"/>
-                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="350" height="100" transform="translate(150 200)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="150" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="350" height="100" x="150"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="350" height="100" x="150" y="100"/>
+                    <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="350" height="100" x="150" y="200"/>
                     <Image id="om-2" data-name="om" width="88" height="88" transform="translate(31 15)" href={require('../assets/flag_badges/as/om.png')}/>
                 </Svg>,
             ph: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"y="150" width="500" height="150"/>
-                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M 250,150 0,300 0,0"/>
-                    <G onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5"transform="translate(100 150) scale(3)">
-                        <Circle r="9"/>
+                    <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500V300L257.637,148.739Z"/>
+                    <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M259.5,0H500V150H0Z" transform="translate(0 150)"/>
+                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M261,150,0,300V0"/>
+                    <G onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="0.05" transform="translate(100 150) scale(3)">
+                        <Circle r="9" stroke={this.state.applyStroke[3]} strokeWidth="1"/>
                         <G id="j">
                             <G id="i">
                                 <G id="h">
@@ -1134,7 +1181,7 @@ class CountryScreen extends React.Component {
                         <Use href="#j" transform="rotate(180)"/>
                         <G transform="translate(-2.019238)">
                             <G id="s" transform="translate(37.961524,0)">
-                                <Path id="t" d="M 5,0 L 1.618034,1.175571 1.545085,4.755283 -0.618034,1.902113 -4.045085,2.938926 -2,0 z"/>
+                                <Path strokeWidth="0.5" id="t" d="M 5,0 L 1.618034,1.175571 1.545085,4.755283 -0.618034,1.902113 -4.045085,2.938926 -2,0 z"/>
                                 <Use href="#t" transform="scale(1,-1)"/>
                             </G>
                             <Use href="#s" transform="rotate(120)"/>
@@ -1143,20 +1190,20 @@ class CountryScreen extends React.Component {
                     </G>
                 </Svg>,
             pk: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="375" height="300" transform="translate(125.5)"/>
-                    <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5"cx="90" cy="90" r="90" transform="translate(226.25 60)"/>
-                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"cx="82.5" cy="82.5" r="82.5" transform="translate(222.785 122.699) rotate(-41.633)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="125" height="300"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="375" height="300" x="125"/>
+                    <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" cx="90" cy="90" r="90" transform="translate(226.25 60)"/>
+                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} cx="82.5" cy="82.5" r="82.5" transform="translate(222.785 122.699) rotate(-41.633)"/>
                     <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M19-7.264,35.012,42.016-6.909,11.559H44.908L2.987,42.016Z" transform="translate(342.095 90.161)"/>
                 </Svg>,
             qa: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M146.66,300H0V0H146.66l40,16.667-40,16.667,40,16.667-40,16.667,40,16.667L146.66,100l40,16.667-40,16.667,40,16.667-40,16.667,40,16.667L146.66,200l40,16.667-40,16.667,40,16.667-40,16.667,40,16.667Z"/>
+                    <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M146.66,300H0V0H146.66l40,16.667-40,16.667,40,16.667-40,16.667,40,16.667L146.66,100l40,16.667-40,16.667,40,16.667-40,16.667,40,16.667L146.66,200l40,16.667-40,16.667,40,16.667-40,16.667,40,16.667Z"/>
+                    <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M151.152,283.333H-167.742l1-133.005-.643-167.217,354.042.461-40,16.4,40,16.69-40,16.667,40,16.667-40,16.667,40,16.667L146.66,100l40,16.667-40,16.667,40,16.667-40,16.667,40,16.667L146.66,200l40,16.667-40,16.667,40,16.667-40,16.667,40,16.667Z" transform="translate(333 283.334) rotate(180)"/>
                 </Svg>,
             ru: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="200"/>
-                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100" y="100"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" y="200"/> 
                 </Svg>,
             sa: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
@@ -1166,30 +1213,20 @@ class CountryScreen extends React.Component {
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
                     <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="100" y="99"/>
                     <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" y="198"/>
-                    <G onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5"transform="translate(23 0) scale(2.5)">
-                        <G id="s">
-                            <G id="f">
-                                <G id="t">
-                                    <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M54,47v13h8" transform="rotate(18,54,47)" id="o"/>
-                                    <Use href="#o" x="-108" transform="scale(-1,1)"/>
-                                </G>
-                                <Use href="#t" transform="rotate(72,54,60)"/>
-                            </G>
-                            <Use href="#t" transform="rotate(-72,54,60)"/>
-                            <Use href="#f" transform="rotate(144,54,60)"/>
-                        </G>
-                        <Use href="#s" x="72"/>
-                    </G>
+                    <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M366.984,191.459l19.227,59.176-50.338-36.573h62.221l-50.338,36.573Z" transform="translate(-219.373 -74.158)"/>
+                    <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M366.984,191.459l19.227,59.176-50.338-36.573h62.221l-50.338,36.573Z" transform="translate(-15.174 -74.158)"/>
                 </Svg>,
             th: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="200" transform="translate(0 50)"/>
-                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" transform="translate(0 100)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="50"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="50" y="49"/>
+                    <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="100" y="98"/>
+                    <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="500" height="50" y="197"/>
+                    <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" width="500" height="50" y="246"/>
                 </Svg>,
             tj: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="214.29"/>
-                <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="85.71"/>
+                <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="85"/>
+                <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="130" y="84"/>
+                <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="85" y="213"/>
                 <G fill="#f8c300" transform="translate(-27 10) scale(0.4)">
                     <Path d="M 672.0,340.7 a 12.5,12.5 0,0,1 23.3,5.9 v 50 h 9.4 v -50 a 12.5,12.5 0,0,1 23.3,-5.9 a 29.5,29.5 0,1,0 -56,0"/>
                     <Path d="M 678.7,327.65 a 20,20 0,0,1 21.3,9.55 a 20,20 0,0,1 21.3,-9.55 a 21.5,21.5 0,0,0 -42.6,0" fill="#fff"/>
@@ -1213,40 +1250,36 @@ class CountryScreen extends React.Component {
                 </G>
                 </Svg>,
             tl: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M597,294V-6H-3V294Z" transform="translate(5.652 6)"/>
-                    <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M-3-6V294L297,144Z" transform="translate(5.652 6)"/>
-                    <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M-3-6V294L197,144Z" transform="translate(5.652 6)"/>
-                    <G onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5"transform="translate(75 150) scale(25) rotate(-26.565051)">
-                        <G id="f">
-                            <G id="t">
-                                <Path d="M0,-2.1V0H1z" transform="rotate(18,0,-2.1)" id="o"/>
-                                <Use href="#o" transform="scale(-1,1)"/>
-                            </G>
-                            <Use href="#t" transform="rotate(72)"/>
-                        </G>
-                        <Use href="#t" transform="rotate(-72)"/>
-                        <Use href="#f" transform="rotate(144)"/>
-                    </G>
-                </Svg>,
+                
+  <G id="Mask_Group_365" data-name="Mask Group 365" transform="translate(18658 -20558)" clip-path="url(#clip-path)">
+    <G id="tl" transform="translate(-18660.967 20558)">
+      <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M495.43,294V-6H-3L294.75,144.354-2.994,294Z" transform="translate(5.652 6)"/>
+      <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M-3-6,197.25,144-3,294,297,144Z" transform="translate(5.652 6)"/>
+      <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M-3-6V294L199.336,144.131Z" transform="translate(5.652 6)"/>
+      <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M385.834,191.459l30.878,95.032-80.839-58.733H435.8l-80.839,58.733Z" transform="matrix(0.891, -0.454, 0.454, 0.891, -376.715, 108.057)"/>
+    </G>
+  </G>
+</Svg>
+,
             tm: null,
             tr: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"cx="75" cy="75" r="75" transform="translate(96.375 75)"/>
-                    <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5"cx="60" cy="60" r="60" transform="translate(130.125 90)"/>
+                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" cx="75" cy="75" r="75" transform="translate(96.375 75)"/>
+                    <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} cx="60" cy="60" r="60" transform="translate(130.125 90)"/>
                     <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" data-name="Path 14993" d="M583.334,340.559,651.172,362.6l-41.927-57.707v71.329l41.927-57.707Z" transform="translate(-352.584 -190.559)"/>
                 </Svg>,
             tw: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300" transform="translate(0 1.828)"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="248.6" height="149.068" transform="translate(0 1.828)"/>
+                    <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M248.645,0H500V300H0V148.953H248.529Z"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="248.6" height="149.068"/>
                     <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M40.807,25.9,25.9,81.8,10.994,25.9,25.9-30m0,70.807L81.8,25.9,25.9,10.994-30,25.9" transform="translate(98.461 50.461)"/>
                     <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M70.807,55.9,55.9,111.8,40.994,55.9,55.9,0m0,70.807L111.8,55.9,55.9,40.994,0,55.9" transform="translate(103.9 0) rotate(30)"/>
                     <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M70.807,55.9,55.9,111.8,40.994,55.9,55.9,0m0,70.807L111.8,55.9,55.9,40.994,0,55.9" transform="translate(144.823 0) rotate(60)"/>
-                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"cx="31.677" cy="31.677" r="31.677" transform="translate(92.685 44.685)"/>
-                    <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5"cx="27.95" cy="27.95" r="27.95" transform="translate(96.411 48.412)"/>
+                    <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" cx="31.677" cy="31.677" r="31.677" transform="translate(92.685 44.685)"/>
+                    <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" cx="27.95" cy="27.95" r="27.95" transform="translate(96.411 48.412)"/>
                 </Svg>,
             uz: null,
             vn: <Svg width="100%" height="100%" viewBox="0 0 500 300">
-                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="499.999" height="300" transform="translate(0 0.162)"/>
+                    <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                     <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M415.947,191.459l49.488,152.31L335.873,249.636H496.021L366.459,343.769Z" transform="translate(-165.873 -117.297)"/>
                 </Svg>,
             ym: <Svg width="100%" height="100%" viewBox="0 0 500 300">
@@ -1261,11 +1294,11 @@ class CountryScreen extends React.Component {
                 </Svg>,
             sg: <Svg width="100%" height="100%" viewBox="0 0 500 300">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="150"/>
-                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5"y="150" width="500" height="150"/>
+                    <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" y="150"/>
                     <G transform="translate(20 0) scale(0.1)">
                         <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M 1481.678,720 A 541.5,541.5 0 1 1 398.67798,720 A 541.5,541.5 0 1 1 1481.678,720 z"/>
-                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M 1651.835,720 A 511.73499,511.73499 0 1 1 628.36499,720 A 511.73499,511.73499 0 1 1 1651.835,720 z"/>
-                        <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5"id="star" d="M 1007.1951,733.06439 L 933.63466,676.63425 L 860.09279,733.09117 L 888.40587,642.09687 L 814.61147,586.0053 L 905.6704,586.1981 L 933.6049,495.07467 L 961.56934,586.18798 L 1052.6282,585.96246 L 978.8522,642.0808 L 1007.1951,733.06439 z"/>
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} d="M 1651.835,720 A 511.73499,511.73499 0 1 1 628.36499,720 A 511.73499,511.73499 0 1 1 1651.835,720 z"/>
+                        <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" id="star" d="M 1007.1951,733.06439 L 933.63466,676.63425 L 860.09279,733.09117 L 888.40587,642.09687 L 814.61147,586.0053 L 905.6704,586.1981 L 933.6049,495.07467 L 961.56934,586.18798 L 1052.6282,585.96246 L 978.8522,642.0808 L 1007.1951,733.06439 z"/>
                         <Use href="#star" transform="translate(577.18853,0)"/>
                         <Use href="#star" transform="translate(288.88853,-214.21117)"/>
                         <Use href="#star" transform="translate(107.99953,342.74883)"/>
