@@ -23,6 +23,7 @@ const flagColors = {
     li: ['#002B7F', '#CE1126'],
     lt: ['#FDB913', '#006A44', '#C1272D'],
     lv: ['#9E3039', 'white', '#9E3039'],
+    gr: ["#0D5EAF", 'white', '#0D5EAF', '#0D5EAF', 'white', 'white'],
     me: ['#D3AE3B', '#C40308'],
     mk: ['#D20000', '#FFE600', '#FFE600'],
     mt: ['white', '#CF142B'],
@@ -60,7 +61,7 @@ const flagColors = {
     tt: ['#CE1126', 'white', 'black'],
     // uy
 
-    // OC
+    // AS
     ae: ['#00732F', 'white', 'black', '#FF0000'],
     af: ['black', '#BF0000', '#009900'],
     am: ['#D90012', '#0033A0', '#F2A800'],
@@ -111,7 +112,17 @@ const flagColors = {
     // NA
     ca: ['#FF0000', 'white', '#FF0000', '#FF0000'],
     mx: ['#006847', 'white', '#CE1126'],
-    us: ['#B22234', 'white', '#3C3B6E']
+    us: ['#B22234', 'white', '#3C3B6E'],
+
+    // AF
+    ao: ['#CE1126', 'black', '#F9D616', '#F9D616', '#F9D616'],
+    eg: ['#CE1126', 'white', 'black'],
+    mg: ['#FC3D32', '#007E3A', 'white'],
+
+    // OC
+    nc: ['#002395', 'white', '#ED2939'],
+    pg: ['black', '#CE1126', '#FCD116', 'white'],
+    vu: ['#D21034', '#009543', 'black', '#FDCE12', 'black', '#FDCE12']
 }
 
 export { flagColors }; 
