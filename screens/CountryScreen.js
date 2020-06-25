@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ImageBackground } from 'react-native';
 import Svg, {G, Path, Rect, Circle, Image, Use, Polygon, Defs, ClipPath, Ellipse} from 'react-native-svg';
 import { flagColors } from '../src/flagColors';
-import { backgroundImgs } from '../src/backgroundImgs';
+import { countryImages } from '../src/countryImages';
 
 class CountryScreen extends React.Component {
     defaultColors = ['#3B3B3B', '#646464', '#A2A2A2', '#847A7A', '#1F1A1A', '#81878F'];
@@ -2167,7 +2167,7 @@ class CountryScreen extends React.Component {
     render() {
         return (
             <View style={{height: '100%', backgroundColor: '#0FBEBE'}}>
-                <ImageBackground source={backgroundImgs[this.state.continentID][this.state.countryID]} style={{height: '100%', width:'100%', backgroundColor:"#0FBEBE"}} imageStyle={{ width:'100%', height:'100%', opacity:0.3, resizeMode: "cover", alignSelf: "flex-end", overflow : 'visible', backfaceVisibility: 'visible', flex : 2}}>
+                <ImageBackground source={countryImages[this.state.continentID][this.state.countryID][1]} style={{height: '100%', width:'100%', backgroundColor:"#0FBEBE"}} imageStyle={{ width:'100%', height:'100%', opacity:0.3, resizeMode: "cover", alignSelf: "flex-end", overflow : 'visible', backfaceVisibility: 'visible', flex : 2}}>
                     <View style={{height: '20%', paddingTop: 20}}>
                         <View style={{height: '100%', flexDirection:'row', flex: 1, justifyContent: 'center'}}>
                                 {this.state.colors.length > 0 ?

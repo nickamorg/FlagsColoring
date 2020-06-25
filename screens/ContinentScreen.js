@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
 import CountryComponent from '../src/CountryComponent';
 import localStorage from 'react-native-sync-localstorage'
 
@@ -40,16 +40,16 @@ function ContinentScreen({ route, navigation }) {
         AS: [
             ['ae', 'United Arab Emirates'], ['af', 'Afghanistan'], ['am', 'Armenia'],
             ['az', 'Azerbaijan'], ['bd', 'Bangladesh'], ['bn', 'Brunei'],
-            ['bt', 'Bhutan'], ['id', 'Indonesia'], ['in', 'India'],
-            ['ir', 'Iran'], ['iq', 'Iraq'], ['il', 'Israel'],
-            ['jo', 'Jordan'], ['kz', 'Kazakhstan'], ['kg', 'Kyrgyzstan'],
-            ['kh', 'Cambodia'], ['kr', 'Korea'], ['kw', 'Kuwait'],
+            ['bt', 'Bhutan'], ['id', 'Indonesia'], ['il', 'Israel'],
+            ['in', 'India'], ['iq', 'Iraq'], ['ir', 'Iran'],
+            ['jo', 'Jordan'], ['kg', 'Kyrgyzstan'], ['kh', 'Cambodia'],
+            ['kr', 'Korea'], ['kw', 'Kuwait'], ['kz', 'Kazakhstan'],
             ['la', 'Laos'], ['lb', 'Lebanon'], ['lk', 'Sri Lanka'],
             ['mm', 'Myanmar'], ['mn', 'Mongolia'], ['mv', 'Maldives'],
             ['my', 'Malaysia'], ['np', 'Nepal'], ['om', 'Oman'],
             ['ph', 'Philippines'], ['pk', 'Pakistan'], ['qa', 'Qatar'],
             ['sa', 'Saudi Arabia'], ['sy', 'Syria'], ['th', 'Thailand'],
-            ['tj', 'Tajikistan'], ['tm', 'Turkmenistan'], ['tl', 'Timor-Leste'],
+            ['tj', 'Tajikistan'], ['tl', 'Timor-Leste'], ['tm', 'Turkmenistan'],
             ['tr', 'Turkey'], ['tw', 'Taiwan'], ['uz', 'Uzbekistan'],
             ['vn', 'Vietnam'], ['ye', 'Yemen'], ['hk', 'Hong Kong'],
             ['jp', 'Japan'], ['ru', 'Russia'], ['cn', 'China'],
@@ -174,11 +174,28 @@ function ContinentScreen({ route, navigation }) {
             mm: 0,
             mn: 1,
             mv: 1,
+            my: 0,
+            np: 1,
+            om: 1,
+            ph: 1,
+            sa: 1,
+            sy: 1,
+            th: 0,
+            tj: 0,
+            tm: 1,
+            tl: 1,
+            tr: 0,
+            tw: 0,
+            uz: 1,
+            vn: 0,
+            ye: 1,
+            hk: 1,
+            sg: 1,
             jp: 1,
             ru: 1,
             cn: 1,
-            completedCountries: 16,
-            totalCountries: 27
+            completedCountries: 27,
+            totalCountries: 46
         },
 
         AF:  {
@@ -249,10 +266,11 @@ function ContinentScreen({ route, navigation }) {
                 <Text style={{position: 'absolute', right: 0, textAlign: 'right', fontWeight: 'bold', color: '#E3E340', paddingRight: 50, paddingTop: 30}}>{savedStatus[continentID].completedCountries}/{totalCountries[continentID]}</Text>
                 <Image style={{position: 'absolute', right: 0, height: 30, width: 30, marginRight: 20, marginTop: 25}} source={require('../assets/world.png')}/>
             </View>
-            
             <View style={{height:'90%', flex: 1, justifyContent: 'center'}}>
                 <View>
-                    <FlatList initialNumToRender={2} horizontal={true} showsHorizontalScrollIndicator={false} data={countrySvgs} renderItem={({ item }) => item}/>
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        {countrySvgs}
+                    </ScrollView>
                 </View>
             </View>
         </View>
