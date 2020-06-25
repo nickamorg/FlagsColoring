@@ -23,6 +23,7 @@ const flagColors = {
     li: ['#002B7F', '#CE1126'],
     lt: ['#FDB913', '#006A44', '#C1272D'],
     lv: ['#9E3039', 'white', '#9E3039'],
+    gb: ['#012169', 'white', '#C8102E', 'white', '#C8102E'],
     gr: ["#0D5EAF", 'white', '#0D5EAF', '#0D5EAF', 'white', 'white'],
     me: ['#D3AE3B', '#C40308'],
     mk: ['#D20000', '#FFE600', '#FFE600'],

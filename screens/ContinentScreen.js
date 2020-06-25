@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity, Image } from 'react-native';
 import CountryComponent from '../src/CountryComponent';
 import localStorage from 'react-native-sync-localstorage'
 
@@ -252,9 +252,7 @@ function ContinentScreen({ route, navigation }) {
             
             <View style={{height:'90%', flex: 1, justifyContent: 'center'}}>
                 <View>
-                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                        {countrySvgs}
-                    </ScrollView>
+                    <FlatList initialNumToRender={2} horizontal={true} showsHorizontalScrollIndicator={false} data={countrySvgs} renderItem={({ item }) => item}/>
                 </View>
             </View>
         </View>
