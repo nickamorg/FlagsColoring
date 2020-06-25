@@ -10,8 +10,6 @@ class CountryComponent extends Component {
         const continentID = this.props.continentID;
         const countryID = this.props.countryID;
 
-        console.log("end " + continentID + " " + countryID);
-
         return (
             <Svg width='70%' height='70%' viewBox={countrySvgs[continentID][countryID].viewBox}>
                 <Defs>

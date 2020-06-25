@@ -139,4 +139,4 @@ const countryImages = {
     }
 }
 
-export { countryImages }; 
+export { countryImages };

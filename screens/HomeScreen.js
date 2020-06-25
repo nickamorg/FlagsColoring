@@ -2,161 +2,11 @@ import React from 'react';
 import { Text, View, ScrollView, TouchableOpacity, Image as RNImage } from 'react-native';
 import Svg, {G, Path, Pattern, Defs, Image} from 'react-native-svg';
 import { countryImages } from '../src/countryImages';
+import { status } from '../src/status';
+import localStorage from 'react-native-sync-localstorage'
 
 function HomeScreen({ navigation }) {
-    var savedStatus = {
-        EU: {
-            ad: 1,
-            al: 0,
-            at: 1,
-            ba: 0,
-            be: 1,
-            bg: 1,
-            by: 1,
-            ch: 0,
-            cz: 1,
-            cy: 1,
-            de: 0,
-            dk: 0,
-            ee: 0,
-            es: 0,
-            fi: 1,
-            fo: 1,
-            fr: 1,
-            hr: 0,
-            hu: 0,
-            gb: 0,
-            gr: 1,
-            ie: 1,
-            is: 1,
-            it: 0,
-            li: 0,
-            lt: 0,
-            lu: 0,
-            lv: 0,
-            md: 0,
-            me: 1,
-            mk: 1,
-            mt: 1,
-            nl: 1,
-            no: 0,
-            pl: 0,
-            pt: 0,
-            ro: 1,
-            va: 0,
-            si: 0,
-            se: 1,
-            sk: 0,
-            ua: 1,
-            completedCountries: 20,
-            totalCountries: 46
-        },
-
-        NA: {
-            us: 0,
-            ca: 1,
-            mx: 1,
-            completedCountries: 2,
-            totalCountries: 3
-        },
-
-        SA: {
-            aw: 1,
-            ar: 1,
-            bo: 0,
-            br: 0,
-            cl: 1,
-            pe: 1,
-            co: 0,
-            cw: 1,
-            ec: 0,
-            fk: 1,
-            gd: 0,
-            gy: 0,
-            py: 1,
-            sr: 1,
-            tt: 0,
-            uy: 1,
-            ve: 1,
-            gf: 1,            
-            completedCountries: 11,
-            totalCountries: 18
-        },
-
-        OC: {
-            au: 0,
-            fj: 1,
-            nc: 1,
-            nz: 1,
-            pg: 1,
-            sb: 0,
-            vu: 0,
-            completedCountries: 4,
-            totalCountries: 7
-        },
-
-        AS: {
-            af: 1,
-            ae: 1,
-            am: 0,
-            az: 1,
-            bd: 0,
-            bn: 0,
-            bt: 0,
-            id: 1,
-            in: 1,
-            ir: 0,
-            iq: 1,
-            il: 1,
-            jo: 1,
-            kz: 1,
-            kg: 0,
-            kh: 0,
-            kr: 1,
-            kw: 0,
-            la: 0,
-            lb: 0,
-            lk: 1,
-            mm: 0,
-            mn: 1,
-            mv: 1,
-            my: 0,
-            np: 1,
-            om: 1,
-            ph: 1,
-            qa: 0,
-            sa: 1,
-            sy: 1,
-            th: 0,
-            tj: 0,
-            tm: 1,
-            tl: 1,
-            tr: 0,
-            tw: 0,
-            uz: 1,
-            vn: 0,
-            ye: 1,
-            hk: 1,
-            sg: 1,
-            jp: 1,
-            ru: 1,
-            cn: 1,
-            completedCountries: 27,
-            totalCountries: 46
-        },
-
-        AF:  {
-            eg: 0,
-            ao: 1,
-            mg: 1,
-            completedCountries: 2,
-            totalCountries: 3
-        },
-
-        completedCountries: 150 , //74
-        totalCountries: 198
-    }
-
+    var savedStatus = null;
     var minCountriesUnlock = {
         NA: 0,
         SA: 3,
@@ -176,6 +26,13 @@ function HomeScreen({ navigation }) {
         TOTAL: 146,
     }
 
+    if (localStorage.getItem('savedStatus') === undefined) {
+        localStorage.setItem('savedStatus', JSON.stringify(status));
+        savedStatus = JSON.parse(JSON.stringify(status));
+    } else {
+        savedStatus = JSON.parse(localStorage.getItem('savedStatus'));
+    }
+
     var continentId2Title = {
         NA: 'North America',
         SA: 'South America',
@@ -193,7 +50,7 @@ function HomeScreen({ navigation }) {
         countryPngPatterns[continentIDs[i]] = [];
         for (let j = 0; j < countryIDs.length; j++) {
             countryPngPatterns[continentIDs[i]].push(
-                <Pattern id={countryIDs[j]} preserveAspectRatio='xMidYMid slice' width='100%' height='100%' viewBox='0 0 500 300'>
+                <Pattern key={countryIDs[j]} id={countryIDs[j]} preserveAspectRatio='xMidYMid slice' width='100%' height='100%' viewBox='0 0 500 300'>
                     <Image width='500' height='300' href={countryImages[continentIDs[i]][countryIDs[j]][0]}></Image>
                 </Pattern>
             );
@@ -277,7 +134,7 @@ function HomeScreen({ navigation }) {
                         </TouchableOpacity>
                         <TouchableOpacity onPress={isContinentLocked('SA') ? () => lockedContinentMessage('SA') : () => navigation.navigate('Continent', {continentID: 'SA'})} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: (isContinentLocked('SA') ? 26 : 35), borderWidth: (isContinentLocked('SA') ? 0 : 10), backgroundColor: '#006994' }} activeOpacity={1}>
                             <Svg width='90%' height='70%' viewBox='0 0 143.616 235.741'>
-                            <Defs>{countryPngPatterns.SA}</Defs>
+                                <Defs>{countryPngPatterns.SA}</Defs>
                                 <G transform='translate(-1164.741 1213.918)' fill='#f2f2f2' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'>
                                     <Path fill={fillCountry('SA', 'ar')} id='Argentina' d='M365.339,502.192l.491-1.636-3.982-.818-4.2-1.964-2.345-2.509-1.636-1.527,3.218,7.363h2.727l1.582.109,1.8,1.145,2.345-.164Zm-27.49-113.507-4.036-.818-2.182,3.109.491.873-.6,3.6-3.054,1.745.873,5.782-.491,1.091,1.091,1.364-1.745,2.182-1.418,3.218-.491,3.164.927,3.382-1.145,3.545,2.673,5.945.873.655.709,3.218-.873,3.382.764,2.945-1.582,2.345.818,3.218,1.8,3.436-1.364,1.309.164,3.109.382,3.491,1.8,4.145-.873.655,1.964,3.873,1.691,1.255-.436,1.418,1.527.709.709,1.255-.982.6.982,2.018.6,4.473-.382,2.891.982,1.745-.055,2.127-1.473,1.473,1.691,3.6,1.418,1.2,1.691-.218.982,2.509,1.909,1.964,6.545.436,2.618.491,1.2.218-2.564-1.964-2.236-3.436.491-1.582,1.909-1.364.273-3.927,2.564-1.909-.109-3.054-2.836-.709-3.491-2.454-.055-2.564,1.582-1.691,2.564-.055.109-1.8-.655-3.327,1.582-2.127,2.236-1.036-1.364-1.745-1.2,1.091-2.182-1.036-1.364-3.382.818-.873,3.054,1.255,2.727-.491,1.364-1.2-.982-1.691-.055-2.618-1.091-2.073,3.164.327,5.564-.709,3.764-1.855,1.8-4.527-.164-1.745-2.127-1.527-.055-2.454-4.254-3-.164-1.8-.218-2.291.491-.764-.6-3.436.164-3.545.273-2.782,3.218-4.691,2.891-3.382,1.8-1.418,2.291-1.909-.273-2.782-1.691-2.018-1.418.655-.164,3.109-2.345,2.618-2.291.6-3.382-.545-3.109-.982,2.291-5.236-.6-1.527-3.218-1.364-3.927-2.564-2.509-.545-6.109-5.673-.545-.709-3.436-.164-.873,2.782-2.018-2.509Z' transform='translate(881.546 -1481.95)' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'/>
                                     <Path fill={fillCountry('SA', 'bo')} id='Bolivia' d='M357.648,382.084l.873-.709-.436-1.964.709-1.527.273-2.727-.873-2.182-1.745-.927-.436-1.418.327-1.964L350.5,368.5l-1.473-4.036.873-.055-.164-1.527-.655-.982-.273-2.018-1.8-1.036-1.909.055-1.364-1.036-2.073-.655-1.309-1.309-3.436-.545-3.491-3.109.164-2.345-.491-1.364.218-2.564-3.982.6-1.527,1.255-2.618,1.418-.6,1.036-1.582.109-2.291-.327,3,5.618-.6,1.145.055,2.455.164,2.945-1.036,1.745.655,1.309-.6,1.145,1.527,2.891-1.527,3.764,1.691,2.345.655,2.509,1.745,1.473-.6,3.382,2.018,3.873,1.691,4.8,2.073-.491,2.182-3.109,4.036.818,2.018,2.509.873-2.782,3.436.164.545.709.818-4.145-.109-1.855,1.145-3.054,5.182-1.036,2.782.055,2.945,1.8.164,1.036Z' transform='translate(881.546 -1481.95)' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'/>
@@ -315,7 +172,7 @@ function HomeScreen({ navigation }) {
                         </TouchableOpacity>
                         <TouchableOpacity onPress={isContinentLocked('EU') ? () => lockedContinentMessage('EU') : () => navigation.navigate('Continent', {continentID: 'EU'})} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: (isContinentLocked('EU') ? 26 : 35), borderWidth: (isContinentLocked('EU') ? 0 : 10), backgroundColor: '#006994' }} activeOpacity={1}>
                             <Svg width='80%' height='80%' viewBox='0 0 164.234 144.979'>
-                            <Defs>{countryPngPatterns.EU}</Defs>
+                                <Defs>{countryPngPatterns.EU}</Defs>
                                 <G transform='translate(-2403.719 1160.551)' fill='#f2f2f2' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'>
                                     <Path fill={fillCountry('EU', 'al')} id='Albania' d='M587.717,163.906l-1.091,1.691.273,1.036h0l.545.545-.273,1.036-.055,2.345.382,1.636,1.636,1.145.109.764.545.218,1.145-1.636.055-1.145.873-.491v-.873l-1.255-.873-.491-1.418.218-1.145h0l-.273-1.255-.709-.327-.709-.873-.709.273-.218-.655Z' transform='translate(1927.546 -1207.95)' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'/>
                                     <Path fill={fillCountry('EU', 'at')} id='Austria' d='M578.281,144l-1.255-.655-1.255.164-2.182-1.036-.927.273-1.418,1.364-2.073-1.091-.818,1.582-.927.436.545,2.182-.218.6-.927-.709L565.518,147l-1.855.655-2.4-.164-.327.873-1.418-.927-.818.164.109.6-.382.873,1.255.6,1.418.109,1.691.491.273-.655,2.618-.6.709,1.2,3.927.873,2.291.218,1.309-.764,2.345-.055.491-.6.709-2.182-.6-.709h1.527l.109-1.418-.382-1.145.164-.436Z' transform='translate(1927.546 -1207.95)' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'/>
@@ -450,7 +307,7 @@ function HomeScreen({ navigation }) {
                         </TouchableOpacity>
                         <TouchableOpacity onPress={isContinentLocked('AS') ? () => lockedContinentMessage('AS') : () => navigation.navigate('Continent', {continentID: 'AS'})} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: (isContinentLocked('AS') ? 26 : 35), borderWidth: (isContinentLocked('AS') ? 0 : 10), backgroundColor: '#006994' }} activeOpacity={1}>
                             <Svg width='90%' height='90%' viewBox='0 0 382.03 302.286'>
-                            <Defs>{countryPngPatterns.AS}</Defs>
+                                <Defs>{countryPngPatterns.AS}</Defs>
                                 <G transform='translate(-3645.572 1389.914)' fill='#f2f2f2' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'>
                                     <Path fill={fillCountry('AS', 'af')} id='Afghanistan' d='M747.206,182.07H744.26l-2.073-.273-1.364,1.582-1.145.382-.818.709-1.418-1.145-.545-2.945-.873-.164v-1.091l-1.745-.818-.927,1.255.109,1.418-.327.491-1.745-.055-.491,1.636-1.145-.709-1.8,1.145-.982-.436-2.345-.764h-1.582l-.873-.109-1.582-.927-.164,1.255-2.236.655.055,2.836-1.364,1.091-2.182.491-.218,1.636-2.127.436-3.218-1.309-.273,4.364-.273,2.564,1.364.491-.873,1.909,1.473,2.782.6,2.182,2.345.6.6,2.182-2.127,3.164,5.236,1.745,2.891-.491,1.8.436.491-.764,2.073.273,3.6-1.418-.436-2.945,1.255-1.964h2.182l.109-.927,2.182-.491,1.145.327.927-.982-.6-2.073.818-2.073,1.636-.873-1.636-2.291,2.782.109.491-1.255-.436-1.364,1.091-1.473-.764-1.745-1.036-1.527,1.309-1.527,2.891-.709,3.164-.436,1.309-.655,1.527-.382-.764-1.036Z' transform='translate(3062.546 -1435.95)' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'/>
                                     <Path fill={fillCountry('AS', 'ae')} id='United_Arab_Emirates' d='M700.3,222.869l-.709-1.2-1.636,2.127-2.018,2.236-1.8,2.345-1.8-.109-2.509-.109-2.291.545-.164-.927-.545.164.218.818,1.418,3.491L697.625,234l.545-.709-.055-1.418.764-1.418-.164-1.418,1.309-.709-.6-.436.055-2.291h1.527l-.709-2.727Z' transform='translate(3062.546 -1435.95)' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'/>
@@ -519,7 +376,7 @@ function HomeScreen({ navigation }) {
                         </TouchableOpacity>
                         <TouchableOpacity onPress={isContinentLocked('OC') ? () => lockedContinentMessage('OC') : () => navigation.navigate('Continent', {continentID: 'OC'})} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: (isContinentLocked('OC') ? 26 : 35), borderWidth: (isContinentLocked('OC') ? 0 : 10), backgroundColor: '#006994', marginRight: 50 }} activeOpacity={1}>
                             <Svg width='90%' height='90%' viewBox='0 0 212.505 153.325'>
-                            <Defs>{countryPngPatterns.OC}</Defs>
+                                <Defs>{countryPngPatterns.OC}</Defs>
                                 <G transform='translate(-2955.495 1290.446)' fill='#f2f2f2' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'>
                                     <Path fill={fillCountry('OC', 'au')} id='Australia' d='M941.82,453.811l-1.636-.273-1.036,1.582-.327,2.945-1.145,2.182-.273,2.891,1.636.109.436.164,3.6-2.345.327.927,2.182-2.673,1.745-1.2,2.454-3.982-1.527-.273-2.618.655-1.855.491-1.964-1.2Zm27.327-93.98.273-1.255.055-1.964-.873-1.745.055-1.473-.709-.436L968,350.83l-.654-1.745-1.255,1.309-.218.982-.818,1.909-.982,1.855.327,1.145-.655.709-.818,2.618.055,2.018-.382.982.164,1.691-1.418,2.727-.709,1.909-.927,1.582-.927,1.855-2.236,1.145-2.673-1.145-.273-1.091-1.364-.873h-.873l-1.8-2.073-1.364-1.2-2.127-1.091-2.127-1.909-.055-.982,1.364-1.691,1.145-1.745-.164-1.418,1.036-.109,1.364-1.364,1.091-1.855-1.2-1.745-.818.655-1.091-.273-1.909.982-1.745-1.091-.927.382-2.454-.873-1.473-1.473-1.909-.818-1.691.491,2.127,1.145-.164,1.745-2.618.655-1.527-.382-1.964,1.2-1.582,2.018.327.818-1.473.927-1.855,2.782.327,1.909-1.855-.327h-1.909l-1.364-2.073-2.018-1.582-1.527.436-1.418.491-.164.873-1.309-.382-.164.982-1.636.6-.927,1.364-1.909,1.691-.764,2.618-1.255-.709-1.2,1.691.818,1.636-1.418.655-.764-3-2.618,2.945-.436,1.909-.382,1.364-2.073,1.8-1.091,1.855-1.909,1.527-3.327,1.036-1.691-.109-.818.327-.6.764-1.909.382-2.564,1.309-.764-.436-1.418.273-2.509,1.255-1.745,1.473-2.618,1.145-1.691,2.4.218-2.618-1.691,2.509-.055,2.018-.709,1.745-.818.818L871.4,396.7l.491,1.036.055,1.091.873,2.727-.382,1.8-.545-1.364-1.255-.982.218,3.218-.927-1.527.055,1.527.982,2.727-.327,2.727.927,1.364-.218,1.036.491,2.236-.709,1.964-.164,1.964.382,3.545-.382,2.018-1.2,2.4-.327,1.255-.818.818-1.582.436-.818,2.018,1.309.655,2.182,2.236h1.964l2.073.164,1.8-1.145,1.854-.982.764.164,2.454-1.855,2.073-.164,2.236-.382,2.291.655,1.964-.327,2.509-.109,1.636-1.418,1.255-1.8,2.836-.818,3.764-1.745,2.727.218,3.764-1.145,4.255-1.255,5.345-.327,2.182,1.691,2.018.109,2.891,2.073-.873.818.982,1.309.709,2.509-.873,1.855,1.582,1.418,2.345-2.782,2.345-1.145,3.654-3-.873,2.564-1.855,1.745-1.364,2.018-2.4,1.909,2.836-.655,2.564-2.4-.491,2.618-1.745,1.691,2.564.436.709,1.418-.218,1.8-.818,2.673.764,2.182,2.182,1.036,1.527.218,1.309.545,1.909.982,3.927-2.564,1.909-.655-1.473,1.855,1.418.6,1.473,1.527,2.564-1.473,2.073-1.364,3.436-1.473,3.273-.109,2.291-1.255.491-1.091,1.636-2.454,2.127-2.618,1.964-1.745,2.4-3.055,1.8-1.691,2.4-2.727,2.945-1.691,2.727-3.164,1.691-2.454.764-1.964,2.073-3.109,1.145-1.582,1.364-3.109-.382-2.945.927-2.127.6-2.018v-2.782l-1.527-2.782-1.036-1.364-1.582-2.127.382-3.655-.818.545-.873-1.527-1.364.764-.327-3.764-1.2-2.182.545-.818-1.691-1.527-1.745-1.636-2.891-1.8-.491-2.345.709-1.8-.218-3-.709-.382-.109-1.745-.109-3,.6-1.527-1.255-1.364-.764-1.473-2.127,1.309-.655-2.727Z' transform='translate(2089.546 -1610.95)' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'/>
                                     <Path fill={fillCountry('OC', 'fj')} id='Fiji' d='M1078.182,367.848l-2.018,1.091-1.036.164-1.691.709.109,1.309,2.127-.709,2.127-.873.382-1.691Zm-6,4.418-.873.545-1.255-.436-1.473,1.2-.109,1.527,1.582.436,1.964-.491.982-1.8Z' transform='translate(2089.546 -1610.95)' stroke='#000' strokeLinejoin='round' strokeWidth='0.545' fillRule='evenodd'/>
