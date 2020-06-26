@@ -44,14 +44,12 @@ const status = {
         ua: 1,
         completedCountries: 20
     },
-
     NA: {
         us: 0,
         ca: 1,
         mx: 1,
         completedCountries: 2
     },
-
     SA: {
         aw: 1,
         ar: 1,
@@ -73,7 +71,6 @@ const status = {
         gf: 1,            
         completedCountries: 11
     },
-
     OC: {
         au: 0,
         fj: 1,
@@ -84,7 +81,6 @@ const status = {
         vu: 0,
         completedCountries: 4
     },
-
     AS: {
         af: 1,
         ae: 1,
@@ -133,14 +129,12 @@ const status = {
         cn: 1,
         completedCountries: 27
     },
-
     AF:  {
         eg: 0,
         ao: 1,
         mg: 1,
         completedCountries: 2
     },
-
     completedCountries: 150
 }
 
