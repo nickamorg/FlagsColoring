@@ -29,7 +29,7 @@ const continentDefs = {
         name: 'Asia',
         img: require('../assets/continents/as.png')
     },
-    AF:  {
+    AF: {
         min2unlock: 40,
         total: 58,
         name: 'Africa',

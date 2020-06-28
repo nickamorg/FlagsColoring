@@ -4,7 +4,6 @@ import { countrySvgs } from './countrySvgs';
 import { countryImages } from './countryImages';
 
 class CountryComponent extends Component {
-
     render = () => {
         const isCompleted = this.props.isCompleted;
         const continentID = this.props.continentID;
