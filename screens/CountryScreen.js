@@ -149,7 +149,6 @@ class CountryScreen extends React.Component {
                         <View style={{height:'100%', width: '70%'}}>
                             <FlagComponent ref='child' {...this.props} getColor={this.getColor} isCompleted={this.state.isCompleted} countryID={this.state.countryID} continentID={this.state.continentID}></FlagComponent>
                         </View>
-                        
                         <View style={{height:'100%', width: '15%', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                             {this.state.isSolved ?
                                 <Svg width="55" height="55" viewBox="0 0 55 55">
