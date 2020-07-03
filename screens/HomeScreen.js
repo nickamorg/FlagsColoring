@@ -276,7 +276,7 @@ function HomeScreen({ navigation }) {
                                     :
                                     <View style={{position: 'absolute', width: '100%', height: '100%', flex: 1, justifyContent: 'center', alignItems:'center'}}>
                                         <Text style={{position: 'absolute', color: '#E3E340', right: 10, top: 10}}>{savedStatus.AF.completedCountries} / {continentDefs.AF.total}</Text>
-                                        <Text style={{position: 'absolute', bottom:10, color: '#E3E340', fontWeight: 'bold', padding: 5}}>Aftica</Text>
+                                        <Text style={{position: 'absolute', bottom:10, color: '#E3E340', fontWeight: 'bold', padding: 5}}>Africa</Text>
                                     </View>
                                 }
                             </TouchableOpacity>
