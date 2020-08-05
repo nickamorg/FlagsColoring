@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, ImageBackground } from 'react-native';
+import { View, ImageBackground, Text } from 'react-native';
 import Svg, {G, Path, Circle, Defs, Stop, LinearGradient} from 'react-native-svg';
 import { countryImages } from '../src/countryImages';
 import FlagComponent from '../src/FlagComponent';
 
 class CountryScreen extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -16,6 +17,9 @@ class CountryScreen extends React.Component {
         };
         
         this.getColor = this.getColor.bind(this);
+        this.isRightToolTipVisible = false;
+        this.isLeftToolTipVisible = false;
+        this.displayedText = "";
     }
 
     changeColor(index) {
@@ -38,6 +42,33 @@ class CountryScreen extends React.Component {
     verify() {
         this.state.isSolved = this.refs.child.verify();
         this.setState(this.state.colors);
+    }
+
+    help() {
+        this.refs.child.help();
+        this.setState(this.state.colors);
+    }
+
+    showRightToolTip(hint) {
+        this.displayedText = hint;
+        this.isRightToolTipVisible = true;
+        this.setState({isRightToolTipVisible: true});
+    }
+
+    hideRightToolTip() {
+        this.isRightToolTipVisible = false;
+        this.setState({isRightToolTipVisible: false});
+    }
+
+    showLeftToolTip(hint) {
+        this.displayedText = hint;
+        this.isLeftToolTipVisible = true;
+        this.setState({isLeftToolTipVisible: true});
+    }
+
+    hideLeftToolTip() {
+        this.isLeftToolTipVisible = false;
+        this.setState({isLeftToolTipVisible: false});
     }
 
     render() {
@@ -120,7 +151,12 @@ class CountryScreen extends React.Component {
                     </View>
                     <View style={{height: '80%', flexDirection: 'row', flex: 1, justifyContent: 'center'}}>
                         <View style={{height:'100%', width: '15%', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                            <Svg onPress={() => { this.refs.child.undoAppliedColor() }} width="55" height="55" viewBox="0 0 55 55">
+                            { this.isLeftToolTipVisible &&
+                            <View style={{position: "absolute", top: 10, flex: 1, justifyContent: 'center', alignItems: 'center', width: '80%', height: 40, backgroundColor: 'white', borderRadius: 6, borderColor: '#00364B', borderWidth: 2}}>
+                                <Text> {this.displayedText} </Text>
+                            </View>
+                            }
+                            <Svg onLongPress={() => {this.showLeftToolTip('Undo')}} onPressOut={() => {this.hideLeftToolTip()}} onPress={() => { this.refs.child.undoAppliedColor() }} width="55" height="55" viewBox="0 0 55 55">
                                 <Defs>
                                     <LinearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
                                         <Stop offset="0" stopColor="#006994" stopOpacity="1"/>
@@ -133,7 +169,7 @@ class CountryScreen extends React.Component {
                                 </G>
                             </Svg>
                             <View style={{height:20}}></View>
-                            <Svg onPress={() => { this.refs.child.clearFlagColors() }} width="55" height="55" viewBox="0 0 55 55">
+                            <Svg onLongPress={() => {this.showLeftToolTip('Clear')}} onPressOut={() => {this.hideLeftToolTip()}} onPress={() => { this.refs.child.clearFlagColors() }} width="55" height="55" viewBox="0 0 55 55">
                                 <Defs>
                                     <LinearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
                                         <Stop offset="0" stopColor="#006994" stopOpacity="1"/>
@@ -149,27 +185,70 @@ class CountryScreen extends React.Component {
                         <View style={{height:'100%', width: '70%'}}>
                             <FlagComponent ref='child' {...this.props} getColor={this.getColor} isCompleted={this.state.isCompleted} countryID={this.state.countryID} continentID={this.state.continentID}></FlagComponent>
                         </View>
-                        <View style={{height:'100%', width: '15%', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-                            {this.state.isSolved ?
+                        { this.state.isSolved ?
+                            <View style={{height:'100%', width: '15%', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                                 <Svg width="55" height="55" viewBox="0 0 55 55">
+                                        <Defs>
+                                            <LinearGradient id="green" x1="0" y1="0" x2="1" y2="0">
+                                                <Stop offset="0" stopColor="green" stopOpacity="1"/>
+                                                <Stop offset="1" stopColor="#004000" stopOpacity="1"/>
+                                            </LinearGradient>
+                                            <LinearGradient id="yellow" x1="0" y1="0" x2="1" y2="0">
+                                                <Stop offset="0" stopColor="#e3e340" stopOpacity="1"/>
+                                                <Stop offset="1" stopColor="#727220" stopOpacity="1"/>
+                                            </LinearGradient>
+                                        </Defs>
+                                        <Path d="M27.5,0A27.5,27.5,0,1,1,0,27.5,27.5,27.5,0,0,1,27.5,0Z" fill="url(#green)"/>
+                                        <Circle cx="27" cy="27" r="15" fill="#e3e340"/>
+                                        <Circle cx="22" cy="21" r="2.4" fill="#7f6866"/>
+                                        <Circle cx="31" cy="21" r="2.4" fill="#7f6866"/>
+                                        <Path d="M159.181,273.4a8.578,8.578,0,0,1-8.458-8.675h2.812a5.648,5.648,0,1,0,11.292,0h2.812A8.578,8.578,0,0,1,159.181,273.4Z" x="-132" y="-235" fill="#7f6866"/>
+                                    </Svg>
+                            </View>
+                            :
+                            <View style={{height:'100%', width: '15%', flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                                { this.isRightToolTipVisible &&
+                                <View style={{position: "absolute", top: 10, flex: 1, justifyContent: 'center', alignItems: 'center', width: '80%', height: 40, backgroundColor: 'white', borderRadius: 6, borderColor: '#00364B', borderWidth: 2}}>
+                                    <Text> {this.displayedText} </Text>
+                                </View>
+                                }
+                                <Svg onLongPress={() => {this.showRightToolTip('Hint')}} onPressOut={() => {this.hideRightToolTip()}} onPress={() => { this.help() }} width="55" height="55" viewBox="0 0 55 55">
                                     <Defs>
-                                        <LinearGradient id="green" x1="0" y1="0" x2="1" y2="0">
-                                            <Stop offset="0" stopColor="green" stopOpacity="1"/>
-                                            <Stop offset="1" stopColor="#004000" stopOpacity="1"/>
-                                        </LinearGradient>
-                                        <LinearGradient id="yellow" x1="0" y1="0" x2="1" y2="0">
-                                            <Stop offset="0" stopColor="#e3e340" stopOpacity="1"/>
-                                            <Stop offset="1" stopColor="#727220" stopOpacity="1"/>
+                                        <LinearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+                                            <Stop offset="0" stopColor="#006994" stopOpacity="1"/>
+                                            <Stop offset="1" stopColor="#00354a" stopOpacity="1"/>
                                         </LinearGradient>
                                     </Defs>
-                                    <Path d="M27.5,0A27.5,27.5,0,1,1,0,27.5,27.5,27.5,0,0,1,27.5,0Z" fill="url(#green)"/>
-                                    <Circle cx="27" cy="27" r="15" fill="#e3e340"/>
-                                    <Circle cx="22" cy="21" r="2.4" fill="#7f6866"/>
-                                    <Circle cx="31" cy="21" r="2.4" fill="#7f6866"/>
-                                    <Path d="M159.181,273.4a8.578,8.578,0,0,1-8.458-8.675h2.812a5.648,5.648,0,1,0,11.292,0h2.812A8.578,8.578,0,0,1,159.181,273.4Z" x="-132" y="-235" fill="#7f6866"/>
+                                    <G transform="translate(-7474 -3073)">
+                                        <G transform="translate(6950 3041)">
+                                            <G transform="translate(485 -34)">
+                                                <Path d="M27.5,0A27.5,27.5,0,1,1,0,27.5,27.5,27.5,0,0,1,27.5,0Z" transform="translate(39 66)" fill="url(#blue)"/>
+                                            </G>
+                                        </G>
+                                        <G transform="translate(285 722)">
+                                            <G transform="translate(7202.002 2361)">
+                                                <Path d="M138.736,126.032c-1.676,1.676-1.466,5.057-1.466,5.057h-8.5s.18-3.382-1.466-5.057a8.649,8.649,0,1,1,11.431,0Z" transform="translate(-118.007 -102.511)" fill="#ffd517"/>
+                                                <G transform="translate(10.495 30.434)">
+                                                    <Path d="M189.32,407.608a.8.8,0,0,1-.808.808H181.12a.8.8,0,0,1-.808-.808h0a.8.8,0,0,1,.808-.808h7.362a.831.831,0,0,1,.838.808Z" transform="translate(-180.312 -406.8)" fill="#e5e5e5"/>
+                                                    <Path d="M201.905,452.408a.8.8,0,0,1-.808.808H195.92a.8.8,0,0,1-.808-.808h0a.8.8,0,0,1,.808-.808H201.1a.8.8,0,0,1,.808.808Z" transform="translate(-194.005 -448.248)" fill="#e5e5e5"/>
+                                                </G>
+                                                <G transform="translate(-0.001)">
+                                                    <Path d="M132.153,119.3a9.241,9.241,0,1,0-12.3.09c1.466,1.466,1.317,4.579,1.317,4.608a.715.715,0,0,0,.15.419.591.591,0,0,0,.419.18h8.469a.591.591,0,0,0,.419-.18.56.56,0,0,0,.15-.419c0-.03-.15-3.142,1.317-4.608C132.123,119.36,132.153,119.33,132.153,119.3Zm-.838-.748a.3.3,0,0,0-.12.15c-1.317,1.406-1.526,3.711-1.556,4.788h-7.332c-.03-1.107-.269-3.5-1.676-4.908a8.106,8.106,0,1,1,13.436-6.1A8.047,8.047,0,0,1,131.315,118.552Z" transform="translate(-110.974 -95.479)" fill="#210b20"/>
+                                                    <Path d="M233.281,135.2a.569.569,0,0,0,0,1.137,6.079,6.079,0,0,1,6.075,6.075.569.569,0,0,0,1.137,0A7.216,7.216,0,0,0,233.281,135.2Z" transform="translate(-218.296 -125.085)" fill="#210b20"/>
+                                                    <Path d="M182.857,400.577a1.373,1.373,0,0,0-1.377-1.377h-7.392a1.377,1.377,0,1,0,0,2.753h7.362A1.38,1.38,0,0,0,182.857,400.577Zm-1.406.239h-7.362a.239.239,0,1,1,0-.479h7.362a.236.236,0,0,1,.239.239C181.719,400.726,181.6,400.816,181.45,400.816Z" transform="translate(-162.785 -369.335)" fill="#210b20"/>
+                                                    <Path d="M194.066,444h-5.177a1.377,1.377,0,1,0,0,2.753h5.177a1.373,1.373,0,0,0,1.377-1.377A1.392,1.392,0,0,0,194.066,444Zm0,1.616h-5.177a.239.239,0,1,1,0-.479h5.177a.236.236,0,0,1,.239.239A.22.22,0,0,1,194.066,445.616Z" transform="translate(-176.477 -410.783)" fill="#210b20"/>
+                                                    <Path d="M233.849,4.4V.569a.569.569,0,1,0-1.137,0v3.86a.568.568,0,0,0,.569.569A.594.594,0,0,0,233.849,4.4Z" transform="translate(-218.296)" fill="#210b20"/>
+                                                    <Path d="M329.243,36.828a.569.569,0,0,0-.778.15l-2.125,3.2a.569.569,0,0,0,.15.778.577.577,0,0,0,.3.09.625.625,0,0,0,.479-.239l2.125-3.2A.574.574,0,0,0,329.243,36.828Z" transform="translate(-304.831 -33.985)" fill="#210b20"/>
+                                                    <Path d="M117.464,38.888a.57.57,0,0,0,.479-.868l-2.065-3.232a.565.565,0,1,0-.958.6l2.065,3.232A.575.575,0,0,0,117.464,38.888Z" transform="translate(-109.243 -31.945)" fill="#210b20"/>
+                                                    <Path d="M40.308,115.338l3.382,1.825a.445.445,0,0,0,.269.06.617.617,0,0,0,.509-.3.563.563,0,0,0-.239-.778l-3.382-1.825a.563.563,0,0,0-.778.239A.609.609,0,0,0,40.308,115.338Z" transform="translate(-40.017 -105.703)" fill="#210b20"/>
+                                                    <Path d="M380.815,117.7a.874.874,0,0,0,.269-.06l3.382-1.825a.576.576,0,1,0-.539-1.017l-3.382,1.825a.571.571,0,0,0,.269,1.077Z" transform="translate(-354.788 -106.146)" fill="#210b20"/>
+                                                </G>
+                                            </G>
+                                        </G>
+                                    </G>
                                 </Svg>
-                            :
-                                <Svg onPress={() => { this.verify() }} width="55" height="55" viewBox="0 0 55 55">
+                                <View style={{height:20}}></View>
+                                <Svg onLongPress={() => {this.showRightToolTip('Check')}} onPressOut={() => {this.hideRightToolTip()}} onPress={() => { this.verify() }} width="55" height="55" viewBox="0 0 55 55">
                                     <Defs>
                                         <LinearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
                                             <Stop offset="0" stopColor="#006994" stopOpacity="1"/>
@@ -181,8 +260,8 @@ class CountryScreen extends React.Component {
                                         <Path d="M13.545,24.8,5.936,17.194,3.4,19.73,13.545,29.875,35.284,8.136,32.748,5.6Z" transform="translate(534 41.4)" fill="#e3e340"/>
                                     </G>
                                 </Svg>
-                            }
-                        </View>
+                            </View>
+                        }
                     </View>
                 </ImageBackground>
             </View>
