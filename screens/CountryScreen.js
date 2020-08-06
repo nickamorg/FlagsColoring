@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, ImageBackground, Text } from 'react-native';
+import { View, ImageBackground, Text, BackHandler  } from 'react-native';
 import Svg, {G, Path, Circle, Defs, Stop, LinearGradient} from 'react-native-svg';
 import { countryImages } from '../src/countryImages';
 import FlagComponent from '../src/FlagComponent';
 
 class CountryScreen extends React.Component {
+
+    handleBackButtonClick = () => {
+    };
 
     constructor(props) {
         super(props);
@@ -20,6 +23,8 @@ class CountryScreen extends React.Component {
         this.isRightToolTipVisible = false;
         this.isLeftToolTipVisible = false;
         this.displayedText = "";
+
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
     }
 
     changeColor(index) {

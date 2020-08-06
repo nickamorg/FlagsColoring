@@ -1,17 +1,30 @@
-import React from 'react';
-import { Text, View, FlatList, TouchableOpacity, Image, ImageBackground } from 'react-native';
+import React, { useEffect } from 'react';
+import { Text, View, FlatList, TouchableOpacity, Image, ImageBackground, BackHandler } from 'react-native';
 import localStorage from 'react-native-sync-localstorage'
 import CountryComponent from '../src/CountryComponent';
 import { continentDefs } from '../src/continentDefs';
 import { countryDefs } from '../src/countryDefs';
 
 function ContinentScreen({ route, navigation }) {
+
+    useEffect(() => {
+        const backAction = () => {
+            route.params.refresh();
+        }
+    
+        const backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          backAction
+        );
+    
+        return () => backHandler.remove();
+      }, []);
+
     var continentID = route.params.continentID;
     var savedStatus = JSON.parse(localStorage.getItem('savedStatus'));
 
     var countrySvgs = [];
     for (let i = 0; i < countryDefs[continentID].length; i++) {
-        console.log(continentID + " " + countryDefs[continentID][i][0]);
         countrySvgs.push(
             <TouchableOpacity key={countryDefs[continentID][i][0]} onPress={() => navigation.navigate('Country', {countryID: countryDefs[continentID][i][0], countryTitle: countryDefs[continentID][i][1], continentID: continentID, isCompleted:savedStatus[continentID][countryDefs[continentID][i][0]]})} activeOpacity={1} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: 36, borderWidth: 10, backgroundColor: '#006994', marginRight:(i == countryDefs[continentID].length - 1) ? 50 : 0}}>
                 <CountryComponent isCompleted={savedStatus[continentID][countryDefs[continentID][i][0]]} countryID={countryDefs[continentID][i][0]} continentID={continentID}></CountryComponent>

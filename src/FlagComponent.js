@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Svg, {G, Path, Rect, Circle, Image, Use, Polygon, Defs, ClipPath, Ellipse, Stop, RadialGradient} from 'react-native-svg';
 import localStorage from 'react-native-sync-localstorage'
+import { AsyncStorage } from 'react-native';
 import { flagColors } from '../src/flagColors';
 
 class FlagComponent extends Component {
@@ -36,7 +37,7 @@ class FlagComponent extends Component {
             var totalColors = this.state.colors.length + moreColors;
             moreColors = totalColors > 9 ? 9 : totalColors;
 
-            var randomColors = ['#ffffff', '#000000', '#00ABC9', '#006A4E', '#FF4E12',
+            var randomColors = ['#fff', '#000', '#00ABC9', '#006A4E', '#FF4E12',
                                 '#E30A17', '#00267F', '#009900', '#F7E017', '#8D1B3D'];
 
             var randomColorsIdx = 0;
@@ -135,6 +136,17 @@ class FlagComponent extends Component {
                 savedStatus[this.state.continentID].completedCountries++;
                 savedStatus.completedCountries++;
                 localStorage.setItem('savedStatus', JSON.stringify(savedStatus));
+
+                var _storeData = async (data) => {
+                    try {
+                        await AsyncStorage.setItem('Test3', data);
+                        console.log("SAVED");
+                    } catch (error) {
+                        console.log("NOT SAVED");
+                    }
+                };
+
+                _storeData(JSON.stringify(savedStatus));
             }
 
             setTimeout( function(self) {
