@@ -70,7 +70,7 @@ class HomeScreen extends React.Component {
     }
 
     render() {
-        if (!this.areDataFetched) return <View><Text> Coming </Text></View>
+        if (!this.areDataFetched) return <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: '#0FBEBE' }}><Text style={{color: '#E3E340'}}>Loading...</Text></View>
 
         return (
             <View style={{height: '100%', backgroundColor: '#0FBEBE'}}>

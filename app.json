@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "WorldSplash",
-    "slug": "WorldSplash",
+    "name": "Flags Coloring",
+    "slug": "FlagsColoring",
     "platforms": [
       "ios",
       "android",
@@ -13,7 +13,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0FBEBE"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -25,7 +25,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.upsurf.worldsplash",
+      "package": "com.zirconworks.flagscoloring",
       "versionCode": 1,
       "permissions": []
     }
