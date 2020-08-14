@@ -16,7 +16,7 @@ class CountryComponent extends Component {
                         <Image width='500' height='300' href={countryImages[continentID][countryID][0]}/>
                     </Pattern>
                 </Defs>
-                <Path d={countrySvgs[continentID][countryID].d} transform={countrySvgs[continentID][countryID].transform} fill={isCompleted == 1 ? 'url(#pattern)' : '#f2f2f2'}/>
+                <Path d={countrySvgs[continentID][countryID].d} fill={isCompleted == 1 ? 'url(#pattern)' : '#f2f2f2'}/>
             </Svg>
         );
     }

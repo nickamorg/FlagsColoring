@@ -106,7 +106,21 @@ const countryImages = {
         nz: [require('..//assets/flags/oc/nz.png'), require('..//assets/countries_background/oc/nz.png')],
         pg: [require('..//assets/flags/oc/pg.png'), require('..//assets/countries_background/oc/pg.png')],
         sb: [require('..//assets/flags/oc/sb.png'), require('..//assets/countries_background/oc/sb.png')],
-        vu: [require('..//assets/flags/oc/vu.png'), require('..//assets/countries_background/oc/vu.png')]
+        vu: [require('..//assets/flags/oc/vu.png'), require('..//assets/countries_background/oc/vu.png')],
+        as: [require('..//assets/flags/oc/as.png'), require('..//assets/countries_background/oc/as.png')],
+        ck: [require('..//assets/flags/oc/ck.png'), require('..//assets/countries_background/oc/ck.png')],
+        gu: [require('..//assets/flags/oc/gu.png'), require('..//assets/countries_background/oc/gu.png')],
+        ki: [require('..//assets/flags/oc/ki.png'), require('..//assets/countries_background/oc/ki.png')],
+        nf: [require('..//assets/flags/oc/nf.png'), require('..//assets/countries_background/oc/nf.png')],
+        nr: [require('..//assets/flags/oc/nr.png'), require('..//assets/countries_background/oc/nr.png')],
+        nu: [require('..//assets/flags/oc/nu.png'), require('..//assets/countries_background/oc/nu.png')],
+        pf: [require('..//assets/flags/oc/pf.png'), require('..//assets/countries_background/oc/pf.png')],
+        pn: [require('..//assets/flags/oc/pn.png'), require('..//assets/countries_background/oc/pn.png')],
+        pw: [require('..//assets/flags/oc/pw.png'), require('..//assets/countries_background/oc/pw.png')],
+        tk: [require('..//assets/flags/oc/tk.png'), require('..//assets/countries_background/oc/tk.png')],
+        to: [require('..//assets/flags/oc/to.png'), require('..//assets/countries_background/oc/to.png')],
+        wf: [require('..//assets/flags/oc/wf.png'), require('..//assets/countries_background/oc/wf.png')],
+        ws: [require('..//assets/flags/oc/ws.png'), require('..//assets/countries_background/oc/ws.png')]
     },
     AS: {
         af: [require('..//assets/flags/as/af.png'), require('..//assets/countries_background/as/af.png')],
