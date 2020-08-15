@@ -5,7 +5,7 @@ import { AsyncStorage } from 'react-native';
 import { flagColors } from '../src/flagColors';
 
 class FlagComponent extends Component {
-    roundCornerDef = <Defs><ClipPath id="clip-path"><Rect width="500" height="300" rx="16" fill="#fff" stroke="#707070" strokeWidth="1"/></ClipPath></Defs>;
+    roundCornerDef = <Defs><ClipPath id="clip-path"><Rect width="500" height="300" rx="16" fill="#FFF" stroke="#707070" strokeWidth="1"/></ClipPath></Defs>;
     defaultColors = ['#3B3B3B', '#646464', '#A2A2A2', '#847A7A', '#4B3D3D', '#81878F', '#B5BBC6', '#768194', '#757678', '#647466', '#B6D0B0'];
     appliedColorsHistory = [];
 
@@ -22,22 +22,22 @@ class FlagComponent extends Component {
             isSolved: false,
         }
         
-        this.initflagColors(this.state.countryID);
+        this.initflagColors(this.state.continentID, this.state.countryID);
     }
 
-    initflagColors(countryID) {
-        if (flagColors[countryID] === undefined) {
+    initflagColors(continentID, countryID) {
+        if (flagColors[continentID][countryID] === undefined) {
             this.state.colors = ['#000', '#3C3B6E', '#FF0000', '#2200FF', '#B22234', '#46FF00', '#FFA800', '#00FFFF', '#949494', 'white'];
             this.state.correctColors = ['#FF0000', '#2200FF', '#A2A2A2', '#847A7A', '#1F1A1A', '#81878F', '#8A8F95']
             this.state.appliedColors = ['#3B3B3B', '#646464', '#A2A2A2', '#847A7A', '#1F1A1A', '#81878F', '#8A8F95'];
         } else {
-            this.state.colors = [...new Set(flagColors[countryID])];
+            this.state.colors = [...new Set(flagColors[continentID][countryID])];
 
             var moreColors = 3 + (this.state.colors.length % 2 == 0) ? 1 : 0;
             var totalColors = this.state.colors.length + moreColors;
             moreColors = totalColors > 9 ? 9 : totalColors;
 
-            var randomColors = ['#fff', '#000', '#00ABC9', '#006A4E', '#FF4E12',
+            var randomColors = ['#FFF', '#000', '#00ABC9', '#006A4E', '#FF4E12',
                                 '#E30A17', '#00267F', '#009900', '#F7E017', '#8D1B3D'];
 
             var randomColorsIdx = 0;
@@ -62,7 +62,7 @@ class FlagComponent extends Component {
                 return .5 - Math.random();
             });
 
-            this.state.correctColors = flagColors[countryID];
+            this.state.correctColors = flagColors[continentID][countryID];
 
             for (i = 0; i < this.state.correctColors.length; i++) {
                 this.state.appliedColors[i] = this.defaultColors[i];
@@ -296,10 +296,10 @@ class FlagComponent extends Component {
                                 </G>
                                 <G fill={this.state.appliedColors[1]}>
                                     <Path fill="#d52b1e" d="M412.7 249.3h82.1v82h-82.1z"/>
-                                    <Path id="a" fill="#fff" d="M451.2 313.8s0 3-.9 5.3c-.9 2.7-.9 2.7-1.8 4a13.1 13.1 0 01-3.8 4c-2 1.2-4 1.8-6 1.6-5.4-.4-8-6.4-9.2-11.2-1.3-5.1-5-8-7.5-6-1.4 1-1.4 2.8-.3 4.6 1.3 1.9 4.1 2.8 4.1 2.8l-2.9 3.7s-6.3-.8-7.5-7.4c-.5-2.5.7-7.1 4.9-8.5 5.3-1.8 8.6 2 10.3 5.2 2.2 4.4 3.2 12.4 9.4 11.2 3.4-.7 5-5.6 5-7.9l2.5-2.6 3.6 1.2h.1z"/>
+                                    <Path id="a" fill="#FFF" d="M451.2 313.8s0 3-.9 5.3c-.9 2.7-.9 2.7-1.8 4a13.1 13.1 0 01-3.8 4c-2 1.2-4 1.8-6 1.6-5.4-.4-8-6.4-9.2-11.2-1.3-5.1-5-8-7.5-6-1.4 1-1.4 2.8-.3 4.6 1.3 1.9 4.1 2.8 4.1 2.8l-2.9 3.7s-6.3-.8-7.5-7.4c-.5-2.5.7-7.1 4.9-8.5 5.3-1.8 8.6 2 10.3 5.2 2.2 4.4 3.2 12.4 9.4 11.2 3.4-.7 5-5.6 5-7.9l2.5-2.6 3.6 1.2h.1z"/>
                                     <Use transform="matrix(-1 0 0 1 907.5 0)" href="#a"/>
                                     <Path d="M461.1 279l10.8-11.7s1.6-1.3 1.6-3.4l-2.2.4-.5-1.2-.1-1.1 3-.7V260l.3-1.3-3.2.2.3-1.4.5-1 1.9-.4h1.9c1.8-3.4 9.2-6.4 14.4-1 3.8 4 3 11.2-2 13.2a6.3 6.3 0 01-6.8-1.1l2-4c2.7 1.7 5-.3 4.8-2.4-.2-2.7-2-4.3-4.3-4.5-2.3-.2-4 1-5 3-.6 1.3-.3 2.2-.5 3.6-.2 1.5 0 2.3-.5 3.8a8.8 8.8 0 01-2.4 3.6l-11 12-43 46.4-3.2-3 43.2-46.7z"/>
-                                    <Path fill="#fff" d="M429.5 283s2.7 13.4 11.9 33.5c4.7-1.7 7.4-2.8 12.4-2.8 4.9 0 7.6.9 12.3 2.8A171 171 0 00478 283L453.8 252 429.4 283z"/>
+                                    <Path fill="#FFF" d="M429.5 283s2.7 13.4 11.9 33.5c4.7-1.7 7.4-2.8 12.4-2.8 4.9 0 7.6.9 12.3 2.8A171 171 0 00478 283L453.8 252 429.4 283z"/>
                                     <Path d="M456.1 262.4l16.8 21.7s-2.2 10.5-9 26.3c-2.7-.6-5-1.1-7.8-1.3v-46.7zm-4.7 0l-16.8 21.7s2.2 10.5 9 26.3c2.7-.6 5-1.1 7.8-1.3v-46.7z"/>
                                 </G>
                                 <G fill="#d52b1e">
@@ -339,7 +339,7 @@ class FlagComponent extends Component {
                 by: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Path fill="#fff" d="M0 0h66.7v300H0z"/>
+                            <Path fill="#FFF" d="M0 0h66.7v300H0z"/>
                             <G fill={this.state.appliedColors[0]} fillRule="evenodd">
                                 <Path d="M11.6 0h8.7v5h2.9v4.8H26v5H29v4.9h2.9v4.9h-3v5h-2.8v4.8h-3v5h-2.8v4.9h-3v4.9h-2.8v-5h-3v-4.9H8.8v-4.9H5.8v-4.9H2.9v-5H0v-4.8h2.9v-5h2.9V9.9h2.9V5h2.9zm2.9 9.8h2.9v5h2.9v4.9h2.9v4.9h-3v5h-2.8v4.8h-3v-4.9h-2.8v-5H8.7v-4.8h2.9v-5h2.9zm0 9.9h2.9v4.9h-3zM0 4.9h2.9v5H0zm0 29.5h2.9v5H0zM31.9 0h1.7v9.8H32zm0 34.4h1.7v9.9H32zM5.8 44.3h2.9v4.9h2.9V54h2.9v5h-2.9v4.8H8.7v5H5.8v-5H2.9V59H0v-4.9h2.9v-5h2.9zm0 9.8h2.9v5H5.8zm17.4-9.8H26v4.9H29V54h2.9v5h-3v4.8h-2.8v5h-3v-5h-2.8V59h-3v-4.9h3v-5h2.9zm0 9.8H26v5h-3zM0 73.8h2.9v4.9H0zm31.9-5h1.7v9.9H32zM0 88.5h2.9v-4.9h2.9v-5h2.9v-4.8h2.9v-5h2.9V64h2.9v5h2.9v4.9h2.9v4.9h2.9v5H29v4.8h2.9v5h1.7V113H32v5h-3v4.9h-2.8v4.9h-3v4.9h-2.8v5h-3v12.7h-5.7v-3H8.7v-4.9H5.8v-4.9H2.9v-5H0V118h2.9v5h2.9v4.9h2.9v4.9h2.9v-5h2.9V123h2.9v-5h2.9v-4.9h2.9v-4.9h2.9v-5h-2.9v-4.8h-2.9v-5h-8.7v5h5.8v4.9h-2.9v4.9h-2.9v5H8.7v-5H5.8v-5H2.9v-4.8H0zm0 19.7h2.9v5H0zm31.9 14.7h1.7v5H32zm-5.8 9.9H29v4.9h2.9v5h1.7v7.8H32v-3h-3v-4.9h-2.8zm-5.8 14.7h2.9v3h-3z"/>
                                 <Path d="M55 0h-8.6v5h-3v4.8h-2.8v5h-3v4.9h-2.8v4.9h2.9v5h2.9v4.8h2.9v5h2.9v4.9h2.9v4.9h2.9v-5H55v-4.9H58v-4.9h2.9v-4.9h2.9v-5h2.9v-4.8h-3v-5H61V9.9h-3V5h-2.8zm-2.8 9.8h-3v5h-2.8v4.9h-3v4.9h3v5h2.9v4.8h2.9v-4.9H55v-5H58v-4.8h-3v-5h-2.8zm0 9.9h-3v4.9h3zM66.7 4.9h-3v5h3zm0 29.5h-3v5h3zM34.7 0H33v9.8h1.8zm0 34.4H33v9.9h1.8zM61 44.3h-3v4.9h-2.8V54h-3v5h3v4.8H58v5h2.9v-5h2.9V59h2.9v-4.9h-3v-5H61zm0 9.8h-3v5h3zm-17.4-9.8h-3v4.9h-2.8V54h-3v5h3v4.8h2.9v5h2.9v-5h2.9V59h2.9v-4.9h-3v-5h-2.8zm0 9.8h-3v5h3zm23.2 19.7h-3v4.9h3zm-32-5H33v9.9h1.8zM66.7 88.5h-3v-4.9H61v-5h-3v-4.8h-2.8v-5h-3V64h-2.8v5h-3v4.9h-2.8v4.9h-3v5h-2.8v4.8h-3v5H33V113h1.8v5h2.9v4.9h2.9v4.9h2.9v4.9h2.9v5h2.9v12.7H55v-3H58v-4.9h2.9v-4.9h2.9v-5h2.9V118h-3v5H61v4.9h-3v4.9h-2.8v-5h-3V123h-2.8v-5h-3v-4.9h-2.8v-5h-3v-4.8h3v-5h2.9v-4.9H55v5h-5.8v4.9h2.9v4.9H55v5H58v-5h2.9v-5h2.9v-4.8h2.9zm0 19.7h-3v5h3zm-32 14.8H33v4.9h1.8zm5.9 9.8h-3v4.9h-2.8v5H33v7.8h1.8v-3h2.9v-4.9h2.9zm5.8 14.7h-3v3h3z"/>
@@ -350,7 +350,28 @@ class FlagComponent extends Component {
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="434" x="66" height="101" y="199"/>
                         </G>
                     </Svg>,
-                ba: null,
+                ba: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Rect width="500" height="299.848" transform="translate(2.001 -0.465)" fill="#002395"/>
+                            <Path d="M-17.771,0H254.111V299.848Z" transform="translate(154.411 -0.465)" fill="#fecb00"/>
+                            <G transform="translate(64.912 -0.014)">
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(-2.077 0.85)" fill="#fff"/>
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(29.173 32.1)" fill="#fff"/>
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(60.423 63.35)" fill="#fff"/>
+                            </G>
+                            <G transform="translate(158.766 97.036)">
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(-2.077 0.85)" fill="#fff"/>
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(29.173 32.1)" fill="#fff"/>
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(60.423 63.35)" fill="#fff"/>
+                            </G>
+                            <G transform="translate(252.578 194.071)">
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(-2.077 0.85)" fill="#fff"/>
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(29.173 32.1)" fill="#fff"/>
+                                <Path d="M10.7,42.114,24.665-.85l13.96,42.964L2.077,15.561H47.252Z" transform="translate(60.423 63.35)" fill="#fff"/>
+                            </G>
+                        </G>
+                    </Svg>,
                 bg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -528,22 +549,22 @@ class FlagComponent extends Component {
                         </G>
                     </Svg>,
                 gr: <Svg width='100%' height='100%' viewBox="0 0 500 300">
-                        <G transform="translate(-4023 -20019)">
-                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="318" height="34.33" transform="translate(4205 20019)"/>
-                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="318" height="34.33" transform="translate(4205 20052.301)"/>
-                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="318" height="34.33" transform="translate(4205 20085.668)"/>
-                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="318" height="34.33" transform="translate(4205 20119.488)"/>
-                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="318" height="34.33" transform="translate(4205 20153.334)"/>
-                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="33.333" transform="translate(4023 20220)"/>
-                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="33.333" transform="translate(4023 20252.668)"/>
-                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="33.333" transform="translate(4023 20285.668)"/>
-                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="75" height="67.66" transform="translate(4023 20119.49)"/>
-                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="76" height="67.66" transform="translate(4130 20119)"/>
-                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="75" height="67.66" transform="translate(4023 20019)"/>
-                            <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="76" height="67.66" transform="translate(4130 20019)"/>
-                            <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" width="183" height="34.33" transform="translate(4023 20085.668)"/>
-                            <Rect onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" width="33.33" height="167.65" transform="translate(4097 20019)"/>
-                            <Rect onPress={() => this.applySelectedColor(6)} fill={this.state.appliedColors[6]} stroke={this.state.applyStroke[6]} strokeWidth="5" width="500" height="34.33" transform="translate(4023 20186.152)"/>
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="318" height="34.33" x="182"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="318" height="34.33" x="181.995" y="33.301"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="318" height="34.33" x="181.995" y="66.668"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="318" height="34.33" x="181.995" y="100.488"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="318" height="34.33" x="182" y="134.334"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="34.33" y="167.152"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="33.333" y="201"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="33.333" y="233.668"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="33.333" y="266.668"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="75" height="67.66" y="100"/>
+                            <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="76" height="67.66" x="107" y="100"/>
+                            <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" width="75" height="67.66"/>
+                            <Rect onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" width="76" height="67.66" x="107"/>
+                            <Path onPress={() => this.applySelectedColor(6)} fill={this.state.appliedColors[6]} stroke={this.state.applyStroke[6]} strokeWidth="5" d="M0,.146H74.707V-66.57h32.826V.146H183V34.551H107.538l-.005,65.933H74.707l-.372-65.933H0Z" y="66.668"/>
                         </G>
                     </Svg>,
                 hu: <Svg width='100%' height='100%' viewBox="0 0 500 300">
@@ -926,7 +947,7 @@ class FlagComponent extends Component {
                                 <Path fill="#ff0" fillRule="evenodd" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth=".6" d="M13672.7 14316.3c12.8.2 25.4.8 37.5 3l-.9 1.6a195.8 195.8 0 00-36.6-2.8 177 177 0 00-49.1 5.7c-4.7 1.3-12.6 4.4-13.4 6.9l-.8-1.5c.2-1.4 5-4.5 13.8-7 17.1-5 33.2-5.7 49.5-5.9h0zm.6-6.4c13.2.2 27 .9 40.3 3.5l-1 1.6c-12-2.4-23.5-3.2-39.3-3.4-17 0-35.1 1.2-51.5 6-5.4 1.6-14.5 4.9-14.8 7.6l-.9-1.6c.2-2.4 8.1-5.5 15.3-7.6 16.5-4.8 34.7-6 51.9-6.1z"/>
                                 <Path fill="#ff0" fillRule="evenodd" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth=".6" d="M13738.7 14324.5l-5.5 8.6-16-14.1-41.2-27.8-46.5-25.5-24.1-8.2 5.1-9.5 1.7-1 15 3.8 49.5 25.5 28.5 18 24 17.2 9.8 11.3z"/>
                                 <Path fill="#ff0" fillRule="evenodd" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth=".6" d="M13604.5 14257.7c4.2-2.9 35.3 11 67.9 30.6 32.5 19.7 63.5 42 60.7 46.1l-1 1.5-.3.3s.5-.6 0-2.2c-1.5-4.5-23.5-22-60-44.1-35.6-21.2-65.3-34-68.3-30.4l1-1.8h0zm135.3 66.7c2.7-5.3-26.2-27-62-48.2-36.6-20.7-63-33-67.8-29.3l-1 2 .2-.4a4.7 4.7 0 013-.7c8.3.1 32 11 65.3 30.1 14.5 8.5 61.5 38.6 61.3 47.1 0 .7 0 .9-.2 1.2l1.2-1.8h0z"/>
-                                <Path fill="#fff" stroke="#000" strokeWidth=".7" d="M13628.5 14297.3a44.9 44.9 0 0044.4 44.4 44.6 44.6 0 0044.6-44.4h0v-59.4l-89-.1v59.5h0z"/>
+                                <Path fill="#FFF" stroke="#000" strokeWidth=".7" d="M13628.5 14297.3a44.9 44.9 0 0044.4 44.4 44.6 44.6 0 0044.6-44.4h0v-59.4l-89-.1v59.5h0z"/>
                                 <Path stroke={this.state.applyStroke[1]} strokeWidth="5" d="M13630.1 14297.3h0a42.3 42.3 0 0012.6 30 42.6 42.6 0 0060.3.1 42.3 42.3 0 0012.5-30h0v-57.6h-85.3v57.5m68.2-40.3v40.6h0a28 28 0 01-.2 3.2 24.9 24.9 0 01-7.3 14.7 25.5 25.5 0 01-18 7.5 25.8 25.8 0 01-25.5-25.5v-40.6l51 .1h0z"/>
                                 <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke="#000" strokeWidth=".5" d="M13630.1 14297.3h0a42.3 42.3 0 0012.6 30 42.6 42.6 0 0060.3.1 42.3 42.3 0 0012.5-30h0v-57.6h-85.3v57.5m68.2-40.3v40.6h0a28 28 0 01-.2 3.2 24.9 24.9 0 01-7.3 14.7 25.5 25.5 0 01-18 7.5 25.8 25.8 0 01-25.5-25.5v-40.6l51 .1h0z"/>
                                 <Path fill="#ff0" d="M13635.6 14254.8c.1-4.1 3-5.1 3.1-5.1s3.2 1 3.2 5.2h-6.3"/>
@@ -979,35 +1000,35 @@ class FlagComponent extends Component {
                                 <Path d="M13702 14316.4a.3.3 0 10-.4-.4l-.8.8.4.5.8-.9M13703.7 14320.5a.3.3 0 10-.5-.5l-.6.6.4.5.7-.6"/>
                                 <Path stroke="#000" strokeWidth=".5" d="M13698 14314.8a.3.3 0 10-.4-.4l-.6.6.4.4.7-.6"/>
                                 <Path fill="#039" d="M13667.5 14290.8a6.3 6.3 0 001.6 4.3 5.3 5.3 0 008 0 6.3 6.3 0 001.6-4.3v-8h-11.2v8"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13669 14284.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13675.2 14284.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13672 14287.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13669 14290.8)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13675.2 14290.8)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13669 14284.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13675.2 14284.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13672 14287.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13669 14290.8)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13675.2 14290.8)"/>
                                 <Path fill="#039" d="M13667.5 14271.3a6.3 6.3 0 001.6 4.3 5.3 5.3 0 008 0 6.3 6.3 0 001.6-4.3v-8h-11.2v8"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13669 14265.2)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13675.2 14265.2)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13672 14268.2)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13669 14271.3)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13675.2 14271.3)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13669 14265.2)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13675.2 14265.2)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13672 14268.2)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13669 14271.3)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13675.2 14271.3)"/>
                                 <Path fill="#039" d="M13651.9 14290.8a6.3 6.3 0 001.6 4.3 5.3 5.3 0 008 0 6.3 6.3 0 001.6-4.3v-8h-11.2v8"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13653.3 14284.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13659.6 14284.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13656.5 14287.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13653.3 14290.8)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13659.6 14290.8)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13653.3 14284.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13659.6 14284.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13656.5 14287.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13653.3 14290.8)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13659.6 14290.8)"/>
                                 <Path fill="#039" d="M13683 14290.8a6.3 6.3 0 001.7 4.3 5.3 5.3 0 008 0 6.3 6.3 0 001.6-4.3v-8h-11.2v8"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13684.5 14284.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13690.7 14284.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13687.6 14287.7)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13684.5 14290.8)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13690.7 14290.8)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13684.5 14284.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13690.7 14284.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13687.6 14287.7)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13684.5 14290.8)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13690.7 14290.8)"/>
                                 <Path fill="#039" d="M13667.5 14310.1a6.3 6.3 0 001.6 4.3 5.3 5.3 0 008 0 6.3 6.3 0 001.6-4.3v-8h-11.2v8"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13669 14304)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13675.2 14304)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13672 14307)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13669 14310.2)"/>
-                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#fff" transform="translate(13675.2 14310.2)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13669 14304)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13675.2 14304)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13672 14307)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13669 14310.2)"/>
+                                <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13675.2 14310.2)"/>
                             </G>
                         </G>
                     </Svg>,
@@ -1032,8 +1053,8 @@ class FlagComponent extends Component {
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="3" width="63.553" height="300" transform="translate(155.054)"/>
-                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" width="500" height="59.927" transform="translate(0 119.855)"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="3" width="63.553" height="300" x="155.054"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" width="500" height="59.927" y="119.855"/>
                         </G>
                     </Svg>,
                 si: <Svg width='100%' height='100%' viewBox="0 0 500 300">
@@ -1066,7 +1087,7 @@ class FlagComponent extends Component {
                             <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="101" y="199"/>
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="101" y="99"/>
                             <G transform="translate(107.301 68.25)">
-                                <Path d="M67.21,164.865C40.32,151.913,1.855,126.2,1.855,75.349S4.287,1.365,4.287,1.365H130.135s2.432,23.128,2.432,73.984S94.1,151.913,67.21,164.865Z" transform="translate(-1.855 -1.365)" fill="#fff"/>
+                                <Path d="M67.21,164.865C40.32,151.913,1.855,126.2,1.855,75.349S4.287,1.365,4.287,1.365H130.135s2.432,23.128,2.432,73.984S94.1,151.913,67.21,164.865Z" transform="translate(-1.855 -1.365)" fill="#FFF"/>
                                 <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M61.922,151.5C37.252,139.617,1.963,116.031,1.963,69.374S4.194,1.5,4.194,1.5H119.651s2.231,21.218,2.231,67.874S86.594,139.617,61.922,151.5Z" transform="translate(3.433 5.25)"/>
                                 <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M44.3,51.827c6.68.108,19.713.37,31.318-3.514,0,0-.307,4.153-.307,8.99s.307,8.991.307,8.991c-10.645-3.562-23.79-3.636-31.317-3.541v25.77H33.748V62.754c-7.527-.1-20.673-.021-31.318,3.541,0,0,.306-4.152.306-8.991s-.306-8.99-.306-8.99c11.6,3.883,24.638,3.622,31.318,3.514V35.643A74.058,74.058,0,0,0,8.967,39.2s.307-4.153.307-8.991-.307-8.991-.307-8.991a74.056,74.056,0,0,0,24.754,3.557c-.313-10.249-3.3-23.166-3.3-23.166s6.145.479,8.6.479,8.6-.479,8.6-.479-2.985,12.917-3.3,23.165a74.041,74.041,0,0,0,24.754-3.557s-.307,4.153-.307,8.991.307,8.991.307,8.991A74.06,74.06,0,0,0,44.3,35.642V51.826Z" transform="translate(26.332 10.565)"/>
                                 <Path onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="3" d="M50.233,3.291c-12.424,0-19.078,17.234-19.078,17.234a15.23,15.23,0,0,0-13.828-8.172c-6.858,0-11.912,6.1-15.125,11.75,12.477,19.852,32.384,32.1,48.031,39.641C65.882,56.206,85.8,43.958,98.28,24.1c-3.213-5.649-8.267-11.75-15.125-11.75a15.266,15.266,0,0,0-13.844,8.172S62.657,3.291,50.233,3.291Z" transform="translate(15.119 93.006)"/>
@@ -1081,14 +1102,14 @@ class FlagComponent extends Component {
                             <G transform="translate(112 -15) scale(0.14)" stroke="#000" strokeLinejoin="round" strokeWidth="3.2">
                                 <G fill="#ce9d09" strokeLinecap="round">
                                     <G id="a">
-                                        <Path fill="#fff" d="M1781 990.3l16.2 3.8 25.6 4.2 11.8 1.3-2 50s-2.9 33-7.8 48.9c-3.6 11.7-15.7 33.2-15.7 33.2l-7.7 11.7-45.4-39.3s7.8-11 10.6-17c3.5-7.5 7.7-23.8 7.7-23.8l4.4-26 2.4-32.7zm-57 151.5l41.4 36s-8.4 7.4-13.4 9.7a73.6 73.6 0 01-31.6 7.3 58 58 0 01-22.3-6.2c-15.7-7.2-33-14.7-43.2-28.7-3.6-5-5-11.6-4.9-17.7.2-7 6.3-19.9 6.3-19.9s2.4 8.7 5.1 12a49.2 49.2 0 0017.6 12.4 42.5 42.5 0 0036.2 1.1c3.3-1.3 8.9-6 8.9-6z"/>
-                                        <Path fill="#fff" d="M1658.7 877.7s3.2 6.6 4.2 10.1c1.8 6 3 12.3 3 18.6-.1 6.3-1.6 12.5-3.2 18.6a171 171 0 01-10.3 26.3c-2.6 5.4-6 10.3-8.6 15.8-4.1 8.7-7 18-10.6 26.8-3 7.5-6.9 14.7-9.2 22.4-3 10.2-4.5 20.9-6 31.4-1.2 9.1-2.2 18.3-2.3 27.5 0 11 .3 22 2.3 32.6 2 10.6 5 21.2 9.8 31 3.8 7.7 8.9 15 14.8 21.4 5 5.2 10.7 9.7 17 13.4 5.5 3.4 11.9 5.3 18 7.8 8.3 3.3 25.4 9.3 25.4 9.3s-23.6-11.6-31.8-21.4a68.4 68.4 0 01-12.8-28.9c-2.8-11.9-2.4-24.4-1.2-36.6 1.4-13 5.2-25.8 9.2-38.3 4.2-13.2 10-25.9 15.4-38.6 3.9-9.3 8.3-18.2 12-27.5 4.5-11 8.8-22 12.4-33.2 2.1-6.9 4.8-13.7 5.4-20.9a76 76 0 00-2.2-23.4 89 89 0 00-11.8-30.6 41.1 41.1 0 00-14.8-13.2c-5.7-2.9-12.5-5.4-18.9-4.1-2 .4-5.2 3.7-5.2 3.7z"/>
-                                        <Path fill="#fff" d="M1711.6 945.6s4.4-18 5.2-27.2c.6-7.9.2-15.8-.6-23.7-1-8.7-1.5-17.8-4.9-25.9a68.3 68.3 0 00-38.2-37 92.2 92.2 0 00-28-4.8 130 130 0 00-38 4c-4 1.4-11.7 5.7-11.7 5.7l30 49s9.3-5.6 14.5-7a54.7 54.7 0 0117-1.2c5.8.4 11.7 1 17 3.3a57 57 0 0117.6 13.3 73.9 73.9 0 0115 22c3 7.5 3.5 16 4.6 24.2.3 1.7.5 5.3.5 5.3z"/>
+                                        <Path fill="#FFF" d="M1781 990.3l16.2 3.8 25.6 4.2 11.8 1.3-2 50s-2.9 33-7.8 48.9c-3.6 11.7-15.7 33.2-15.7 33.2l-7.7 11.7-45.4-39.3s7.8-11 10.6-17c3.5-7.5 7.7-23.8 7.7-23.8l4.4-26 2.4-32.7zm-57 151.5l41.4 36s-8.4 7.4-13.4 9.7a73.6 73.6 0 01-31.6 7.3 58 58 0 01-22.3-6.2c-15.7-7.2-33-14.7-43.2-28.7-3.6-5-5-11.6-4.9-17.7.2-7 6.3-19.9 6.3-19.9s2.4 8.7 5.1 12a49.2 49.2 0 0017.6 12.4 42.5 42.5 0 0036.2 1.1c3.3-1.3 8.9-6 8.9-6z"/>
+                                        <Path fill="#FFF" d="M1658.7 877.7s3.2 6.6 4.2 10.1c1.8 6 3 12.3 3 18.6-.1 6.3-1.6 12.5-3.2 18.6a171 171 0 01-10.3 26.3c-2.6 5.4-6 10.3-8.6 15.8-4.1 8.7-7 18-10.6 26.8-3 7.5-6.9 14.7-9.2 22.4-3 10.2-4.5 20.9-6 31.4-1.2 9.1-2.2 18.3-2.3 27.5 0 11 .3 22 2.3 32.6 2 10.6 5 21.2 9.8 31 3.8 7.7 8.9 15 14.8 21.4 5 5.2 10.7 9.7 17 13.4 5.5 3.4 11.9 5.3 18 7.8 8.3 3.3 25.4 9.3 25.4 9.3s-23.6-11.6-31.8-21.4a68.4 68.4 0 01-12.8-28.9c-2.8-11.9-2.4-24.4-1.2-36.6 1.4-13 5.2-25.8 9.2-38.3 4.2-13.2 10-25.9 15.4-38.6 3.9-9.3 8.3-18.2 12-27.5 4.5-11 8.8-22 12.4-33.2 2.1-6.9 4.8-13.7 5.4-20.9a76 76 0 00-2.2-23.4 89 89 0 00-11.8-30.6 41.1 41.1 0 00-14.8-13.2c-5.7-2.9-12.5-5.4-18.9-4.1-2 .4-5.2 3.7-5.2 3.7z"/>
+                                        <Path fill="#FFF" d="M1711.6 945.6s4.4-18 5.2-27.2c.6-7.9.2-15.8-.6-23.7-1-8.7-1.5-17.8-4.9-25.9a68.3 68.3 0 00-38.2-37 92.2 92.2 0 00-28-4.8 130 130 0 00-38 4c-4 1.4-11.7 5.7-11.7 5.7l30 49s9.3-5.6 14.5-7a54.7 54.7 0 0117-1.2c5.8.4 11.7 1 17 3.3a57 57 0 0117.6 13.3 73.9 73.9 0 0115 22c3 7.5 3.5 16 4.6 24.2.3 1.7.5 5.3.5 5.3z"/>
                                         <Path d="M1717 906.7s-5.3-16.6-10.3-23.5a63.8 63.8 0 00-22.3-19.8c-9.4-4.7-31-6.2-31-6.2l11.4 21-20-.4-10.3-17.4-19.3 8.7-9.5-15.7 20.4-9.4-9.4-15.2 20.4-2 8.9 14.7s15.9 0 23.6 1.7a58.2 58.2 0 0127.5 14.4c4.5 4.2 8.8 8.9 12 14.2 3 5.1 6.5 16.7 6.5 16.7z"/>
                                         <Path d="M1581.7 845l31.8 46.7m-18-54.8l-15 8.8-14.3 11 31 47.1 13.7-10.6 14.1-8.2zM1653.8 1035.9l17.9-37 19.1 7.7 7.8-19-19-9 9.8-21.3-14-6.3-10.6 20.5-19.2-8-8.4 20 18.6 7.7-17.2 36.7zM1797 1024.8l18.1-.4v21l17.6.9-3 21.4-16.4-1s-2.7 12.5-5.1 18.4c-2.5 6.2-9.7 17.4-9.7 17.4l-19.4-4.8s7-11 9.7-17c2.4-5.4 5.7-16.6 5.7-16.6l-20-2.5 3.5-20.2 18.1 1.2z"/>
                                     </G>
                                     <Use transform="matrix(-1 0 0 1 3717.8 0)" href="#a"/>
-                                    <Path fill="#fff" d="M1756.7 735.6l-27.5 29.4 17 51 9.6 35.8-27.7 25.8 50.7 71-17.4 19.9a12.2 12.2 0 00-2.1 8.6c.3 2.7 1.6 5.4 3.6 7.3 4.5 4.1 11.3 5.1 17.3 6.7 21 5.6 42.9 8 64.6 9.7 4.7.4 14 0 14 0s9.4.4 14.1 0c21.8-1.6 43.6-4.1 64.7-9.7 6-1.6 12.7-2.6 17.3-6.7a12.2 12.2 0 001.4-15.9l-16.3-36 51.8-55.4-19.7-17.9-.5-43.2 17-51-25.5-25.7-23-61.2s-4.7-17.1-8.8-25c-2.4-4.6-5.8-8.7-9.2-12.8-4-4.9-8-9.9-12.8-13.9a85 85 0 00-14.6-9c-5.5-2.9-11-6-16.9-7.5-6.1-1.5-19-1.5-19-1.5s-12.7 0-18.9 1.5c-6 1.6-11.4 4.6-16.8 7.5a85 85 0 00-14.6 9c-4.9 4-8.9 9-12.9 13.9-3.3 4-6.7 8.2-9.1 12.9-4.1 7.8-8.9 24.9-8.9 24.9z"/>
+                                    <Path fill="#FFF" d="M1756.7 735.6l-27.5 29.4 17 51 9.6 35.8-27.7 25.8 50.7 71-17.4 19.9a12.2 12.2 0 00-2.1 8.6c.3 2.7 1.6 5.4 3.6 7.3 4.5 4.1 11.3 5.1 17.3 6.7 21 5.6 42.9 8 64.6 9.7 4.7.4 14 0 14 0s9.4.4 14.1 0c21.8-1.6 43.6-4.1 64.7-9.7 6-1.6 12.7-2.6 17.3-6.7a12.2 12.2 0 001.4-15.9l-16.3-36 51.8-55.4-19.7-17.9-.5-43.2 17-51-25.5-25.7-23-61.2s-4.7-17.1-8.8-25c-2.4-4.6-5.8-8.7-9.2-12.8-4-4.9-8-9.9-12.8-13.9a85 85 0 00-14.6-9c-5.5-2.9-11-6-16.9-7.5-6.1-1.5-19-1.5-19-1.5s-12.7 0-18.9 1.5c-6 1.6-11.4 4.6-16.8 7.5a85 85 0 00-14.6 9c-4.9 4-8.9 9-12.9 13.9-3.3 4-6.7 8.2-9.1 12.9-4.1 7.8-8.9 24.9-8.9 24.9z"/>
                                     <Path d="M1963.3 933.1s-3.2-2.8-5-4a64.5 64.5 0 00-12-6c-5.5-2.2-11.5-3.3-17.3-4.7-6.7-1.6-13.4-3.1-20.3-4-8-1.1-16-1.6-24-1.7-8.6 0-25.8 1.3-25.8 1.3s-17.2-1.3-25.8-1.3c-8 .1-16.1.6-24.1 1.7-6.8.9-13.5 2.4-20.2 4-5.9 1.4-11.8 2.5-17.4 4.7a64.5 64.5 0 00-12 6c-1.7 1.2-5 4-5 4m218.8-42.7s-5.2-5.2-8.6-5.9a9 9 0 00-6.6 1.5 13.1 13.1 0 00-4 15.2c.8 2 2 4.3 4.1 5.2 4.8 1.9 15.4-2 15.4-2zm5.1-3.6c5.8.2 8 3.2 9.5 6.5m-243.2-2.9l-.3 14s10.5 3.9 15.3 2c2-.9 3.4-3.1 4.2-5.2a13.1 13.1 0 00-4-15.2 8.9 8.9 0 00-6.6-1.5c-3.5.7-8.6 6-8.6 6zm-5.2-3.6c-5.8.2-8 3.2-9.4 6.5m198.1 1.4l-8.4-1m-130 1l8.4-1m76 .8c-2.9-.4-7.6-4.2-7.6-4.2m-22.8 4.2c2.8-.4 7.6-4.2 7.6-4.2m141-19.3s-4.3 3.3-7.4 3.8l-1.2.7s-2 5.7-3.6 8.2c-1.8 2.4-6.5 6.2-6.5 6.2s-4.8-4.1-7.7-5c-2-.5-4.2-.5-6 .3-2 .8-3.6 2.5-4.8 4.3-1.4 2-2.7 4.6-2.6 7 .1 3 3.9 8.3 3.9 8.3l-2.6 4.5-3.7 2.3c-6.3-1.9-12.6-3.9-19-7.5a18.9 18.9 0 01-4.4-9s4.5-2.7 5.6-5c1.2-2.5 1.6-6 .2-8.4-1.6-2.6-5.3-4-8.4-4a8.8 8.8 0 00-6.3 2.7c-1.6 1.8-3 4.5-2.5 7 .4 2.4 4.7 5.7 4.7 5.7s-1.8 4.6-3.8 5.5c-6 2.5-10 4-15.3 4.8-5.2.8-11 1.5-16.3 0a17 17 0 01-9-5.5c-.6-.9-.8-3-.8-3s6.5-1.7 9-3.7c2.6-2 5.3-4.6 5.9-7.8.5-3.2-1.2-6.6-3-9.2a18 18 0 00-7.6-6c-1.3-.6-4.3-.7-4.3-.7l-1 .9c-1.2 1.6-2.9 2.8-4.7 3.8h-.1l-.2.1-1.1.6-.8.1-2.4.8s3.8 1.2 5 2.8c.6.9.9 2 1 3.3l.2 2c0 1.2-.3 2.3-.7 3.4a9 9 0 01-1.7 3.5c-.4.6-1 1-1.6 1.4 0 0 0 0 0 0l-.2.1c-1 .7-2.2 1.2-3.3 1.5-1.4.4-4.2.1-4.3.1 0 0 5.5 0 7.6-1.6l.2-.1a10.7 10.7 0 003.8-7.2V880c-.3-1.6-1-3.2-2.2-4.2-2.4-2.1-9.3-2.4-9.4-2.4-.1 0-7 .3-9.4 2.4a7.6 7.6 0 00-2.3 4.2v3.1l.5 2.3c.7 2 1.8 3.7 3.3 4.9l.2.1c2.2 1.6 7.6 1.6 7.7 1.6-.1 0-3 .3-4.3 0-1.2-.4-2.4-.9-3.4-1.6h-.1v-.1c-.7-.4-1.2-.8-1.7-1.4a9 9 0 01-1.7-3.5c-.3-1-.6-2.2-.7-3.3l.2-2.1c.2-1.2.5-2.4 1.1-3.3 1.1-1.6 5-2.8 5-2.8l-2.5-.8-.7-.1-1.2-.6h-.1l-.1-.1c-1.8-1-3.6-2.2-4.8-3.8l-1-.9s-3 0-4.2.7a18 18 0 00-7.6 6c-1.8 2.6-3.5 6-3 9.2.5 3.2 3.3 5.8 5.8 7.8 2.6 2 9 3.7 9 3.7s-.2 2.1-.8 3a17 17 0 01-9 5.5c-5.2 1.5-11 .8-16.3 0a59 59 0 01-15.2-4.8c-2-1-3.9-5.5-3.9-5.5s4.4-3.3 4.8-5.8c.4-2.4-1-5-2.6-6.9a8.8 8.8 0 00-6.2-2.8c-3.1 0-6.8 1.5-8.4 4.1-1.5 2.4-1 5.9.2 8.4 1 2.3 5.6 5 5.6 5a18.9 18.9 0 01-4.5 9 88.5 88.5 0 01-19 7.5l-3.6-2.3-2.6-4.5s3.7-5.2 3.8-8.2c.2-2.5-1.1-5-2.5-7.1a11.2 11.2 0 00-4.8-4.3c-1.8-.8-4-.8-6-.2-3 .8-7.7 4.9-7.7 4.9s-4.8-3.8-6.5-6.2c-1.7-2.5-3.7-8.2-3.7-8.2l-1.2-.7c-3-.5-7.3-3.8-7.3-3.8l-4.4 1s-4.1 2.1-4.2 4c0 2.8 3.8 4 5.5 6 1.4 1.9 2.8 3.7 4.1 5.7 1.2 1.8 2.9 3.4 3.5 5.5.6 2.3-1 5 0 7.2 1.2 2.7 3.7 5.4 6.7 6 2.6.5 7.6-2.6 7.6-2.6l-.2 19.9 10.3 9.3 9.7 20.3-3.8 5.2 1.1 10c7.5-9.6 20.5-13.8 32.2-17.2 15.7-4.5 44.6-4.8 58-4.7l7.3.1s44.3-1.4 65.2 4.6c11.7 3.4 24.7 7.6 32.2 17.2l1.2-10-3.9-5.2 9.7-20.3 10.3-9.3-.1-19.9s5 3.1 7.6 2.6c3-.6 5.5-3.3 6.7-6 1-2.2-.7-4.9 0-7.2.6-2 2.2-3.7 3.4-5.5 1.3-2 2.7-3.8 4.2-5.6 1.7-2.1 5.5-3.3 5.4-6 0-2-4.1-4.2-4.1-4.2l-4.5-1zm-148.4-2.6c1 1 3 2.8 4.8 3.8l.2.1c.5.3 1.2.5 2 .7 2.8.8 7.8.3 8 .3h0c.1 0 5.1.5 8-.3l2-.7.2-.1c1.7-1 3.7-2.9 4.8-3.8.5-.7 1-1.4 1.3-2.2 1.1-2.7 1-6.1-.2-8.7-1.6-3-5.2-4.5-8.1-6.3-2.5-1.5-8-3.7-8-3.7-.1 0-5.5 2.2-8 3.7-3 1.8-6.6 3.3-8.1 6.3-1.3 2.6-1.4 6-.2 8.7.3.8.8 1.5 1.3 2.2z"/>
                                     <Path d="M1980.8 829.8s-11-5-16.6-6.9c-10.4-3.3-21.3-5.2-32-7.3-12.5-2.4-25.2-3-37.6-6-3.9-.8-7.5-2.7-11.5-3.5-5.4-1.1-11-2.9-16.4-1.7-3 .6-7.8 4.6-7.8 4.6s-4.9-4-7.8-4.6c-5.4-1.2-11.1.6-16.5 1.7-4 .8-7.6 2.7-11.4 3.6-12.4 2.9-25.2 3.5-37.7 6-10.7 2-21.5 3.9-32 7.2-5.6 1.8-16.5 6.9-16.5 6.9m197.4-45.1s5.4-2.9 7.3-5a9.5 9.5 0 002.7-5.3c.1-2.3-.7-4.9-2.3-6.5a9 9 0 00-6.2-2.2c-1.9 0-3.9.6-5.3 1.8a9.1 9.1 0 00-3 5.6c-.3 1.8.5 3.7 1.3 5.3 1.3 2.5 5.5 6.3 5.5 6.3zm-151 0s4.1-3.8 5.4-6.3a9.4 9.4 0 001.4-5.3 9.1 9.1 0 00-3-5.6 8.2 8.2 0 00-5.3-1.8 9 9 0 00-6.3 2.2 8.7 8.7 0 00-2.2 6.5c.1 2 1.3 3.7 2.6 5.2 2 2.2 7.3 5 7.3 5zm-41.2 18l-11.9 15.6s0 4 .8 5.8c1.2 2.4 5.9 5.7 5.9 5.7l.8 21.4-11.3 19.6-1 .2 7.3 3.8 1 .1c4.4-.3 7-5.2 10.9-7.4 4.8-2.8 10-5 15.2-7.2a239.8 239.8 0 0150-15.1 141.8 141.8 0 0129.5-1.2c6.6.5 19.4 3.4 19.5 3.4 0 0 12.9-3 19.5-3.4a140.7 140.7 0 0157.8 8.3 239.8 239.8 0 0136.9 15.2c3.8 2.2 6.5 7 10.8 7.4h1l7.3-4-1-.1-11.3-19.6.9-21.4s4.6-3.3 5.8-5.7c1-1.7.8-5.8.8-5.8l-11.9-15.6s-6 6-9.9 7.3c-2 .6-4.4.6-6.5 0-2.5-.8-4.4-2.9-6.5-4.5a84 84 0 01-12.9-12.1c-2.1-2.7-5.3-8.7-5.3-8.7s-12.9 10.1-20.6 12.1c-7.6 2-16 1.6-23.5-.6-1.9-.6-5-3-5-3a42 42 0 00-26.4-8 42 42 0 00-26.4 8s-3.2 2.4-5 3a44.8 44.8 0 01-23.6.6c-7.7-2-20.6-12.1-20.6-12.1s-3.1 6-5.3 8.7a84 84 0 01-12.9 12.1c-2 1.6-4 3.7-6.5 4.5-2 .6-4.4.6-6.4 0-4-1.3-10-7.3-10-7.3z"/>
                                     <Path d="M1985.9 796.4s.4-5.7-.2-8.5a21 21 0 00-3.1-7c-1.5-2.3-5.7-6-5.7-6m-1.4 27.8s3.4.1 4.9-.6c2.6-1.3 6-6.3 6-6.3s6.7 4.6 10.4 4c1.8-.2 3.2-1.8 4.2-3.4a8 8 0 001.2-5.7c-.3-1.5-1.6-2.6-2.8-3.6-2.3-2-6.4-1.7-7.9-4.2-1.2-2-.5-4.9.2-7.1 1.4-4.8 4.7-8.7 7.5-12.8 1.7-2.6 5.3-4.4 5.6-7.5.2-1.6-2-4.6-2-4.6s-5.2-.1-7.7.6c-4 1.2-8.3 3-11.2 6.1-2.4 2.6-3 6.4-4.3 9.7-1 2.5-2.5 7.7-2.5 7.7s-6 0-8.7 1.2a17.1 17.1 0 00-8.7 7.7c-1.2 2.7-1 6.2 0 9 1.1 3 3.5 5.3 6.1 7 2.9 1.8 9.7 2.8 9.7 2.8zM1740.8 775s-4.1 3.6-5.6 5.8a21 21 0 00-3.2 7.1c-.6 2.8-.1 8.5-.1 8.5m-17-45.5s-2.2 3-2 4.6c.4 3.1 4 5 5.7 7.5 2.7 4.1 6 8 7.5 12.8.6 2.2 1.3 5 .1 7-1.4 2.6-5.6 2.4-7.8 4.3-1.2 1-2.5 2.1-2.9 3.6a8 8 0 001.2 5.7c1 1.6 2.5 3.2 4.3 3.4 3.6.6 10.3-4 10.3-4s3.5 5 6 6.3c1.5.7 5 .6 5 .6s6.8-1 9.7-2.9c2.5-1.6 5-4 6-6.8 1-2.9 1.3-6.4 0-9.1-1.6-3.6-5.2-6.1-8.7-7.7-2.6-1.3-8.7-1.2-8.7-1.2s-1.4-5.2-2.4-7.7c-1.3-3.3-2-7.1-4.4-9.7a24.7 24.7 0 00-11.2-6.1c-2.5-.7-7.7-.6-7.7-.6zm135.6 14.3l8.4-2.4 8.3 2.4m-14.5 20s-6.5-5.8-7.7-9.8c-.5-1.8-.4-3.9.4-5.5 1.2-2.2 5.9-4.7 5.9-4.7s-7.1-3.4-9-6.6a8.6 8.6 0 01-.5-6.3 17 17 0 015.8-8c3.2-2.7 11.3-5.4 11.3-5.4s8 2.7 11.2 5.3c2.6 2.1 5 4.9 5.9 8.1.5 2 .4 4.4-.6 6.3-1.9 3.2-9 6.6-9 6.6s4.8 2.5 6 4.7c.8 1.6.9 3.7.3 5.5-1.2 4-7.7 9.9-7.7 9.9l-6.1.4zm22.7-26.8s13.4 5.7 18 11.1c1.2 1.5 2.3 3.5 2.2 5.5-.5 7-10.3 18.2-10.3 18.2l-20-8.3h-12.9l-20 8.3s-9.8-11.3-10.2-18.2c-.2-2 1-4 2.2-5.5 4.5-5.4 18-11.1 18-11.1"/>
@@ -1104,12 +1125,12 @@ class FlagComponent extends Component {
                                     <Path d="M1942.7 1236c27 38 72.7 73.7 86.5 90.9 13.9 17.2 22.8 33.5 2.6 55.5s-43 9.5-61.1-2.6c-18.1-12-49.6-51.3-94.8-81.3z"/>
                                     <Path d="M1926.7 1299.8l-35.2-16m41-38.2c2.4 8 .5 16.8 3.6 24.4 3 7.6 14 20 14 20s-7 1-10.3 2.2c-4.7 1.9-12 2.7-13.1 7.7-1 4.3 4 8 7 11.2 3 3.1 6.7 5.4 10.4 7.6 6.1 3.6 12.4 7.6 19.4 8.9 8.7 1.6 25.1-10.8 26.6-2 .6 3.6-7.4 1.3-10.7 3-7.8 3.8-11.6 12-4.8 17.8 4.4 3.7 11.3 2.4 17 2.9 5.5.4 11.7-2.8 16.5 0 5.6 3.2 12.7 11 9.7 16.8-3 6-14.5 5.8-20 2-4-3-2.9-9.5-3.5-14.4v-4.4"/>
                                     <Circle cx="2154.7" cy="1480.1" r="129.7"/>
-                                    <Path fill="#fff" d="M2106.1 1485.7a40.5 40.5 0 1040.5 40.4l14-.6a40.5 40.5 0 1040.5-40.5l.6-7.9a40.5 40.5 0 10-40.5-40.5l-14-1.2a40.5 40.5 0 10-40.5 40.5z"/>
+                                    <Path fill="#FFF" d="M2106.1 1485.7a40.5 40.5 0 1040.5 40.4l14-.6a40.5 40.5 0 1040.5-40.5l.6-7.9a40.5 40.5 0 10-40.5-40.5l-14-1.2a40.5 40.5 0 10-40.5 40.5z"/>
                                     <Circle cx="2154.7" cy="1446.1" r="14.6"/>
                                     <Circle cx="2189.4" cy="1480.1" r="14.6"/>
                                     <Circle cx="2155.3" cy="1511.2" r="14.6"/>
                                     <Circle cx="2119.3" cy="1480.1" r="14.6"/>
-                                    <Path fill="#fff" d="M2152.2 1558.4c-5.3 11-12.6 16-21.9 22a63.2 63.2 0 0043.8 0c-9.2-4.7-16-12-21.9-22zm-76.5-80.2c-11-5.3-16-12.6-22-22a63.2 63.2 0 000 44c4.7-9.4 12-16.1 22-22zm159.2 3.6c11-5.3 16-12.6 22-21.9a63.2 63.2 0 010 43.9c-4.7-9.3-12-16-22-22zm-78.4-80.8c-5.3-11-12.6-16-22-22a63.2 63.2 0 0144 0c-9.4 4.7-16.1 12-22 22z"/>
+                                    <Path fill="#FFF" d="M2152.2 1558.4c-5.3 11-12.6 16-21.9 22a63.2 63.2 0 0043.8 0c-9.2-4.7-16-12-21.9-22zm-76.5-80.2c-11-5.3-16-12.6-22-22a63.2 63.2 0 000 44c4.7-9.4 12-16.1 22-22zm159.2 3.6c11-5.3 16-12.6 22-21.9a63.2 63.2 0 010 43.9c-4.7-9.3-12-16-22-22zm-78.4-80.8c-5.3-11-12.6-16-22-22a63.2 63.2 0 0144 0c-9.4 4.7-16.1 12-22 22z"/>
                                 </G>
                                 <G fill="#ce9d09" id="c">
                                     <Path d="M1533.5 903.8s.7-5 0-7.4a22.6 22.6 0 00-6.6-10.2c-2.5-2.3-5.8-3.9-9.2-4.6a24.5 24.5 0 00-17.7 4.2L1485 892l-5.5 17.7s-3.2 5.6-4 8.7c-.7 3.3-1.3 6.8-.5 10.1 1 3.9 3.2 7.6 6.3 10.2 2.8 2.3 6.6 3.7 10.3 4 2.8.2 8.3-1.9 8.3-1.9 1.6-18.6 9.9-32.8 33.5-36.9z"/>
@@ -1265,28 +1286,28 @@ class FlagComponent extends Component {
                         <G clipPath="url(#clip-path)">
                             <Rect width="500" height="300" fill="#00247d"/>
                             <G transform="scale(0.43)">
-                                <Path d="M0,0 600,300M600,0 0,300" stroke="#fff" strokeWidth="60"/>
+                                <Path d="M0,0 600,300M600,0 0,300" stroke="#FFF" strokeWidth="60"/>
                                 <Path d="M0,0 600,300M600,0 0,300" stroke="#cf142b" strokeWidth="40"/>
-                                <Path d="M300,0V350M0,150H700" stroke="#fff" strokeWidth="100"/>
+                                <Path d="M300,0V350M0,150H700" stroke="#FFF" strokeWidth="100"/>
                                 <Path d="M300,0V350M0,150H700" stroke="#cf142b" strokeWidth="60"/>
                                 <Path d="M0,300H600V0H800V400H0z" fill="#00247d"/>
                                 <Path fill="#cc3" d="m780.583,154.039c0,148.827,11.8732,201.675,52.6064,242.479,40.7332,40.8042,56.1659,47.2313,67.5231,53.4827,13.1015-7.21148,28.1971-15.1341,65.1152-52.0521,36.513-36.515,54.173-89.15,54.173-246.452-26.559,11.3712-39.7859,15.1175-63.0119,15.0513-17.202,1.68548-43.7399-9.33789-59.6086-16.5484-10.371,6.60246-25.4152,14.4763-52.4514,15.3604-31.2252,1.30952-41.1191-3.73522-64.3451-11.3217z"/>
-                                <Path fill="#fff" d="m787.775,163.438c0,46.0434-2.72184,108.794,7.00639,145.1,9.77001,36.4622,12.0129,41.8034,19.3596,54.5282l171.206-1.27105c10.576-18.3181,11.1098-29.6647,18.9526-58.9348,7.8148-29.1649,9.7886-94.177,10.0167-142.6-17.216,8.72445-39.7613,14.9075-61.6436,12.1948-17.5423-1.2754-33.7513-5.09258-52.6268-15.2637-16.374,9.35261-22.0822,13.6217-49.1184,14.7138-21.0507,0.98975-38.1018,2.61503-63.1522-8.46789z"/>
+                                <Path fill="#FFF" d="m787.775,163.438c0,46.0434-2.72184,108.794,7.00639,145.1,9.77001,36.4622,12.0129,41.8034,19.3596,54.5282l171.206-1.27105c10.576-18.3181,11.1098-29.6647,18.9526-58.9348,7.8148-29.1649,9.7886-94.177,10.0167-142.6-17.216,8.72445-39.7613,14.9075-61.6436,12.1948-17.5423-1.2754-33.7513-5.09258-52.6268-15.2637-16.374,9.35261-22.0822,13.6217-49.1184,14.7138-21.0507,0.98975-38.1018,2.61503-63.1522-8.46789z"/>
                                 <Path fill="#9cf" d="m814.51,362.056c12.1849,24.4477,69.6325,71.3032,86.433,81.0029,19.168-11.0667,69.8476-57.368,83.9727-81.0029h-170.406z"/>
                                 <Path fill="#f90" d="m904.221,231.606c5.41355,12.1396,22.7699,25.5448,27.5414,32.1145-6.07314,6.56934-7.28706,5.85387-6.49064,18.0587,10.5604-10.534,10.7499-11.6322,17.5423-10.0346,14.8794,14.1555,2.66292,44.5571-9.63422,51.1666-12.2936,7.05101-10.0622-0.24417-28.4886,8.59299,8.44836,6.88711,18.237-1.01015,26.2362,1.10047,4.34697,4.91697-2.06648,13.8779,1.31216,22.317,7.06953-0.6489,6.22049-14.2559,7.86595-19.1896,5.16445-18.0757,36.2143-30.6826,37.7931-47.2631,6.54677-2.93012,13.09-0.9165,21.0507,3.34487-3.96455-15.5336-17.0792-15.3664-20.5946-20.2178-8.36767-12.1907-15.7845-26.0981-33.6566-29.7059-13.5672-2.73878-12.5532,0.82385-21.2472-4.83-5.41355-4.01853-21.8612-11.6181-19.2298-5.45416z"/>
                                 <Path fill="#f90" d="m860.839,283.106c8.72935-10.2344,13.0534-31.1272,16.9171-38.2184,8.92956,2.05041,8.83312,3.40792,19.7799-2.96497-14.7027-3.98084-15.8096-3.62755-17.5012-10.0994,6.17695-19.1553,40.0786-23.0599,51.953-15.7817,12.2822,7.06894,4.4742,8.596,21.2779,20.0001,2.44044-10.3389-9.45634-14.9009-11.2359-22.6298,2.52932-5.96126,13.8358-4.74122,20.084-11.5316-3.90439-5.6561-16.127,1.41619-21.4712,2.33396-19.1762,4.09085-45.373-16.1931-61.4875-9.77821-5.77578-4.14976-6.96507-10.606-6.73193-19.3072-12.5539,10.5985-6.27225,21.5753-9.12921,26.805-7.39678,12.7485-16.8297,25.4974-11.8265,42.248,3.79803,12.7158,6.62838,10.1968,5.44639,20.1666-1.19785,6.44061-0.56211,23.8553,3.92513,18.7577z"/>
                                 <Path fill="#f90" d="m931.763,290.302c-13.7027-1.82835-34.6943,5.45107-43.0585,5.96673-2.77851-8.34642-1.51002-8.96995-12.8934-14.605,4.03197,14.0554,4.9217,14.7758-0.0129,19.5038-20.3904,4.86884-41.4321-20.7724-41.0411-34.2257-0.008-13.6779,5.40195-8.09713,6.94685-27.7067-10.5433,3.35691-8.48447,15.4235-14.502,20.8735-6.65962,1.01994-11.4131-8.83635-20.7407-10.4218-3.05765,6.11145,9.61345,12.4257,13.2018,16.3114,13.5917,13.53,8.93457,45.397,23.0288,55.2268-0.7374,6.85915-5.91783,11.1692-13.8492,15.48,16.0079,4.76053,22.612-6.04289,28.7845-6.41709,15.2702-0.5594,31.594,0.5423,44.0424-12.2046,9.45-9.67656,5.72467-10.6828,15.2857-14.8756,6.40117-2.35427,21.7049-11.8813,14.8078-12.9056z"/>
-                                <Circle fill="#fff" cx="266.239" cy="122.104" r="0.806" transform="matrix(3.5084546,0,0,3.3448778,6.3307176,-163.01097)"/>
-                                <Circle fill="#fff" cx="266.239" cy="122.104" r="0.806" transform="matrix(-1.6389991,-2.9574373,3.1020668,-1.5625831,914.32327,1224.3275)"/>
-                                <Circle fill="#fff" cx="266.239" cy="122.104" r="0.806" transform="matrix(-1.8069804,2.8671155,-3.007328,-1.7227325,1749.0027,-240.21318)"/>
+                                <Circle fill="#FFF" cx="266.239" cy="122.104" r="0.806" transform="matrix(3.5084546,0,0,3.3448778,6.3307176,-163.01097)"/>
+                                <Circle fill="#FFF" cx="266.239" cy="122.104" r="0.806" transform="matrix(-1.6389991,-2.9574373,3.1020668,-1.5625831,914.32327,1224.3275)"/>
+                                <Circle fill="#FFF" cx="266.239" cy="122.104" r="0.806" transform="matrix(-1.8069804,2.8671155,-3.007328,-1.7227325,1749.0027,-240.21318)"/>
                             </G>
                         </G>
                     </Svg>,
                 ag: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         <G transform="translate(20365 24383)">
-                            <Path fill="#fff" d="M-20213-24200.2l196.4.2-98.3 117.6h-.1z"/>
+                            <Path fill="#FFF" d="M-20213-24200.2l196.4.2-98.3 117.6h-.1z"/>
                             <Path fill="#000" d="M-20365-24383.2h500l-97 117.7h-306z"/>
-                            <G fill="#fcd116">
+                            <G>
                                 <Path d="M-20208.2-24265.5l96.8-18.7v37.5z"/>
                                 <Path d="M-20200.8-24303l96.5 20.2-14.2 34.7z"/>
                                 <Path d="M-20179.8-24334.8l81.5 56-26.2 26.6z"/>
@@ -1334,7 +1355,7 @@ class FlagComponent extends Component {
                         <Rect fill="#ce1126" width="500" height="24"/>
                         <Rect fill="#ce1126" width="500" height="24" y="276"/>
                         <G transform="translate(40, 10) scale(0.56)">
-                            <Circle cx="375" cy="250" r="196.4" fill="#fff"/>
+                            <Circle cx="375" cy="250" r="196.4" fill="#FFF"/>
                             <Circle cx="375" cy="249" r="162.8" fill="none" stroke="#552300" strokeWidth="4.1"/>
                             <Path fill="#007f00" d="M356.2 76.2c14.7-15.8 28 2.5 27.7 11-.4 8.6-15.2 27.5-28.7 12.3 14 3.5 18.1-12 25.2-12.2-7 .2-10-15.2-24.2-11zm-153.3 124c-7.7-20.2 14.7-24 22.2-19.8 7.6 4 18 25.6-1.6 30.9 9.4-10.8-2.8-21.4.1-27.8-3 6.4-18.1 2.1-20.7 16.6zm330.4-20c20.2 8 7.8 26.9-.3 29.6-8.2 2.8-31.3-4.1-21.9-22 1.7 14.1 17.8 12.3 20.5 18.8-2.7-6.5 10.8-14.7 1.7-26.4zm-263.7 213c-21.6-2.2-15-23.7-7.9-28.6 7.1-4.9 31.3-4.5 27.2 15.3-5.6-13.2-20.6-7-25-12.6 4.4 5.5-6.3 17 5.7 25.8zm218-15.6c.3 21.5-22 17.3-27.7 11-5.6-6.5-8-30.3 12.3-28.5-12.6 6.9-4.8 21-9.8 26 5-5 17.8 4.2 25.2-8.5zm-269-218.4c-2-21.4 20.6-19 26.8-13 6.2 6 10.3 29.6-10 29.3 12-7.9 3.1-21.4 7.7-26.7-4.6 5.3-18-2.9-24.5 10.4zm23.2 201c-21.4-3.5-13.3-24.5-6-29 7.5-4.3 31.5-2.3 26 17.2-4.5-13.5-20-8.5-24-14.2 4 5.7-7.4 16.6 4 26zm169-283c19.3-9.7 25.3 12.1 21.9 20-3.4 7.8-24 20.2-31.2 1.3 11.7 8.2 21.2-4.8 27.8-2.5-6.6-2.3-3.8-17.8-18.6-18.9zM452 404.4c-9.6 19.3-27.6 5.5-29.6-2.8-2.1-8.3 6.7-30.6 24-19.8-14.4.5-14 16.6-20.7 18.7 6.7-2 13.9 11.9 26.3 3.9zm94.3-186.1c16.4 14.2-1.7 27.9-10.3 27.7-8.6 0-28-14.3-13-28-3.3 13.9 12.5 17.6 12.8 24.6-.3-7 15.1-10.3 10.5-24.3zM272.4 105c4.9-21 25.6-11.7 29.5-4 4 7.5.6 31.2-18.7 24.7 13.9-3.8 9.7-19.3 15.7-23-6 3.6-16.2-8.3-26.5 2.3zm-64.1 179.7c-19-10.3-4.4-27.6 4-29.3 8.5-1.7 30.5 8 19 24.7 0-14.3-16.2-14.6-18-21.3 1.8 6.7-12.5 13.2-5 26zm274.5-166.2c21.5-3.1 20.2 19.4 14.5 25.8-5.7 6.4-29.2 11.8-30-8.4 8.6 11.5 21.7 2 27.3 6.3-5.6-4.3 2-18-11.8-23.7zM360.8 425c-19.9 8.8-24.9-13.2-21.2-20.9 3.7-7.7 24.9-19.3 31.2 0-11.4-8.8-21.4 4-27.9 1.3 6.5 2.6 3 18 17.8 19.6zm177.6-120c9 19.6-13.2 24.7-21 21-7.8-3.6-19.5-24.6-.2-31-8.8 11.4 4 21.3 1.5 27.8 2.6-6.5 18-3.2 19.7-17.8zm-338.7-63.2c-12.5-17.6 8.3-26.6 16.7-24.5 8.3 2.2 23.7 20.6 6 30.4 6.4-12.8-8-20-6.7-27-1.4 6.9-17.1 6.4-16 21.1zm117 170.2c-20.4 7.4-24-14.9-19.7-22.3 4.2-7.5 26.1-17.6 31.1 2-10.7-9.4-21.6 2.5-28-.5 6.4 3 2 18 16.5 20.8zm-6-327.2c12.1-17.9 28.1-1.9 29.1 6.6S329.1 121 313.5 108c14.3 1.4 16-14.6 22.9-15.9-7 1.3-12.2-13.5-25.6-7.2zm208.6 262.7c1.3 21.5-21.2 18.4-27.2 12.2-6-6.1-9.4-29.8 11-29-12.3 7.6-3.9 21.3-8.6 26.5 4.7-5.2 18 3.4 24.8-9.7zm-5.6-202.5c21.3 4.2 12.5 25 5 29.2-7.6 4.1-31.5 1.3-25.4-18 4.1 13.7 19.7 9.1 23.5 15-3.8-5.9 8-16.3-3-26.2zm-269.2-15.2c.2-21.5 22.5-16.9 28-10.3 5.5 6.6 7.3 30.5-13 28.2 12.8-6.7 5.3-21 10.4-25.8-5 4.8-17.6-4.6-25.4 8zm-26.8 194c-19.4-9.7-5.3-27.4 3-29.4 8.4-2 30.8 7 19.7 24-.3-14.3-16.6-14-18.6-20.7 2 6.7-12.1 13.7-4.1 26.1zM450 94.8c20.3-7.6 24 14.6 19.8 22.1-4.2 7.5-26 17.8-31.1-1.7 10.8 9.3 21.6-2.7 28 .2-6.4-3-2-18-16.7-20.6zm-43 328c-15.8 14.7-27.9-4.4-27-12.9 1-8.5 17.1-26.4 29.5-10.3-13.7-4.5-18.9 10.8-25.9 10.5 7 .3 8.8 15.8 23.3 12.6zM545.1 258c14.8 15.8-4.5 27.6-13.1 26.6s-26.4-17-10.2-29.2c-4.6 13.5 10.7 18.8 10.4 25.7.3-7 16-8.7 12.9-23z"/>
                             <Path fill="#005800" d="M355.2 99.5c14 3.5 17.4-11.8 24.5-12-4.1 5-14.8 17.4-24.5 12zm1-23.3c14.7-15.8 28 2.5 27.7 11-12-20.8-15.7-17.6-27.7-11zm-132.7 135c9.4-10.7-3-20.7 0-27 2.6 5.8 9.2 21 0 27zm-20.6-11c-7.7-20.2 14.7-24 22.2-19.8-24 1.4-22.8 6.1-22.2 19.7zm308.2-12.4c1.7 14.1 17.4 11.8 20.1 18.3-6-2-21.7-7.5-20-18.3zm22.2-7.6c20.2 8 7.8 26.9-.3 29.6 15.2-18.6 10.8-20.9.3-29.6zM288.9 380c-5.6-13.2-20-6.7-24.4-12.1 6.4.2 23 1.2 24.4 12.1zm-19.3 13.2c-21.6-2.1-15-23.6-7.9-28.5-9.5 22-4.7 23 7.9 28.5zm202.6-33c-12.6 6.9-4.4 20.4-9.4 25.4-.4-6.4-1.4-22.8 9.4-25.4zm15.4 17.4c.3 21.6-22 17.5-27.7 11 23.2 7 23.7 2 27.7-11zm-252.2-202c12-7.9 2.8-20.8 7.4-26 1 6.3 3.1 22.6-7.4 26zm-16.8-16.3c-2-21.4 20.6-19 26.8-13-23.6-5.1-23.7-.2-26.8 13zM262 348.4c-4.6-13.5-19.5-8-23.5-13.8 6.4.7 22.8 2.8 23.5 13.8zm-20.1 11.9c-21.4-3.6-13.3-24.6-6-29-11 21.3-6.2 22.7 6 29zM401.5 98.5c11.7 8.3 20.5-4.9 27.1-2.6-5.6 3.2-20 11-27 2.6zm9.2-21.4c19.4-9.5 25.4 12.2 22 20-3.8-23.6-8.4-22-22-20zM446.4 382c-14.4.5-13.4 16.3-20.1 18.4 2.5-5.9 9.3-20.9 20-18.4zm5.6 22.6c-9.6 19.3-27.6 5.5-29.6-2.8 17.4 16.6 20 12.5 29.6 2.8zM523 218c-3.2 13.9 12.4 17 12.7 23.9-5-4-18-14.2-12.7-24zm23.4.3c16.4 14.2-1.7 27.9-10.3 27.7 20.7-12.4 17.3-16 10.3-27.7zm-263.1-92.7c13.9-3.8 9.2-18.9 15.2-22.5-1 6.3-4.1 22.5-15.2 22.5zM272.4 105c4.9-21 25.6-11.7 29.5-4-20.8-12.2-22.4-7.6-29.5 4zm-41.2 175c.2-14.2-15.7-13.9-17.6-20.6 5.8 2.8 20.6 10 17.6 20.7zm-23 4.7c-19-10.3-4.3-27.6 4.2-29.3-17.5 16.6-13.5 19.4-4.1 29.3zM467.4 136c8.6 11.5 21 1.7 26.6 6-6.3 1.3-22.6 4.3-26.6-6zm15.5-17.4c21.5-3.1 20.2 19.4 14.5 25.8 4-23.6-1-23.5-14.5-25.8zM370.8 404c-11.4-8.7-20.7 4.1-27.2 1.5 5.7-2.9 20.5-10.2 27.2-1.5zm-10 21c-19.9 8.8-24.9-13.2-21.2-20.9 2.8 23.8 7.5 22.3 21.1 21zm156.4-130c-8.8 11.4 4.2 20.6 1.6 27-3-5.6-10.4-20.3-1.6-27zm21.2 10c9 19.6-13.2 24.7-21 21 24-2.8 22.5-7.5 21-21zm-316-57.3c6.4-12.8-8-19.4-6.7-26.3 4 5 14 18.1 6.6 26.3zm-22.7-5.9c-12.5-17.6 8.3-26.6 16.7-24.5-23 7.2-20.7 11.5-16.7 24.5zM328 392c-10.8-9.5-20.9 2.6-27.2-.4 5.9-2.6 21.2-8.9 27.2.3zM316.6 412c-20.3 7.4-23.8-14.9-19.6-22.3 1.1 24 6 22.8 19.6 22.3zm-3.1-304c14.3 1.3 15.3-14.4 22.2-15.7-3.2 5.5-11.9 19.5-22.2 15.6zm-2.7-23.2c12-17.9 28-1.9 29 6.6-15-18.7-18.2-15-29-6.6zM503 331c-12.2 7.5-3.4 20.6-8.2 25.8-.7-6.4-2.4-22.7 8.2-25.8zm16.3 16.7c1.3 21.5-21.2 18.4-27.2 12.2 23.4 5.9 23.7 1 27.2-12.2zm-26-191.3c4.1 13.7 19.2 8.7 23 14.5-6.4-.9-22.7-3.5-23-14.5zm20.4-11.2c21.3 4.2 12.5 25 5 29.2 11.7-21 7-22.5-5-29.2zm-254.1 2.7c12.7-6.7 4.9-20.4 10-25.2.2 6.4.8 22.8-10 25.2zm-15-17.9c.1-21.5 22.4-16.9 27.9-10.3-23-7.4-23.6-2.6-28 10.3zm-4.2 188.6c-.3-14.3-16.2-13.4-18.3-20.1 6 2.6 21 9.4 18.3 20zm-22.7 5.4c-19.4-9.7-5.3-27.4 3-29.4-16.9 17-12.7 19.8-3 29.4zm221-208.7c10.8 9.3 20.9-2.9 27.2.1-5.9 2.6-21 9-27.2-.1zM450 94.8c20.3-7.6 24 14.6 19.8 22.1-1.3-24-6.1-22.7-19.8-22zm-40.5 304.8c-13.6-4.5-18.2 10.6-25.2 10.3 4.4-4.6 16-16.4 25.2-10.3zm-2.6 23.1c-15.7 14.8-27.8-4.3-26.8-12.8 10.5 21.6 14.4 18.6 26.8 12.8zm115-167.2c-4.6 13.5 10.6 18 10.2 25-4.6-4.4-16.4-15.9-10.2-25zm23.3 2.6c14.8 15.8-4.5 27.6-13.1 26.6 21.8-10.3 18.8-14.2 13-26.6z"/>
@@ -1354,13 +1375,13 @@ class FlagComponent extends Component {
                                 </G>
                             </G>
                             <Path fill="#9dd7ff" d="M336.6 310.5a72.8 72.8 0 01-6.2-13.5l44-38.8 44 38.7a67.3 67.3 0 01-6.3 13.8l-.4.6-3.3-1.3s-1.4 1.3-2.5 1.4c-1.5.3-2.9-1.3-2.9-1.3s-2 1.6-3.8 1.3c-2-.1-2.8-1.4-2.8-1.4s-2 1.6-3.5 1.3c-1.3-.3-2.2-1.2-2.2-1.2s-1.2 1.5-3 1.2c-1.6-.3-3-1.2-3-1.2s-2.6 1.1-4.3 1.3c-1.6.3-3-1.4-3-1.4s-2.2 1.4-3 1.4-3.8-1.4-3.8-1.4-3.2 1-4.3 1c-1 0-4.2-1.3-4.2-1.3s-3 .8-4.2.8c-1.5 0-3.5-.8-3.5-.8s-2.4 1.1-3.8.8c-1.4-.3-2.5-.8-2.5-.8s-2.7 1.1-4.4.8c-1.6-.3-3.5-1.4-3.5-1.4s-.3.8-3.5 1.4h-.1"/>
-                            <Path fill="#fff" stroke="#000" strokeWidth=".7" d="M374.4 213.7v44.5l-44 39a87.7 87.7 0 01-4.6-28.3v-55.2h48.6"/>
+                            <Path fill="#FFF" stroke="#000" strokeWidth=".7" d="M374.4 213.7v44.5l-44 39a87.7 87.7 0 01-4.6-28.3v-55.2h48.6"/>
                             <Path fill="#ffd83c" stroke="#000" strokeWidth=".7" d="M374.4 213.7v44.5l44 39a87.7 87.7 0 004.6-28.3v-55.2h-48.6"/>
                             <G stroke="#000" strokeWidth=".5">
                                 <Path fill="#730000" d="M346 301.3c3.3 1.8 2.2 1.2 9 3.6 5.7 2 12.2 2.9 21.6 2.9 8.3 0 13-.7 15.6-1.4 2.7-.8 3.4-1.9 3.4-1.9l-6.9 7s-27.3 1.4-32.3-1.8c-2-1-6.1-4.4-10.4-8.4z"/>
                                 <Path fill="none" d="M386.2 288.4s8.8 5 0 14.5m-39.4-1.1l12.7-12-1.5 16m6.6 1.5v-26.9m21.6 26.9v-28.5m-10.9 29V277"/>
                                 <Path fill="#ff0018" d="M364.6 281.8l-5.7 1.9 5.7.6v-2.5m10.7-4.1l-6 2.2 6 .2v-2.4m11 1.6l-6 2.2 6 .3v-2.5zm3.5 13c-.3-1.3 3.5-1.2 3.5-1.2s1.1 4 0 6.6l-3.2-.6s.3-2.7-.3-4.9z"/>
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path d="M348.8 300.1l10.6-10.3-.4 6.2s-5.6 3.5-5.6 6l-4.6-1.9m5.7 2.2s1-3.3 4.1-4.9l-.3 6.5-3.8-1.6zm15.3-18s4.4-.6 7.7 0c0 0-.5 4.4 0 5.2 0 0-6-1.5-8.5.8 0 0-.8-4 .8-6zm-9.2 1.1s4.3-.6 7.6 0c0 0-.8 4.9-.3 5.7 0 0-4.9-2.8-7.3-.5 0 0-1.7-3.4 0-5.2z"/>
                                     <Path d="M360.3 291s4.3-.4 7.6 0c0 0-.5 4.5 0 5.3 0 0-5.7-1.3-8.1.8 0 0-1.2-4 .5-6zm8.7-.7s6.3-.8 9.6-.3c0 0-1.4 3.5.3 6 0 0-6.8-1.9-9.4.3 0 0-2.1-4-.5-6zm-9.2 6.8l8.4.6s-.8 6.2-.3 7c0 0-6.8-1.6-8.1.6 0 0-2.3-5.7 0-8.2zm9.5 0s7.3-.5 10.7 0c0 0-2 4.7.2 8.8 0 0-9.6-2.8-10.9-.6 0 0-2.2-5.7 0-8.2zm11.2-12.8s4.4-.6 7.6 0c0 0-.5 4.4 0 5.2 0 0-6-1.5-8.4.8 0 0-.8-4 .8-6zm0 6s4.4-.5 7.6 0c0 0-.5 4.4 0 5.2 0 0-6-1.4-8.4.8 0 0-.8-4 .8-6zm.5 6.3s4.4-.6 7.7 0c0 0-1 6.8-.5 7.6 0 0-5-2.3-7.4-.3 0 0-1.4-5.4.2-7.3z"/>
                                     <Path d="M390 297.1s1.5 5.2 3.3 5.8l-2.4 3s-3-2.2-3.3-4.6c0 0 2-2.3 2.5-4.2z"/>
@@ -1375,14 +1396,14 @@ class FlagComponent extends Component {
                             <G stroke="#000" strokeWidth=".5">
                                 <Path fill="#b34b00" d="M367.9 259.3c2-1.6 3-3.1 2.4-4.3-.7-1-1.9.6-3.2.2 0 0-2-1.2-2.5-2-1.1-1.4-2.6-2.5-3.5-3.6-.9-1-4.3-5.5-9.5-10.7-1.5-1-1.1-4.7-2.2-5.8 0-.8-10.3-11-14-14.6-1.5-1.1-2.3-1.8-4.9.5-2 1.9-2.8 3.8 0 6.1l13.3 12.1c2 2 4.6 2.3 5.8 3.3l13.6 13.8c1.7 1.5 2.5 2.6 1.5 3.8-1 2.1.1 2.4.3 2.5.2 0 1.2 0 1.8-.4l1-.9z"/>
                                 <Path fill="none" d="M334 223l14 13.7"/>
-                                <Path fill="#fff" strokeWidth=".6" d="M353 229.2l1.1-2.6c.2-.5 4-6.4 5.8-6.6l11.7 8.6c0 .4-5 8-5.5 7.5 0 0-13.7-5.8-13.2-6.9z"/>
+                                <Path fill="#FFF" strokeWidth=".6" d="M353 229.2l1.1-2.6c.2-.5 4-6.4 5.8-6.6l11.7 8.6c0 .4-5 8-5.5 7.5 0 0-13.7-5.8-13.2-6.9z"/>
                                 <Path fill="#ccb8c8" stroke="none" d="M360.4 231.2c-1.6-1.2-4.3-2.4-6.4-3.9l-1 2c.8 1 10.5 5.4 12.1 6.3 0 0-1.8-2.1-4.7-4.4z"/>
                                 <Path fill="none" strokeWidth=".4" d="M354 227c1.2 1 3.6 2.5 5.1 3.3 2.9 2 4.7 4.2 6.8 5.4"/>
                                 <Path fill="#782121" d="M330.3 263.5l26.6-33c.5-.4 3-.4 3.3 2.1L335 267s-2.8-.3-4.7-3.5z"/>
                                 <Path fill="#730000" d="M419.4 263.8a6 6 0 01-2.4 1c-1.8-2.1-3.2-4.2-5.6-6.9l-26.6-32.6 2.8-2.7 23.9 28c.7.7 4.9 5 8.8 10.3 0 0 .4 2-.9 3z"/>
-                                <Path fill="#fff" d="M393.9 229.4l-4.3-5s-3.3.3-3.9 2c0 0-2.3 4-8.5 4.3 0 0 1.7 7.3 9 11.2 0 0 2.6-7.5 5.1-8.8 0 0 2.7-2 2.6-3.7z"/>
+                                <Path fill="#FFF" d="M393.9 229.4l-4.3-5s-3.3.3-3.9 2c0 0-2.3 4-8.5 4.3 0 0 1.7 7.3 9 11.2 0 0 2.6-7.5 5.1-8.8 0 0 2.7-2 2.6-3.7z"/>
                                 <Path fill="#730000" d="M383.2 252c-.6-.2-1.2 0-2.1.5-.9.5-1.9.3-1.8-.7.1-.9 0-.8 1.1-1.5a6.5 6.5 0 015.1-.5l-2.3 2.2m29-28.9c-.2-.7-.4-1.4.3-2.3.7-.8.7-2.3-1-1.5-1.8.7-2.4 2.6-1 5.6l1.7-1.8z"/>
-                                <Path fill="#fff" d="M382.6 252.6l30-29.9 7.5 8s-1.5-.7-2.1-.2c-.5.4.6 1.9.6 1.9s-1.4-.5-2-.1c-.7.4 0 2.1 0 2.1s-1.3-.9-1.9-.5c-.5.4 0 2.3 0 2.3s-1.6-.5-2 0c-.4.3 0 2 0 2s-1.6-.7-2.4 0 .4 2 .4 2-2-.8-2.9.4c-.8 1.2.1 2.4.1 2.4s-1.6-.8-2-.4c-.4.4 0 2.3 0 2.3s-1.4-.8-2.4.2c-.9 1.1.1 2 .1 2s-1.3-.8-2-.4.2 2.4.2 2.4-1.3-1-2.2 0c-1 1 0 2 0 2s-1.1-1-2.3 0c-1 1.1 0 2.2 0 2.2s-1.6-.8-2.2 0c-.7.9.2 2 .2 2s-1.2-.7-2-.3c-.8.4 0 2.2 0 2.2s-1.2-1.3-1.8-.6c-.6.7.1 2.4.1 2.4s-1-1.3-1.7-.6c-.7.6.4 2.2.4 2.2s-2-1-1.5-1z"/>
+                                <Path fill="#FFF" d="M382.6 252.6l30-29.9 7.5 8s-1.5-.7-2.1-.2c-.5.4.6 1.9.6 1.9s-1.4-.5-2-.1c-.7.4 0 2.1 0 2.1s-1.3-.9-1.9-.5c-.5.4 0 2.3 0 2.3s-1.6-.5-2 0c-.4.3 0 2 0 2s-1.6-.7-2.4 0 .4 2 .4 2-2-.8-2.9.4c-.8 1.2.1 2.4.1 2.4s-1.6-.8-2-.4c-.4.4 0 2.3 0 2.3s-1.4-.8-2.4.2c-.9 1.1.1 2 .1 2s-1.3-.8-2-.4.2 2.4.2 2.4-1.3-1-2.2 0c-1 1 0 2 0 2s-1.1-1-2.3 0c-1 1.1 0 2.2 0 2.2s-1.6-.8-2.2 0c-.7.9.2 2 .2 2s-1.2-.7-2-.3c-.8.4 0 2.2 0 2.2s-1.2-1.3-1.8-.6c-.6.7.1 2.4.1 2.4s-1-1.3-1.7-.6c-.7.6.4 2.2.4 2.2s-2-1-1.5-1z"/>
                                 <Path fill="#7e4b7e" stroke="none" d="M411 225.2l-2.4 2.3.5 8s.5-2.3 1.2-.7c0 0 .3-2 .8-1.6-.4-.2-.1-8-.1-8m-4.4 4.3l-1.7 1.7.6 8s.5-3 1.2-.6l-.1-2.8v-6.3m-18.2 18l-1.6 1.8.4 4.9s.5-3.2 1.2-.7l-.2-2.8.2-3.1"/>
                                 <G fill="none" stroke="#7e4b7e" strokeWidth=".9">
                                     <Path d="M386.3 227.4a95.5 95.5 0 014.3 5.2m-2.8-3c-.2.6-.6 2.4-1.6 3.3m2-2.9c0 .4 0 1.8-1.5 3m2-2.3c-.1.7-.2 1.2-.7 1.7m1-1.1c0 .5-.2.6-.3.9m-3.4-2.9c-.4.4-3.3 2.4-5 3m4.2-1.9c-.4.4-2.2 1.9-3.3 2.3m3-1c-.6.4-1.6 1.4-2.4 1.7m1.8-.5c-.4.5-1 1-1.5 1.2"/>
@@ -1402,9 +1423,9 @@ class FlagComponent extends Component {
                                 <G fill="none">
                                     <Path fill="url(#a)" d="M292.4 153.6c-.7 3.3-.7 6.1-.6 9.3.1 2.1 1.1 4.6 2 6.7.7 1.4 1.5 3 2.8 3.9 3.6 2.3 7-.2 8.9-1a6.4 6.4 0 002.7-2.5c.5-1.2.3-2.1.8-4.5l.7-.4c1-1.5.7-2 1.2-3 .6-1-.5-2.2-1.8-2 .6-1.9 1-4 .4-5.9-.2-.6.5-2.2-.6-1.8-4.6 1.8-10 1.4-14.8 1.4-.4 0-.8-.8-1.4-.7l-.3.5"/>
                                     <Path fill="#000" d="M292 155.3c-.5-.4-.6-1.3 0-3.2.7-2 0-2 1.1-3.2s.9-1.6 1.6-1.9c.7-.2 2.8-.2 3.5-.5a11 11 0 019-.3c1.5.8 2.5 2.8 3.4 3.6 1 .7 1.7 3.6 1.5 7.9-.3 4.3-1.2 3.5-1.2 3.5s-1.2-2-2.2-.3c0 0 0-1.7.2-3 .1-1.1-.6-3.4.1-4.9 0 0-5.8 1.8-8.7 1.7-3-.2-7.4-.9-7.6-1.6l-.7 2.2"/>
-                                    <Path fill="#fff" stroke="#fff" d="M295 151.8c-.3-.6-1.8-2.9-.6-3.6 1-.6.4 2.8 2 3.5 0 0-.6 1.5-1.4.1h0z"/>
+                                    <Path fill="#FFF" stroke="#FFF" d="M295 151.8c-.3-.6-1.8-2.9-.6-3.6 1-.6.4 2.8 2 3.5 0 0-.6 1.5-1.4.1h0z"/>
                                     <Path d="M298.3 160.1l-.9 3.2m10.6 1.6c.2.6.4.3 1 .4m.3-4c.5-.5 1.2-.2.8 1.3M292.4 157.7l2.8 1c1.5.6.6 2.9.2 4.3-.2.7-1 2-.6 2.5.5.8 1.1.3 2 .4 0-.3.6-.5.8-.5.7 0 1.1.5 1.7.3.6-.3.5-1.2.3-1.7m-.1-4.5c0-.4 1-.8 1.5-.9 2.1-.4 3.6-.7 5.4.5m-5.7 11.1c-1.7.4-3.6.7-5.2-.2m0-.8c.8-.4 1.1-.8 2.1-.3a5 5 0 011.1-.4c.9 0 1.4.3 2.2.8m-5.5.3c1-.3 3.4-.3 5.4.1"/>
-                                    <Path fill="#fff" strokeWidth=".3" d="M292.3 160.1c.7 0 1.6-.9 3.2.3 1.1.8-1.8 1.5-1.3 1.4-1.4.2-1.8-.5-1.9-1.2 0-.1-.2-.5 0-.5zm8.4.8c.7-1.4 1.8-1 2.8-.8 1 .3.7.1 1.7.7-1.2.1-.9.2-1.7.6-.9.5-1.7.7-2.3.3-.2-.2-.7-.5-.7-1 0 .2 0 .3.2.3z"/>
+                                    <Path fill="#FFF" strokeWidth=".3" d="M292.3 160.1c.7 0 1.6-.9 3.2.3 1.1.8-1.8 1.5-1.3 1.4-1.4.2-1.8-.5-1.9-1.2 0-.1-.2-.5 0-.5zm8.4.8c.7-1.4 1.8-1 2.8-.8 1 .3.7.1 1.7.7-1.2.1-.9.2-1.7.6-.9.5-1.7.7-2.3.3-.2-.2-.7-.5-.7-1 0 .2 0 .3.2.3z"/>
                                     <Path fill="#000" strokeWidth=".3" d="M293.8 161.4c.4 0 .7-.4.7-.8 0-.6-.3-1-.7-1-.5 0-.9.4-.9 1 0 .4.4.8.9.8zm8.6.2c.4 0 .7-.4.7-1a.8.8 0 00-.8-.8c-.4 0-.7.3-.7.8 0 .6.4 1 .8 1z"/>
                                 </G>
                                 <G id="c">
@@ -1414,10 +1435,10 @@ class FlagComponent extends Component {
                                         <Path d="M284.4 190.5c0 2 0 8.4 9 8.4 2.8 0 5.8-2 7.4-3.3m2.2-2.7c-.3-2-.3-4.4-.3-7m-13.6-3.4c2.4-.3 4.4-.6 9-.6m.2-6.3c.5 2.2-.3 5.8 4 6.3m4.3-7.1c-.6 1.6-.6 3.2-.8 4.4m.2 2.7c1.7 0 5-1.1 9-.3m1.4 22.8c.9 1.6 1 3.8 3.6 6.2m-31.7-11.4c.2 1.3-1.8 5.7-.3 9.3a12.3 12.3 0 01-1.2 11m6.7-19c-.9 1.7-2.3 3.3-2.6 4.7m6.6-1.6c0 1-2.7 8.7-4.7 10.9 0 0 3.6 1.4 3 6.6m7.4-21c0 1.3-.2 1.6 1 2.4m2.4 0c1.3 1.6 5.5 6.5 4.6 9.2m-7.4-6.5c.3 1 .3 6.3-.6 9m-2.1-.2c-1.1 0-2.8.8-3 2.7m8.7-3c1.1-.3 3.3 1.6 3.3 7m15.7-10.2c-2.1.6-3 1.7-2.4 1.1-1.1 1-2.2 1.6-2.2 1.6"/>
                                     </G>
                                     <Path fill="#000" strokeWidth=".3" d="M289.8 198c.6 0 1.1-.4 1.1-1 0-.3-.5-.7-1.1-.7-.5 0-1 .4-1 .8 0 .5.5.9 1 .9zm23 .3c.6 0 1.1-.4 1.1-1 0-.4-.5-.7-1-.7-.6 0-1.1.3-1.1.8s.5.9 1 .9z"/>
-                                    <Path fill="#fff" d="M280.5 239.8c1.3-8 5-14.5 5.1-15.2 0 0 3.9.9 10.6 1.5 6.6.7 8.4.4 11.5.2l6.8-.8s1.2 2.4 1.3 4.8c.3 5.2 2.3 27.7 2.5 33.7 0 0 .8 3.6.8 12.3 0 9.6 2.6 29 2.6 39.4l-2.6.5s-14.5 1.1-14.5-.8c0-2.1-.8-27 1.4-42.1 0 0-.5-3-1.4-5.5-.8-2.5-4.3-10-4.3-11.7 0 0-5.7 16-6 18.8-.3 2.6-1.2 38.4-1.7 41.3 0 0-8.2 6.3-9.3 7-1.1.4-9-3.4-9.3-4.4a211 211 0 014.6-33.2c1.4-7.1.6-8.4.6-10.4s.1-27.5 1.3-35.4h0z"/>
+                                    <Path fill="#FFF" d="M280.5 239.8c1.3-8 5-14.5 5.1-15.2 0 0 3.9.9 10.6 1.5 6.6.7 8.4.4 11.5.2l6.8-.8s1.2 2.4 1.3 4.8c.3 5.2 2.3 27.7 2.5 33.7 0 0 .8 3.6.8 12.3 0 9.6 2.6 29 2.6 39.4l-2.6.5s-14.5 1.1-14.5-.8c0-2.1-.8-27 1.4-42.1 0 0-.5-3-1.4-5.5-.8-2.5-4.3-10-4.3-11.7 0 0-5.7 16-6 18.8-.3 2.6-1.2 38.4-1.7 41.3 0 0-8.2 6.3-9.3 7-1.1.4-9-3.4-9.3-4.4a211 211 0 014.6-33.2c1.4-7.1.6-8.4.6-10.4s.1-27.5 1.3-35.4h0z"/>
                                     <Path fill="none" d="M294.3 275c-.6 2.2-1.7 4.3-3.6 5.7m-2.7-53.6c-.3 1.3-2.3 7.3-7.2 10.9m14.3-9.8c-1.1 3.6-5.5 22.7-6.3 45.4m-.3 7.1c-.2 2.2-1.3 18-1.7 20.8m-.8 3a71.3 71.3 0 00-2.7 18.6m32.2-35.9c-.2 2-1 15.7 3.6 28m-18.5-86c-.3 2.3-.8 16.7-.8 17.8 0 1.2 1.6 2.8 2.4 3 0 0-1.6.6-2 6m-4-12.8c-.3 1.7-2 8.5-3 11.3m13-25.5s5 1 5.3 0c0 0 1.6 29.5 3.8 46m-11.2-42.2l-.6 16.5m2.5 2.1s1.9 2.8 1.4 4m-17.8-28l3 .8m5.2 1.6c-.3.8-.6 4.6-.6 4.6m8.8 38.9c.6.8 1.4 2 .8 4.4"/>
                                     <Path fill="#9b5f00" d="M285 224.4s0-3.2 1.1-4.8c0 0 3.5.7 8.4 1.2 5 .5 9 .9 12.6.5 3.7-.4 7.4-1.3 7.4-1.3s1 4.8.5 5.5c0 0-4 .8-8.3 1a86 86 0 01-14.5-.8c-3.3-.4-6.3-1-7.3-1.3z"/>
-                                    <Path fill="#fff" d="M288 224.8l.7-4.8h1l-.2 5.1-1.4-.2m22-4.1l.1 5.5 1.3-.2-.1-5.6-1.3.3m-15.6 0l-.4 5.3h.7l.7-5.3h-1"/>
+                                    <Path fill="#FFF" d="M288 224.8l.7-4.8h1l-.2 5.1-1.4-.2m22-4.1l.1 5.5 1.3-.2-.1-5.6-1.3.3m-15.6 0l-.4 5.3h.7l.7-5.3h-1"/>
                                     <Path d="M276.8 320.8c-.3 1.3-.8 3.2-1 5.5 0 .5-.6 3.3 1 3.4 1 0 1.4-2.9 1.4-2.9s-1 3.3.3 3.7c1.8.4 2-3.6 2-3.6-.2 1.1-1.4 4 .3 4.3 1.9.3 2.4-3.9 2.4-3.9s-1.6 4.2.3 4.3c1.7 0 1.7-4 1.7-4s-.9 5 1.5 4.5c1.4-.2 1.7-2 2-3 .4-1.5 1.3-3.4.2-6.6-.8-2.3-.5-3-.5-3s-2.9 2.2-5.1 3.6c-1 .6-6.5-2.3-6.5-2.3zm29.7-4.4c-.5-.3-.4 1.9-.6 2.9-.1 1 .2 3.2 3.6 3 3.4-.3 6.7-1 8.9-.5 2.1.6 5.3.7 7 .7 1.7 0 2.9-.2 3.7-.5.7-.3 2.2.4 3 .4s1.7-1 1.6-1.8c0-1.3-1.3-1.3-3-1.4-1.6-.2-3.9-.5-5-1-1.1-.3-3.1-1.5-5.7-2l-5.9.2c-1 0-7 .3-7.6 0z"/>
                                 </G>
                                 <G fill="none">
@@ -1432,7 +1453,7 @@ class FlagComponent extends Component {
                                     <Path fill="#000" d="M456.8 155.3c.4-.4.1-2.3-.4-4.3-.1-1-1-1.5-2-2.6s-1.6-1-2.3-1.4c-.6-.2-2-.2-2.8-.5-.6-.3-2.2-.1-3.7.1-2 .3-3.2.2-4.7 1s-2.8 1.8-3.3 3.3c-.4 1-1 2.5-.8 6.8.2 4.3 1 3.5 1 3.5s1.1-1.7 1.9-.6l-.3-3.6c-.1-1.2 0-2.8.5-4.6 0 0 4.6 1.7 9 1.7 3 0 7-.3 7.1-1l.7 2.2z"/>
                                     <Path d="M450.4 160.1c.7 1.8.1 1.3.4 2.4m-10.2 2c0 .8-.6.6-1 .6"/>
                                     <Path d="M456.9 158.8c-1-.7-2.7-.2-3.5.1-1.5.7-.7 2.3-.2 3.7.2.7 1 1.7.5 2.4-.4.8-.7.4-1.6.5 0-.3-.8 0-1.1 0-.6 0-1 .4-1.5.2-.6-.3-.5-1.2-.3-1.7m.1-4.5c0-.4-1.3-.8-2.7-.9-2.3 0-2.5.1-4.2 1.3m11.5 9c-.4-.6-1-1-2.1-.4 0-.2-1.6-.4-1.6-.4-.8 0-1.3.3-2.1.7m5.6.6c-1-.6-3.3-.2-5.6-.2m.2.8c1.7.5 3.5.8 5.2 0"/>
-                                    <Path fill="#fff" strokeWidth=".3" d="M456.4 160.1c-.7 0-1-.9-3.1.3-1.1.7 1.8 1.5 1.4 1.4 1.2.2 1.6-.5 1.7-1.2 0-.1.2-.5 0-.5zm-8.3.8c0-.8-1.8-1-2.9-.8-1 .3-.5.1-1.5.7 1 .1.7.2 1.6.6.9.5 1 .9 2.3.3.3-.1.7-.5.8-1 0 .2-.2.3-.3.3z"/>
+                                    <Path fill="#FFF" strokeWidth=".3" d="M456.4 160.1c-.7 0-1-.9-3.1.3-1.1.7 1.8 1.5 1.4 1.4 1.2.2 1.6-.5 1.7-1.2 0-.1.2-.5 0-.5zm-8.3.8c0-.8-1.8-1-2.9-.8-1 .3-.5.1-1.5.7 1 .1.7.2 1.6.6.9.5 1 .9 2.3.3.3-.1.7-.5.8-1 0 .2-.2.3-.3.3z"/>
                                     <Path fill="#000" strokeWidth=".3" d="M455.1 161.4a.8.8 0 01-.8-.8c0-.6.3-1 .8-1 .4 0 .7.4.7 1 0 .4-.3.8-.7.8zm-8.7.2c-.4 0-.7-.4-.7-1 0-.5.4-.8.8-.8s.7.3.7.8c0 .6-.3 1-.8 1z"/>
                                 </G>
                                 <Use fill="#730000" transform="matrix(-1 0 0 1 748.8 0)" href="#c"/>
@@ -1446,7 +1467,7 @@ class FlagComponent extends Component {
                             <Path fill="#5ac800" d="M290.1 323.7l-.2-4.7 2 1.6.4-3.6c.9-.1 2.2 1.5 2.2 1.5l-.2-3.6 3 3.3s-.3-2.8.7-4.4c0 0 2.3 2 2.3 4.2 0 1.9 1.9-2.8 1.9-2.8l1.6 5.2 1.4-2 1 4.1 2.5-3.5 2 4.2 4.3-.3.5 2.4 2-2.1 2.5 1.6s2.1-.6 3.3-.6 2.4 1.4 2.4 1.4.8-1.4 1.6-2c.9-.4 2 .9 2.3 1.7l1.6-3s2.1 2.2 2.4 3c0 0 .3-2.5.9-3.3.5-.8 1.3.3 1.9 1.4l1.3-4.4s1.4.3 2.5 2c1 1.5 1-2.5 1-2.5s2.5 3.2 3.1 5.5c0 0-16.8 5.8-28.7 4.2-14-1.9-25.5-4.5-25.5-4.5m115.5-.6s.8-2.2 2-3.3c0 0 2 2.5 2 3.3l1.8-1 1.6 1.6 2-1.4 1.8 1.7 3.3-1.5 1.3 1.5 5.2-.6 2 .8 1.8-2.4 1.7 1.9 2.8-2.8s1.3 1.1 1.6 2c0 0 2.2-1.2 2.8-2 0 0 2-.8 2.4.5 0 0 1.3-1 1.2-2.1 0-1.1 1.5-.3 2 1.1 0 0 .7-2.2 2.3-2.4 0 0 1.1 1.3.8 3.7 0 0 2.4-2 3.6-2.1 0 0 .5 2.7-.4 5.2 0 0 2.6-4.2 3.1-2.8.2.8.8 3.6.2 5.5l2.2-1.4.9 2.7 2.4-.5s-14.4 2.2-28 1c-13.7-1.4-26.4-6.2-26.4-6.2m-10 10.1c.6-.3-4.6 10.8-17.3 11.4-17.5.8-32.5-8-32.5-8s1.8-3 3-3.9c0 0 2.3 2 3.2 4.4 0 0 .3-1.6 1-3 0 0 3.1 1.4 3.6 3.3 0 0 1.2-2 2-2.4.8-.6 1.6 2.1 1.6 3.8 0 0 2-2 3-2.2 0 0 2.2 1 2.8 4.6 0 0 2-2 2.8-1.6 0 0 2.4 1.6 1.8 3.8-.3 1.3 2.4-1.4 5.8-2.2l3 2.2 3.5-4.9s2.2.9 2.2 2.2c0 0 1-3.9 1.9-4.3.8-.5 1.9 1.2 1.9 2.4 0 0 .3-3 2-3.6 0 0 1.6 1.1 1.6 2.2 0 0 1.7-3.3 3-4.1z"/>
                             <Path fill="none" stroke="#060" strokeWidth=".5" d="M290.1 323.7l-.2-4.7 2 1.6.4-3.6c.9-.1 2.2 1.5 2.2 1.5l-.2-3.6 3 3.3s-.3-2.8.7-4.4c0 0 2.3 2 2.3 4.2 0 1.9 1.9-2.8 1.9-2.8l1.6 5.2 1.4-2 1 4.1 2.5-3.5 2 4.2 4.3-.3.5 2.4 2-2.1 2.5 1.6s2.1-.6 3.3-.6 2.4 1.4 2.4 1.4.8-1.4 1.6-2c.8-.4 2 .9 2.3 1.7l1.6-3s2.1 2.2 2.4 3c0 0 .3-2.4.9-3.3.5-.8 1.3.3 1.9 1.4l1.3-4.4s1.4.3 2.5 2c1 1.5 1-2.5 1-2.5s2.5 3.2 3.1 5.5m61.3-.9s.8-2.2 1.9-3.3c0 0 2.1 2.5 2.1 3.3l1.8-1 1.6 1.6 2-1.4 1.8 1.7 3.3-1.5 1.3 1.5 5.2-.6 2 .8 1.8-2.4 1.7 1.9 2.8-2.8s1.3 1.1 1.6 2c0 0 2.2-1.2 2.7-2 0 0 2.2-.8 2.5.5 0 0 1.3-1 1.2-2.1-.1-1.1 1.5-.3 2 1.1 0 0 .6-2.2 2.3-2.4a5 5 0 00.8 3.7s2.4-1.9 3.6-2.1c0 0 .5 2.7-.3 5.2 0 0 2.5-4.2 3-2.8.2.8.8 3.6.2 5.5l2.2-1.4.9 2.7 2.4-.5m-114.3 8.3s1.8-3 3-3.8c0 0 2.4 1.9 3.2 4.3 0 0 .3-1.6 1.1-3 0 0 3 1.4 3.6 3.3 0 0 1-1.9 1.9-2.4.8-.6 1.6 2.1 1.6 3.8 0 0 2-2 3-2.2 0 0 2.2 1 2.8 4.6 0 0 2-2 2.8-1.6 0 0 2.4 1.6 1.8 3.8-.3 1.3 2.5-1.4 5.8-2.2l3 2.2 3.5-4.8s2.2.8 2.2 2.1c0 0 1-3.9 1.9-4.3.8-.5 2 1.3 2 2.4 0 0 .2-3 1.9-3.6 0 0 1.6 1.1 1.6 2.2 0 0 1.7-3.3 3-4.1"/>
                             <G>
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path d="M374.4 377c23 .2 36.5-8.2 43.9-13.1 17.4-11.7 21-12.1 23.9-12 3.3.4 8 1.5 8.2 4.3.3 4.4-6.8 6.3-10.8 6.3-4.2 0-15.1-2.7-15.1-2.7l-2.9 2c2 .8 24.3 8.3 28.5 1.2 4.4-7 8.8-18.6 8.8-18.6s-4.9-8.7-15.8-8.7c-11 0-21.7 6.9-28.8 12-7.1 5.3-16 12.4-39.9 12.4-23.8 0-32.8-7.1-40-12.3-7-5.2-17.7-12.1-28.6-12.1-11 0-15.9 8.7-15.9 8.7s4.4 11.5 8.7 18.6c4.3 7 26.6-.4 28.5-1.3l-2.7-2s-11 2.8-15 2.8c-4.2 0-11.4-1.9-11-6.3.1-2.8 5-4 8.2-4.2 2.8-.2 6.5.2 23.9 11.9 7.4 5 21 13 44 13"/>
                                     <Path d="M337.6 350s0-2-.3-4.8c-.4-3.6-2.5-4.5-4.3-4-1 .4-3.3 3.1-3.3 3.1v.1a32.4 32.4 0 00-3.2-2c.8-.8 5.5-3.7 6.6-3.7 1 0 15 5.7 19.6 9.6 1 1 1.9 7.3 1.3 9.3a48.4 48.4 0 01-16.4-7.5m-6.7 14.2s-3 3-3.2 8.6c0 6.6 4.7 7 7.9 6.8 3.7 0 6.8-2.2 6.7-9.2 0 0-6.2-2.7-11.4-6.2m80.3-14.3l.4-4.8c.4-3.6 2.4-4.5 4.1-4 1.2.4 3.4 3.1 3.4 3.1v.1a32.2 32.2 0 013.2-2c-.9-.8-5.5-3.7-6.5-3.7-1.2 0-15.2 5.7-19.7 9.6-1 1-1.8 7.3-1.3 9.3a47.4 47.4 0 0016.4-7.5m6.7 14.2s3 3 3.1 8.6c.2 6.6-4.7 7-7.8 6.8-3.8 0-6.7-2.2-6.7-9.2 0 0 6.2-2.7 11.4-6.2"/>
                                 </G>
@@ -1461,7 +1482,7 @@ class FlagComponent extends Component {
                                     <Path d="M415.3 365.8s2.5 2.5 2.9 6.7c.3 3.2-2 5-4.7 4.9-3.9-.2-5.3-5.5-3.6-8.5l5.4-3.1"/>
                                     <Path d="M418.6 378.8c-2 1.1-4 1-5.4 1-3.8-.2-6.7-2.3-6.7-9.3 0 0-4.7 2.3-12.2 4.1 0 0-1.3 1.6-1.5 4.6-.2 2.6 1.5 5.3 3.4 5.1 0 0 10.8-2 17.2-3 3.8-.8 5.2-2.5 5.2-2.5z"/>
                                 </G>
-                                <Path fill="none" stroke="#fff" strokeWidth=".7" d="M353.8 376.5s3.4 2.4-.7 5.5m-9.4-7.2l10.3 4.5m-8.6-2.1l7.6 3.2m-5-5.1l5.8 2.5m41.3-1.3s-3.5 2.4.6 5.5m9.4-7.2l-10.3 4.5m8.6-2.1l-7.5 3.2m4.8-5.1l-5.6 2.5"/>
+                                <Path fill="none" stroke="#FFF" strokeWidth=".7" d="M353.8 376.5s3.4 2.4-.7 5.5m-9.4-7.2l10.3 4.5m-8.6-2.1l7.6 3.2m-5-5.1l5.8 2.5m41.3-1.3s-3.5 2.4.6 5.5m9.4-7.2l-10.3 4.5m8.6-2.1l-7.5 3.2m4.8-5.1l-5.6 2.5"/>
                                 <Path stroke="#000" strokeWidth=".7" d="M313.6 345.2l.2.7v.9a2.4 2.4 0 01-1.2 1.7 3 3 0 01-2.2.3 4.5 4.5 0 01-2.1-1l-.3.4-.5-.1.4-3 .5.1.2 1c0 .4.2.7.4 1a2.3 2.3 0 001.6 1.1h.7a1.3 1.3 0 001-.6 1.9 1.9 0 000-1.6c0-.3-.3-.6-.7-.8l-.8-.6-.8-.5a2.9 2.9 0 01-1-1c-.2-.5-.3-1-.2-1.5l.4-.9a2.6 2.6 0 011.7-1 3 3 0 012 .4l.8.6.4-.3h.5l-.5 3-.5-.2a11.7 11.7 0 00-.1-1 3.7 3.7 0 00-.3-.9l-.6-.7a2 2 0 00-.9-.3 1.4 1.4 0 00-1 .1 1.6 1.6 0 00-.5 1.8c.1.3.3.6.6.8l.8.5a14.6 14.6 0 011.5 1l.5.6m12.4 1.7l-.4-.2h-.6c-.2 0-.4 0-.6.3l-.6 1-1.8 3.3a2.5 2.5 0 01-2 1.3H319a4.3 4.3 0 01-2.8-2.3 2.3 2.3 0 010-2l2.6-4.5.1-.3-.1-.4-.3-.3-.3-.3.2-.4 3.2 1.8-.2.4a3.2 3.2 0 00-.8-.3l-.4.1a1 1 0 00-.2.3l-2.3 4.2-.3.7a1.8 1.8 0 00.2 1.6c.2.3.5.5 1 .7.3.2.7.4 1 .4a2 2 0 001.6-.6c.2-.1.3-.3.4-.6l1.8-3.1.4-1v-.7a1.6 1.6 0 00-.4-.5l-.4-.3.2-.4 3.2 1.7a20 20 0 01-.3.4m4.5 7.8a2 2 0 010 2 2 2 0 01-.8.7c-.3.2-.6.3-1 .3l-1-.1a4.2 4.2 0 01-1-.4L323 355l.2-.4a5 5 0 00.8.3h.3l.3-.4 3.1-5.4a1 1 0 00.1-.4.6.6 0 000-.3 1.8 1.8 0 00-.4-.4l-.3-.2.2-.4 3.6 2 .7.6.6.7a1.7 1.7 0 010 1.7 1.9 1.9 0 01-1.3 1 3.5 3.5 0 01-1.6-.2h0l.6.6.5.8zm-.6-2c.2 0 .4 0 .6-.2l.4-.6c.2-.5.3-.8.2-1.2 0-.4-.4-.7-.9-1l-.4-.2-.5-.3-1.6 3 .6.3.9.3h.7zm-.7 3c.3-.5.4-1 .2-1.4-.1-.5-.5-.9-1-1.2l-.6-.3-.4-.2-1.5 2.6a.7.7 0 000 .7c0 .2.3.4.6.6.6.3 1 .4 1.5.3.5-.2.9-.5 1.2-1.2zM349 360a3.6 3.6 0 00-.5 0 1.5 1.5 0 00-.5-.1c-.2 0-.4.2-.5.4a5 5 0 00-.5 1l-1.5 3.5a2.5 2.5 0 01-1.9 1.5h-1.1a4.5 4.5 0 01-2.3-1 3.2 3.2 0 01-.7-1 2.3 2.3 0 01-.1-1.9l2-4.7a1 1 0 000-.4v-.3l-.4-.3-.3-.2.1-.4 3.4 1.4-.1.4a3.6 3.6 0 00-.9-.2l-.3.1a1 1 0 00-.2.4l-2 4.4-.1.7a1.8 1.8 0 00.4 1.5c.1.3.5.5 1 .7.3.2.7.3 1 .2.4 0 .7 0 1-.2l.6-.5.3-.6 1.4-3.3.4-1v-.7l-.5-.5a3.9 3.9 0 00-.5-.3l.2-.4 3.3 1.4-.2.4m9.6 11.3l-3.7-1.1v-.4h.6l.5.1c.1 0 .2 0 .3-.2a.7.7 0 00.2-.3l1.8-6.1a1.4 1.4 0 00-.1 0l-5 6.3-.3-.1-.6-8.1a.7.7 0 00-.1 0l-1.5 5a5 5 0 00-.2 1.1l.1.6a3.4 3.4 0 001 .7v.4l-3.5-1 .1-.4a5 5 0 00.6 0h.5c.2 0 .3-.2.4-.4.2-.2.3-.6.4-1.1l1.3-4.3v-.7a1 1 0 000-.4l-.5-.4-.5-.2.2-.4 2.8.8.7 7 3.6-4.7a4.6 4.6 0 00.5-1l2.8.9-.1.4a4 4 0 00-.9 0 .5.5 0 00-.3 0l-.2.4-1.7 6a.8.8 0 000 .4l.2.4a3.6 3.6 0 00.7.4v.4m9-2.8a2 2 0 01.7 1.8 2.1 2.1 0 01-1.2 1.7l-1 .3h-1l-4.3-.5.1-.5a4.5 4.5 0 00.9 0l.3-.2.1-.3.8-6.3a1 1 0 000-.4.6.6 0 00-.3-.2 1.7 1.7 0 00-.4-.2l-.4-.1v-.5l4.1.5 1 .2.7.5a1.7 1.7 0 01.7 1.5 1.8 1.8 0 01-.9 1.4 3.5 3.5 0 01-1.5.5h0c.3 0 .5.2.8.3l.8.5zm-1.3-1.5l.4-.5.1-.7c.1-.5 0-.9-.2-1.2-.2-.3-.6-.5-1.2-.6a28.4 28.4 0 00-1 0l-.4 3.3h.8c.3.1.6 0 .8 0 .3 0 .5-.1.7-.3zm.5 2.9a1.7 1.7 0 00-.4-1.3c-.3-.4-.8-.6-1.4-.7h-.7l-.4-.1-.4 3c0 .3 0 .5.3.7l.8.2c.6.1 1.1 0 1.5-.3.4-.3.6-.8.7-1.5zm11.9 2.8h-2.4l-1.4-2.2-1.4-1.8h-1v2.8a1 1 0 00.2.3l.3.3h.3l.5.1v.4h-3.7v-.4h.4l.4-.1a.5.5 0 00.3-.2V365.2v-.3l-.3-.3h-.4l-.4-.1v-.5h4l1.1.1 1 .4.5.6a2.4 2.4 0 01.1 1.9l-.5.7-.6.4a5.5 5.5 0 01-.9.3l1 1.5 1.1 1.4a2.8 2.8 0 001 .8l.4.2h.4v.4zm-3.3-6.6c0-.5-.1-.9-.4-1.2-.3-.3-.8-.5-1.3-.5h-1.1v3.8h.8c.6 0 1-.2 1.4-.6.4-.3.6-.8.6-1.5zm13.5 5.9l-3.7.3v-.5l.8-.1.3-.3v-.1a.5.5 0 000-.2l-1-1.9-3 .3-.3.7-.2.6v.8c0 .1.1.2.4.3l.9.1v.4l-3.3.3v-.4a2 2 0 00.7-.3l.4-.4.2-.5 1.2-3.8 1.2-3.8h.5l3.5 7.3a1.4 1.4 0 00.6.6l.3.1h.5v.5zm-3.8-3.3l-1.6-3.3-1.1 3.5 2.7-.2zm16.3-6.9l-.4.1-.8-.8c-.4-.3-.7-.4-1-.4h-.4l-.6.2-1.4.4.9 3.4 1-.3c.3 0 .5-.1.7-.3l.3-.3.1-.5v-.6l.4-.2 1 3.4h-.5a3 3 0 00-.3-.5l-.4-.4a1 1 0 00-.5-.2l-.7.1-1 .3.8 2.9.2.3.3.2h.9l.2.3-3.7 1-.2-.4a9.8 9.8 0 00.9-.3l.2-.3a.8.8 0 000-.4l-1.7-6a1 1 0 00-.1-.4l-.4-.2a2.5 2.5 0 00-.5 0h-.4l-.1-.4 6.7-1.8.5 2.1m9.9-.7l1 2.4-6.3 3-.2-.4.4-.2.3-.3.2-.3a.8.8 0 00-.1-.4l-2.8-5.6a1 1 0 00-.2-.3.5.5 0 00-.3-.1h-.5l-.4.1-.2-.4 3.4-1.6.2.4-.4.3c-.2 0-.3.2-.3.2a.4.4 0 00-.2.4l.1.4 2.6 5.2c0 .3.2.5.3.6l.3.2h.4l.8-.4.4-.2.4-.2.3-.3.2-.3.2-1v-1l.4-.2m4.6-8.7c.6.2 1.1.4 1.6.8a5.4 5.4 0 011.9 3.3 4.3 4.3 0 01-.8 3.2c-.3.4-.7.8-1.2 1a4 4 0 01-4.8-.3 5.2 5.2 0 01-1.9-3.2 4.1 4.1 0 012-4.3 4.2 4.2 0 013.3-.5zm2.4 5.8c0-.4 0-.9-.2-1.3a7.5 7.5 0 00-1.6-2.8 4.1 4.1 0 00-1.2-.8 2.3 2.3 0 00-2.3 0l-1 1-.2 1.2c0 .4 0 .9.3 1.3a7.5 7.5 0 001.6 2.7c.3.4.7.6 1 .8.4.3.8.3 1.2.4.4 0 .8-.2 1.2-.4a2.4 2.4 0 001.2-2zm11-6l-2 1.4a49 49 0 00-2.4-.8l-2.2-.7-.7.5 1.6 2.2.3.3h.4a4.6 4.6 0 00.7-.4l.3.4-3 2.2-.3-.4a8.2 8.2 0 00.6-.6.5.5 0 000-.3.8.8 0 000-.4l-3.7-5.1a1.1 1.1 0 00-.3-.3c-.1 0-.2-.1-.4 0a3.2 3.2 0 00-.8.3l-.2-.4 3.3-2.3 1-.5.9-.3c.3 0 .6 0 .9.2l.7.7.4.8v.8c0 .2-.1.5-.3.7l-.5.8 1.7.6 1.7.5a2.6 2.6 0 001.3.1 2.7 2.7 0 00.7-.3l.3.4zm-6.5-3.3c-.3-.5-.6-.7-1-.8-.5 0-1 0-1.4.4l-.9.6 2.2 3 .7-.4c.4-.4.7-.8.8-1.3.1-.5 0-1-.4-1.5zm13.8-2.1l.7 2.4-6.9 2.6-.1-.4a4.3 4.3 0 00.8-.5l.1-.3a.8.8 0 000-.4l-2.2-5.8a1 1 0 00-.2-.4l-.4-.1h-.4a2 2 0 00-.5.1l-.1-.4 6.4-2.4.7 2-.4.2a2.8 2.8 0 00-.9-.8c-.4-.2-.7-.3-1-.2h-.3l-.6.3-1.3.5 1.2 3.2 1-.3.5-.4c.2 0 .2-.2.3-.4v-.5a3 3 0 000-.6l.4-.1 1.2 3.2-.4.1a3.3 3.3 0 00-.4-.5l-.4-.4a.9.9 0 00-.5-.1l-.6.1-1 .4 1 2.5.2.5.4.3h.4l.8-.3.5-.2a3.6 3.6 0 001-.5l.2-.3.3-1v-1l.5-.1m7.4-6c.4.3.8.7 1 1.2a5.3 5.3 0 01.6 3.8c-.2.6-.5 1-.8 1.5a4 4 0 01-2.8 1.6 4 4 0 01-3.2-.8 4.3 4.3 0 01-1-1.4 5 5 0 01-.6-1.7 5 5 0 010-2 4.1 4.1 0 013.6-3.1 4.2 4.2 0 013.2.8zm-.2 6.2l.4-1.4a7.5 7.5 0 00-.5-3.1 4 4 0 00-.6-1.3 2.3 2.3 0 00-2.2-.8 2 2 0 00-1.2.5l-.8 1-.3 1.3a7.3 7.3 0 00.5 3.1c.1.5.4.9.6 1.2.3.4.6.6 1 .8.3.1.8.2 1.2.1a2.4 2.4 0 002-1.4z"/>
                             </G>
                             <Path fill="none" stroke="#000" d="M423 213.7v55.2c0 11-1.5 54.7-48.6 71.7-47-17-48.6-60.7-48.6-71.7v-55.2H423"/>
@@ -1473,12 +1494,12 @@ class FlagComponent extends Component {
                             <Rect width="500" height="300" fill="#cf142b"/>
                             <G transform="scale(0.43)">
                                 <Path fill="#00247d" d="M0 0h1200v600H0z"/>
-                                <Path stroke="#fff" strokeWidth="60" d="M0 0l600 300m0-300L0 300"/>
+                                <Path stroke="#FFF" strokeWidth="60" d="M0 0l600 300m0-300L0 300"/>
                                 <Path stroke="#cf142b" strokeWidth="40" d="M0 0l600 300m0-300L0 300" clip-path="url(#a)"/>
-                                <Path stroke="#fff" strokeWidth="100" d="M300 0v350M0 150h700"/>
+                                <Path stroke="#FFF" strokeWidth="100" d="M300 0v350M0 150h700"/>
                                 <Path stroke="#cf142b" strokeWidth="60" d="M300 0v350M0 150h700"/>
                                 <Path fill="#cf142b" d="M0 300h600V0h600v600H0z"/>
-                                <Path fill="#fff" d="M767.3 145.2v253.6c3 36.3 78.7 59.2 131.5 97.7 69.2-46.4 136.3-55.8 139-107.8l.9-243.5H767.3z"/>
+                                <Path fill="#FFF" d="M767.3 145.2v253.6c3 36.3 78.7 59.2 131.5 97.7 69.2-46.4 136.3-55.8 139-107.8l.9-243.5H767.3z"/>
                                 <G fill="none">
                                     <Path fill="#2f8f22" stroke="#000" strokeWidth=".5" d="M767.3 395.2l2.8 14.4 9.5 11.4 68.3 44 50 31.2 97.7-53.2 33.7-25.8 6.6-33.7-4-7.9.9 8.2-2.5 6.6-2.9-1.9-1.9-12.2-.3 9-4.7 5.4-1-6.6 1.3-4.7-1.9-5.3-.6 10.7-2.5 4.7-2.2-3.2 1-4.7-.4-4.4-1.6-2.2-.3 4.7-1 1.6.4 2.8-2 2-1.2-3.9.7-3.4-.7-3.2-1.2-3.4.3 5.6-3.2 7-2.5 1.5-1.6-1.9.4-6.6-2.3-3.7.7 8.1-3.2 7.3-1.9-2.2-1-2.2v-3.5l3.6-8.8-3.5 3.1-2.8 7.6-1.3 2.2-1.6-3.8 2.2-8.5-1.2-1.6-2.9 10.4-2.5 1.6-1.9-.6-1.2.6-152.5 8.5-4-6-1 6-2.5 2.2-2.5-11-2 11.7-2.4-5.7 1.2-13-1.2-.9-2 7v9.7l-.9 6.6-1.9-1.2-2.5-6-.3-9.8 1-7-2.6 8.3v10l-.3 5.1-3.1-7-1.6-5.6-3.2-6.6 2 8.5v4.4l-5.4-4.7-2.9-13.3-.6 9.8 1.3 4.7-1.6 2-3.2-5.7-1.8-7.6-2.3-7.2v11.6l1.6 6.3-1.2 1.6-2.6-1.3-.9-7-.6-10-2.5 7-.7 7.2-1 5.7-1.5 3.7-4.4.4z"/>
                                     <Path stroke="#4dcf4a" strokeWidth=".9" d="M876 472.1c-.8-14.9 12.7-29.8-23.6-44.7"/>
@@ -1504,7 +1525,7 @@ class FlagComponent extends Component {
                                         <Path d="M880 246.4l4.1-.3 3.3.2 1.7.5 3.3 1.8 1.9 1 3.7-.3-1.5-1.8-1.4-1.8-1-1.7-.2-1.8-.8.2-1-.2-1.1-1.5-.7-2.3-.5-3h-1l-.7 1.3.8.8.7 1.4-1.2 1.5-.1 1.2-1.6 1.2-2.1 1-2 .8-2.3.8-.3 1zm30.3-5.4v5l1.9 1.6h1.6l1.3-.7.4-1-1.2-.8-.5-1.4-2.5-2.7h-1v0zm19.2 4l5.1 3.5 1.6.4 1.4-.4 2.4-2 1.1-2.5.2-2H940l-2 1.3-2.6.2-2.2.3h-1.6l-1.7.4-.5.8zm14.7-3.9l-1 1.6-.9 2.3-2.1 2.3.1 1.6h-1l.2 1.3 1.6 1.3 4.7.7 3.6-4.7v-1.3l-2-2.4-1.4-.3-1.8-2.4zm21.5 13.3l2.4 1.2v.8l-1 1.3-.5 2.5-.3 1.5-2.8.1-3-1-1.6-1.1h-1.6l-.8-.7-1.4-1-1.8-1.1-1.9-2.5-1.3-1.7v-1.2l1.8-2.2 1.8-.6h7.9l3.7-1.3 3-2.5 3.5-.7.8-1 2.4-.4 5.9-3 3.3.5 3.3-.1 2.8.8 1.1 1-.6.3-1.5-.1-1.8 1-.2 3.1 1.4 2.6-.4.7h-1.7l-1.2-.7-.6-1v-1.1l-1.2-1.7-1-.3h-2l-.8 4.5h-1l-2-1.8-3-.3-2 1.7.7 2.4 3 2.8h1.5l1.4 1.7-.1 1.3-2.1-.5-2.2-.5-1.7-.8-1.5.3-1.6-1-1.7-.7-1-.5-.8 1zm8 52.8l-1.9 1.7-1.2 2.5-.5 2.5-.8 3.1-.3 2.4.3 5.3.2 2.9 1.7 2.7 1 .2 1 2.2 1.5-4.2.7.5.5 3.1 2.5 2.2s-2.3-1.2-2.9-1.2-.6.7-.6.7l.6 1.3 1.4 1.4 2.6 1 4.6.1-1 1h-3.3l-.8.7 1.2 1.7 1.4 2.2 2.6 1.3 2.7-.7h.9l-.5 1 1.4 1 1.2 1.1 1 1.2 1 .2v1.3l-1.7 4-.3 2-1 1.4-.5 2.4-1.6 2.8-.2 1h.8l1.2-1.6 1.7-.7 2-2.7s1.2.4 1.5-.2c.3-.5 1.5-4.3 1.5-4.3l1.3-.2.6-4 1 3.7 1 4.7-.4 3.9-2.3 4.3-.6.7.3 1.4h1.7l2-2 3.4-4.6 1.3-4.6.8-8.8 1.5 4 1.4 4.1.7 3.2-1 4-1.4 5 1.8-1.3 3.8-4.2 3-4.4.7-3.3.8-6.1-.5-4.9.2-1.8.6-1v-3.2l-.7-1.3-2.2 2.8-.9.2-2.5-1.7-.6-.2-1.4-2-1-3.3V329h-.5s.3-3.1.6-4l.6-2.3-.4-3.3-1.7-3.1-2.1-1.8-3.3-1-3.9-1-2.2-1.9-4.2-.4-2.2.3-4-2-2.6-1h-3.3l-3.2-.4-1.6.1zm-144.2.2l-8.2-.1-1.3-.7-2 1.6h-3.8l-4.2 2.4-2.8 2.1-1.5-.2-5.7 5.3.8 4.3.6 1.2.4 4.1.1 6-1.3 1-2 5-1.1 4.2-1 8.5.8 6.2-1.1 3.3-2.4 3.7-.4 1.8 2-1.3-.4-.7 1 1.5 2.5-4.5 1 1.7 1 .1v-5.6l-1.2-8.7 2.8 9 .7 3.4.5-.2.3-7.4 1.8 4.1.2 3.6.8.7.5-1v-5.5l-3-8.7-1.5-8.1 4 10.6 2.3 2.1 2.2 5.8 1.8 3.3.3 2.2 1.3-.9.5-.8-1.1-.8.8-.7-.2-3-1-6.9h-1l-3.4-7.3 3.1 4.5h1.4l.1-1.2-1.5-3-.3-3.4 3 4.3 1-.5-1.7-4.8-.3-5.5 1 2.4-.2 2.6 2.2 2.6 2.1 1.2 1.7-2-1.2-.8-.5-2.3-1.6-2v-2.7l2.3 4.2 2.1 1.5 2.2.5 2.1-1.5 3.6-4.2-.4-.5-3.8.2-3-2-2.7-2.4V326l.5.3 1.2 2.3 2.1 2.2 2.5.3 3.2.2 3.4-3.1 1.8-6 .5-3.3-.6-4.1-2.2-4.8-1.3-2.2-1.2-.5zM951.2 399l-8.8 9-1.1-.2-3.2 2.6-.1 2.8 3 2.3 1.1 2.2.8-.2 3 3.6 2.8 4 1.2.7.8 1.8-1.5 2.1.5 1.4 2.3-.4 2.7.2 1.6 1 .7 3v1.1l1.8-1 1.5-2.1.2-5.3-.4-1.5.5-4 .5 5.3 1.2 1.7.8-.7 1 3.5 2.1 2.1 1.2 2 .2-1.3-.2-2.6 1.2-3 1.3-3.5 1.3-.8 1.2.5 1.6 1.6-.1.7 1.4-.2-.3-4-2.1-3-3.3-2-1.7-1.7-1.5-2.7 2.3 1.4 2.5 2.3 2.3 1.1 1.7.4 2.8 5.4 1.8 2.7.3-3.7 1.4-4.1 1.3-1.8 1.6-.2 2.2.7-.5-2.5-1.7-3.1-3.3-3-3.4-2.7-3-1.3-2.7 2.3-.8.4-1.5 1.3-1.1-.5-3.8-3.7-1-.6-1.7-4-2.5-1.1-3.8.3-4.6-1zm-99.3-2.2l1.1 2 1 3.2 1.7 1.8-.2 1 2.3 2 2.3 3.6 3.8 3.1-2.8 2.5-6.6 5-2.1.6-2.9-1.6.4 4 1.1 1.8-3-.7-3.4.3-2.2 1.9-.5 1.8-.8-1.3-1.1-1.9-.4-.3-.6.5.5.3.1 3.3-.8.7-.2 1-3.8 2.5-1-2.5-1.3-2.8-2.3-1.2-2.5.4-2.8 1.6.8-2.3 1.7-2.7 3.1-2.6 3.2-2 2.5-1 .6-.3-.8-.8-4.6 1.3-3.3 2.1-3.5 2.5-2.7 3.8-1.3 1v-2.8l-1.5-3.8-.5-2.5-1.5-1.8h-1.8l-2.4.5 1.8-3.1 3.6-2 1.7-2.8 3-2.5 2.4-.5 3.7.5 1.8 1 3.4.1 2.2-.1 2.6-1.3 2.2-4 3-4.3 3.4-1.8 4.2-.4z"/>
                                     </G>
                                     <Path d="M892.9 173.3v2l-.8 1.3h-1.4l-.8 1-.2.6 1.5 1.5 1.4 1 .6.7.4.2h6l.7.6 1.3-1 1.6-2.4h5l2.7 2 .2 1.7.6.2 1.4-1.2 1.2-.1.6.8h1l3.6-3.2.6-.8h1.3l-.2-1.1-1.4-.4-1.2-1.2-.4-2-1.1-.3-2 1-3.4 1.7-1.1.8-1 .1s-.5-.3-.7-.3h-1.3l-1 .8h-1l-.2-.3-4.6-.3-3.8-1-2-1.3-1.2-1-.4-.3-.5.2z"/>
-                                    <Path fill="#fff" d="M895.7 178.8h2.7l.6.5v.7l-1.2.6h-2.2l-1.6-.2-1-1-.3-1.8 1.4-1.6h1.4l.1.5.1 2.3zm17.6-.1l-.5.3v.7l.6.4 2.6.1 2.9-2.3v-.9l-1.7-1.4h-1.5l-.2.4.3.7.5.8-.5 1-2.5.2z"/>
+                                    <Path fill="#FFF" d="M895.7 178.8h2.7l.6.5v.7l-1.2.6h-2.2l-1.6-.2-1-1-.3-1.8 1.4-1.6h1.4l.1.5.1 2.3zm17.6-.1l-.5.3v.7l.6.4 2.6.1 2.9-2.3v-.9l-1.7-1.4h-1.5l-.2.4.3.7.5.8-.5 1-2.5.2z"/>
                                     <G fill="#48489c">
                                         <Path fill="#5656a6" d="M819.4 249.5l1.5 2.7v4.9l-.7.6-2.2-2-1.2-1.6-1.2-2v-1.7l1.2-1 1.5-.3 1.1.4zm4.7 7.8l3.5-7v-2l-1.3-1.9h-1.8l-1.9 1.8v6.3l1.5 2.8zm6 0l1.8-.8 4.7-4.4.7-1.3-.4-1-1.3-1-.8-.2-2 .8-1 1-2.1 3.9.4 3zm8.1 3.1l-1.6 1.2-2-.1-3.4-2.4.2-.5 2-.3 2-.9 1.9.2 1 1 .4 1-.5.8z"/>
                                         <Path d="M970 257h2.7l1.6.8h3v1.2l-1.7 1.3-3.5 1-1.5.6h-1.2l-.8-1.1V259l.7-1.4.7-.7zm18.8-3.7s1.9-1 2.3-1.9l1.1-2.6.7-3-.9-2.7-1.8-.4h-1.5l-.8 1-.3 2.2.9 1.8.7 1.1-.2 2-.2 2.5zm-7 1l1.8-1 1.2-2.2.1-2.5-1-2-1.2-1.3h-1.8l-.5 3.3 1.3 1.3v4.4h0zm-2.3 2l.7-.7.3-1.8-.7-2.6-1-1.2-1.3-1.2-1.5-1h-2l-1.3 1.1.4 2.2 2.3 1.7 2 .4 2 3.2zm8.6-5.5v2l-2.1.4-.2-2.9 2.3.5z"/>
@@ -1581,92 +1602,88 @@ class FlagComponent extends Component {
                 vg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <G transform="translate(-17455 -13833)">
-                                <Path d="M-11.184,151.418V5.34H487.041V304H-11.184Z" transform="translate(17467.959 13829)" fill="#00247d"/>
-                                <Path d="M724.648,137.357l120.128-.479L844.3,243.606s4.307,16.272-50.253,41.159c19.622-2.393,41.159-22.973,41.159-22.973s8.615-11.008,12.922-4.786c3.829,6.222,8.136,9.093,11.008,11.486,3.35,2.393,5.743,9.093.957,13.879s-11.965,5.743-13.879,0c-3.35,1.436-22.494,24.408-61.26,25.366-39.724-.479-61.739-25.844-61.739-25.844s-5.265,8.615-12.922,1.914c-7.179-8.615-1.914-14.358-1.914-14.358s6.222-3.35,8.136-6.222c2.872-2.872,3.829-7.658,8.615-7.658a10.421,10.421,0,0,1,8.136,5.265s20.1,21.058,41.638,23.93c-48.817-23.451-50.731-37.809-50.253-41.638Z" transform="translate(17035.02 13772.608)" fill="#fff"/>
-                                <Path d="M748.046,143.1l114.385-.479v102.42c.479,13.4-22.015,27.28-57.432,44.509-35.895-18.665-56.953-30.152-57.432-44.509Z" transform="translate(17014.852 13769.836)" fill="#006129" stroke="#000" strokeWidth="1.819"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(16998.814 13764.392)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(16993.555 13759.595)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17004.547 13756.7)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17004.121 13764.872)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(16993.797 13764.566)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(16998.434 13784.067)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(16993.174 13779.272)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17004.164 13776.376)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17003.738 13784.549)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(16993.414 13784.244)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(16998.291 13803.457)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(16993.033 13798.664)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17004.023 13795.766)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17003.594 13803.938)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(16993.273 13803.636)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(17011.021 13824.466)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(17005.766 13819.676)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17016.754 13816.774)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17016.326 13824.945)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(17006.004 13824.646)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(16996.621 13841.664)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(16991.363 13836.875)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17002.355 13833.973)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17001.926 13842.144)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(16991.602 13841.847)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(16997.004 13861.958)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(16991.746 13857.172)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17002.734 13854.267)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17002.307 13862.438)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(16991.984 13862.143)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(17068.58 13764.726)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(17063.326 13759.929)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17074.303 13757.034)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17073.889 13765.206)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(17063.566 13764.899)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(17067.912 13784.021)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(17062.66 13779.226)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17073.639 13776.328)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17073.221 13784.5)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(17062.898 13784.196)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(17067.053 13803.79)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(17061.801 13798.997)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17072.777 13796.099)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17072.361 13804.27)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(17062.041 13803.969)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(17068.055 13823.179)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(17062.801 13818.389)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17073.777 13815.487)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17073.363 13823.658)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(17063.041 13823.359)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(17067.816 13842.616)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(17062.564 13837.828)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17073.541 13834.926)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17073.125 13843.096)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(17062.803 13842.8)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(17067.912 13862.148)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
-                                <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(17062.66 13857.362)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(17073.639 13854.457)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(17073.221 13862.629)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
-                                <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(17062.898 13862.333)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M875.353,381.92s2.872,6.222,5.743,2.393c3.35-3.829,1.914-5.265,1.914-5.265l-6.7-3.829-2.393,4.307Z" transform="translate(16951.752 13653.328)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M851.775,273.757l.957-.957c.479-.479-.957-.957-1.436-1.436l-.479.957Zm-15.794-1.914-5.743,3.35s-3.35.479-3.35,0c-.479-.479,0-.957,1.436-.957,1.914-.479,6.222-4.307,6.222-4.307Zm.479-109.12v2.393c0,.479-.957,2.393-1.436,1.914s-.479.479-.479.957l.957.479V169.9c.479.479-.957,2.393,0,2.872l3.35.957c.957,0,0,2.872,0,2.872l-1.914,4.786,11.486-1.436-2.393-3.829a4.192,4.192,0,0,1-.957-2.872V161.287l-8.136-1.436Zm-2.393,17.229a6.732,6.732,0,0,0-3.35,6.7,48.364,48.364,0,0,0-1.914,9.093l-5.743,6.7-4.307,6.7c-.479.957-3.35,4.307-3.35,5.265,0,1.436-.957,6.7,2.393,7.179.479.479,2.872-6.222,2.872-6.222s.479-2.872-.479-3.35,1.914-2.393,1.914-2.393l6.222-4.307,3.829-4.307Z" transform="translate(16981.104 13761.276)" fill="#ffc6b5" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M849.03,192.874a3.079,3.079,0,0,0,3.35,1.914l4.786-2.393,2.393.479s5.265,5.265,5.265,6.7c0,1.914-2.393,1.436-3.35,2.393s-1.914,3.829-1.914,5.743c.479,1.914,1.914,4.307,1.436,5.265l-.957,1.914.957,2.393-.957,3.35v17.229L861,239.3l4.786,22.494-.479.957,1.914,4.307,2.872,9.572-.957,3.829s1.914,4.786,1.436,5.265c0,.957-3.35.957-3.35.957l-.957-.479s0,1.436-.479,1.436L861,287.158s-1.436,1.914-2.393,1.914c-.479,0-1.436-1.436-1.914-.957,0,0,.957,1.436.479,1.914,0,0-3.829.957-4.786-.957-.957-1.436.479-1.436,0-1.436l-2.393-1.436c-.479.479,1.436.957,1.436,1.914l-2.393,1.914c-.479,0-1.914-2.872-4.307-2.872l-3.35.957-3.35.957-1.436-1.436.479-3.35-.479-1.914,1.436-4.307V264.185s-1.436,0-1.436-.957l2.393-23.451,1.436-6.222c0-1.436-.957.479-.957,0l3.35-12.443.479-7.658-.479-3.829s-2.872-.957-2.872-3.35c-.479-2.872,2.872-4.786,3.35-5.743l1.436-4.307A6.608,6.608,0,0,1,849.03,192.874Z" transform="translate(16970.418 13744.953)" fill="#fff" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M849.944,384.313l-8.615,4.307a1.028,1.028,0,0,1-.479-1.914l2.393-.479-2.393-1.914,3.829-1.436s.957,2.393,1.436,1.914l2.872-1.436Z" transform="translate(16968.605 13649.495)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M875.7,298.644c.957.957.957,2.872,2.872,1.914,1.436-.957-.957-2.872-.957-2.872Zm3.35,0s.479.479,1.436,0-1.436-1.914-1.436-1.914l-.957.957Zm2.872-90.933s2.872,7.658,2.872,9.572c.479,1.914,1.436,9.093.957,10.529l-4.786,7.179-2.872,6.222-.957,5.265.479,1.914s-2.393,2.393-3.35,1.914l-2.393-1.914c-.479-.957.479-4.307.957-5.265l4.307-9.572c.479-.479,3.35-7.179,3.35-8.615a8.6,8.6,0,0,0-1.914-4.307C876.18,213.454,877.137,209.147,881.923,207.711Z" transform="translate(16952.828 13737.261)" fill="#ffc6b5" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M855.252,158.817h2.393c.957-.957,2.393-.957,2.872,0l1.436.957s-1.436,2.872,0,3.35l1.914.479c0,.479-1.436,1.436-.957,1.914l.957.957-.479,1.914,1.436,1.436c.479,0,0,1.914,1.436,1.436s1.436-1.436,1.436-1.436a3.269,3.269,0,0,0,1.914-1.914,1.77,1.77,0,0,1,.957-1.436s1.914-.957-.479-2.393c0-10.529-7.179-9.572-7.179-9.572s-.479-1.914-1.914-1.436-1.436,1.436-2.393,1.436a1.77,1.77,0,0,1-1.436-.957l-.957,2.393s-2.393-.957-2.393,1.436C854.295,159.3,855.252,159.3,855.252,158.817Z" transform="translate(16961.816 13764.939)" fill="#9c5100" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M848.552,179.474s-6.7,4.307-6.7,5.743m8.136-4.786-1.436,1.436m3.35,0s-3.35,2.872-2.872,4.786M836.108,179l-.479,2.872c0,.479,1.914,3.35,1.914,4.786v2.872m-2.872-6.7.479,2.872,1.914,3.35m-3.35,3.829s1.914.957,3.829-2.872m2.872-2.393s-1.436,3.829.957,4.786c2.872,1.436,4.307,1.436,5.743.957l1.914-.957m-9.572-.479s.479,5.265,7.658,10.051m-7.179-5.265s0,4.307,2.872,6.222M838.5,191.439s-2.393,6.7-4.307,7.179m3.35-2.393-.479,6.7m-.479.957s1.436,1.914,2.872,1.914c1.914-.479,2.393-2.393,3.829-1.914.957,0,1.914.957,4.786.957m-3.829,1.914s0,3.829.479,4.307l.479,3.829m-10.529-10.051-.479,5.265c-.479.957-1.436,3.35-.957,5.265m-2.872,1.914,1.436-.957m.957.479s-3.35,13.879-2.393,22.494m2.872-21.537s-1.436,10.529-.957,12.443m0-12.922,6.7.479m.957-.957a7.365,7.365,0,0,0,3.829.957m-4.786,4.307-.479,21.537M848.552,225.9s1.914,15.794,2.872,17.229m-6.7-14.837s.957,13.879,1.914,14.837m-19.144,4.786a8.141,8.141,0,0,0,4.307-2.872c2.393,3.35,6.222,0,6.222,0s5.743,3.829,8.136-.479c4.307,2.872,6.222-.479,6.222-.479s1.436,2.393,2.393,2.393m-6.222,1.436s2.872,13.879,7.179,17.708m-22.494-19.144.957,19.622m-1.436-6.7-.957,8.136m-3.829.957s.957,2.872,5.265,0,4.307.957,4.307,1.436.957,3.829,2.393,1.436m3.35-4.786s-.479,6.7,5.265,1.914c6.222-4.786,7.179,0,7.179,1.436M843.287,159.851s-.479,3.35,3.35,2.872c-.479,1.914.957,2.393.957,2.393m2.393,1.914s1.436,1.436,0,2.393m-5.265.479s.957.957,1.914.479l1.914.957,1.436.479m-9.572.957s2.393.957,4.307-2.872m-9.093-1.436h1.436m-18.187,47.86v3.35m-3.35-3.829s1.914,3.829,1.914,5.743" transform="translate(16980.971 13761.287)" fill="none" stroke="#000" strokeWidth="0.861"/>
-                                <Path d="M855.731,179.952h1.436l-1.436.479m8.615,53.124s1.436,0,1.436,2.393c.957-3.35,2.872-3.35,2.872-3.35" transform="translate(16960.869 13751.326)" fill="none" stroke="#000" strokeLinejoin="round" strokeWidth="0.861"/>
-                                <Path d="M859.559,171.338Z" transform="translate(16958.982 13755.753)" fill="none" stroke="#000" strokeLinejoin="round" strokeWidth="1.627"/>
-                                <Path d="M786.293,409.1c32.066-.957,52.646-24.408,52.646-24.408-.479-.479,4.307-6.7,7.658-5.743,3.829.957,8.615,11.486,14.836,13.879,3.35,4.786-.957,9.093-1.914,10.051-1.436.957-7.658,3.35-8.615,0-.479-3.829-2.393-2.872-2.393-2.872s-28.716,27.759-61.26,26.323c-33.98.479-62.218-26.323-62.218-26.323l-2.393,2.393s-2.872,2.872-3.829,2.872c-1.436-.479-7.179-4.307-7.658-8.136-.479-3.35,3.35-6.222,3.35-6.222s10.051-7.179,11.008-11.486c2.393-1.914,6.222,1.914,6.222,1.914S757.577,410.536,786.293,409.1Z" transform="translate(17032.723 13651.37)" fill="#f7c600" stroke="#000" strokeWidth="1.819"/>
-                                <Path d="M716.938,404.467s2.393-.957,3.35,0l7.658,7.658" transform="translate(17030.523 13638.856)" fill="none" stroke="#000" strokeWidth="1.819"/>
-                                <Path d="M726.031,407.209l-2.393,1.914s6.7,1.436,5.265,5.743m136.4-11.008s-.957-.479-3.35.957L854.773,412" transform="translate(17026.459 13638.978)" fill="none" stroke="#000" strokeWidth="1.819"/>
-                                <Path d="M993.351,410.636l2.872,1.914s-6.222.479-4.786,6.222" transform="translate(16892.668 13635.545)" fill="none" stroke="#000" strokeWidth="1.819"/>
-                                <Path d="M771.976,411.114l-.957.479-2.872.957-8.615,5.265-.479-.957,2.393-11.008v-1.914l4.786,3.35h-.957c-.479-.957-1.436,0-1.436.479l-1.436,7.179,6.222-3.35c.479-.479.957-1.436.479-1.914l-.479-.479Zm2.872,15.315-.479.479-5.265-2.872.479-.479H771.5l1.914-3.35,2.393-4.786c.479-.957,0-1.436-.479-1.914l-.479-.479.957.479,4.786,2.872h-1.914l-1.914,3.35-2.872,5.265C773.412,425.472,773.891,425.951,774.848,426.43Zm20.58-4.786-1.436,4.307-.479-1.436a4.061,4.061,0,0,0-3.35-3.829c-1.436-.479-2.872.479-3.829,1.436-.957,1.914-1.914,3.829-1.914,5.743a4.345,4.345,0,0,0,1.436,3.35l2.872.479.957-2.872-.957-1.436h.479l5.265,1.914h-1.436l-.957,1.914-.479,1.436a9.856,9.856,0,0,1-7.179-1.436,6.157,6.157,0,0,1-2.872-6.222,6.918,6.918,0,0,1,3.35-4.786,6.1,6.1,0,0,1,5.743,0l2.872,1.436q.718,1.436,1.436,0h.479m8.615,13.879-.479.479-5.743-.957v-.479a.917.917,0,0,0,1.436-.479l.479-2.393.957-6.7c.479-.957,0-1.436-.479-1.436l-.957-.479h.479l6.222.957h-.479l-1.436.479-.479,2.872-.957,6.7c-.479.479,0,.957.479,1.436Zm16.272-3.829L819.836,436l-10.529.479.479-.479.957-.479v-3.35l-.479-6.222c0-.957-.479-1.436-.957-1.436h0l5.743-.479v.479l-1.436.479v9.572c0,.479.479.957,1.436.957l2.393-.479c1.436,0,1.914-1.436,2.393-2.393l.479-.957m8.615-10.529-.479.479-1.436,11.008-.957,1.914v.479l3.829-.957c0-.957-.957,0-1.436-.479a.917.917,0,0,1-.479-1.436v-1.436l4.307-.957,1.436,1.914c.479.479-.479.957-.957.957v.479l5.743-1.914-1.436-.479-2.393-2.393Zm-.479,4.307,3.35,3.829-3.829.957Zm18.665-12.443,1.436,2.872c-.479.479-.479-.479-.957-.479-.957-.479-1.914-.957-2.872,0l-.957.479,4.786,8.615c.479.479,1.436.957,1.914.479h.479l-2.393,1.436-3.35,1.436.479-.479a.917.917,0,0,0,.479-1.436l-4.786-8.615c-.957.479-1.914.479-2.393,1.914l.479,1.914c-.479.479-.479,0-.479-.479l-1.436-2.393Zm7.179-4.307,3.35,4.307.957-2.393c0-.479-.957-1.436-.479-1.914l.479.479,3.35,4.786c-.479.479-.957-.479-1.436-.957h-2.393v.957l2.393,2.872c.479.479,1.436,0,1.914-.479a4.029,4.029,0,0,0,1.914-3.35l-.479-1.914.479.479,1.914,2.872-8.615,6.222.479-.479a1.184,1.184,0,0,0-.479-1.914l-5.265-7.179h-1.914c0,.479-.479,0,0,0l8.136-6.222,1.914,2.872c-.479.479-.957-.479-1.436-.479a2.938,2.938,0,0,0-2.872.479l-1.914.957" transform="translate(17009.109 13638.823)"/>
-                                <G transform="translate(17455 13833)" fill="#fff" stroke="#707070" strokeWidth="1">
-                                    <Rect width="239" height="143" stroke="none"/>
-                                    <Rect x="0.5" y="0.5" width="238" height="142" fill="none"/>
-                                </G>
-                                <Image width="239" height="143" transform="translate(17457 13833)" href={require('../assets/flag_badges/na/gb.png')}/>
-                            </G>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M238.889-.022,500,0V300H0V140.289l238.85,2.646Z"/>
+                            <Image width="239" height="143" href={require('../assets/flag_badges/na/gb.png')}/>
+                            <Path d="M724.648,137.357l120.128-.479L844.3,243.606s4.307,16.272-50.253,41.159c19.622-2.393,41.159-22.973,41.159-22.973s8.615-11.008,12.922-4.786c3.829,6.222,8.136,9.093,11.008,11.486,3.35,2.393,5.743,9.093.957,13.879s-11.965,5.743-13.879,0c-3.35,1.436-22.494,24.408-61.26,25.366-39.724-.479-61.739-25.844-61.739-25.844s-5.265,8.615-12.922,1.914c-7.179-8.615-1.914-14.358-1.914-14.358s6.222-3.35,8.136-6.222c2.872-2.872,3.829-7.658,8.615-7.658a10.421,10.421,0,0,1,8.136,5.265s20.1,21.058,41.638,23.93c-48.817-23.451-50.731-37.809-50.253-41.638Z" transform="translate(-421.98 -61.392)" fill="#fff"/>
+                            <Path stroke={this.state.applyStroke[1]} strokeWidth="5" d="M748.046,143.1l114.385-.479v102.42c.479,13.4-22.015,27.28-57.432,44.509-35.895-18.665-56.953-30.152-57.432-44.509Z" transform="translate(-442.148 -64.164)"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} d="M748.046,143.1l114.385-.479v102.42c.479,13.4-22.015,27.28-57.432,44.509-35.895-18.665-56.953-30.152-57.432-44.509Z" transform="translate(-442.148 -64.164)" stroke="#000" strokeWidth="1.819"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-458.186 -69.608)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-463.445 -74.405)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-452.453 -77.3)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-452.879 -69.128)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-463.203 -69.434)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-458.566 -49.933)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-463.826 -54.728)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-452.836 -57.624)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-453.262 -49.451)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-463.586 -49.756)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-458.709 -30.543)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-463.967 -35.336)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-452.977 -38.234)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-453.406 -30.063)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-463.727 -30.364)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-445.979 -9.534)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-451.234 -14.324)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-440.246 -17.226)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-440.674 -9.055)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-450.996 -9.354)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-460.379 7.664)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-465.637 2.875)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-454.645 -0.027)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-455.074 8.144)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-465.398 7.847)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-459.996 27.958)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-465.254 23.172)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-454.266 20.267)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-454.693 28.438)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-465.016 28.143)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-388.42 -69.274)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-393.674 -74.071)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-382.697 -76.966)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-383.111 -68.794)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-393.434 -69.101)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-389.088 -49.979)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-394.34 -54.774)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-383.361 -57.672)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-383.779 -49.5)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-394.102 -49.804)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-389.947 -30.21)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-395.199 -35.003)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-384.223 -37.901)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-384.639 -29.73)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-394.959 -30.031)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-388.945 -10.821)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-394.199 -15.611)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-383.223 -18.513)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-383.637 -10.342)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-393.959 -10.641)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-389.184 8.616)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-394.436 3.828)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-383.459 0.926)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-383.875 9.096)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-394.197 8.8)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M780.112,164.159l6.7-10.051,6.7,10.051" transform="translate(-389.088 28.148)" fill="none" stroke="#f7c600" strokeWidth="1.819"/>
+                            <Path d="M793.513,165.116a1.436,1.436,0,1,1-1.436-1.436A1.436,1.436,0,0,1,793.513,165.116Z" transform="translate(-394.34 23.362)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M775.326,179h10.529a1.482,1.482,0,0,0-.957-1.914c5.265-.957,3.829-5.743,8.615-6.222.957.479-2.393,2.393-2.393,2.393s-2.872,1.914-1.436,2.872c.957.479,1.436-.479,1.436-1.436s4.786-1.436,3.829-4.307c-.957-2.393-7.179,1.436-7.179,1.436h-3.829c-.479-.479-1.914-2.393-2.872-2.393-1.436,0-2.393,2.393-2.393,2.393H768.626s0,2.393,4.786,2.872a6.379,6.379,0,0,0,2.872,2.393Zm.957-1.914H784.9m-12.444-5.265s.479,3.829,3.829,4.786" transform="translate(-383.361 20.457)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M772.455,163.68c0-1.436.479-1.914,1.436-3.829,0-1.914-1.436-1.914-.957-2.872a3.207,3.207,0,0,0-1.436-3.829c.479,1.914-1.914,3.35-1.914,4.786s.957,1.436.957,3.35l-.479,2.393Z" transform="translate(-383.779 28.629)" stroke="#000" strokeWidth="0.861" fill="url(#linear-gradient)"/>
+                            <Path d="M792.8,154.423a1.436,1.436,0,1,1-1.2-.642A1.436,1.436,0,0,1,792.8,154.423Z" transform="translate(-394.102 28.333)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M875.353,381.92s2.872,6.222,5.743,2.393c3.35-3.829,1.914-5.265,1.914-5.265l-6.7-3.829-2.393,4.307Z" transform="translate(-505.248 -180.672)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M851.775,273.757l.957-.957c.479-.479-.957-.957-1.436-1.436l-.479.957Zm-15.794-1.914-5.743,3.35s-3.35.479-3.35,0c-.479-.479,0-.957,1.436-.957,1.914-.479,6.222-4.307,6.222-4.307Zm.479-109.12v2.393c0,.479-.957,2.393-1.436,1.914s-.479.479-.479.957l.957.479V169.9c.479.479-.957,2.393,0,2.872l3.35.957c.957,0,0,2.872,0,2.872l-1.914,4.786,11.486-1.436-2.393-3.829a4.192,4.192,0,0,1-.957-2.872V161.287l-8.136-1.436Zm-2.393,17.229a6.732,6.732,0,0,0-3.35,6.7,48.364,48.364,0,0,0-1.914,9.093l-5.743,6.7-4.307,6.7c-.479.957-3.35,4.307-3.35,5.265,0,1.436-.957,6.7,2.393,7.179.479.479,2.872-6.222,2.872-6.222s.479-2.872-.479-3.35,1.914-2.393,1.914-2.393l6.222-4.307,3.829-4.307Z" transform="translate(-475.896 -72.724)" fill="#ffc6b5" stroke="#000" strokeWidth="0.861"/>
+                            <Path stroke={this.state.applyStroke[2]} strokeWidth="5" d="M849.03,192.874a3.079,3.079,0,0,0,3.35,1.914l4.786-2.393,2.393.479s5.265,5.265,5.265,6.7c0,1.914-2.393,1.436-3.35,2.393s-1.914,3.829-1.914,5.743c.479,1.914,1.914,4.307,1.436,5.265l-.957,1.914.957,2.393-.957,3.35v17.229L861,239.3l4.786,22.494-.479.957,1.914,4.307,2.872,9.572-.957,3.829s1.914,4.786,1.436,5.265c0,.957-3.35.957-3.35.957l-.957-.479s0,1.436-.479,1.436L861,287.158s-1.436,1.914-2.393,1.914c-.479,0-1.436-1.436-1.914-.957,0,0,.957,1.436.479,1.914,0,0-3.829.957-4.786-.957-.957-1.436.479-1.436,0-1.436l-2.393-1.436c-.479.479,1.436.957,1.436,1.914l-2.393,1.914c-.479,0-1.914-2.872-4.307-2.872l-3.35.957-3.35.957-1.436-1.436.479-3.35-.479-1.914,1.436-4.307V264.185s-1.436,0-1.436-.957l2.393-23.451,1.436-6.222c0-1.436-.957.479-.957,0l3.35-12.443.479-7.658-.479-3.829s-2.872-.957-2.872-3.35c-.479-2.872,2.872-4.786,3.35-5.743l1.436-4.307A6.608,6.608,0,0,1,849.03,192.874Z" transform="translate(-486.582 -89.047)"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M849.03,192.874a3.079,3.079,0,0,0,3.35,1.914l4.786-2.393,2.393.479s5.265,5.265,5.265,6.7c0,1.914-2.393,1.436-3.35,2.393s-1.914,3.829-1.914,5.743c.479,1.914,1.914,4.307,1.436,5.265l-.957,1.914.957,2.393-.957,3.35v17.229L861,239.3l4.786,22.494-.479.957,1.914,4.307,2.872,9.572-.957,3.829s1.914,4.786,1.436,5.265c0,.957-3.35.957-3.35.957l-.957-.479s0,1.436-.479,1.436L861,287.158s-1.436,1.914-2.393,1.914c-.479,0-1.436-1.436-1.914-.957,0,0,.957,1.436.479,1.914,0,0-3.829.957-4.786-.957-.957-1.436.479-1.436,0-1.436l-2.393-1.436c-.479.479,1.436.957,1.436,1.914l-2.393,1.914c-.479,0-1.914-2.872-4.307-2.872l-3.35.957-3.35.957-1.436-1.436.479-3.35-.479-1.914,1.436-4.307V264.185s-1.436,0-1.436-.957l2.393-23.451,1.436-6.222c0-1.436-.957.479-.957,0l3.35-12.443.479-7.658-.479-3.829s-2.872-.957-2.872-3.35c-.479-2.872,2.872-4.786,3.35-5.743l1.436-4.307A6.608,6.608,0,0,1,849.03,192.874Z" transform="translate(-486.582 -89.047)" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M849.944,384.313l-8.615,4.307a1.028,1.028,0,0,1-.479-1.914l2.393-.479-2.393-1.914,3.829-1.436s.957,2.393,1.436,1.914l2.872-1.436Z" transform="translate(-488.395 -184.505)" fill="#f7c600" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M875.7,298.644c.957.957.957,2.872,2.872,1.914,1.436-.957-.957-2.872-.957-2.872Zm3.35,0s.479.479,1.436,0-1.436-1.914-1.436-1.914l-.957.957Zm2.872-90.933s2.872,7.658,2.872,9.572c.479,1.914,1.436,9.093.957,10.529l-4.786,7.179-2.872,6.222-.957,5.265.479,1.914s-2.393,2.393-3.35,1.914l-2.393-1.914c-.479-.957.479-4.307.957-5.265l4.307-9.572c.479-.479,3.35-7.179,3.35-8.615a8.6,8.6,0,0,0-1.914-4.307C876.18,213.454,877.137,209.147,881.923,207.711Z" transform="translate(-504.172 -96.739)" fill="#ffc6b5" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M855.252,158.817h2.393c.957-.957,2.393-.957,2.872,0l1.436.957s-1.436,2.872,0,3.35l1.914.479c0,.479-1.436,1.436-.957,1.914l.957.957-.479,1.914,1.436,1.436c.479,0,0,1.914,1.436,1.436s1.436-1.436,1.436-1.436a3.269,3.269,0,0,0,1.914-1.914,1.77,1.77,0,0,1,.957-1.436s1.914-.957-.479-2.393c0-10.529-7.179-9.572-7.179-9.572s-.479-1.914-1.914-1.436-1.436,1.436-2.393,1.436a1.77,1.77,0,0,1-1.436-.957l-.957,2.393s-2.393-.957-2.393,1.436C854.295,159.3,855.252,159.3,855.252,158.817Z" transform="translate(-495.184 -69.061)" fill="#9c5100" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M848.552,179.474s-6.7,4.307-6.7,5.743m8.136-4.786-1.436,1.436m3.35,0s-3.35,2.872-2.872,4.786M836.108,179l-.479,2.872c0,.479,1.914,3.35,1.914,4.786v2.872m-2.872-6.7.479,2.872,1.914,3.35m-3.35,3.829s1.914.957,3.829-2.872m2.872-2.393s-1.436,3.829.957,4.786c2.872,1.436,4.307,1.436,5.743.957l1.914-.957m-9.572-.479s.479,5.265,7.658,10.051m-7.179-5.265s0,4.307,2.872,6.222M838.5,191.439s-2.393,6.7-4.307,7.179m3.35-2.393-.479,6.7m-.479.957s1.436,1.914,2.872,1.914c1.914-.479,2.393-2.393,3.829-1.914.957,0,1.914.957,4.786.957m-3.829,1.914s0,3.829.479,4.307l.479,3.829m-10.529-10.051-.479,5.265c-.479.957-1.436,3.35-.957,5.265m-2.872,1.914,1.436-.957m.957.479s-3.35,13.879-2.393,22.494m2.872-21.537s-1.436,10.529-.957,12.443m0-12.922,6.7.479m.957-.957a7.365,7.365,0,0,0,3.829.957m-4.786,4.307-.479,21.537M848.552,225.9s1.914,15.794,2.872,17.229m-6.7-14.837s.957,13.879,1.914,14.837m-19.144,4.786a8.141,8.141,0,0,0,4.307-2.872c2.393,3.35,6.222,0,6.222,0s5.743,3.829,8.136-.479c4.307,2.872,6.222-.479,6.222-.479s1.436,2.393,2.393,2.393m-6.222,1.436s2.872,13.879,7.179,17.708m-22.494-19.144.957,19.622m-1.436-6.7-.957,8.136m-3.829.957s.957,2.872,5.265,0,4.307.957,4.307,1.436.957,3.829,2.393,1.436m3.35-4.786s-.479,6.7,5.265,1.914c6.222-4.786,7.179,0,7.179,1.436M843.287,159.851s-.479,3.35,3.35,2.872c-.479,1.914.957,2.393.957,2.393m2.393,1.914s1.436,1.436,0,2.393m-5.265.479s.957.957,1.914.479l1.914.957,1.436.479m-9.572.957s2.393.957,4.307-2.872m-9.093-1.436h1.436m-18.187,47.86v3.35m-3.35-3.829s1.914,3.829,1.914,5.743" transform="translate(-476.029 -72.713)" fill="none" stroke="#000" strokeWidth="0.861"/>
+                            <Path d="M855.731,179.952h1.436l-1.436.479m8.615,53.124s1.436,0,1.436,2.393c.957-3.35,2.872-3.35,2.872-3.35" transform="translate(-496.131 -82.674)" fill="none" stroke="#000" strokeLinejoin="round" strokeWidth="0.861"/>
+                            <Path d="M859.559,171.338Z" transform="translate(-498.018 -78.247)" fill="none" stroke="#000" strokeLinejoin="round" strokeWidth="1.627"/>
+                            <Path d="M786.293,409.1c32.066-.957,52.646-24.408,52.646-24.408-.479-.479,4.307-6.7,7.658-5.743,3.829.957,8.615,11.486,14.836,13.879,3.35,4.786-.957,9.093-1.914,10.051-1.436.957-7.658,3.35-8.615,0-.479-3.829-2.393-2.872-2.393-2.872s-28.716,27.759-61.26,26.323c-33.98.479-62.218-26.323-62.218-26.323l-2.393,2.393s-2.872,2.872-3.829,2.872c-1.436-.479-7.179-4.307-7.658-8.136-.479-3.35,3.35-6.222,3.35-6.222s10.051-7.179,11.008-11.486c2.393-1.914,6.222,1.914,6.222,1.914S757.577,410.536,786.293,409.1Z" transform="translate(-424.277 -182.63)" fill="#f7c600" stroke="#000" strokeWidth="1.819"/>
+                            <Path d="M716.938,404.467s2.393-.957,3.35,0l7.658,7.658" transform="translate(-426.477 -195.144)" fill="none" stroke="#000" strokeWidth="1.819"/>
+                            <Path d="M726.031,407.209l-2.393,1.914s6.7,1.436,5.265,5.743m136.4-11.008s-.957-.479-3.35.957L854.773,412" transform="translate(-430.541 -195.022)" fill="none" stroke="#000" strokeWidth="1.819"/>
+                            <Path d="M993.351,410.636l2.872,1.914s-6.222.479-4.786,6.222" transform="translate(-564.332 -198.455)" fill="none" stroke="#000" strokeWidth="1.819"/>
+                            <Path d="M771.976,411.114l-.957.479-2.872.957-8.615,5.265-.479-.957,2.393-11.008v-1.914l4.786,3.35h-.957c-.479-.957-1.436,0-1.436.479l-1.436,7.179,6.222-3.35c.479-.479.957-1.436.479-1.914l-.479-.479Zm2.872,15.315-.479.479-5.265-2.872.479-.479H771.5l1.914-3.35,2.393-4.786c.479-.957,0-1.436-.479-1.914l-.479-.479.957.479,4.786,2.872h-1.914l-1.914,3.35-2.872,5.265C773.412,425.472,773.891,425.951,774.848,426.43Zm20.58-4.786-1.436,4.307-.479-1.436a4.061,4.061,0,0,0-3.35-3.829c-1.436-.479-2.872.479-3.829,1.436-.957,1.914-1.914,3.829-1.914,5.743a4.345,4.345,0,0,0,1.436,3.35l2.872.479.957-2.872-.957-1.436h.479l5.265,1.914h-1.436l-.957,1.914-.479,1.436a9.856,9.856,0,0,1-7.179-1.436,6.157,6.157,0,0,1-2.872-6.222,6.918,6.918,0,0,1,3.35-4.786,6.1,6.1,0,0,1,5.743,0l2.872,1.436q.718,1.436,1.436,0h.479m8.615,13.879-.479.479-5.743-.957v-.479a.917.917,0,0,0,1.436-.479l.479-2.393.957-6.7c.479-.957,0-1.436-.479-1.436l-.957-.479h.479l6.222.957h-.479l-1.436.479-.479,2.872-.957,6.7c-.479.479,0,.957.479,1.436Zm16.272-3.829L819.836,436l-10.529.479.479-.479.957-.479v-3.35l-.479-6.222c0-.957-.479-1.436-.957-1.436h0l5.743-.479v.479l-1.436.479v9.572c0,.479.479.957,1.436.957l2.393-.479c1.436,0,1.914-1.436,2.393-2.393l.479-.957m8.615-10.529-.479.479-1.436,11.008-.957,1.914v.479l3.829-.957c0-.957-.957,0-1.436-.479a.917.917,0,0,1-.479-1.436v-1.436l4.307-.957,1.436,1.914c.479.479-.479.957-.957.957v.479l5.743-1.914-1.436-.479-2.393-2.393Zm-.479,4.307,3.35,3.829-3.829.957Zm18.665-12.443,1.436,2.872c-.479.479-.479-.479-.957-.479-.957-.479-1.914-.957-2.872,0l-.957.479,4.786,8.615c.479.479,1.436.957,1.914.479h.479l-2.393,1.436-3.35,1.436.479-.479a.917.917,0,0,0,.479-1.436l-4.786-8.615c-.957.479-1.914.479-2.393,1.914l.479,1.914c-.479.479-.479,0-.479-.479l-1.436-2.393Zm7.179-4.307,3.35,4.307.957-2.393c0-.479-.957-1.436-.479-1.914l.479.479,3.35,4.786c-.479.479-.957-.479-1.436-.957h-2.393v.957l2.393,2.872c.479.479,1.436,0,1.914-.479a4.029,4.029,0,0,0,1.914-3.35l-.479-1.914.479.479,1.914,2.872-8.615,6.222.479-.479a1.184,1.184,0,0,0-.479-1.914l-5.265-7.179h-1.914c0,.479-.479,0,0,0l8.136-6.222,1.914,2.872c-.479.479-.957-.479-1.436-.479a2.938,2.938,0,0,0-2.872.479l-1.914.957" transform="translate(-447.891 -195.177)"/>
                         </G>
-                    </Svg>,             
+                        </Svg>,
                 ca: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -1679,11 +1696,11 @@ class FlagComponent extends Component {
                 ky: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#00247d"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M238.889-.022,500,0V300H0V140.289l238.85,2.646Z"/>
                             <Image width="126" height="154" transform="translate(303.6 74)" href={require('../assets/flag_badges/na/ky.png')}/>
                             <Image height="143" href={require('../assets/flag_badges/na/gb.png')}/>
                         </G>
-                    </Svg>,
+                </Svg>,
                 cr: <Svg width='100%' height='100%'viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -1701,10 +1718,10 @@ class FlagComponent extends Component {
                             <Path fill="#002a8f" d="M-19278-5045h308v60h-308l47.4-30z"/>
                             <Path fill="#002a8f" d="M-19374.3-4925h404.3v60h-500z"/>
                             <Path fill="#002a8f" d="M-19470-5165h500v60h-404.3z"/>
-                            <Path fill="#fff" d="M-19278-4985h308v60h-404.3z"/>
-                            <Path fill="#fff" d="M-19374.3-5105h404.3v60h-308z"/>
+                            <Path fill="#FFF" d="M-19278-4985h308v60h-404.3z"/>
+                            <Path fill="#FFF" d="M-19374.3-5105h404.3v60h-308z"/>
                             <Path fill="#cf142b" d="M-19230-5015l-240-150v300z"/>
-                            <Path fill="#fff" d="M-19383.4-5060l26.5 81.4-69.3-50.3h85.6l-69.4 50.3z"/>
+                            <Path fill="#FFF" d="M-19383.4-5060l26.5 81.4-69.3-50.3h85.6l-69.4 50.3z"/>
                         </G>
                     </Svg>,
                 dm: <Svg  width='100%' height='100%' viewBox="0 0 500 300">
@@ -1727,19 +1744,19 @@ class FlagComponent extends Component {
                                     <Path d="M5.921,6.86l2-6.86L9.746,6.75l6.1.11-4.829,4.425,2.188,7.525L7.925,14.165,2.733,18.59l2-7.305L0,6.97Z" transform="translate(15.85 132.13) rotate(180)" stroke="#000" strokeWidth="1"/>
                                 </G>
                                 <G transform="translate(88.449 15.962) rotate(36)">
-                                    <Path d="M6.874,7.028,8.473.754l2.482,6.534,6.535.684-4.812,3.711,2.935,7.3L9.6,14.1,4.4,17.78l1.564-6.694L.552,6.569Z" transform="translate(0 0)" stroke="#000" strokeWidth="1"/>
+                                    <Path d="M6.874,7.028,8.473.754l2.482,6.534,6.535.684-4.812,3.711,2.935,7.3L9.6,14.1,4.4,17.78l1.564-6.694L.552,6.569Z" stroke="#000" strokeWidth="1"/>
                                     <Path d="M6.874,7.028,8.473.754l2.482,6.534,6.535.684-4.812,3.711,2.935,7.3L9.6,14.1,4.4,17.78l1.564-6.694L.552,6.569Z" transform="translate(27.417 126.029) rotate(180)" stroke="#000" strokeWidth="1"/>
                                 </G>
                                 <G transform="translate(112.411 45.54) rotate(72)">
-                                    <Path d="M7.328,6.174,9.359.466,11.84,6.305l7.214.452-5.486,3.474,2.952,6.519L10.052,12.5,4.138,15.948,6.147,9.862.341,5.919Z" transform="translate(0 0)" stroke="#000" strokeWidth="1"/>
+                                    <Path d="M7.328,6.174,9.359.466,11.84,6.305l7.214.452-5.486,3.474,2.952,6.519L10.052,12.5,4.138,15.948,6.147,9.862.341,5.919Z" stroke="#000" strokeWidth="1"/>
                                     <Path d="M7.328,6.174,9.359.466,11.84,6.305l7.214.452-5.486,3.474,2.952,6.519L10.052,12.5,4.138,15.948,6.147,9.862.341,5.919Z" transform="translate(25.189 113.143) rotate(180)" stroke="#000" strokeWidth="1"/>
                                 </G>
                                 <G transform="translate(117.309 86.371) rotate(108)">
-                                    <Path d="M6.656,5.478l2.7-5.944,1.82,5.625,7.2-.265-5.92,4.042L14.676,15.2,8.665,11.564,2.317,15.627,5.042,9.305-.341,5.919Z" transform="translate(0 0)" stroke="#000" strokeWidth="1"/>
+                                    <Path d="M6.656,5.478l2.7-5.944,1.82,5.625,7.2-.265-5.92,4.042L14.676,15.2,8.665,11.564,2.317,15.627,5.042,9.305-.341,5.919Z" stroke="#000" strokeWidth="1"/>
                                     <Path d="M6.656,5.478l2.7-5.944,1.82,5.625,7.2-.265-5.92,4.042L14.676,15.2,8.665,11.564,2.317,15.627,5.042,9.305-.341,5.919Z" transform="translate(12.245 111.28) rotate(180)" stroke="#000" strokeWidth="1"/>
                                 </G>
                                 <G transform="translate(101.272 122.858) rotate(144)">
-                                    <Path d="M5.786,5.9,8.473-.754,9.884,5.434,16.4,4.958,10.888,9.587l1.742,6.884L7.35,12.6l-5.9,4.664L4.17,10.185-.552,6.569Z" transform="translate(0 0)" stroke="#000" strokeWidth="1"/>
+                                    <Path d="M5.786,5.9,8.473-.754,9.884,5.434,16.4,4.958,10.888,9.587l1.742,6.884L7.35,12.6l-5.9,4.664L4.17,10.185-.552,6.569Z" stroke="#000" strokeWidth="1"/>
                                     <Path d="M5.786,5.9,8.473-.754,9.884,5.434,16.4,4.958,10.888,9.587l1.742,6.884L7.35,12.6l-5.9,4.664L4.17,10.185-.552,6.569Z" transform="translate(6.473 123.014) rotate(180)" stroke="#000" strokeWidth="1"/>
                                 </G>
                                 <G transform="translate(44.078 35.045)">
@@ -1839,9 +1856,9 @@ class FlagComponent extends Component {
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M0,0,216.078,107.018,0,216Z" transform="translate(42 41.998)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M0,0,207.762,108.138,0,216Z" transform="translate(42 41.998)"/>
                             <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M42,42H458L249.692,150.16Z"/>
-                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M208,0V216L-5.568,107.8Z" transform="translate(250 41.998)"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M208,0V216L-.074,107.991Z" transform="translate(250 41.998)"/>
                             <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M249.692,150.16,42,258H458Z"/>
                             <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" cx="36" cy="36" r="36" transform="translate(214 113.998)"/>
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M67.749,150.41c4.5,8.39,13.265,17.52,20.916,20.73.123-8.52-2.9-19.44-7.034-28.14l-13.882,7.41Z"/>
@@ -1878,15 +1895,15 @@ class FlagComponent extends Component {
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0 0h500v150H0z"/>
                             <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0 150h500v150H0z"/>
                             <G fill="#f1b517" stroke="#000" strokeWidth=".2">
-                                <Path fill="#fff" stroke="none" d="M203 112h94v76h-94z"/>
+                                <Path fill="#FFF" stroke="none" d="M203 112h94v76h-94z"/>
                                 <Path fill="#016a16" stroke="#016a16" d="M269 167h-19l-19 1-14 4-7 3-4 1-3 1v11h94v-10l-3-2-5-1-6-3-14-5z"/>
                                 <G id="a">
                                     <Path d="M245 144l1-1 2 11v4l-3-14z"/>
-                                    <Path fill="#fff" d="M243 136l1 9h1l-2-9z"/>
+                                    <Path fill="#FFF" d="M243 136l1 9h1l-2-9z"/>
                                     <Path d="M246 155l-5-12h2l5 14-2-2z"/>
-                                    <Path fill="#fff" d="M239 136l2 8h2l-4-8z"/>
+                                    <Path fill="#FFF" d="M239 136l2 8h2l-4-8z"/>
                                     <Path d="M242 151l-3-6h1l5 9-3-3z"/>
-                                    <Path fill="#fff" d="M236 139l3 7h1l-4-7z"/>
+                                    <Path fill="#FFF" d="M236 139l3 7h1l-4-7z"/>
                                     <Path fill="#0a328c" d="M242 151l-11-12c-4 3-3 8-3 8l13 10 1-6z"/>
                                     <Path fill="#d20014" d="M249 158l-9-8c-3 0 0 5 0 6l9 8v-6z"/>
                                     <Path d="M248 157l-17-19h-1l18 21v-2zM230 137l-1-1v-1l-3-2 1 4h3z"/>
@@ -1926,24 +1943,24 @@ class FlagComponent extends Component {
                                 <Path d="M250 125l-1-1 1-7h1l-1 8z"/>
                                 <Path fill="#d20014" stroke="#d20014" d="M252 119v-2l-3-1-1 1 2 1 2 1z"/>
                                 <Use transform="matrix(1 0 0 -1 0 320)" href="#c"/>
-                                <Path fill="#016a16" stroke="#fff" strokeLinecap="round" d="M238 162l-1 2-2-2v-2h3v2z"/>
-                                <Ellipse cx="236.5" cy="160.1" fill="#fff" stroke="none" rx="1.8" ry=".9"/>
+                                <Path fill="#016a16" stroke="#FFF" strokeLinecap="round" d="M238 162l-1 2-2-2v-2h3v2z"/>
+                                <Ellipse cx="236.5" cy="160.1" fill="#FFF" stroke="none" rx="1.8" ry=".9"/>
                                 <Path fill="#016a16" stroke="#f1b517" d="M236 161v-3h1v3h-1z"/>
-                                <Path id="c" fill="#016a16" stroke="#fff" strokeLinecap="round" strokeWidth=".2" d="M239 160l-2 1-2-1h-1c0 1 1 2 3 2s2-1 2-2c0 0 0 0 0 0z"/>
+                                <Path id="c" fill="#016a16" stroke="#FFF" strokeLinecap="round" strokeWidth=".2" d="M239 160l-2 1-2-1h-1c0 1 1 2 3 2s2-1 2-2c0 0 0 0 0 0z"/>
                                 <G id="d">
                                     <Path d="M246 173l-7-2-3-6h-11v4l10 2 1 1 10 3v-2z"/>
                                     <Path fill="#503200" d="M239 174l-11-16h-1l11 17 1-1z"/>
-                                    <Path fill="#fff" d="M229 159l-2-2-1-1v1l1 2h2z"/>
+                                    <Path fill="#FFF" d="M229 159l-2-2-1-1v1l1 2h2z"/>
                                     <Path d="M240 164l-23-2v3l22 2 1-3z"/>
                                     <Path d="M217 161v5h0l1-5h-1zM221 162v4h0l1-4h-1zM236 163v4h1v-4h-1zM239 164v4h1v-2l1 1 1-1-1-1h-1l1-1h-2zM231 164l-3 4h1l4-2-2-2zM224 173l3-3v-1l-4 3 1 1zM232 172l-4-3h0l3 4 1-1zM223 165l4 3h0l-3-4-1 1zM227 163v5h1l1-5h-2zM228 174v-4h-1v4h1zM233 168l-4 1h0l4 1v-2zM222 170l5-1h0l-5-1v2z"/>
                                     <Ellipse cx="227.7" cy="168.5" rx="1.3" ry="1.2"/>
                                     <Path fillRule="evenodd" strokeLinecap="round" d="M234 169c0 3-3 6-6 6-4 0-7-3-7-6 0-4 3-7 7-7 3 0 6 3 6 7zm-1 0c0 2-2 5-5 5s-6-3-6-5c0-3 3-6 6-6s5 3 5 6z"/>
                                     <Path d="M223 165l-1-1M231 164h1M233 173l-1-1M223 174l1-1"/>
                                     <Path d="M246 162l1 6-1 1-1-7h1z"/>
-                                    <Path fill="#fff" d="M246 161c-1 0-2 1-3-1-2 2 0 2 0 4 1 0 1-2 3-2h2l-1-1h-1z"/>
-                                    <Path fill="#fff" d="M246 163v-2h-1v2h1z"/>
+                                    <Path fill="#FFF" d="M246 161c-1 0-2 1-3-1-2 2 0 2 0 4 1 0 1-2 3-2h2l-1-1h-1z"/>
+                                    <Path fill="#FFF" d="M246 163v-2h-1v2h1z"/>
                                     <Path fillRule="evenodd" d="M241 167v2l-1 1v5l-1 1 1 1h1l1-1-1-1v-1h1l1-1v-3l-1-1v-2h-1zm1 3v-1l-1 1v1l1 2v-3z"/>
-                                    <Path d="M234 172v1l1 1v1h-2c0 2 3 2 4 1 1 0 1-3-2-3l-1-1zM235 173h0" fill="#fff"/>
+                                    <Path d="M234 172v1l1 1v1h-2c0 2 3 2 4 1 1 0 1-3-2-3l-1-1zM235 173h0" fill="#FFF"/>
                                     <Path d="M215 173l-1-4M216 173l-1-3M219 172l-4-2M220 172l-6-3"/>
                                     <Path fill="#d20014" stroke="#d20014" d="M210 166h-2v1l-5 1 4-1-1-2 2-1 2 2z"/>
                                     <Path fill="#503200" d="M213 168l-5-4h0s0 0 0 0l5 5v-1z"/>
@@ -1969,14 +1986,14 @@ class FlagComponent extends Component {
                                 <Path fill="#0a328c" stroke="#0a328c" d="M254 174v1l-4 2c-3 0-5-1-5-2v-1l5 1 4-1z"/>
                                 <Path d="M252 175h-1v2l1-1v-1zM247 175v1h1v-1h-1zM245 174v1l1 1v-2h-1zM254 174h0v1-1z"/>
                                 <Path fill="none" d="M254 168v7l-4 2c-3 0-5-1-5-2v-7"/>
-                                <Path fill="#fff" stroke="#fff" d="M253 168h-7l4-1 3 1z"/>
+                                <Path fill="#FFF" stroke="#FFF" d="M253 168h-7l4-1 3 1z"/>
                                 <Path d="M249 168v1h1v-1h-1zM253 168h-1v1h1v-1zM247 166s0 0 0 0v1h0v-1zM250 166h-1l1 1h0l1-1h-1zM253 166l-1 1h1v-1s0 0 0 0zM246 169v-1l-1-1v1l1 1zM254 169v-2h0v2z"/>
                                 <Path d="M264 160l2 2c0 2-2 2-2 2h-2v-1l1-3h1zM262 163h2s0 0 0 0h1"/>
                                 <Path fill="#d20014" stroke="#f1b517" d="M264 161v-2h-1l-2 1 1 1 1-1 1 1z"/>
                                 <Path fillRule="evenodd" d="M214 175v1l-8 3 1-2 1 1c0-2 2-3 2-3l-4 2h1l-2 3 4 1-1 1 4-2-3-1v1l-2-1 7-2 1 1v-1h1l1-1h-2l-1-1zm2 1v1l-1-1h1s0 0 0 0z"/>
                                 <Path d="M293 178v-2h-1c1-1-1-4-1-4l4 4h-1l1 3-1 1h-1v-1l-8-3-1-1h2l7 3z"/>
                                 <Path d="M286 177l1-2h-1l-1 1c-1 1 0 1 1 1z"/>
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path d="M231 180v-1h-2v2l2-1z"/>
                                     <Path d="M215 183l-3-2c12 1 15-3 18-3 2 0 2 2-2 1l1 2s-8 5-17 3l3-1zM268 180v-1h3v2l-3-1z"/>
                                     <Path d="M285 182l3-1c-14 0-11-2-18-3-2 0-3 2 1 1l-1 2h3c4 3 11 4 15 3l-3-2z"/>
@@ -1989,7 +2006,7 @@ class FlagComponent extends Component {
                 hn: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         <G transform="translate(19369 4594)">
                             <Path fill="#0073cf" d="M-19369-4594h500v300h-500z"/>
-                            <Path fill="#fff" d="M-19369-4494h500v100h-500z"/>
+                            <Path fill="#FFF" d="M-19369-4494h500v100h-500z"/>
                             <Path fill="#0073cf" d="M-19050.4-4487.1l9.7 29.7-25.3-18.3h31.2l-25.3 18.3z"/>
                             <Path fill="#0073cf" d="M-19187.4-4487.1l9.7 29.7-25.3-18.3h31.2l-25.3 18.3z"/>
                             <Path fill="#0073cf" d="M-19050.4-4437.1l9.7 29.7-25.3-18.3h31.2l-25.3 18.3z"/>
@@ -2017,10 +2034,10 @@ class FlagComponent extends Component {
                             <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M285 186h215v114H285z"/>
                             <Path stroke={this.state.applyStroke[4]} strokeWidth="82.5" d="M250 0v300M0 150h500"/>
                             <Path onPress={() => this.applySelectedColor(4)} stroke={this.state.appliedColors[4]} strokeWidth="72.5" d="M250 0v300M0 150h500"/>
-                            <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" id="snake" d="M94.53 17.86c-2.66 1.22-4.77 3-4.77 3.88 0 1 1.55 1-.45 1.67a37.68 37.68 0 01-10.54 1.44c-1.22 0-4.11-.77-4.89-.77-.89.1 3.78 2 2 1.55-2.44-.67-3.88-.89-2 .33 1.44.9 4.66.9 9.22.34 1.77-.23 6.44-1.23 8.1-1.45 1.11-.1 1.11.9 1.78.9a146.54 146.54 0 0021.32-.56c3.88-.56 5.33-.34 6.44 1 2.22 2.55-.11 4.77-6.44 6.1-7.77 1.67-11 3.11-14 6.33-7.2 7.77 1.23 16.55 17 17.77 9.21.77 15.2 2.55 13.76 4-.55.55-6.66 1.44-13.65 2-15.21 1.22-21.99 3.33-27.76 8.88-3.22 3.1-4.33 5-4.33 7.55 0 3.55 0 3.55-5.89 3.55a37.94 37.94 0 01-9.43-1.1c-3.11-.79-3.56-.79-2.45.54 2.22 2.67 8.55 5 13.77 5 4 0 6.22.78 9.77 3.33 7.1 5.22 15.21 7.22 28.65 7.11 17.65-.11 27.76-4.77 27.76-12.66 0-5.88-6.67-9.32-20.55-10.55-7-.66-20.76.45-26.75 2.23-1.11.33.1-.45 2.77-1.78 3.22-1.56 8.55-2.67 15.77-3.33 15.99-1.34 23.2-4.9 23.2-11.55 0-6.44-7.1-10.1-22.31-11.55-15-1.33-16.1-4-3.45-7.88 9-2.67 13.55-6.67 13.55-12.1 0-8.33-4.55-11.1-19.76-11.88-9.22-.45-11.44-.23-15.44 1.66zm8 2.33a2.6 2.6 0 01-1.78 1.11c-.67 0-.78-.55-.44-1.1a2.27 2.27 0 011.77-1.12c.67 0 .78.44.45 1.11zm32.08 62.18c2.11.78 2.9 1.55 2.23 2.22-1.9 1.89-14.1 3.55-21.54 3-8.22-.78-17.1-3.44-14.44-4.55 7.44-2.9 26.98-3.23 33.76-.67z"/>
-                            <Use onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" href="#snake" x="285"/>
-                            <Use onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" href="#snake" y="186"/>
-                            <Use onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" href="#snake" x="285" y="186"/>
+                            <Path onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="3" id="snake" d="M94.53 17.86c-2.66 1.22-4.77 3-4.77 3.88 0 1 1.55 1-.45 1.67a37.68 37.68 0 01-10.54 1.44c-1.22 0-4.11-.77-4.89-.77-.89.1 3.78 2 2 1.55-2.44-.67-3.88-.89-2 .33 1.44.9 4.66.9 9.22.34 1.77-.23 6.44-1.23 8.1-1.45 1.11-.1 1.11.9 1.78.9a146.54 146.54 0 0021.32-.56c3.88-.56 5.33-.34 6.44 1 2.22 2.55-.11 4.77-6.44 6.1-7.77 1.67-11 3.11-14 6.33-7.2 7.77 1.23 16.55 17 17.77 9.21.77 15.2 2.55 13.76 4-.55.55-6.66 1.44-13.65 2-15.21 1.22-21.99 3.33-27.76 8.88-3.22 3.1-4.33 5-4.33 7.55 0 3.55 0 3.55-5.89 3.55a37.94 37.94 0 01-9.43-1.1c-3.11-.79-3.56-.79-2.45.54 2.22 2.67 8.55 5 13.77 5 4 0 6.22.78 9.77 3.33 7.1 5.22 15.21 7.22 28.65 7.11 17.65-.11 27.76-4.77 27.76-12.66 0-5.88-6.67-9.32-20.55-10.55-7-.66-20.76.45-26.75 2.23-1.11.33.1-.45 2.77-1.78 3.22-1.56 8.55-2.67 15.77-3.33 15.99-1.34 23.2-4.9 23.2-11.55 0-6.44-7.1-10.1-22.31-11.55-15-1.33-16.1-4-3.45-7.88 9-2.67 13.55-6.67 13.55-12.1 0-8.33-4.55-11.1-19.76-11.88-9.22-.45-11.44-.23-15.44 1.66zm8 2.33a2.6 2.6 0 01-1.78 1.11c-.67 0-.78-.55-.44-1.1a2.27 2.27 0 011.77-1.12c.67 0 .78.44.45 1.11zm32.08 62.18c2.11.78 2.9 1.55 2.23 2.22-1.9 1.89-14.1 3.55-21.54 3-8.22-.78-17.1-3.44-14.44-4.55 7.44-2.9 26.98-3.23 33.76-.67z"/>
+                            <Use onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="3" href="#snake" x="285"/>
+                            <Use onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="3" href="#snake" y="186"/>
+                            <Use onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="3" href="#snake" x="285" y="186"/>
                         </G>
                     </Svg>,
                 mx: <Svg width='100%' height='100%' viewBox="0 0 500 300">
@@ -2037,7 +2054,7 @@ class FlagComponent extends Component {
                         <G clipPath="url(#clip-path)">
                             <G transform="translate(-460 -14912)">
                                 <Path fill="#00247d" d="M460 14912h500v300h-500z"/>
-                                <Path fill="#fff" d="M778 14998h103v73c0 29-18 47-51 55-24-6-52-18-52-55z"/>
+                                <Path fill="#FFF" d="M778 14998h103v73c0 29-18 47-51 55-24-6-52-18-52-55z"/>
                                 <Path fill="#00a2bd" stroke="#000" strokeWidth="1.7" d="M780 15000h99l-1 70c1 28-16 45-48 53-23-5-50-17-50-52z"/>
                                 <Path fill="#a53d08" d="M878 15078c-4 27-25 39-48 45-22-6-44-15-49-45z"/>
                                 <Path d="M826 15013v-9h6l1 9h18l1 7h-19l-1 80h-6v-80h-20v-7z"/>
@@ -2052,7 +2069,7 @@ class FlagComponent extends Component {
                                 <Path fill="none" stroke="#000" strokeWidth=".4" d="M841 15052l-1 3v8m-1-10l-1 2m-2 0l1-2m7 2l-1-3 2 5 2 7c2 7 1 17 2 21"/>
                                 <Path fill="none" stroke="#000" strokeWidth=".4" d="M842 15056c3 7 4 13 0 25 3 6 5 11 5 14m-11-24c0-1-2-2 0-6v-5m0 3c0 2 2 7 1 10m-3 0v7l2 5c3 6 6 11 5 17 0 1 1 4-1 4m-6 2l1-1c0-1 2-7 1-12m1 6a18 18 0 01-1 5m3-9a13 13 0 010 6m-1 0v5m4-18c3 3 4 12 6 13m-4-1a4 4 0 00-1-3m-22-37a2 2 0 011-2m-2 2l1-3m-2 3a4 4 0 011-3m7-44l-2 1m3 0l-2 1m2-1l-2 2m-2-2v1m20 95l1-1m0 1v-1m1 1v-1m1 0v-1"/>
                                 <Path d="M836 15019l1 1h-1v-1zm0-1l2 1h-1l-1-1z"/>
-                                <Path fill="#fff" d="M960 15212z"/>
+                                <Path fill="#FFF" d="M960 15212z"/>
                                 <Path fill="#707070" d="M460 15212h500-500z"/>
                             </G>
                             <Image width="239" height="143" href={require('../assets/flag_badges/na/gb.png')}/>
@@ -2069,8 +2086,8 @@ class FlagComponent extends Component {
                     </Svg>,              
                 pa: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         <G transform="translate(19465 3437)">
-                            <Path fill="#fff" d="M-19465-3437h250v150h-250z"/>
-                            <Path fill="#fff" d="M-19215-3287h250v150h-250z"/>
+                            <Path fill="#FFF" d="M-19465-3437h250v150h-250z"/>
+                            <Path fill="#FFF" d="M-19215-3287h250v150h-250z"/>
                             <Path fill="#005293" d="M-19465-3287h250v150h-250z"/>
                             <Path fill="#d21034" d="M-19215-3437h250v150h-250z"/>
                             <Path fill="#005293" d="M-19089.8-3249.1l21.8 67-57.1-41.4h70.5l-57.1 41.4z"/>
@@ -2082,38 +2099,38 @@ class FlagComponent extends Component {
                             <Path fill="#ED0000" d="M-19278-5045h308v60h-308l47.4-30z"/>
                             <Path fill="#ED0000" d="M-19374.3-4925h404.3v60h-500z"/>
                             <Path fill="#ED0000" d="M-19470-5165h500v60h-404.3z"/>
-                            <Path fill="#fff" d="M-19278-4985h308v60h-404.3z"/>
-                            <Path fill="#fff" d="M-19374.3-5105h404.3v60h-308z"/>
+                            <Path fill="#FFF" d="M-19278-4985h308v60h-404.3z"/>
+                            <Path fill="#FFF" d="M-19374.3-5105h404.3v60h-308z"/>
                             <Path fill="#0050F0" d="M-19230-5015l-240-150v300z"/>
-                            <Path fill="#fff" d="M-19383.4-5060l26.5 81.4-69.3-50.3h85.6l-69.4 50.3z"/>
+                            <Path fill="#FFF" d="M-19383.4-5060l26.5 81.4-69.3-50.3h85.6l-69.4 50.3z"/>
                         </G>
                     </Svg>,
                 kn: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <G id="kn" transform="translate(0.1 -0.21)">
-                            <Path d="M499.8,0H0V300.42" fill="#009e49"/>
-                            <Path d="M0,300.42H499.8V0" fill="#ce1126"/>
-                            <Path d="M46.265-.056,450.717.049,582.228,78.793l-46.177,76.583-407.145-.294L-.762,77.935Z" transform="translate(-38.957 232.969) rotate(-31)" fill="#fcd116"/>
-                            <Path d="M16.227,6.612,473.6,6.556l92.844,55.786-33.285,55.4-457.008.052L-16.958,61.841Z" transform="translate(-17.711 238.488) rotate(-31)"/>
-                            <Path d="M499.8,0" stroke="#fcd116" strokeWidth="155.618"/>
-                            <Path d="M377.494,191.459l25.723,79.169L335.873,221.7h83.243l-67.345,48.929Z" transform="matrix(0.857, -0.515, 0.515, 0.857, -289.786, 200.566)" fill="#fff"/>
-                            <Path d="M377.494,191.459l25.723,79.169L335.873,221.7h83.243l-67.345,48.929Z" transform="matrix(0.857, -0.515, 0.515, 0.857, -99.786, 86.566)" fill="#fff"/>
+                            <G transform="translate(-39.723 -68.069)">
+                                <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M346.307.12,0,0V208.875" transform="translate(39.728 68.102)"/>
+                                <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M150.185,300.907l348.917.216.806-211.433" transform="translate(39.524 67.158)"/>
+                                <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M46.081.21,450.29-.31,487.3,21.929,32.662,22.9Z" transform="translate(0 300.454) rotate(-31)"/>
+                                <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M33.651.729l454.6-1L583,56.71l-32.412,54.053-457.711,1.19L-.049,56.116Z" transform="translate(10.569 319.964) rotate(-31)"/>
+                                <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M41.642-.037,67.164,79.224-.027,30.359l83.195-.2L15.747,79.345Z" transform="matrix(0.857, -0.515, 0.515, 0.857, 136.283, 259.158)"/>
+                                <Path onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" d="M41.642-.037,67.164,79.224-.027,30.359l83.195-.2L15.747,79.345Z" transform="matrix(0.857, -0.515, 0.515, 0.857, 325.904, 144.777)"/>
+                                <Path onPress={() => this.applySelectedColor(6)} fill={this.state.appliedColors[6]} stroke={this.state.applyStroke[6]} strokeWidth="5" d="M42.8.628,451.189-.4l35.692,21.692L29.646,22.524Z" transform="matrix(-0.857, 0.515, -0.515, -0.857, 576.521, 135.396)"/>
                             </G>
                         </G>
-                    </Svg>,              
+                    </Svg>,
                 lc: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         <G transform="translate(19631 4015)">
                             <Path fill="#6cf" d="M-19631-4015h500v300h-500z"/>
-                            <Path fill="#fff" d="M-19481-3741l29.4-35.8 70.6-177.5 71.7 178.5 28.3 34.8-100-247-74.6 184.3z"/>
+                            <Path fill="#FFF" d="M-19481-3741l29.4-35.8 70.6-177.5 71.7 178.5 28.3 34.8-100-247-74.6 184.3z"/>
                             <Path d="M-19452.8-3774.6l71.8-89 72.3 89-72.3-180.4z"/>
-                            <Path fill="#fcd116" d="M-19481-3741h200l-100-124z"/>
+                            <Path d="M-19481-3741h200l-100-124z"/>
                         </G>
                     </Svg>,
                 vc: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         <G transform="translate(19206 8414)">
                             <Path fill="#009e60" d="M-18833-8414h127v300h-127z"/>
-                            <Path fill="#fcd116" d="M-19082-8414h250.6v300h-250.6z"/>
+                            <Path d="M-19082-8414h250.6v300h-250.6z"/>
                             <Path fill="#0072c6" d="M-19206-8414h125v300h-125z"/>
                             <G fill="#009e60">
                                 <Path d="M-18981.8-8201.5l25 50 25-50-25-50z"/>
@@ -2181,9 +2198,9 @@ class FlagComponent extends Component {
                 tc: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Path fill="#00247d" d="M-.4.3h500v300H-.4z"/>
-                            <Path fill="#fff" d="M407.4 99.3v34c0 27.9-11 53.4-43.5 68.9a71.1 71.1 0 01-43.4-69V99.4h86.9z"/>
-                            <Path fill="#fdc300" d="M404.5 102.8v31.6c0 26-10.2 49.9-40.6 64.3a66.3 66.3 0 01-40.5-64.3v-31.6h81z"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M238.889-.022,500,0V300H0V140.289l238.85,2.646Z"/>
+                            <Path fill="#FFF" d="M407.4 99.3v34c0 27.9-11 53.4-43.5 68.9a71.1 71.1 0 01-43.4-69V99.4h86.9z"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M404.5 102.8v31.6c0 26-10.2 49.9-40.6 64.3a66.3 66.3 0 01-40.5-64.3v-31.6h81z"/>
                             <G stroke="#000" strokeWidth=".2">
                                 <Path fill="#ff9e3d" d="M345 116.6a3.5 3.5 0 00-2-.7 3.3 3.3 0 00-2.5-3.5c-1.1-.3-1.5-.8-1.7-1.7a2.3 2.3 0 00-1.8-1.7 5.3 5.3 0 01-2.3-1.8c-.4-.5-.6-.4-.9.5s-1.4 2.4-.4 2.4a1.8 1.8 0 00-.7 2.3c-.5.5-1 1.1-.2 1.4s1 .4 1 .6c-.7 0-.9 1.3.7 1.6-.3 0-.5 1.1.2 1.1-1 0-1.7 1.4-2.8 1.4s-1.7.2-1.7.7a2.6 2.6 0 01-1 1.3 2.3 2.3 0 001.8-.3 1.4 1.4 0 011.7 0 3 3 0 002 .4 4.1 4.1 0 00-2 2.6 3 3 0 01-1.4 2.3 3.9 3.9 0 00-2 2 5.7 5.7 0 003.5 3.5c2.3 1.1 3.8 1.9 4.8 3s1.4.2 2.8 2.1 2.9 5.4 4.3 6a3.5 3.5 0 004.4-1.7c1.1-1.9 1.8-20.6-3.7-23.8z"/>
                                 <Path fill="#ff927f" d="M347.6 108.8c-1.4 1.5-3.2 3-2.9 5.6s.6 7-1.8 8.4-3.6 5.2-.7 7.3 3 4.8 3.5 7.3 1.8 4.4 3.7 2.7c2 .3 3-.5 3-2s.2-2.5 1.6-3a3.6 3.6 0 002.6-2.3c.6-1.3 1-1.9.6-2.7a6.1 6.1 0 01-.2-3.5c.3-1.2-.4-1.8-.8-2.6a3.2 3.2 0 01-.3-2.3 2 2 0 00-1-2.1 1.6 1.6 0 01-.8-1.8c.1-.8-.5-1.3-1.3-1.8a3.1 3.1 0 01-1.2-2.6c0-1.2-2.3-3.9-4-4.6z"/>
@@ -2197,7 +2214,7 @@ class FlagComponent extends Component {
                                 <Path fill="#ff9e3d" d="M336.3 109.7c1.2.4.7 1.2 1.3 1.6 1 .8 0 1.8 1 2s.8.4.6 1.4c-.3 1.1.8 1.2.4 2"/>
                                 <Path fill="#ff9e3d" d="M343 116a2.7 2.7 0 00-2.6 1.3"/>
                                 <Path fill="#ff9e3d" d="M332.5 130a.9.9 0 001-.5c.2-.4.3-.6.8-.6s1.3-.2 1.5-.6.7 0 1.3-1 .8-2.3 2.2-2.7"/>
-                                <G fill="#00a728">
+                                <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="2">
                                     <Path d="M371.3 151.4c.6.8 0 1.7 1 2 1 .4 0 1.9 1.4 2.4 1.1.4 0 1.8 1.2 2.4 1.1.6-.2 1.9 1.3 2.6s-.3 2.4.9 3-.4 2.4.9 3-.6 2 .6 3-.2 2.2 1 3-.8 2 .4 3.2c1 1-.3 1.9.4 3.3.5.9-.5 4.6-3 4.2-1 1.6-4.6 3-6 2.5-1.2 1-5.4 2.3-7.5.2-2.1 2-6.3.8-7.6-.2-1.3.5-5-.9-5.8-2.5-2.6.4-3.6-3.3-3.1-4.2.7-1.4-.6-2.3.4-3.3 1.2-1.2-.8-2.3.4-3.1s-.2-2.2 1-3.2-.7-2.2.6-2.8-.2-2.4 1-3-.7-2.3.8-3 .1-2.1 1.3-2.7c1.2-.6 0-2 1.2-2.4 1.3-.5.4-2 1.5-2.4 1-.3.3-1.2.9-2 2.8 1 11.3 1.8 14.8 0z"/>
                                     <Path d="M359 151.6c-1 1 .2 1.8-.9 3s0 1.9-.9 3 .4 1.6-.5 2.9.1 1.9-.9 3 .2 1.9-.8 3 .2 1.8-.8 2.9.1 2-.9 3.1.2 2.3-.9 3.5.2 2.2-.7 3-.1 2-.8 2.6a1.7 1.7 0 00-.4 2"/>
                                     <Path d="M361 152c-1 1.2.4 1.8-.4 2.8s.3 1.4-.3 2.6.4 1.5-.4 2.7.5 2.1-.5 3.3.5 1.9-.3 3 .3 2-.4 2.9.6 1.8-.4 3 .4 1.9-.3 2.9.2 2.1-.4 3 .5 2-.5 3.1.2 1.9-.3 2.6-1 1.8-.5 2.1"/>
@@ -2285,12 +2302,12 @@ class FlagComponent extends Component {
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} width="500" height="23.462" transform="translate(0 253)"/>
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="23.462" transform="translate(0 276)"/>
                             <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} d="M0,0H200V161H0ZM0,0"/>
-                            <G fill="#fff">
+                            <G fill="#FFF">
                                 <G id="s18">
                                     <G id="s9">
                                         <G id="s5">
                                             <G id="s4">
-                                                <Path id="s" d="M16.668,6.922l4.758,16.7L8.965,13.3h15.4L11.906,23.621Zm0,0" fill="#fff"/>
+                                                <Path id="s" d="M16.668,6.922l4.758,16.7L8.965,13.3h15.4L11.906,23.621Zm0,0" fill="#FFF"/>
                                                 <Use href="#s" y="30"/>
                                                 <Use href="#s" y="60"/>
                                                 <Use href="#s" y="90"/>
@@ -2412,7 +2429,7 @@ class FlagComponent extends Component {
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500V300H0Z"/>
                             <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,12H500V28.667H0V45.333H500V62H0Z" transform="translate(0 188)"/>
                             <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M55.939,35.106,45.523,1.35,35.106,35.106,1.35,45.523,35.106,55.939,45.523,89.7,55.939,55.939,89.7,45.523Z" transform="translate(21.144 21.144)"/>
-                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M55.939,35.106,45.523,1.35,35.106,35.106,1.35,45.523,35.106,55.939,45.523,89.7,55.939,55.939,89.7,45.523Z" transform="translate(21.144 21.144)" stroke="#fff"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} d="M55.939,35.106,45.523,1.35,35.106,35.106,1.35,45.523,35.106,55.939,45.523,89.7,55.939,55.939,89.7,45.523Z" transform="translate(21.144 21.144)" stroke="#FFF"/>
                         </G>
                     </Svg>,
                 bo: <Svg width='100%' height='100%' viewBox="0 0 500 300">
@@ -2473,17 +2490,17 @@ class FlagComponent extends Component {
                             <G transform="translate(-717 -217)">
                                 <Rect width="500" height="300" transform="translate(717 216.998)" fill="#ce1126"/>
                                 <Rect width="416" height="216" transform="translate(759 258.998)" fill="#007a5e"/>
-                                <Path fill="#FCD116" d="M42,42H458L42,258H458Z" transform="translate(717 216.998)"/>
+                                <Path d="M42,42H458L42,258H458Z" transform="translate(717 216.998)"/>
                                 <Circle cx="36" cy="36" r="36" transform="translate(931 330.998)" fill="#ce1126"/>
                                 <Path d="M67.749,150.41c4.5,8.39,13.265,17.52,20.916,20.73.123-8.52-2.9-19.44-7.034-28.14l-13.882,7.41Z" transform="translate(717 216.998)" fill="#ce1126"/>
-                                <Path fill="#FCD116" d="M60.112,121.63c6.529,13.61-16.933,46.08,22.156,53.69-4.822-6.58-7.931-17.44-6.755-26.16,8.2,3.12,16.83,12.25,20.317,19.23,10.23-37.15-26.24-34.89-35.718-46.76Z" transform="translate(717 216.998)"/>
-                                <Path fill="#FCD116" d="M367.235,191.459l19.382,59.653-50.744-36.868H398.6l-50.744,36.868Z" transform="translate(599.777 142.541)"/>
-                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(487.326 026.841)"/>
-                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(612.326 026.841)"/>
-                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(737.326 026.841)"/>
-                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(487.326 284.641)"/>
-                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(612.326 284.641)"/>
-                                <Path fill="#FCD116" d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(737.326 284.641)"/>
+                                <Path d="M60.112,121.63c6.529,13.61-16.933,46.08,22.156,53.69-4.822-6.58-7.931-17.44-6.755-26.16,8.2,3.12,16.83,12.25,20.317,19.23,10.23-37.15-26.24-34.89-35.718-46.76Z" transform="translate(717 216.998)"/>
+                                <Path d="M367.235,191.459l19.382,59.653-50.744-36.868H398.6l-50.744,36.868Z" transform="translate(599.777 142.541)"/>
+                                <Path d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(487.326 026.841)"/>
+                                <Path d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(612.326 026.841)"/>
+                                <Path d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(737.326 026.841)"/>
+                                <Path d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(487.326 284.641)"/>
+                                <Path d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(612.326 284.641)"/>
+                                <Path d="M354.643,191.459l11.6,35.7L335.873,205.1h37.54l-30.37,22.065Z" transform="translate(737.326 284.641)"/>
                             </G>
                         </G>
                     </Svg>,
@@ -2545,50 +2562,102 @@ class FlagComponent extends Component {
                 uy: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
-                            <G transform="translate(0 33.333)">
-                                <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="332.334" height="33.333" transform="translate(166.667)"/>
-                                <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="332.334" height="33.333" transform="translate(166.667 66.667)"/>
-                                <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="500" height="33.333" transform="translate(0 133.333)"/>
-                                <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" width="500" height="33.333" transform="translate(0 200)"/>
-                            </G>
-                            <G transform="translate(20.589 20.589)" onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]}>
-                                <G id="u" transform="translate(0 42.78)">
-                                    <G id="t" transform="translate(34.511 19.964)">
-                                        <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
-                                            <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" transform="translate(0)"/>
-                                            <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" strokeMiterlimit="20" strokeWidth="0.066"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="332.33" height="167"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="332.33" height="34.33" x="168"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="332.33" height="34.33" x="167.995" y="33.301"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="332.33" height="34.33" x="167.995" y="66.668"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="332.33" height="34.33" x="167.995" y="100.488"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="332.33" height="34.33" x="168" y="134.334"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="34.33" y="167.152"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="33.333" y="201"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="33.333" y="233.668"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="33.333" y="266.668"/>
+                                <G fill="#fcd116" stroke="#000" transform="translate(21.25 20.85)">
+                                    <G id="u">
+                                        <G id="t" transform="translate(0 42.78)">
+                                            <G id="s" transform="translate(34.511 19.964)">
+                                                <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                                    <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" stroke="#000" strokeLinecap="square" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                    <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                </G>
+                                                <Path d="M10.34,0h11l-11,60.5L-.66,0h11V60.5" transform="translate(17.893)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                            <G transform="translate(42.78 0) rotate(45)">
+                                                <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                                    <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" stroke="#000" strokeLinecap="square" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                    <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                </G>
+                                                <Path d="M11,0H22L11,60.5,0,0H11V60.5" transform="translate(17.234)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
                                         </G>
-                                        <Path d="M10.34,0h11l-11,60.5L-.66,0h11V60.5" transform="translate(17.893)" stroke="#000" strokeMiterlimit="20" strokeWidth="0.066"/>
+                                        <G transform="translate(82.709) rotate(90)">
+                                            <G id="s-2" transform="translate(34.511 19.964)">
+                                                <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                                    <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" stroke="#000" strokeLinecap="square" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                    <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                </G>
+                                                <Path d="M11,0H22L11,60.5,0,0H11V60.5" transform="translate(17.233)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                            <G transform="translate(42.78 0) rotate(45)">
+                                                <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                                    <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" stroke="#000" strokeLinecap="square" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                    <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                </G>
+                                                <Path d="M11,0H22L11,60.5,0,0H11V60.5" transform="translate(17.234)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                        </G>
                                     </G>
-                                    <G transform="translate(42.78 0) rotate(45)">
-                                        <Use href="#t" transform="translate(-34.511 -19.964)"/>
+                                    <G transform="translate(125.489 125.489) rotate(180)">
+                                        <G id="t-2" transform="translate(0 42.78)">
+                                            <G id="s-3" transform="translate(34.511 19.964)">
+                                            <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                                <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" stroke="#000" strokeLinecap="square" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                            <Path d="M11,0H22L11,60.5,0,0H11V60.5" transform="translate(17.233)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                            <G transform="translate(42.78 0) rotate(45)">
+                                            <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                                <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" stroke="#000" strokeLinecap="square" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                            <Path d="M11,0H22L11,60.5,0,0H11V60.5" transform="translate(17.234)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                        </G>
+                                        <G transform="translate(82.709) rotate(90)">
+                                            <G id="s-4" transform="translate(34.511 19.964)">
+                                            <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                                <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" stroke="#000" strokeLinecap="square" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                            <Path d="M11,0H22L11,60.5,0,0H11V60.5" transform="translate(17.233)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                            <G transform="translate(42.78 0) rotate(45)">
+                                                <G transform="matrix(0.924, 0.383, -0.383, 0.924, 16.838, 13.139)">
+                                                    <Path d="M8.25,0,16.5,5.5C1.833,29.333,18.333,33,5.5,44,11,31.167,0,34.833,0,12.833" stroke="#000" strokeLinecap="square" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                    <Path d="M.722,0c-3.667,23.833,8.25,31.167,0,40.333" transform="translate(4.778 3.667)" fill="none" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                                </G>
+                                                <Path d="M11,0H22L11,60.5,0,0H11V60.5" transform="translate(17.234)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
+                                            </G>
+                                        </G>
                                     </G>
+                                    <Circle cx="20.167" cy="20.167" r="20.167" transform="translate(42.578 42.578)" stroke="#000" stroke-miterlimit="20" strokeWidth="0.066"/>
                                 </G>
-                                <G transform="translate(82.709) rotate(90)">
-                                    <Use href="#u" transform="translate(0 -42.78)"/>
-                                </G>
-                                <G transform="translate(125.489 125.489) rotate(180)">
-                                    <G transform="translate(0 42.78)">
-                                        <Use href="#u" transform="translate(0 -42.78)"/>
+                                <G fill="#000" transform="translate(69.578 72.578)">
+                                    <G id="right" transform="translate(13.933 0)">
+                                        <Path d="M12.856,2.288c-1.283,1.467-2.017-1.1-6.6-1.1S.939,3.938.206,3.388,4.056-.462,5.523-.645,11.206.638,12.856,2.288M7.539,3.938c1.283,1.1.183,3.483-1.1,3.483s-3.667-2.2-2.567-3.667" transform="translate(2.911 0.661)"/>
+                                        <Path d="M.209,2.127C.392-.073,2.226-.44,5.159-.44s4.217,2.2,5.317,2.75C9.192,2.31,8.092.477,5.159.477S2.226.477.209,2.31m.55.367c.733-1.1,1.65,1.1,3.667,1.1a6.69,6.69,0,0,0,4.4-1.467c1.283-.917-1.833,2.2-3.85,2.2S.209,3.41.759,2.677" transform="translate(4.191 4.122)"/>
+                                        <Path d="M11.128,3.087c2.383-1.283.917-3.117,0-3.483.367.367,1.833,2.2,0,3.483m-10.267,11c1.1,0,1.467-.367,2.933-.367S8.745,15.737,10.762,15c-4.217,1.65-2.567.55-9.9.55H-.055m11.55,1.1a21.373,21.373,0,0,0-2.017-2.933c1.467,1.1,1.833,1.65,2.017,2.933M.862,18.487c4.583,0,3.85-.917,9.9-3.483-4.4.55-5.317,2.017-9.9,2.017H-.055M.862,11.7c1.283,0,1.65-.917,3.117-.917a8.3,8.3,0,0,1,4.4,1.283,2.617,2.617,0,0,0-2.017-1.65c-1.467-.183-.917-2.567-2.567-2.933,0,.733.55.55.733,1.65,0,.917-1.65.917-2.017,0C2.878,10.6,1.778,10.6.862,10.6" transform="translate(0.055 4.812)"/>
                                     </G>
-                                    <G transform="translate(82.709) rotate(90)">
-                                        <Use href="#u" transform="translate(0 -42.78)"/>
+                                    <G transform="translate(15.767 23.299) rotate(180)">
+                                        <Path d="M12.729,5.133c-1.283-1.467-2.017,1.1-6.6,1.1S.812,3.483.079,4.033,3.929,7.883,5.4,8.067s5.683-1.283,7.333-2.933M7.412,3.483C8.7,2.383,7.6,0,6.312,0S2.646,2.2,3.746,3.667" transform="translate(3.038 15.217)"/>
+                                        <Path d="M0,2.383C.183,4.583,2.017,4.95,4.95,4.95s4.217-2.2,5.317-2.75C8.983,2.2,7.883,4.033,4.95,4.033S2.017,4.033,0,2.2m.55-.367c.733,1.1,1.65-1.1,3.667-1.1A6.69,6.69,0,0,1,8.617,2.2C9.9,3.117,6.783,0,4.767,0S0,1.1.55,1.833" transform="translate(4.4 14.667)"/>
+                                        <Path d="M11.183,15.4c2.383,1.283.917,3.117,0,3.483.367-.367,1.833-2.2,0-3.483M.917,4.4c1.1,0,1.467.367,2.933.367S8.8,2.75,10.817,3.483c-4.217-1.65-2.567-.55-9.9-.55H0m11.55-1.1A21.373,21.373,0,0,1,9.533,4.767c1.467-1.1,1.833-1.65,2.017-2.933M.917,0c4.583,0,3.85.917,9.9,3.483-4.4-.55-5.317-2.017-9.9-2.017H0M.917,6.783c1.283,0,1.65.917,3.117.917a8.3,8.3,0,0,0,4.4-1.283,2.617,2.617,0,0,1-2.017,1.65C4.95,8.25,5.5,10.633,3.85,11c0-.733.55-.55.733-1.65,0-.917-1.65-.917-2.017,0,.367-1.467-.733-1.467-1.65-1.467" transform="translate(0 0)"/>
                                     </G>
+                                    <Path d="M1.591.836c-.917,0-3.3.55,0,.55s.917-.55,0-.55" transform="translate(13.259 24.113)"/>
                                 </G>
-                                <Circle cx="20.167" cy="20.167" r="20.167" transform="translate(42.578 42.578)" stroke="#000" strokeMiterlimit="20" strokeWidth="0.066"/>
                             </G>
-                            <G transform="translate(68.483 72.318)" fill="#000">
-                                <G id="right" transform="translate(13.933 0)">
-                                    <Path d="M12.856,2.288c-1.283,1.467-2.017-1.1-6.6-1.1S.939,3.938.206,3.388,4.056-.462,5.523-.645,11.206.638,12.856,2.288M7.539,3.938c1.283,1.1.183,3.483-1.1,3.483s-3.667-2.2-2.567-3.667" transform="translate(2.911 0.661)"/>
-                                    <Path d="M.209,2.127C.392-.073,2.226-.44,5.159-.44s4.217,2.2,5.317,2.75C9.192,2.31,8.092.477,5.159.477S2.226.477.209,2.31m.55.367c.733-1.1,1.65,1.1,3.667,1.1a6.69,6.69,0,0,0,4.4-1.467c1.283-.917-1.833,2.2-3.85,2.2S.209,3.41.759,2.677" transform="translate(4.191 4.122)"/>
-                                    <Path d="M11.128,3.087c2.383-1.283.917-3.117,0-3.483.367.367,1.833,2.2,0,3.483m-10.267,11c1.1,0,1.467-.367,2.933-.367S8.745,15.737,10.762,15c-4.217,1.65-2.567.55-9.9.55H-.055m11.55,1.1a21.373,21.373,0,0,0-2.017-2.933c1.467,1.1,1.833,1.65,2.017,2.933M.862,18.487c4.583,0,3.85-.917,9.9-3.483-4.4.55-5.317,2.017-9.9,2.017H-.055M.862,11.7c1.283,0,1.65-.917,3.117-.917a8.3,8.3,0,0,1,4.4,1.283,2.617,2.617,0,0,0-2.017-1.65c-1.467-.183-.917-2.567-2.567-2.933,0,.733.55.55.733,1.65,0,.917-1.65.917-2.017,0C2.878,10.6,1.778,10.6.862,10.6" transform="translate(0.055 4.812)"/>
-                                </G>
-                                <Use href="#right" transform="translate(30 0.399) scale(-1,1)"/>
-                                <Path d="M1.591.836c-.917,0-3.3.55,0,.55s.917-.55,0-.55" transform="translate(13.259 24.113)"/>
-                            </G>
-                        </G>
-                    </Svg>,
+                        </Svg>,
                 ve: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -2607,6 +2676,15 @@ class FlagComponent extends Component {
                     </Svg>
             },    
             AF: {
+                dz: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="250" height="300" x="250"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="250" height="300"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" d="M314.394,187.493a75,75,0,1,0,0,75,60,60,0,1,1,0-75" y="-74.993"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M318,224.993l-67.5-22,42,57.5v-71l-42,57.5Z" y="-74.993"/>
+                        </G>
+                    </Svg>,
                 ao: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -2640,15 +2718,6 @@ class FlagComponent extends Component {
                             </G>
                         </G>
                     </Svg>,
-                dz: <Svg width='100%' height='100%' viewBox="0 0 500 300">
-                        {this.roundCornerDef}
-                        <G clipPath="url(#clip-path)">
-                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="250" height="300" x="250"/>
-                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="250" height="300"/>
-                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" d="M314.394,187.493a75,75,0,1,0,0,75,60,60,0,1,1,0-75" y="-74.993"/>
-                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M318,224.993l-67.5-22,42,57.5v-71l-42,57.5Z" y="-74.993"/>
-                        </G>
-                    </Svg>,
                 bj: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -2675,6 +2744,7 @@ class FlagComponent extends Component {
                             <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" d="M383.1,191.459l29.186,89.827L335.873,225.77h94.45l-76.411,55.516Z" transform="translate(-132.874 -86.458)"/>
                         </G>
                     </Svg>,
+                // bi
                 cm: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -2731,14 +2801,6 @@ class FlagComponent extends Component {
                             <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,300,333.333,0H500L167,300Z"/>
                         </G>
                     </Svg>,
-                mg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
-                        {this.roundCornerDef}
-                        <G clipPath="url(#clip-path)">
-                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="333.33" height="150" x="166.667"/>
-                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="333.33" height="150" x="166.667" y="150"/>
-                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="166.667" height="300"/>
-                        </G>
-                    </Svg>,
                 cd: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -2765,7 +2827,7 @@ class FlagComponent extends Component {
                             <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="101" y="199"/>
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="101" y="99"/>
                             <G transform="translate(215 102)">
-                                <Path fill="#fff" stroke="#c09300" strokeLinejoin="round" strokeWidth="1.27" d="M35.68 49l34.25 31.8-2.44-57.74c-.36-8.75-7.96-6.74-13.49-3.58-5.6 3.58-11.98 3.58-18.72 1.22-6.74 2.36-13.13 2.36-18.72-1.22-5.52-3.16-13.13-5.17-13.49 3.58L.63 80.8 35.68 49z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinejoin="round" strokeWidth="1.27" d="M35.68 49l34.25 31.8-2.44-57.74c-.36-8.75-7.96-6.74-13.49-3.58-5.6 3.58-11.98 3.58-18.72 1.22-6.74 2.36-13.13 2.36-18.72-1.22-5.52-3.16-13.13-5.17-13.49 3.58L.63 80.8 35.68 49z"/>
                                 <G fill="#c09300">
                                     <Path d="M7.01 21.05L4.65 77.21.63 80.8l2.44-57.74c1.14-.79 3.15-2 3.94-2z"/>
                                     <Path d="M11.82 25.07l-2 46.98-4.02 4.1 2.44-54.24c.79.8 3.15 2.73 3.58 3.16z"/>
@@ -2782,7 +2844,7 @@ class FlagComponent extends Component {
                                 </G>
                                 <Path fill="#c09300" stroke="#c09300" strokeWidth="1.07" d="M36.86 55.34l4.8 21.87-1.58 1.58-1.65-1.22-2.72-19.5 1.15 19.5-1.58 2.02-1.58-2.01 1.15-19.51-2.73 19.5-1.65 1.23-1.57-1.58 4.8-21.88h3.16z"/>
                                 <G stroke="#c09300" strokeLinejoin="round">
-                                    <Path fill="#fff" strokeWidth="1.19" d="M24.52 45.73l-9.54 33.85 13.13 2 5.59-25.45-9.18-10.4z"/>
+                                    <Path fill="#FFF" strokeWidth="1.19" d="M24.52 45.73l-9.54 33.85 13.13 2 5.59-25.45-9.18-10.4z"/>
                                     <Path fill="none" strokeWidth="1.27" d="M21.36 57.28l1.15 2.8 6.2-5.93"/>
                                     <Path fill="none" strokeWidth="1.27" d="M25.66 50.27l1.3 12.17 3.94-5.16"/>
                                     <Path fill="none" strokeWidth="1.27" d="M29.32 59.28l2.16 7.44"/>
@@ -2790,23 +2852,23 @@ class FlagComponent extends Component {
                                     <Path fill="none" strokeWidth="1.27" d="M17.77 78.8l2.65-3.73 1.73 5.73 2.37-4.02 1.58 4.81"/>
                                 </G>
                                 <G stroke="#c09300" strokeLinejoin="round">
-                                    <Path fill="#fff" strokeWidth="1.19" d="M46.04 45.73l9.54 33.85-13.13 2-5.6-25.45 9.19-10.4z"/>
+                                    <Path fill="#FFF" strokeWidth="1.19" d="M46.04 45.73l9.54 33.85-13.13 2-5.6-25.45 9.19-10.4z"/>
                                     <Path fill="none" strokeWidth="1.27" d="M49.2 57.27l-1.16 2.8-6.2-5.92"/>
                                     <Path fill="none" strokeWidth="1.27" d="M44.9 50.27l-1.3 12.17-3.95-5.16"/>
                                     <Path fill="none" strokeWidth="1.27" d="M41.23 59.28l-2.15 7.44"/>
                                     <Path fill="none" strokeWidth="1.27" d="M38.23 63.99l4.36 6.62m-1.36 6.6l1.4-6.6 1.22-6.7 2.92 3.95 1.28-4.56 4.08 4.2-2.08 7.62-2.86-4.72-1.58 4.8-2.95-4.58"/>
                                     <Path fill="none" strokeWidth="1.27" d="M52.78 78.79l-2.65-3.72-1.72 5.73-2.37-4.02-1.58 4.8"/>
                                 </G>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.38" d="M35.28 94.71c9.97 0 19.51-.79 25.1-2.36 2.37-.43 2.37-1.65 2.37-3.23 2.37-.8 1.15-3.59 2.8-3.59-1.65.43-2-2.8-4.01-2.36 0-2.8-2.8-3.16-5.17-2.37-4.73 1.58-13.13 1.94-21.09 1.94-7.96-.36-16.28-.36-21.09-1.94-2.36-.8-5.16-.43-5.16 2.37-2.01-.43-2.37 2.8-4.02 2.36 1.65 0 .43 2.8 2.8 3.59 0 1.58 0 2.8 2.44 3.23 5.52 1.57 15.07 2.36 25.04 2.36z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M21.72 79.58a40.23 40.23 0 009.61.43c1.58 0 2.73 2.73-.43 3.16a37.77 37.77 0 01-9.54-.43c-2-.36-6.38-1.15-9.18-1.94-2.8-1.22-.79-3.58.8-3.23a52.66 52.66 0 008.74 2.01z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M48.84 79.58a39.8 39.8 0 01-9.54.43c-1.65 0-2.8 2.73.36 3.16a37.75 37.75 0 009.54-.43c2-.36 6.38-1.15 9.18-1.94 2.8-1.22.79-3.58-.8-3.23a52.64 52.64 0 01-8.74 2.01z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M11.82 78c-2.44-.43-3.58 2.37-2.8 3.95.36-.8 2.01-.8 2.37-1.58.43-1.22-.36-1.22.43-2.37z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M21.37 85.34c0-1.58 1.57-1.38 1.57-2.96 0-.8-.43-2.01-1.22-2.01a1.7 1.7 0 00-1.57 1.58c-.37 1.58 1.22 1.81 1.22 3.39z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M32.72 80.8c2.36 0 2.13 3.15.98 4.73 0-1.15-2-1.58-2-2.36 0-1.23 1.8-1.23 1.02-2.37z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M58.73 78c2.44-.43 3.59 2.37 2.8 3.95-.36-.8-2-.8-2.36-1.58-.43-1.22.36-1.22-.43-2.37z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M49.2 85.34c0-1.58-1.58-1.38-1.58-2.96 0-.8.43-2.01 1.21-2.01a1.7 1.7 0 011.58 1.58c.36 1.58-1.22 1.81-1.22 3.39z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M37.84 80.8c-2.36 0-2.13 3.15-.98 4.73 0-1.15 2-1.58 2-2.36 0-1.23-1.81-1.23-1.02-2.37z"/>
-                                <G fill="#fff" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth=".89">
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.38" d="M35.28 94.71c9.97 0 19.51-.79 25.1-2.36 2.37-.43 2.37-1.65 2.37-3.23 2.37-.8 1.15-3.59 2.8-3.59-1.65.43-2-2.8-4.01-2.36 0-2.8-2.8-3.16-5.17-2.37-4.73 1.58-13.13 1.94-21.09 1.94-7.96-.36-16.28-.36-21.09-1.94-2.36-.8-5.16-.43-5.16 2.37-2.01-.43-2.37 2.8-4.02 2.36 1.65 0 .43 2.8 2.8 3.59 0 1.58 0 2.8 2.44 3.23 5.52 1.57 15.07 2.36 25.04 2.36z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M21.72 79.58a40.23 40.23 0 009.61.43c1.58 0 2.73 2.73-.43 3.16a37.77 37.77 0 01-9.54-.43c-2-.36-6.38-1.15-9.18-1.94-2.8-1.22-.79-3.58.8-3.23a52.66 52.66 0 008.74 2.01z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M48.84 79.58a39.8 39.8 0 01-9.54.43c-1.65 0-2.8 2.73.36 3.16a37.75 37.75 0 009.54-.43c2-.36 6.38-1.15 9.18-1.94 2.8-1.22.79-3.58-.8-3.23a52.64 52.64 0 01-8.74 2.01z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M11.82 78c-2.44-.43-3.58 2.37-2.8 3.95.36-.8 2.01-.8 2.37-1.58.43-1.22-.36-1.22.43-2.37z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M21.37 85.34c0-1.58 1.57-1.38 1.57-2.96 0-.8-.43-2.01-1.22-2.01a1.7 1.7 0 00-1.57 1.58c-.37 1.58 1.22 1.81 1.22 3.39z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M32.72 80.8c2.36 0 2.13 3.15.98 4.73 0-1.15-2-1.58-2-2.36 0-1.23 1.8-1.23 1.02-2.37z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M58.73 78c2.44-.43 3.59 2.37 2.8 3.95-.36-.8-2-.8-2.36-1.58-.43-1.22.36-1.22-.43-2.37z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M49.2 85.34c0-1.58-1.58-1.38-1.58-2.96 0-.8.43-2.01 1.21-2.01a1.7 1.7 0 011.58 1.58c.36 1.58-1.22 1.81-1.22 3.39z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.27" d="M37.84 80.8c-2.36 0-2.13 3.15-.98 4.73 0-1.15 2-1.58 2-2.36 0-1.23-1.81-1.23-1.02-2.37z"/>
+                                <G fill="#FFF" stroke="#c09300" strokeLinecap="round" strokeLinejoin="round" strokeWidth=".89">
                                     <Path d="M12.61 78.8a3.9 3.9 0 012.37.78l-2.37-.79z"/>
                                     <Path d="M16.55 80.01a8.84 8.84 0 012.8.8l-2.8-.8z"/>
                                     <Path d="M30.9 81.59c-.79 0-2.36 0-2.8.36l2.8-.36z"/>
@@ -2833,19 +2895,19 @@ class FlagComponent extends Component {
                                     <Path d="M40.78 92.18c-.12-.13-.14-.18-.15-.3s.03-.18.15-.3c.21-.22.32-.22.7-.03.36.18.48.2.51.07s.24-.24.44-.24a.41.41 0 01.3.1c.12.1.13.11.13.34s0 .24-.14.37a.32.32 0 01-.33.1A.38.38 0 0142 92c-.03-.12-.07-.15-.1-.07a.2.2 0 01-.12.08 1.13 1.13 0 00-.4.25.38.38 0 01-.26.07.34.34 0 01-.34-.15z"/>
                                     <Path d="M30.87 87.73a.78.78 0 00-.73.6c.07.38.39.75.19 1.15.14.5-.38.7-.74.4a7.22 7.22 0 00-.64-1.45c-.4-.11-.58.53-.86.75.14.38.55.72.6 1.19a1.2 1.2 0 01-.58 1.2c-.34.33-.81.2-1.24.28-.5.3.38.4.61.42a1.72 1.72 0 001.46-.4c.38-.19.35-.85.8-.93.8-.03 1.59.13 2.38.14.43.1 1.09-.05 1.38.27a1.34 1.34 0 00.92 1.1c.25.08.51-.23.77-.3.48-.14.33-.74.62-.97.83-.05 1.66-.04 2.49-.05.15 0 .2-.22.3-.31 0-.32-.02-.64-.07-.96-.16-.4.03-.92-.26-1.26-.42-.12-.77.26-1.2.3a1.4 1.4 0 00-.87 1.15c-.27.45-.71-.08-.56-.45a2.46 2.46 0 00-.01-.5c-.26-.3-.7-.2-1.05-.25-.51.02-1-.09-1.52-.08a7.21 7.21 0 01-1.34-.08c-.52-.01-.45-.51-.53-.87a.5.5 0 00-.31-.1zm1 1.84a4.75 4.75 0 01.5.05c.22.03.45-.08.66 0 .49.08.98.06 1.47.1a.48.48 0 01.31.18v1.03c-.01.13.04.3-.08.4a.35.35 0 01-.12.05.55.55 0 01-.35-.25 3.45 3.45 0 01.02-.53c0-.04.02-.11 0-.15a.62.62 0 00-.36-.13l-1.27-.06a5.35 5.35 0 01-1.06-.06c-.13-.05-.3-.03-.39-.17-.12-.14.05-.3.17-.36a1.14 1.14 0 01.5-.1zm5.64.13c.08 0 .1.02.14.17l.07.25c.02.06-.01.08-.1.1-.24.1-.49.1-.57-.02-.04-.06 0-.22.07-.28a.79.79 0 01.4-.22z"/>
                                 </G>
-                                <Path fill="#fff" stroke="#c09300" strokeWidth="1.15" d="M35.27 61.42a38.04 38.04 0 0014.92-30.94 6.36 6.36 0 01-1.27.13c-3.42 0-11.59-1.96-13.5-4.45-2.03 2.26-10.38 4.45-13.78 4.45a6.2 6.2 0 01-1.27-.13 37.98 37.98 0 0014.9 30.94z"/>
-                                <Path fill="#fff" stroke="#c09300" strokeWidth=".92" d="M48.89 31.83l-.43.01c-3.1 0-10.3-1.6-13.08-3.98-2.91 2.2-10.24 3.98-13.3 3.98a2.35 2.35 0 01-.42-.04c0 .7.03 1.41.08 2.07a36.55 36.55 0 001.24 7.28 35.53 35.53 0 0012.29 18.57 35.58 35.58 0 0012.3-18.59 36.58 36.58 0 001.24-7.27c.05-.65.08-1.35.08-2.03z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeWidth="1.15" d="M35.27 61.42a38.04 38.04 0 0014.92-30.94 6.36 6.36 0 01-1.27.13c-3.42 0-11.59-1.96-13.5-4.45-2.03 2.26-10.38 4.45-13.78 4.45a6.2 6.2 0 01-1.27-.13 37.98 37.98 0 0014.9 30.94z"/>
+                                <Path fill="#FFF" stroke="#c09300" strokeWidth=".92" d="M48.89 31.83l-.43.01c-3.1 0-10.3-1.6-13.08-3.98-2.91 2.2-10.24 3.98-13.3 3.98a2.35 2.35 0 01-.42-.04c0 .7.03 1.41.08 2.07a36.55 36.55 0 001.24 7.28 35.53 35.53 0 0012.29 18.57 35.58 35.58 0 0012.3-18.59 36.58 36.58 0 001.24-7.27c.05-.65.08-1.35.08-2.03z"/>
                                 <Path fill="#c09300" d="M29.97 30.32a31 31 0 01-7.88 1.52 2.33 2.33 0 01-.42-.05c0 .7.04 1.42.08 2.08a36.43 36.43 0 001.23 7.26 35.51 35.51 0 006.99 13.4v-24.2z"/>
                                 <Path fill="#c09300" d="M40.28 30.28V54.9a35.56 35.56 0 007.3-13.78 36.48 36.48 0 001.23-7.26c.05-.65.09-1.35.08-2.04l-.42.02a30.56 30.56 0 01-8.2-1.56z"/>
                                 <G transform="translate(25.36 .6)">
-                                    <Path fill="#fff" stroke="#c09300" strokeWidth="1.22" d="M16.08 23.74c.33.02-.45-1.78-.45-1.78.88.9 4.21 1.12 4.21 1.12-2-.89-4-7.55-3.76-12.87.21-5.33-.77-7.42-1.55-8.2-1-1-4.22-1.9-6.33-2-1.2-.07-1 .9-1 .9C4.98.32 2.77.1 1.77.77.82 1.41.63 4.55 1.3 4c1.67-1.34 3.12-.12 4.12 1.33.88 1.27.82 4.88-.45 9.1A30.6 30.6 0 010 23.3c1.98 0 4.77-1.76 4.77-1.76l-.67 2.76a17.03 17.03 0 003.76-2.55l2 2.1a20.4 20.4 0 012-2.1 7.24 7.24 0 004.22 2z"/>
+                                    <Path fill="#FFF" stroke="#c09300" strokeWidth="1.22" d="M16.08 23.74c.33.02-.45-1.78-.45-1.78.88.9 4.21 1.12 4.21 1.12-2-.89-4-7.55-3.76-12.87.21-5.33-.77-7.42-1.55-8.2-1-1-4.22-1.9-6.33-2-1.2-.07-1 .9-1 .9C4.98.32 2.77.1 1.77.77.82 1.41.63 4.55 1.3 4c1.67-1.34 3.12-.12 4.12 1.33.88 1.27.82 4.88-.45 9.1A30.6 30.6 0 010 23.3c1.98 0 4.77-1.76 4.77-1.76l-.67 2.76a17.03 17.03 0 003.76-2.55l2 2.1a20.4 20.4 0 012-2.1 7.24 7.24 0 004.22 2z"/>
                                     <Path fill="none" stroke="#c09300" strokeWidth="1.27" d="M7.97 10.98S6.86 19.2 4.76 21.53"/>
                                     <Path fill="none" stroke="#c09300" strokeWidth="1.27" d="M9.74 10.77s-.43 8.31-1.88 10.98"/>
                                     <Path fill="none" stroke="#c09300" strokeWidth="1.27" d="M11.31 11.1s0 9.1.55 10.65"/>
                                     <Path fill="none" stroke="#c09300" strokeWidth="1.27" d="M13.29 11.55s.45 7.65 2.33 10.41"/>
                                     <Path fill="#c09300" stroke="#c09300" strokeWidth=".35" d="M5.96 7a3.96 3.96 0 00-.53-1.66C4.43 3.89 2.98 2.67 1.31 4c0 0 .57-1.76 1.79-1.82.94-.06 3.08.7 4.96 3.92 0 0-1.4-.31-1.73-.02-.62.55-.37.92-.37.92z"/>
                                     <Path fill="#c09300" stroke="#c09300" strokeWidth=".35" d="M1.14 1.83A1.92 1.92 0 011.77.79C2.77.12 4.98.34 7.2.9c0 0-.2-.96 1-.9 2.11.12 5.33 1 6.33 2a3.94 3.94 0 01.74 1.2h-.03c-.49-.69-1.88-.65-2.22-.61a8.97 8.97 0 00-1.56.22 3.17 3.17 0 00-1.12.39c-.22.17-.4.82-.73.82-.52 0-.49-.14-.62-.3-.18-.21-.28-.52-.45-.5-.55.1-1.43-.34-2.55-1.22a3.41 3.41 0 00-3-1 2.3 2.3 0 00-1.88.92l.04-.1z"/>
-                                    <Circle cx=".59" cy=".59" r=".59" fill="#fff" transform="translate(8.74 1.95)"/>
+                                    <Circle cx=".59" cy=".59" r=".59" fill="#FFF" transform="translate(8.74 1.95)"/>
                                 </G>
                             </G>
                         </G>
@@ -3018,7 +3080,7 @@ class FlagComponent extends Component {
                             </G>
                         </G>
                     </Svg>,
-                lr: null,
+                // lr
                 ly: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -3028,6 +3090,14 @@ class FlagComponent extends Component {
                             <Circle onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" cx="37.5" cy="37.5" r="37.5" transform="translate(197 112.5)"/>
                             <Circle fill={this.state.appliedColors[1]} cx="32.583" cy="32.583" r="32.583" transform="translate(209.5 117.418)"/>
                             <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M509.175,224.09,559.612,207.7l-31.172,42.9V197.574l31.172,42.9Z" transform="translate(-256.44 -74.09)"/>
+                        </G>
+                    </Svg>,
+                mg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="333.33" height="150" x="166.667"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="333.33" height="150" x="166.667" y="150"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="166.667" height="300"/>
                         </G>
                     </Svg>,
                 mw: <Svg width='100%' height='100%' viewBox="0 0 500 300">
@@ -3086,7 +3156,22 @@ class FlagComponent extends Component {
                             <Path d="M414.033,224.315,391.8,292.75,450,250.471H378.065l58.2,42.279Z" transform="translate(-164.033 -112.158)" fill="none" stroke="#006233" strokeWidth="4"/>
                         </G>
                     </Svg>,
-                mz: null,
+                mz: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M152.5,0H500V105H0Z" transform="translate(0 193.89)"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M168.5-.012,500,0V69.2l-331.468.224,50.89-34.414Z" transform="translate(-1 115)"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,0H500V105H152.5Z"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M152.5,0H500V10H167.7Z" transform="translate(0 105.001)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M158.7,0H500V10H143.5Z" transform="translate(-1 184.258)"/>
+                            <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M0,0V300L218.75,150Z"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="3" d="M107.92,124.119l-41.251-28.9-39.958,30.6L41.452,77.653,0,49.108l50.362-.864L64.7,0,81.085,47.63,131.4,46.359,91.163,76.66Z" transform="translate(8.225 86.086) rotate(1.192)"/>
+                            <Path stroke="#000" d="M97.14,181.11h29.277c2.356,2.643,7.612,3.72,12.617-.031,9.176-5.025,26.929.031,26.929.031l3.5-3.714-8.521-27.966-3.059-3.277s-6.554-3.932-19.008-2.622-16.824-.437-16.824-.437-10.924,1.311-13.983,2.84c-.336.272-3.5,3.5-3.5,3.5Z" fill="#fff" transform="translate(-59.516 -3.271)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.575" fillRule="evenodd"/>
+                            <Path d="M107.758,197.836s27.966-3.5,36.051,7.21c-4.566,3.124-8.586,3.382-12.891.219.686-1.143,10.05-10.925,33.865-7.647" transform="translate(-64.234 -28.637)" fill="none" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.575"/>
+                            <Path d="M139.614,148.206l-.218,30.807m25.126-30.37,5.244,24.471m-54.771-24.855-2.91,12.62" transform="translate(-66.157 -5.287)" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.575"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M62.913,153.085l6.885,8.073a1.973,1.973,0,0,0,2.245,0l10.2-12.244,4.286-5.306a3.355,3.355,0,0,0,.816-2.449l8.193-7.28c.67.046,1.069.122,1.74.167-.792-.205-1.373-.591-.749-1.458l1.837-1.428,1.428,1.836a25.847,25.847,0,0,1-2.245,2.653H95.308l-4.286,3.878,1.873,1.656,2.82,7.732,3.47-2.449-2.245-7.959,4.9-5.306L100,130.341l1.225-1.633s16.952,10.673,23.483,7.816c.176.064.395-7.611.395-7.611s-17.551-1.836-17.959-5.306,3.878-3.877,3.878-3.877l-1.837-2.653.409-1.429,3.061,3.878,6.939-5.919,40.816,46.531c2.228-.9,2.7-1.449,2.857-3.673-.057-.056-40-45.918-40-45.918l3.061-3.265a2.413,2.413,0,0,0,.816-2.041l4.694-4.081a5.811,5.811,0,0,1,3.061,2.449L147.8,92.67a2.04,2.04,0,0,0,2.074.3L171.213,72.49,147.961,88.913l-.816-.612c0-.68.843-.849,0-2.041-.9-1.084-2.245,1.02-2.449,1.02s-3.366-1.117-4.058-2.533L140.41,88.5l-5.919,5.51-4.49-.2-6.531,6.326-.816,2.449,1.02,2.041a42.691,42.691,0,0,1-3.47,2.857c0-.2-.7-.9-.731-.992l2.976-2.681.408-1.837-.993-1.551c-.3.219-4.109,4.2-4.313,3.8-.34-.381-11.02-12.449-11.02-12.449l.612-2.245-6.938-7.551c-2.53-.873-6.531-1.02-7.347,4.49-.636,1.294-5.918.2-5.918.2l-2.857.612L67.961,110.138l8.98,10.816L95.308,97.689l.545-6.591,3.854,4.309A6.122,6.122,0,0,0,103.381,95l10.882,12.146-1.812,1.768c.612.68,1.034,1.115,1.646,1.8.612-.408,1.2-.9,1.809-1.307.2.273.544.79.749,1.062-.912.5-1.552,1.157-2.463,1.653-1.459-.951-2.868-2.135-2.761-4.02l-6.122,5.1-.2,1.02-18.163,15.1-1.633.2-.408,4.694,11.837-9.8v-1.429l1.225,1.02,9.183-7.346s.612.816.409.816-8.164,7.347-8.164,7.347l-.2.816-1.429,1.225-.816-.612-11.02,9.8H84.288l-6.122,6.123a8.244,8.244,0,0,0-4.286,1.224Z" transform="translate(-44.303 29.889)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.575" fillRule="evenodd"/>
+                        </G>
+                    </Svg>,
                 na: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -3208,6 +3293,18 @@ class FlagComponent extends Component {
                             <Path onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" d="M0,70.255l155.989,93.522L0,257.3Z" y="-13.879"/>
                         </G>
                     </Svg>,
+                ss: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M130.5,0H500V90H0Z" transform="translate(0 209.89)"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M152,0H500V90H152l65.379-45.123Z" transform="translate(0 105.444)"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,0H500V90H130.5Z"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M130.5,0H500V15.6H153Z" transform="translate(0 89.852)"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M153,0H500V15H130.5Z" transform="translate(0 195.258)"/>
+                            <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M0,0,218,150,0,300Z"/>
+                            <Path onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" d="M1229,3966.55l75.5-33.977-41.1,71.87-8.973-82.344,55.68,61.327Z" transform="translate(-1188.033 -3808.726)"/>
+                        </G>
+                    </Svg>,
                 sz: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
@@ -3269,9 +3366,10 @@ class FlagComponent extends Component {
                 tz: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M499.466,73.615,500,300l-381.724-.221Z"/>
-                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,0,380.952.707.809,225.688Z"/>
-                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,225v75H118.623L500,75V0H380.912"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M499.466,73.615,500,300l-381.724-.221Z" fill="#00a3dd"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,0,380.952.707.809,225.688Z" fill="#1eb53a"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,300H118.623L500,75V49" fill="#fcd116"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,225v26L418.5,0H380.912" fill="#fcd116"/>
                             <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M0,250.74V300H85.353L500,49.123V0H419.038"/>
                         </G>
                     </Svg>,
@@ -3306,7 +3404,7 @@ class FlagComponent extends Component {
                             <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="500" height="50" y="150"/>
                             <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" width="500" height="51" y="199"/>
                             <Rect onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" width="500" height="51" y="249"/>
-                            <Circle cx="46.75" cy="46.75" r="46.75" transform="translate(203.25 103.25)" fill="#fff"/>
+                            <Circle cx="46.75" cy="46.75" r="46.75" transform="translate(203.25 103.25)" fill="#FFF"/>
                             <G transform="translate(231.867 106.527)">
                                 <Path d="M430.488,220.731l-3.032-5.585c1.17-1.17,3.138-2.075,6.276-2.075,0,.213-.319,6.118-.319,6.118Z" transform="translate(-419.904 -213.062)" fill="#d90000" stroke="#000" strokeWidth="1"/>
                                 <Path d="M439.371,219.233l.426-6.171s6.277-.372,9.681,3.723c.053-.053-3.351,4.787-3.351,4.787Z" transform="translate(-425.862 -213.053)" fill="#fcdc04" stroke="#000" strokeWidth="1"/>
@@ -3314,14 +3412,14 @@ class FlagComponent extends Component {
                                 <Path d="M424.479,306.493s5.8-6.649,17.075-5.212c-1.7-2.767-7.181-2.447-7.181-2.447s-1.7-12.925-.372-13.564,6.968.053,6.968.053c.745,0,2.021-2.021,1.011-3.3s-3.99-6.171-2.766-7.128,7.872.532,7.872.532l-18.776-24.043s-1.915-9.043,1.915-13.4c4.628-3.829,4.149-7.979,3.99-7.926-.638-4.2-7.021-7.234-11.33-3.351-2.553,3.085-.852,5.426-.852,5.426s-6.7,1.808-6.968,2.979,7.553-.212,7.553-.212l-.745,5.372s-15.213,13.829-3.563,25.8a2.463,2.463,0,0,0,.372-.532s4.1,5.053,8.4,6.171c4.042,4.149,3.67,3.51,3.67,3.51s.8,6.543.053,7.819c-1.011-.319-11.33-.691-12.873-.106-1.383.425-6.7.159-5.372,8.83,1.01-2.34,1.915-4.415,1.915-4.415s-.159,3.138,1.117,4.256a9.823,9.823,0,0,1,1.224-5.532s.266,3.617,1.063,4.148.8-5.851,5.214-5.319a49.674,49.674,0,0,0,7.606.372s1.49,12.5,1.01,13.671c-3.192-.745-10.8.319-11.277,2.234a23.8,23.8,0,0,1,6.543.266S423.362,304.631,424.479,306.493Z" transform="translate(-412.352 -218.983)" stroke="#000" strokeWidth="1"/>
                                 <Path d="M432.7,251.66s-11.07,12.2-6.294,21.538c.254-1.3.143-2.12.3-2.067-.266-.159,1.372,1.124,1.248.874a8.014,8.014,0,0,0-.5-2.122l1.5.375-.874-1.622,2.122.25s-.749-2-.5-2,1.747.125,1.747.125C428.305,261.362,431.275,256.671,432.7,251.66Z" transform="translate(-418.782 -232.357)" fill="#9ca69c" stroke="#9ca69c" strokeWidth="1"/>
                                 <Path d="M444.563,230.731s.585,4.2-1.7,5.425c-.372.266-1.808.745-1.6,1.6.266,1.17.9.957,1.809.745C445.467,238.072,448.233,232.965,444.563,230.731Z" transform="translate(-426.798 -221.892)" fill="#9ca69c" stroke="#9ca69c" strokeWidth="1"/>
-                                <Circle cx="0.9" cy="0.9" r="0.9" transform="translate(11.924 11.573)" fill="#fff"/>
+                                <Circle cx="0.9" cy="0.9" r="0.9" transform="translate(11.924 11.573)" fill="#FFF"/>
                                 <Path d="M430.611,244.986c-.585.479-3.671,3.671-.638,4.841,3.138-.851,2.287-1.436,2.979-2.128C432.969,246.263,431.391,245.891,430.611,244.986Z" transform="translate(-420.505 -229.02)" fill="#d90000" stroke="#000" strokeWidth="1"/>
                                 <Path d="M445.576,305.307c-.16.691-.851,3.245.106,5.212,2.66-1.117,3.884-.8,4.788-.213A21.915,21.915,0,0,1,445.576,305.307Z" transform="translate(-428.769 -259.18)" fill="#9ca69c" stroke="#9ca69c" strokeWidth="1"/>
-                                <Path d="M455.116,329.455l.16,5.957a7.843,7.843,0,0,0,3.032,0C459.265,335.04,458.254,331.263,455.116,329.455Z" transform="translate(-433.734 -271.254)" fill="#fff" stroke="#fff" strokeWidth="1"/>
+                                <Path d="M455.116,329.455l.16,5.957a7.843,7.843,0,0,0,3.032,0C459.265,335.04,458.254,331.263,455.116,329.455Z" transform="translate(-433.734 -271.254)" fill="#FFF" stroke="#FFF" strokeWidth="1"/>
                                 <Path d="M463.356,304.437s-3.83-9.256-13.617-11.6-8.511-12.766-7.713-13.4c.426-.9.745-2.287,3.564-.957s15.8,7.872,17.66,8.191S463.516,304.65,463.356,304.437Z" transform="translate(-426.921 -245.491)" fill="#9ca69c" stroke="#000" strokeWidth="1"/>
                                 <Path d="M466.6,301.051c-.16.106,13.085,7.819,9.1,14.468,3.777-2.5,2.553-6.862,2.553-6.862s3.085,8.032-4.415,11.968c.8.692,1.33.531,1.33.531l-1.277,1.277s-.585.957,4.469-1.49c-1.383,1.117-1.49,1.915-1.49,1.915s.372,1.064,3.67-1.809a18.766,18.766,0,0,0-3.245,4.309c7.181-.638,22.819-23.99-4.947-30.9,1.49,1.543,1.276,1.33,1.276,1.33Z" transform="translate(-439.478 -253.754)" fill="#d90000" stroke="#000" strokeWidth="1"/>
-                                <Path d="M458.62,295.376c1.809,1.277,2.447,1.7,2.66,2.34a12.079,12.079,0,0,0-3.139-.266,46.905,46.905,0,0,0-4.2-3.67,19.8,19.8,0,0,1-3.245-1.755c-1.383-.692-2.659-5.479,2.447-4.1,5.266,2.5,6.01,2.713,6.01,2.713l6.277,1.968,3.617,4.043s-6.436-3.192-7.234-3.245a12.136,12.136,0,0,1,2.766,3.4A44.2,44.2,0,0,0,458.62,295.376Z" transform="translate(-430.908 -250.366)" fill="#fff" stroke="#000" strokeWidth="1"/>
-                                <Path d="M417.669,244.647s6.171-1.49,6.915-1.277" transform="translate(-415.01 -228.201)" stroke="#fff" strokeWidth="1"/>
+                                <Path d="M458.62,295.376c1.809,1.277,2.447,1.7,2.66,2.34a12.079,12.079,0,0,0-3.139-.266,46.905,46.905,0,0,0-4.2-3.67,19.8,19.8,0,0,1-3.245-1.755c-1.383-.692-2.659-5.479,2.447-4.1,5.266,2.5,6.01,2.713,6.01,2.713l6.277,1.968,3.617,4.043s-6.436-3.192-7.234-3.245a12.136,12.136,0,0,1,2.766,3.4A44.2,44.2,0,0,0,458.62,295.376Z" transform="translate(-430.908 -250.366)" fill="#FFF" stroke="#000" strokeWidth="1"/>
+                                <Path d="M417.669,244.647s6.171-1.49,6.915-1.277" transform="translate(-415.01 -228.201)" stroke="#FFF" strokeWidth="1"/>
                             </G>
                         </G>
                     </Svg>,
@@ -3393,7 +3491,7 @@ class FlagComponent extends Component {
                                 <Path d="M11.114,37.5l6.563,5.975,5.93-5.93,6,6.184L36.08,38l5.962,6.266,6.725-5.552,5.494,6.417,6.69-5.115,7.031,6.211" transform="translate(2.214 45.479)" fill="none" stroke="#000" strokeWidth="0.212"/>
                                 <Circle cx="2.605" cy="2.605" r="2.605" transform="translate(29.345 69.026)" fill="none" stroke="#000" strokeWidth="0.212"/>
                                 <Circle cx="2.605" cy="2.605" r="2.605" transform="translate(40.342 69.763)" fill="none" stroke="#000" strokeWidth="0.212"/>
-                                <Circle cx="2.017" cy="2.017" r="2.017" transform="translate(0 0)" fill="none" stroke="#000" strokeWidth="0.212"/>
+                                <Circle cx="2.017" cy="2.017" r="2.017" fill="none" stroke="#000" strokeWidth="0.212"/>
                             </G>
                         </G>
                     </Svg>,
@@ -3431,7 +3529,7 @@ class FlagComponent extends Component {
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
                             <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="101" y="199"/>
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="101" y="99"/>
-                            <G id="Group_725" transform="translate(-43)">
+                            <G transform="translate(-43)">
                                 <Circle onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5"  cx="45" cy="45" r="45" transform="translate(233 105)"/>
                                 <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} cx="37.5" cy="37.5" r="37.5" transform="translate(250.5 112.5)"/>
                                 <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M655,250l4.784,13.452,12.894-6.129-6.129,12.894L680,275l-13.452,4.784,6.129,12.894-12.894-6.129L655,300l-4.784-13.452-12.894,6.129,6.129-12.894L630,275l13.452-4.784-6.129-12.894,12.894,6.129Z" transform="translate(-327 -125)"/>
@@ -3493,7 +3591,7 @@ class FlagComponent extends Component {
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500L0,300H0Z"/>
                             <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,300H500V0Z"/>
                             <G transform="translate(85 40)">
-                                <G fill="#fff" stroke="#000" strokeWidth=".5">
+                                <G fill="#FFF" stroke="#000" strokeWidth=".5">
                                     <Path d="M185.3 52.1c-2.4-1-4 .2-4.2 3.4s1.5 5.2 4 4.1l.2-7.5z"/>
                                     <Path d="M187.8 46.2c-2-1.7-4-1.1-5 1.9s-.3 5.3 2.5 5.1l2.5-7z"/>
                                     <Path d="M191.6 40.6c-1.7-2-3.7-1.8-5.3 1s-1.1 5.3 1.6 5.5l3.7-6.5zM187.8 68.8c-3 1-3.6 5.1-1.8 7.8s5.3 3.3 7.4.4l-5.6-8.2z"/>
@@ -3551,33 +3649,33 @@ class FlagComponent extends Component {
                                     <Path d="M84 158.8c-1.4 1.1-.2 4.1 1.7 4.2a2.7 2.7 0 002.9-3.2M91.8 159c-.4 1.8 2.3 3.2 4.1 1.6M96.2 157.2a1.2 1.2 0 00-.3-1.4M81 161.1c-1.6 1.2 1.6 4.8 3.9 1.7M93.1 161c-1 1 .5 3.6 2.1 2.9M87.5 162.5c.2 1.8 3.5 3.2 5.8.7M89.3 164.4c-.6 1 .4 2.8 1.7 2.6M120.8 176c-1.4 2.3 2.4 5.4 5.5 2.6M123.5 179.8a3.4 3.4 0 001 3.9M119.5 182.3a2.9 2.9 0 013.7-1.5M117.6 179a2.6 2.6 0 012.9-1.7M214.9 133.9c-5.7-.3-3.8 9 1.2 7.4M212.7 140.5c-1.2 1.8.8 4.9 3.3 3.3M215.3 144c-1.8 2.8 4 7.4 6.6 3.1M220 148.7c-.1 2.7 7.5 4.8 6.6-.6M225.8 151c1.7 3.2 8.5 3.9 8-.8M232.2 153.3c1.3 2.2 8 3.8 8-.5M206.1 125.4c.9 2.6 4.1 3.6 7.8 2.4M204 127c2.1 1.6-1.5 8-4.8 5.2M203.8 131.2c2.4 1.3 5.5.6 6.6-2.9M208.7 131c.1 1.8 2.7 3.4 6.2 2.9M202.4 132.6c3 2.9-1.9 8.2-3.9 5.6M203.5 134.7c1.5 1.2 5.4.8 6-2.2M207.6 135c.2 1.9 1.7 2.7 3.9 2.9M202.5 137.3c1.5 2.4 5.4 3.2 7.4.3M208 139.2c-.3 2.2 2 4 4.6 3.7M199 143.6c2 1.1 4.5-2.7 2.9-5.5M201.2 147.9c2.5.3 3-3.5.8-5.7M206.7 151.6c2.1-.3 1.7-5-3.3-5.6M212.9 155.4c2-.5.7-5.6-4.9-5.6M220.4 157.5c1.5-2-2.8-5.8-6.6-4.1M224 160.6c2.5.9 4.5-5.6-3.4-5M228.6 160.9c2.2-.5 4-4.4-2.4-3.4M233.4 161.4c2 1.1 3.1-4.5-2.9-3.3M202 142.2c2.3 1.5 6.2 0 6-3M206.9 141.8c.7 1.5.3 4.3-1.3 5M207 145.2c1.5.7 3.7.3 5.2-2.2M209.8 145.4c.4 1.1.4 3.4-.7 4.4M210 147.3c1.8 1 4-.1 5-2M213.7 147c1.3.8 2.2 4.6 0 6M215 151.4c1.5.1 3.7.2 5.3-1.6M219.2 150.8a4.2 4.2 0 012.1 4.8M221.5 154.8c1.5 0 4.2-1 5-2.8M225.7 153.2a4.1 4.1 0 011.8 4.1M227.6 156a3.3 3.3 0 003.4-2.4M230.6 154.8a4 4 0 012.4 3.3M232.9 157.1a3.8 3.8 0 002.7-1.8M238.7 155.3c1.4 1.5-.8 6.2-3.8 5.2M213 56.2c-3.1 1.6-11.6.6-7-6.2M214 51.5c-6 2-13-2.8-5.2-7.3M206.9 42.4c-5-.2-8.6 7.5-2.2 10.6M187.7 44.7c-1.5 2.5 3 5.4 6.2 3.1 2.6-1.8 2.7-7 1.3-9.1M184.8 50.6c-1.8 5.2 10 6.1 8.6-2.4M183.8 58.4c.2 4 11.2 3.3 8-5M193.3 51.2a8 8 0 007.2 3.3M195.5 45.6c.3 1.5 2.7 2.8 5.9 1.8M79.4 162.2c-2.9 1.8 1.2 5.1 3 1.8M77.2 163.6c-3 1.8 1.2 5.1 3 1.8M74.8 165c-2.9 1.8 1.2 5.1 3 1.8M72.3 166.2c-2.7 1.3.2 4.9 3 2M69.6 167.4c-2.7 1.3.2 4.9 3 2M83.3 164c-.1 2 3.7 3 5.3 0M85.7 166c-1.3 1.4.8 3.4 2 2.8M80.5 165.4c-.2 1.7 3.1 3 4.9 1.1M82.2 167.3c-1.1 1.4 1 3.4 2.3 2.9M78.2 166.9a3 3 0 004 2.2M79.3 168.8c-.8.7-.5 2.4.6 3M75.1 168.4c-.4 1.3 1.7 3.6 4 2.3M75.5 170c-1.3.9-1.3 2.4.4 2.7M72.4 169.6a2.1 2.1 0 002.2 2.2M65.5 169.2c-1.3.6 1.8 4.2 4 1M62.3 170.4c-1.7.7 2.1 4.8 4.1 1M72.7 170.8c-1.2.2-2.1 2-1.1 2.8M68.6 171.2c-.2.8 1.3 2 2.6 1.7M67.6 171.5c-1.3.7-.8 2.9.7 2.6M63.2 172.7c-1.2.8-.5 2.5 1 2.2M65.2 172.7a1.6 1.6 0 001.9 1M59.3 171.6c-1.4.6-1.5 4.1 3.3 2.4M56 172.9c-2 .9-1.4 3.5 3 1.2M59.3 174.4c-.5.3-1.1 2 .9 1.5M55.7 175c-.8.7-.4 2.2 1.4 1.7M51.5 175c-1.5.8 1.7 2 4 0M52.4 176.1c-.6.6-.7 2.5 1 2M48.3 176.7c-1 .6.6 1.7 3.7.5M49.5 177.8c-1.2.8-1.2 2 .5 1.7M46.1 178.1c-1.3 1 .5 2 2.7 1.1M46 179.4c-2.1.8-1.3 2.6 0 2M116.9 189.3c-.6 1 1 2 2.5 1.8 1.5-.2 3-1.3 2-3M121.3 190.1c1.4 1.2 4 0 4.2-1.6"/>
                                 </G>
                                 <G stroke="#000" strokeWidth=".5">
-                                    <Path fill="#fff" d="M219 24.5c-6.3-3.6-19.4-10.2-23.4-5.6 3.5-1.3 13.6.8 21.5 9l1.8-3.4z"/>
-                                    <Path fill="#fff" d="M222.8 24.3c-7-9-11.4-7.3-16.6-10.6-4.9-3-12.9-4-14.6.3 7.5-3.2 14 2.7 18 3.6 5.7 1.2 8.7 5.7 10.2 7.9l3-1.2zM251 24.7c-3.5-9-11.8-7.2-15.3-11.1-5-5.8-18.2-11.5-24-8 12.3 0 17 9.3 23.4 12.8 4.6 2.5 9.3 7.6 15.8 6.3z"/>
-                                    <Path fill="#fff" d="M236.5 23c-6.2-8.6-16-16.4-20.7-13.9 6 .7 7.8 5 12 8s2 6.8 8.7 5.9zM204.4 35.8c-6.8-3-20.2-5-26.9 2.6 10.4 2.3 26.2 2.2 26.9-2.6z"/>
-                                    <Path fill="#fff" d="M203 38.8c-6.8-3.6-12.4.6-18.9-.4-12.3-1.8-21.2-1.6-22.6 4.3 7.4-6 19-.1 23.9-1.1s22.7 1 28.2 3.7c-2.7-3.7-7.2-4.9-10.6-6.5zM225.6 21.5c-1.3-5.4-1-11 7-10.2-1.9-2.6-9.2-4.3-10.9 5-8.4-6.9-18-8.5-20-3 4.7-3.7 11.6-.5 19.4 9.4a14.9 14.9 0 014.5-1.2z"/>
-                                    <Path fill="#fff" d="M213.2 28.2c-4.8-3.5-11.3-9 .6-10.5-5-3-12.4-2.2-12 7.1-13.3-6.1-23-4.8-25.4.5-2.5 5.8 5.6 9.6 7.3 5.9-1.6.5-6.7-1.5-3.8-4.8s16.8 0 29.7 7.7c3.6 2.1 16.4 2.5 3.6-6z"/>
-                                    <Path fill="#fff" d="M209.2 36.8c-3.5-8-16.3-1.5-18.4-9.3-4 11 17.5 6 18.4 9.3zM288 49.5c2.6 1.5 5-.5 1-2.3 2.6 1.5 5-.4 1-2.2 2.6 1.4 5-.5 1.1-2.3-1.1 1-2.9 4.9-3 6.8zM290.2 34.5c6.1-5.8 0-8.2 7.4-14.1 6-4.9 1.5-8.5 7.2-12.2 1.9-1.2 5.8-3.6 6.3-6.2 2 6-7.6 6.3-7.4 15.6 0 6-4 5.2-6 15.2-.4 2-2.1 6.6-7.5 1.7z"/>
-                                    <Path fill="#fff" d="M292.7 37.3c3.5-6.7 7.2-6.4 9.1-9 3.7-5 10.5 1.4 16.8-2.8-1.4 6.4-9.4 3.7-13.2 7.7s-6.7 5.8-12.7 4.1z"/>
-                                    <Path fill="#fff" d="M293.3 39.6c5.9-4.2 9.9-1 14-3.1 10-5.4 13.6 2 22.5-.4-2.6 5.5-15.3 0-21.2 3.9s-25.8 6.8-15.3-.4zM275.3 70.9a7 7 0 00-5.6-6.6c-3.3-.6-4.6-4.2-7.2-4.5s-4-5.5-7.5-5.6-5.2 4.4 2.9 9 17 9.9 17.4 7.7zM264.7 72.5c-3.5 0-4.3 5-7.7 5 4.6 2.8 8.1-.7 10.7-3.7l-3-1.3z"/>
-                                    <Path fill="#fff" d="M267.6 73.3c-3.2 2.4-4.4 7.7 0 9.5-2.5-3.8 4.9-5 2.8-8.6l-2.8-1z"/>
-                                    <Path fill="#fff" d="M270.6 73.6c-2.7 4.5 3.5 5.4 1.7 8.9 3.6-.6 4.5-7.3 1.4-9.2l-3.1.3z"/>
-                                    <Path fill="#fff" d="M247.5 62.4a17 17 0 0114.2 8.6c2 3.4 9.6 5 12.3 2.6s1.5-8-5-6.5c-1.4-2.9-6.2-2.1-8.3-4.5s-10.5-9.3-13.2-.2z"/>
-                                    <Path fill="#fff" strokeLinecap="round" d="M269 67c-1.5.3-2.2 3-1.3 4.3M272.2 68.8a3 3 0 01-.2 2.5M256.6 63.1c3 .3 3.5 2.5 6.6 3.5"/>
-                                    <Path fill="#fff" d="M255 55.7c10.2 3.1 18.2 5.8 23.1 9s12.7 4.3 19.7 2.7 20.2-2.6 19.1 5.9c3.8-4.1-.5-9-9.6-10.2.4-4.2-3.9-8.2-7.2-5.9 3-.2 5.2 5.5-.7 7.4a5.3 5.3 0 00-7-6.5c2.7 1 5.2 5.8-1 7.2-4 1-9.7-.8-13.8-3.6s-27.4-13.4-22.5-6z"/>
-                                    <Path fill="#fff" d="M281.2 52.9c-3.3 1.2-1.4 4.7-6.5 6.4S266 65.2 267 69c3.8-7.2 9.7-6.5 12-9.3s5.5-7 2.3-6.8z"/>
-                                    <Path fill="#fff" d="M282 53.4c-.4 5.9-5 3.5-3.5 11.8.4 2.6 1.2 6.8-.8 11 5.4-3.6 2.5-11.7 5-14.6a19.2 19.2 0 003.4-5.4c-1.4 3.3-1.6 9.6 1.6 11.4-2.3-6.5 7.7-11 1.4-18.7-1 1.7-4.3 4.7-7 4.5zM266 46.7c.7 1.2 1.4 4.3.5 6a14.3 14.3 0 005-5c3.2.7 4.3 4.9 1 6.5 2 0 5.3.3 7.3-1.8-2.1-2.6-9-6.8-13.8-5.7z"/>
-                                    <Path fill="#fff" d="M216.6 32.5a6.2 6.2 0 00-3-1.4c-4.7-1.2-2-5.5 2.1-5.2 9.4-9.2 14-1.5 24.9-4a12 12 0 018.4.6c5-3 10.6-1.8 14.5 2.2a3.3 3.3 0 012-1.4c3.8-.9 6.7 2.5 7.5 6.7 3-.4 6.3 1.3 8.4 3.4 3.2-1.4 5.3-1.4 6 .3 2.8-1.2 6.3-1.8 7.9 2.7s-4.4 2.8-5.8 11.9c-.9 5.6-7.3 7.5-12.1 3.9-7.7-5.8-15.5-7.1-19.7.9s-7.6 12.6-16.8 9.4a10 10 0 00-10.7 3.5c-3 3.5-7-.1-12 0 6.4-.6 4-2.3 9.6-2.4 5 0 4-4.8 7.2-5.3-12.7 2.6-12-2-22.5.6 4.8-5.5 11.7-2 15.5-5.1-9.4-.7-13.2-7-17.5-4.6-6.8 3.6-4.5 15.2-21.7 13.3-8.3-.9-13.7 0-19 4.7 9.7-17.6 21-7 27-12.5 3.6-3.2 6.3-5.6 8.2-8.7a3.8 3.8 0 012.6-2c-14-5.2-5-11.7 9-11.5z"/>
-                                    <Path fill="#fff" strokeLinecap="round" d="M287.4 33.7a4 4 0 01.2 1.8c-.2 3.5-5.5 3.4-6.1 8.6-.3 2.7-.7 4.2-2.5 3.8s-3.3-3.4-1.4-6.7"/>
-                                    <Path fill="#fff" d="M219.5 27.4a6.8 6.8 0 00-3.8-1.5M249 22.4c4.1 2.1 6 6.6 12.1 7.2 6 .5 9.2 9.3 19.5 4.2l.8-.4M263.5 24.7a7.9 7.9 0 00-1.1 5M243 41.8c-7.5-.4-9.6 3.4-9.8 7.1s3.1 8.7 9.4 9 9.8-3.3 10-7.5-3.4-8.2-9.5-8.6z"/>
-                                    <Path fill="#fff" d="M243.6 57.8c0-2-3.8-2-3.6-3.5s2.2-2.2 2.3-4.4 3.5-2.3 4.6-.4 4.2 5.4 5 3.7M246.9 49.5a6.2 6.2 0 00-.7 8.1M249.2 52.3a5 5 0 00-.3 4.2"/>
+                                    <Path fill="#FFF" d="M219 24.5c-6.3-3.6-19.4-10.2-23.4-5.6 3.5-1.3 13.6.8 21.5 9l1.8-3.4z"/>
+                                    <Path fill="#FFF" d="M222.8 24.3c-7-9-11.4-7.3-16.6-10.6-4.9-3-12.9-4-14.6.3 7.5-3.2 14 2.7 18 3.6 5.7 1.2 8.7 5.7 10.2 7.9l3-1.2zM251 24.7c-3.5-9-11.8-7.2-15.3-11.1-5-5.8-18.2-11.5-24-8 12.3 0 17 9.3 23.4 12.8 4.6 2.5 9.3 7.6 15.8 6.3z"/>
+                                    <Path fill="#FFF" d="M236.5 23c-6.2-8.6-16-16.4-20.7-13.9 6 .7 7.8 5 12 8s2 6.8 8.7 5.9zM204.4 35.8c-6.8-3-20.2-5-26.9 2.6 10.4 2.3 26.2 2.2 26.9-2.6z"/>
+                                    <Path fill="#FFF" d="M203 38.8c-6.8-3.6-12.4.6-18.9-.4-12.3-1.8-21.2-1.6-22.6 4.3 7.4-6 19-.1 23.9-1.1s22.7 1 28.2 3.7c-2.7-3.7-7.2-4.9-10.6-6.5zM225.6 21.5c-1.3-5.4-1-11 7-10.2-1.9-2.6-9.2-4.3-10.9 5-8.4-6.9-18-8.5-20-3 4.7-3.7 11.6-.5 19.4 9.4a14.9 14.9 0 014.5-1.2z"/>
+                                    <Path fill="#FFF" d="M213.2 28.2c-4.8-3.5-11.3-9 .6-10.5-5-3-12.4-2.2-12 7.1-13.3-6.1-23-4.8-25.4.5-2.5 5.8 5.6 9.6 7.3 5.9-1.6.5-6.7-1.5-3.8-4.8s16.8 0 29.7 7.7c3.6 2.1 16.4 2.5 3.6-6z"/>
+                                    <Path fill="#FFF" d="M209.2 36.8c-3.5-8-16.3-1.5-18.4-9.3-4 11 17.5 6 18.4 9.3zM288 49.5c2.6 1.5 5-.5 1-2.3 2.6 1.5 5-.4 1-2.2 2.6 1.4 5-.5 1.1-2.3-1.1 1-2.9 4.9-3 6.8zM290.2 34.5c6.1-5.8 0-8.2 7.4-14.1 6-4.9 1.5-8.5 7.2-12.2 1.9-1.2 5.8-3.6 6.3-6.2 2 6-7.6 6.3-7.4 15.6 0 6-4 5.2-6 15.2-.4 2-2.1 6.6-7.5 1.7z"/>
+                                    <Path fill="#FFF" d="M292.7 37.3c3.5-6.7 7.2-6.4 9.1-9 3.7-5 10.5 1.4 16.8-2.8-1.4 6.4-9.4 3.7-13.2 7.7s-6.7 5.8-12.7 4.1z"/>
+                                    <Path fill="#FFF" d="M293.3 39.6c5.9-4.2 9.9-1 14-3.1 10-5.4 13.6 2 22.5-.4-2.6 5.5-15.3 0-21.2 3.9s-25.8 6.8-15.3-.4zM275.3 70.9a7 7 0 00-5.6-6.6c-3.3-.6-4.6-4.2-7.2-4.5s-4-5.5-7.5-5.6-5.2 4.4 2.9 9 17 9.9 17.4 7.7zM264.7 72.5c-3.5 0-4.3 5-7.7 5 4.6 2.8 8.1-.7 10.7-3.7l-3-1.3z"/>
+                                    <Path fill="#FFF" d="M267.6 73.3c-3.2 2.4-4.4 7.7 0 9.5-2.5-3.8 4.9-5 2.8-8.6l-2.8-1z"/>
+                                    <Path fill="#FFF" d="M270.6 73.6c-2.7 4.5 3.5 5.4 1.7 8.9 3.6-.6 4.5-7.3 1.4-9.2l-3.1.3z"/>
+                                    <Path fill="#FFF" d="M247.5 62.4a17 17 0 0114.2 8.6c2 3.4 9.6 5 12.3 2.6s1.5-8-5-6.5c-1.4-2.9-6.2-2.1-8.3-4.5s-10.5-9.3-13.2-.2z"/>
+                                    <Path fill="#FFF" strokeLinecap="round" d="M269 67c-1.5.3-2.2 3-1.3 4.3M272.2 68.8a3 3 0 01-.2 2.5M256.6 63.1c3 .3 3.5 2.5 6.6 3.5"/>
+                                    <Path fill="#FFF" d="M255 55.7c10.2 3.1 18.2 5.8 23.1 9s12.7 4.3 19.7 2.7 20.2-2.6 19.1 5.9c3.8-4.1-.5-9-9.6-10.2.4-4.2-3.9-8.2-7.2-5.9 3-.2 5.2 5.5-.7 7.4a5.3 5.3 0 00-7-6.5c2.7 1 5.2 5.8-1 7.2-4 1-9.7-.8-13.8-3.6s-27.4-13.4-22.5-6z"/>
+                                    <Path fill="#FFF" d="M281.2 52.9c-3.3 1.2-1.4 4.7-6.5 6.4S266 65.2 267 69c3.8-7.2 9.7-6.5 12-9.3s5.5-7 2.3-6.8z"/>
+                                    <Path fill="#FFF" d="M282 53.4c-.4 5.9-5 3.5-3.5 11.8.4 2.6 1.2 6.8-.8 11 5.4-3.6 2.5-11.7 5-14.6a19.2 19.2 0 003.4-5.4c-1.4 3.3-1.6 9.6 1.6 11.4-2.3-6.5 7.7-11 1.4-18.7-1 1.7-4.3 4.7-7 4.5zM266 46.7c.7 1.2 1.4 4.3.5 6a14.3 14.3 0 005-5c3.2.7 4.3 4.9 1 6.5 2 0 5.3.3 7.3-1.8-2.1-2.6-9-6.8-13.8-5.7z"/>
+                                    <Path fill="#FFF" d="M216.6 32.5a6.2 6.2 0 00-3-1.4c-4.7-1.2-2-5.5 2.1-5.2 9.4-9.2 14-1.5 24.9-4a12 12 0 018.4.6c5-3 10.6-1.8 14.5 2.2a3.3 3.3 0 012-1.4c3.8-.9 6.7 2.5 7.5 6.7 3-.4 6.3 1.3 8.4 3.4 3.2-1.4 5.3-1.4 6 .3 2.8-1.2 6.3-1.8 7.9 2.7s-4.4 2.8-5.8 11.9c-.9 5.6-7.3 7.5-12.1 3.9-7.7-5.8-15.5-7.1-19.7.9s-7.6 12.6-16.8 9.4a10 10 0 00-10.7 3.5c-3 3.5-7-.1-12 0 6.4-.6 4-2.3 9.6-2.4 5 0 4-4.8 7.2-5.3-12.7 2.6-12-2-22.5.6 4.8-5.5 11.7-2 15.5-5.1-9.4-.7-13.2-7-17.5-4.6-6.8 3.6-4.5 15.2-21.7 13.3-8.3-.9-13.7 0-19 4.7 9.7-17.6 21-7 27-12.5 3.6-3.2 6.3-5.6 8.2-8.7a3.8 3.8 0 012.6-2c-14-5.2-5-11.7 9-11.5z"/>
+                                    <Path fill="#FFF" strokeLinecap="round" d="M287.4 33.7a4 4 0 01.2 1.8c-.2 3.5-5.5 3.4-6.1 8.6-.3 2.7-.7 4.2-2.5 3.8s-3.3-3.4-1.4-6.7"/>
+                                    <Path fill="#FFF" d="M219.5 27.4a6.8 6.8 0 00-3.8-1.5M249 22.4c4.1 2.1 6 6.6 12.1 7.2 6 .5 9.2 9.3 19.5 4.2l.8-.4M263.5 24.7a7.9 7.9 0 00-1.1 5M243 41.8c-7.5-.4-9.6 3.4-9.8 7.1s3.1 8.7 9.4 9 9.8-3.3 10-7.5-3.4-8.2-9.5-8.6z"/>
+                                    <Path fill="#FFF" d="M243.6 57.8c0-2-3.8-2-3.6-3.5s2.2-2.2 2.3-4.4 3.5-2.3 4.6-.4 4.2 5.4 5 3.7M246.9 49.5a6.2 6.2 0 00-.7 8.1M249.2 52.3a5 5 0 00-.3 4.2"/>
                                     <Path fill="none" d="M279.5 48c5.9.8 7.2-5.7 2.8-6.3M273.1 30c-1.9-2.7-6.5-3.8-7 1.7"/>
-                                    <Path fill="#fff" d="M265.3 38c-1.7-5-6.9-6-9.7-3.7a5 5 0 002.1 8.7c1.8-2 5.2-4.4 7.6-5zM263.2 34.8c-2.7-2.8-7.2 1.9-3.6 6.5M207.6 44c2-.3 4.7.8 9 3 2.6 1.5 10.7 4.7 16 2.2-5.5 1.6-9-6.6-13.1-5.9S208 45.2 205 42.1c7.6.9 12-4.9 20.3.7a15 15 0 008 2.7c-6.5-8.9-16.1-3.9-16.7-10.9 4 4.9 14.7-.2 19.5 8.7M218 36c-1-1.3-.4-2.5-1.4-3.5"/>
+                                    <Path fill="#FFF" d="M265.3 38c-1.7-5-6.9-6-9.7-3.7a5 5 0 002.1 8.7c1.8-2 5.2-4.4 7.6-5zM263.2 34.8c-2.7-2.8-7.2 1.9-3.6 6.5M207.6 44c2-.3 4.7.8 9 3 2.6 1.5 10.7 4.7 16 2.2-5.5 1.6-9-6.6-13.1-5.9S208 45.2 205 42.1c7.6.9 12-4.9 20.3.7a15 15 0 008 2.7c-6.5-8.9-16.1-3.9-16.7-10.9 4 4.9 14.7-.2 19.5 8.7M218 36c-1-1.3-.4-2.5-1.4-3.5"/>
                                 </G>
                                 <Path d="M273.1 30c-1.6-2-5.6-.7-4.7 3.2a6 6 0 014.7-3.2zM261.7 39.8a13.2 13.2 0 013.6-1.8 7.8 7.8 0 00-2.2-3.4c-.9-.7-3.7 2.8-1.4 5.2z"/>
                                 <G fill="none" stroke="#000" strokeLinecap="round" strokeWidth=".5">
                                     <Path d="M257.3 33c-2.8-2-5.5-2-6.5-.5-2-.2-3.9 1.2-4.1 4.3M251 38.3c-3.2-2.5-8-2-8 3.4M240.8 44.6c1.7-1.3 4.2-2.1 6 .4M266.8 40.7c-.6.9-1.2 2.2-.3 4.4-1.2-1.8-4.4-2-8 2.4M274.5 41c-4.2.2-4.3 3-1 4.3M245.3 29.1c-3.5-.9-6.2 1-1.4 3.1M252.2 27c-5-1.4-7-.2-4.8 1M236.7 46.3c-.2 1.8.6 4.2 3.6 1.7M237.4 51.7a2.3 2.3 0 01-.5 1.4M227 27.5c-3-1-3.3-3.8.2-3.4M225.7 34c-3.3-1.3-3.2-4.6-.4-4.1M232 32.6c-3.8-1.1-3.9-3.9-.9-3.3M233 24.3c-2.1-.3-5.5 1.9-.1 3.5M238.6 29.3c-4.9-1-4.9 1-2 2.4M242.5 24.8c-3.7-1-5.1 1.3-2.6 2.4M230 38c-1-.7-1.5-4.4 2.8-3.1M239.1 37.4c-2.9-1-5.9 1.8-3.2 3.7M243.2 34.2c-3-.7-5.8 0-4.1 1.2"/>
                                 </G>
-                                <Path fill="#fff" stroke="#000" strokeWidth=".5" d="M273 30a6 6 0 00-4.6 3.2"/>
+                                <Path fill="#FFF" stroke="#000" strokeWidth=".5" d="M273 30a6 6 0 00-4.6 3.2"/>
                             </G>
                         </G>
                     </Svg>,
@@ -3652,7 +3750,7 @@ class FlagComponent extends Component {
                             <G transform="translate(27 0) scale(2)">
                                 <G transform="translate(112.5,75)">
                                     <Circle r="20" fill="#008"/>
-                                    <Circle r="17.5" fill="#fff"/>
+                                    <Circle r="17.5" fill="#FFF"/>
                                     <Circle r="3.5" fill="#008"/>
                                     <G id="d">
                                         <G id="c">
@@ -3780,14 +3878,14 @@ class FlagComponent extends Component {
                             <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" y="75"/>
                             <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" stroke="#000" strokeWidth="0.96" transform="translate(155 90) scale(0.75)">
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path strokeLinejoin="bevel" d="M73.3 71.3H187v43.8H73.3z"/>
                                     <Path strokeLinejoin="bevel" d="M181.2 95.5h3.6V112h-3.6zM73.3 87.3H187v5.1H73.3zM73.3 80.4H187V85H73.3z"/>
                                     <Path strokeLinejoin="bevel" strokeWidth=".9" d="M73.3 73.5H187V78H73.3z"/>
                                     <Path strokeLinejoin="bevel" d="M103.2 95.5h3.6V112h-3.6zM152.2 95.5h3.6V112h-3.6zM74.2 95.5h3.6V112h-3.6zM81.2 95.5h3.6V112h-3.6zM88.7 95.5h3.6V112h-3.6zM96.2 95.5h3.6V112h-3.6zM159 95.5h3.6V112H159zM166.5 95.5h3.6V112h-3.6zM174 95.5h3.6V112H174z"/>
                                     <Path d="M28.8 117.4a9.3 9.3 0 004.4-5.3h193a9.3 9.3 0 004.5 5.3z"/>
                                 </G>
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path d="M127.3 4.6s-.2-4 2.2-4.1c2.4 0 2.3 4.1 2.3 4.1zM114.8 59.2v-5.6c-.1-2.7-2.8-3-2.9-5 0 0-.3-3 .5-4.4 1 4 3 3.3 3 1.7 0-1.5-1-2.8-3.4-6.3-.7-1.2-.3-4.7.8-6 .4 3.1.8 4.6 2.1 4.6.8 0 1.5-.6 1.5-2 0-2-1.3-3-2-4.8a5 5 0 011-5.4c.6 3 .4 4.2 1.8 4.2 2.7-.8 0-4.7-.6-5.7-.7-1.2.9-3.5.9-3.5.9 2.7 1.1 3 2 2.7 1.2-.4 1-2-.3-3.5a2.3 2.3 0 01.1-3.3c1 2 2.2 1.8 2.4.7l-.8-4.4H138l-.8 4.2c-.3 1.3 1.4 1.5 2.4-.5a2.3 2.3 0 01.2 3.3c-1.5 1.4-1.6 3.1-.5 3.5 1 .2 1.3 0 2.1-2.7a4 4 0 011 3.5c-.7 1-3.4 4.9-.7 5.7 1.4 0 1.2-1.2 1.8-4.2a5 5 0 011 5.4c-.7 1.8-2 2.8-2 4.7 0 1.5.7 2 1.5 2 1.3 0 1.7-1.4 2.1-4.5 1 1.3 1.5 4.8.8 6-2.3 3.5-3.4 4.8-3.4 6.3 0 1.6 2 2.4 3-1.7.8 1.4.5 4.5.5 4.5 0 2-2.8 2.2-2.8 5v5.5zM122 13.2l-.4-3.2h15.8l-.4 3.2zM123 10l-.3-2.6h13.6L136 10zM125.2 7.3l-.2-2.6h9l-.2 2.6zM158.2 117.4c-2-.8-5-3-5-5V88l2.7-3.3H103l2.5 3.3v24.3c0 2.2-2 4.3-4 5z"/>
                                     <Path strokeLinejoin="bevel" d="M112.5 95.5h3.6V112h-3.6zM142.8 95.5h3.6V112h-3.6z"/>
                                     <Path d="M102.2 57v27.7h54V57a4.2 4.2 0 00-2.5 2.9v11.8h-48.8V59.9a4.7 4.7 0 00-2.7-2.9z"/>
@@ -3802,7 +3900,7 @@ class FlagComponent extends Component {
                                     <Path strokeWidth=".8" d="M121 18.5h17.2M119 23.8h21M117 30.3h25M115 38.2h29.5M114.2 47.3h30.5"/>
                                     <Path d="M105 76.8h48.7M120.4 76.8h18v6.6h-18z"/>
                                 </G>
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path d="M118.2 62c3 3.7 2.7 9.8 2.7 13.3h17.3c0-3.5-.3-9.6 2.7-13.2zM128 21l-2.4-1.3v-3.5c1 .3 2 .4 2.1 2 .4-2.2 1-2.1 2-3 .9.9 1.5.8 1.8 3 .1-1.6 1.2-1.7 2.2-2v3.5l-2.4 1.2z"/>
                                     <Path d="M127.8 26.7l-4-2.7v-3.2c1.4.3 3 .4 3.1 2.1a6.5 6.5 0 012.7-4.6 6.5 6.5 0 012.7 4.6c.2-1.7 1.7-1.8 3.1-2.1V24l-4 2.7z"/>
                                     <Path d="M127.5 35.6l-4.5-4V27c1.5.5 3.3.7 3.5 3.2.6-3.6 1.6-5.4 3.1-6.8 1.6 1.4 2.6 3.2 3.1 6.8.2-2.5 2-2.7 3.6-3.2v4.8l-4.5 4zM135.9 41l-4.1 5.6H127l-4-5.7zM120.6 50.5c2 1 2.9 3.3 3 7.5h11.6c.2-4.2 1-6.4 3-7.5z"/>
@@ -3812,7 +3910,7 @@ class FlagComponent extends Component {
                                     <Path strokeLinejoin="bevel" d="M140.3 76.8V70c-2.4 1-3.1 3.2-3.8 4.7.3-6.8-3.9-14.2-7-16-3.2 1.8-7.5 9.3-7 16-.8-1.5-1.5-3.8-3.9-4.7v6.8z"/>
                                     <Path d="M138.6 87v-6.8c-2.4.6-2.6 1.5-3.4 3 .3-4-2.6-8.7-5.8-10.6-3.1 1.9-6 6.5-5.7 10.6-.8-1.5-1-2.4-3.4-3V87z"/>
                                 </G>
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path d="M33.2 112V91.7c-.7-2.6-2.9-4.9-4.6-5.3v-18l3.8 2L36.7 89v23z"/>
                                     <Path d="M33.2 112.1V91.6c-.7-2.6-2.9-4.9-4.6-5.3V67c2.6 0 3.8 3.3 3.8 3.3L36.7 89V112z"/>
                                     <Path d="M30.5 117.4c1.8-.8 4.3-3 4.3-5V86.7l-1.2-2.1H77l-1.7 2v25.6a6.1 6.1 0 003.5 5z"/>
@@ -3832,7 +3930,7 @@ class FlagComponent extends Component {
                                     <Path d="M61.8 84.4c-1-4.7-2-8.1-7.2-11.6-5.1 3.5-6 7-7.1 11.6z"/>
                                     <Path d="M64.5 87v-6.8c-2.4 1-4.5 2.3-5.3 3.8-.9-3.7-2.6-5.4-4.7-7.6-2 2.2-3.5 3.9-4.3 7.6-.8-1.5-3-2.8-5.3-3.8V87z"/>
                                 </G>
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path d="M226 112V91.7c.7-2.6 3-4.9 4.6-5.3v-18l-3.7 2-4.3 18.8v23z"/>
                                     <Path d="M226 112.1V91.6c.7-2.6 3-4.9 4.6-5.3V67c-2.5 0-3.7 3.3-3.7 3.3L222.6 89V112z"/>
                                     <Path d="M228.7 117.4c-1.7-.8-4.2-3-4.2-5V86.7l1.2-2.1H182l1.7 2v25.6a6.1 6.1 0 01-3.4 5z"/>
@@ -3852,7 +3950,7 @@ class FlagComponent extends Component {
                                     <Path d="M197.5 84.4c1-4.7 2-8.1 7.1-11.6 5.2 3.5 6.1 7 7.2 11.6z"/>
                                     <Path d="M194.8 87v-6.8c2.3 1 4.5 2.3 5.2 3.8 1-3.7 2.6-5.4 4.7-7.6 2.1 2.2 3.5 3.9 4.4 7.6.8-1.5 2.9-2.8 5.2-3.8V87z"/>
                                 </G>
-                                <G fill="#fff">
+                                <G fill="#FFF">
                                     <Path d="M7 142h245.3v12.6H6.9zM.5 154.6h258.2v12.5H.5zM19.8 123.3h219.6v8.2H19.8z"/>
                                     <Path d="M13.4 131.4h232.4V142H13.4zM23.7 117.1h211.9v6.2h-212z"/>
                                     <Path d="M46.7 117.1h16v50h-16z"/>
@@ -4191,7 +4289,7 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="85" y="213"/>
                         <G fill="#f8c300" transform="translate(-27 10) scale(0.4)">
                             <Path d="M 672.0,340.7 a 12.5,12.5 0,0,1 23.3,5.9 v 50 h 9.4 v -50 a 12.5,12.5 0,0,1 23.3,-5.9 a 29.5,29.5 0,1,0 -56,0"/>
-                            <Path d="M 678.7,327.65 a 20,20 0,0,1 21.3,9.55 a 20,20 0,0,1 21.3,-9.55 a 21.5,21.5 0,0,0 -42.6,0" fill="#fff"/>
+                            <Path d="M 678.7,327.65 a 20,20 0,0,1 21.3,9.55 a 20,20 0,0,1 21.3,-9.55 a 21.5,21.5 0,0,0 -42.6,0" fill="#FFF"/>
                             <Path id="w" d="M 695.3,376.627 a 38,38 0 0 1 -63.845,24.316 a 39.5,39.5 0 0 1 -59.734,17.467 c 3.6496,36.426 58.252,28.989 62.32,-6.4288 17.154,30.115 54.873,21.49 65.91,-15.4 z"/>
                             <Use href="#w" transform="translate(700,0) scale(-1,1) translate(-700,0)"/>
                             <Path id="r" d="M 658.84,441.31 c -7.6181,16.446 -22.845,19.271 -36.164,5.9953 0,0 5.3539,-3.7831 11.086,-4.826 -1.0748,-4.5744 1.1291,-10.902 4.2354,-14.324 3.2575,2.2264 7.8036,6.6886 8.9598,11.874 8.0291,-1.0394 11.883,1.2815 11.883,1.2815 z"/>
@@ -4288,21 +4386,30 @@ class FlagComponent extends Component {
                 as: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#006"/>
-                            <Path d="M0,150,500,0V300Z" fill="#bd1021"/>
-                            <Path d="M107.14,163.395,553.57,26.79V300" transform="translate(-53.57 -13.79)" fill="#fff"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500L.8,150.027,500,300H0Z"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,150,500,0V13.086L53.359,149.654,499.988,286.113,500,300Z"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M106.536,163.473,553.57,26.79V300" transform="translate(-53.57 -13.79)"/>
                             <G transform="translate(332.68 69)">
-                                <Path d="M779.648,190.99s-3.121-2.554.568-6.669c-1.987-1.7-.142-4.966-.142-4.966s-3.406-1.277.142-6.527c-2.554-1.7-1.419-5.534-1.419-5.534s-8.371-3.121-.425-6.1c-6.527,2.837-12.629-3.831-12.629-3.831l-9.506.284c-1.608-7.9-14.141-1.041-4.824-23.7-2.412-.426-5.108-1.135-7.8.851s-10.358,6.243-14.9,1.986,2.98-10.357,3.122-10.5,10.074-5.25,11.493-8.655c-.142-2.554-3.263-4.54-.426-10.074,3.263-5.25,23.269-10.216,32.351-11.918a14.386,14.386,0,0,0,6.384-5.818l.993,3.689s20.148-5.959,21.141-8.8.426,2.554.426,2.554c7.945-.709,18.019-7.52,19.438-4.4,6.668-1.277,19.438-6.952,19.438-6.952s4.4-.142,1.277,4.682a4.582,4.582,0,0,1-.709,5.818c-.142,0,.851,3.121-1.7,4.824.852,2.7-1.561,4.824-1.561,4.824s1.136,3.263-3.4,4.966c.426,2.838-2.554,3.405-2.554,3.405s.426,2.98-1.561,4.257a4.2,4.2,0,0,1-2.27,3.405s1.418.851-.568,2.27-22.56,14.047-22.56,13.9,15.04,2.7,16.033,3.263,12.344,8.088,12.344,8.088l-11.493,14.188S811.572,152.4,811,153.107s2.7.993,3.4,2.128,1.845,3.831,4.115,3.547-4.256,4.115-8.513,4.54c0,1.561,5.392,1.7,6.81.426s-3.406,3.689-3.973,4.4,6.385-.993,6.385-.993-1.136,4.682-7.236,6.1c2.412,3.973,1.418,6.527,1.277,6.527s-3.973-3.973-7.662-3.264a17.667,17.667,0,0,0,4.825,7.946c.851.568-6.669.425-7.662-1.7s-1.845,5.108.851,7.378a10.721,10.721,0,0,1-5.817-1.7s-1.844,4.256-.568,6.385-4.4-4.257-4.4-4.257L782.06,195.1l-2.412-4.115Z" transform="translate(-696.308 -75.92)" fill="#9c3900" stroke="#000" strokeLinejoin="round" strokeWidth="1.72"/>
-                                <G transform="translate(0 85.905)">
+                                <Path d="M779.648,190.99s-3.121-2.554.568-6.669c-1.987-1.7-.142-4.966-.142-4.966s-3.406-1.277.142-6.527c-2.554-1.7-1.419-5.534-1.419-5.534s-8.371-3.121-.425-6.1c-6.527,2.837-12.629-3.831-12.629-3.831l-9.506.284c-1.608-7.9-14.141-1.041-4.824-23.7-2.412-.426-5.108-1.135-7.8.851s-10.358,6.243-14.9,1.986,2.98-10.357,3.122-10.5,10.074-5.25,11.493-8.655c-.142-2.554-3.263-4.54-.426-10.074,3.263-5.25,23.269-10.216,32.351-11.918a14.386,14.386,0,0,0,6.384-5.818l.993,3.689s20.148-5.959,21.141-8.8.426,2.554.426,2.554c7.945-.709,18.019-7.52,19.438-4.4,6.668-1.277,19.438-6.952,19.438-6.952s4.4-.142,1.277,4.682a4.582,4.582,0,0,1-.709,5.818c-.142,0,.851,3.121-1.7,4.824.852,2.7-1.561,4.824-1.561,4.824s1.136,3.263-3.4,4.966c.426,2.838-2.554,3.405-2.554,3.405s.426,2.98-1.561,4.257a4.2,4.2,0,0,1-2.27,3.405s1.418.851-.568,2.27-22.56,14.047-22.56,13.9,15.04,2.7,16.033,3.263,12.344,8.088,12.344,8.088l-11.493,14.188S811.572,152.4,811,153.107s2.7.993,3.4,2.128,1.845,3.831,4.115,3.547-4.256,4.115-8.513,4.54c0,1.561,5.392,1.7,6.81.426s-3.406,3.689-3.973,4.4,6.385-.993,6.385-.993-1.136,4.682-7.236,6.1c2.412,3.973,1.418,6.527,1.277,6.527s-3.973-3.973-7.662-3.264a17.667,17.667,0,0,0,4.825,7.946c.851.568-6.669.425-7.662-1.7s-1.845,5.108.851,7.378a10.721,10.721,0,0,1-5.817-1.7s-1.844,4.256-.568,6.385-4.4-4.257-4.4-4.257L782.06,195.1l-2.412-4.115Z" transform="translate(-696.308 -75.92)" stroke={this.state.applyStroke[3]} strokeWidth="5" strokeLinejoin="round"/>
+                                <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} d="M779.648,190.99s-3.121-2.554.568-6.669c-1.987-1.7-.142-4.966-.142-4.966s-3.406-1.277.142-6.527c-2.554-1.7-1.419-5.534-1.419-5.534s-8.371-3.121-.425-6.1c-6.527,2.837-12.629-3.831-12.629-3.831l-9.506.284c-1.608-7.9-14.141-1.041-4.824-23.7-2.412-.426-5.108-1.135-7.8.851s-10.358,6.243-14.9,1.986,2.98-10.357,3.122-10.5,10.074-5.25,11.493-8.655c-.142-2.554-3.263-4.54-.426-10.074,3.263-5.25,23.269-10.216,32.351-11.918a14.386,14.386,0,0,0,6.384-5.818l.993,3.689s20.148-5.959,21.141-8.8.426,2.554.426,2.554c7.945-.709,18.019-7.52,19.438-4.4,6.668-1.277,19.438-6.952,19.438-6.952s4.4-.142,1.277,4.682a4.582,4.582,0,0,1-.709,5.818c-.142,0,.851,3.121-1.7,4.824.852,2.7-1.561,4.824-1.561,4.824s1.136,3.263-3.4,4.966c.426,2.838-2.554,3.405-2.554,3.405s.426,2.98-1.561,4.257a4.2,4.2,0,0,1-2.27,3.405s1.418.851-.568,2.27-22.56,14.047-22.56,13.9,15.04,2.7,16.033,3.263,12.344,8.088,12.344,8.088l-11.493,14.188S811.572,152.4,811,153.107s2.7.993,3.4,2.128,1.845,3.831,4.115,3.547-4.256,4.115-8.513,4.54c0,1.561,5.392,1.7,6.81.426s-3.406,3.689-3.973,4.4,6.385-.993,6.385-.993-1.136,4.682-7.236,6.1c2.412,3.973,1.418,6.527,1.277,6.527s-3.973-3.973-7.662-3.264a17.667,17.667,0,0,0,4.825,7.946c.851.568-6.669.425-7.662-1.7s-1.845,5.108.851,7.378a10.721,10.721,0,0,1-5.817-1.7s-1.844,4.256-.568,6.385-4.4-4.257-4.4-4.257L782.06,195.1l-2.412-4.115Z" transform="translate(-696.308 -75.92)" stroke="#000" strokeLinejoin="round" strokeWidth="1.72"/>
+                                <G transform="translate(0 85.905)" fill="#ffc221" stroke={this.state.applyStroke[4]} strokeWidth="5">
+                                    <Path d="M665.36,284.874c.253,0,15.665-.253,22.74-4.3a42.135,42.135,0,0,0,8.338,9.348l2.274-8.085s5.559.252,6.064,1.516a12.842,12.842,0,0,0-1.011,3.537s3.79.253,4.043.758-1.011,4.8-1.011,4.8l16.171,3.79s1.263-6.316,2.527-5.559,6.822,8.59,14.655,9.1,8.338-6.569,8.338-6.569l1.768,1.011s3.284-7.074,3.79-7.074a12.061,12.061,0,0,0,5.559,1.01c1.264,1.516,1.769,5.053,1.769,5.053s-4.8,4.8-3.285,8.592,1.769,2.779,1.769,2.779l34.868,8.338a2.888,2.888,0,0,1-1.263,4.3c0,.252-35.121-8.086-35.121-8.086s-3.285,3.79-5.811,3.032-.758,1.516-.758,1.516l37.9,3.032s2.78,3.538.758,4.548c-2.526.252-40.932-2.526-40.932-2.526s-2.274,4.8-4.8.758c-1.768,2.779-3.79-.758-3.79-.758s-3.284,2.526-3.79-.253c-2.78,2.022-4.548-1.263-4.548-1.263L716.4,316.2l-1.011,1.516s2.779.758-1.516,2.527,25.772,1.01,26.53,1.263-2.021,2.527-2.021,2.527,15.413,1.01,18.191-2.274-1.01,4.295-1.01,4.295,12.128-.5,12.128-1.01-.253,3.79-8.59,3.284a54.716,54.716,0,0,0,11.37,5.306,32.225,32.225,0,0,1-13.643-.252c1.263,3.284,6.822,6.316,6.822,6.316s-4.043,3.538-13.139-5.053c2.527,4.548.506,6.317.253,5.811s-4.548-6.822-14.655-9.1c6.317,4.043,3.537,5.811,3.537,5.811s-3.284-5.811-8.591,0c-2.022-5.306-9.854-8.338-19.456-8.844-3.032-3.537-4.8-2.526-11.875-4.548a129.011,129.011,0,0,0-9.854-9.6s.253-6.822,7.074-6.064c.758,2.274.758,1.516.758,1.516s7.58-2.78,9.854,1.01c3.285-5.811,7.832-.869,8.59,1.152,2.177.319,13.139.616,13.139.616s-1.264-2.274-.506-2.021,6.822-2.274,6.569-3.032-.505-3.285.5-3.032-8.591-1.264-13.9,2.78c-1.769-1.769-.505-6.57-.505-6.57l-15.666-3.284-.758,4.042s-4.548.758-4.3-.252-1.011,3.537-1.011,3.537-6.064-1.516-6.064-1.768,1.769-9.1,1.769-8.844a31.481,31.481,0,0,0-12.128,5.812c-2.021-6.317-17.94-14.655-17.94-14.907Z" transform="translate(-665.36 -264.154)"/>
+                                    <Path d="M700.064,247.73s-10.612,9.1,0,14.4c.505-3.538,1.263-4.043,1.263-4.043s8.844,3.285,14.149-4.548c-2.274-3.285-6.316-2.021-6.316-2.021s-8.338,0-9.1-3.79Z" transform="translate(-680.354 -247.73)"/>
+                                </G>
+                                <G onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} transform="translate(0 85.905)" stroke="#000" strokeWidth="1.72">
                                     <Path d="M665.36,284.874c.253,0,15.665-.253,22.74-4.3a42.135,42.135,0,0,0,8.338,9.348l2.274-8.085s5.559.252,6.064,1.516a12.842,12.842,0,0,0-1.011,3.537s3.79.253,4.043.758-1.011,4.8-1.011,4.8l16.171,3.79s1.263-6.316,2.527-5.559,6.822,8.59,14.655,9.1,8.338-6.569,8.338-6.569l1.768,1.011s3.284-7.074,3.79-7.074a12.061,12.061,0,0,0,5.559,1.01c1.264,1.516,1.769,5.053,1.769,5.053s-4.8,4.8-3.285,8.592,1.769,2.779,1.769,2.779l34.868,8.338a2.888,2.888,0,0,1-1.263,4.3c0,.252-35.121-8.086-35.121-8.086s-3.285,3.79-5.811,3.032-.758,1.516-.758,1.516l37.9,3.032s2.78,3.538.758,4.548c-2.526.252-40.932-2.526-40.932-2.526s-2.274,4.8-4.8.758c-1.768,2.779-3.79-.758-3.79-.758s-3.284,2.526-3.79-.253c-2.78,2.022-4.548-1.263-4.548-1.263L716.4,316.2l-1.011,1.516s2.779.758-1.516,2.527,25.772,1.01,26.53,1.263-2.021,2.527-2.021,2.527,15.413,1.01,18.191-2.274-1.01,4.295-1.01,4.295,12.128-.5,12.128-1.01-.253,3.79-8.59,3.284a54.716,54.716,0,0,0,11.37,5.306,32.225,32.225,0,0,1-13.643-.252c1.263,3.284,6.822,6.316,6.822,6.316s-4.043,3.538-13.139-5.053c2.527,4.548.506,6.317.253,5.811s-4.548-6.822-14.655-9.1c6.317,4.043,3.537,5.811,3.537,5.811s-3.284-5.811-8.591,0c-2.022-5.306-9.854-8.338-19.456-8.844-3.032-3.537-4.8-2.526-11.875-4.548a129.011,129.011,0,0,0-9.854-9.6s.253-6.822,7.074-6.064c.758,2.274.758,1.516.758,1.516s7.58-2.78,9.854,1.01c3.285-5.811,7.832-.869,8.59,1.152,2.177.319,13.139.616,13.139.616s-1.264-2.274-.506-2.021,6.822-2.274,6.569-3.032-.505-3.285.5-3.032-8.591-1.264-13.9,2.78c-1.769-1.769-.505-6.57-.505-6.57l-15.666-3.284-.758,4.042s-4.548.758-4.3-.252-1.011,3.537-1.011,3.537-6.064-1.516-6.064-1.768,1.769-9.1,1.769-8.844a31.481,31.481,0,0,0-12.128,5.812c-2.021-6.317-17.94-14.655-17.94-14.907Z" transform="translate(-665.36 -264.154)"/>
                                     <Path d="M700.064,247.73s-10.612,9.1,0,14.4c.505-3.538,1.263-4.043,1.263-4.043s8.844,3.285,14.149-4.548c-2.274-3.285-6.316-2.021-6.316-2.021s-8.338,0-9.1-3.79Z" transform="translate(-680.354 -247.73)"/>
                                 </G>
                                 <Path d="M715.142,255.82l-7.328,6.316" transform="translate(-686.587 -165.87)" fill="none" stroke="#000" strokeWidth="1.72"/>
-                                <G transform="translate(20.059 51.928)">
-                                    <Path d="M705.479,219.976h0a7.828,7.828,0,0,0,1.845-3.121c.426-1.7-.568-3.547,1.135-5.108s24.121-11.067,25.965-12.911a57.408,57.408,0,0,0,5.675-6.669c.426-.851,1.7,4.257-2.128,6.527,4.115-1.135,6.81-2.412,8.513-1.845-1.7,2.412-6.243,6.385-8.371,6.385,4.966-1.845,9.506-3.406,10.783-2.412s-6.1,5.96-9.081,6.243c4.966-1.277,11.635-3.263,12.485-1.135-2.7.852-1.845,1.56-7.378,4.682-.709.568-4.257.709-4.257.709,4.257-.426,10.073-2.128,10.641.993-3.4,1.277-4.682,2.98-7.52,3.689s-9.365,1.986-13.338,3.547-9.79,6.1-9.79,6.1-12.628.426-12.628.283-2.412-5.817-2.554-5.959Z" transform="translate(-705.478 -185.924)" fill="#fff" stroke="#000" strokeLinejoin="round" strokeWidth="1.72"/>
+                                <G stroke={this.state.applyStroke[2]} strokeWidth="5" transform="translate(20.059 51.928)">
+                                    <Path d="M705.479,219.976h0a7.828,7.828,0,0,0,1.845-3.121c.426-1.7-.568-3.547,1.135-5.108s24.121-11.067,25.965-12.911a57.408,57.408,0,0,0,5.675-6.669c.426-.851,1.7,4.257-2.128,6.527,4.115-1.135,6.81-2.412,8.513-1.845-1.7,2.412-6.243,6.385-8.371,6.385,4.966-1.845,9.506-3.406,10.783-2.412s-6.1,5.96-9.081,6.243c4.966-1.277,11.635-3.263,12.485-1.135-2.7.852-1.845,1.56-7.378,4.682-.709.568-4.257.709-4.257.709,4.257-.426,10.073-2.128,10.641.993-3.4,1.277-4.682,2.98-7.52,3.689s-9.365,1.986-13.338,3.547-9.79,6.1-9.79,6.1-12.628.426-12.628.283-2.412-5.817-2.554-5.959Z" transform="translate(-705.478 -185.924)" strokeLinejoin="round"/>
                                     <Path d="M918.584,205.173l24.546,4.682s2.7-3.121,1.277-4.824c3.689-.851,2.7-5.676,2.7-5.676s4.256-1.844.709-6.1c2.413-2.412-.568-4.256-.568-4.256s.993-4.257-2.128-4.682c.852-3.405-5.391-4.54-5.391-4.54s-12.911,3.547-21.993,3.831c2.98,2.98-1.135,4.824-1.135,4.824s2.412,1.7,1.7,3.121.426,2.98-2.7,3.973c4.115,1.845-.426,4.966-.426,4.966s4.541,3.121,3.406,4.682Z" transform="translate(-810.328 -179.776)"/>
                                 </G>
-                                <G transform="translate(26.015 4.429)" fill="none" stroke="#000" strokeWidth="1.72">
+                                <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke="#000" strokeWidth="1.72" transform="translate(20.059 51.928)">
+                                    <Path d="M705.479,219.976h0a7.828,7.828,0,0,0,1.845-3.121c.426-1.7-.568-3.547,1.135-5.108s24.121-11.067,25.965-12.911a57.408,57.408,0,0,0,5.675-6.669c.426-.851,1.7,4.257-2.128,6.527,4.115-1.135,6.81-2.412,8.513-1.845-1.7,2.412-6.243,6.385-8.371,6.385,4.966-1.845,9.506-3.406,10.783-2.412s-6.1,5.96-9.081,6.243c4.966-1.277,11.635-3.263,12.485-1.135-2.7.852-1.845,1.56-7.378,4.682-.709.568-4.257.709-4.257.709,4.257-.426,10.073-2.128,10.641.993-3.4,1.277-4.682,2.98-7.52,3.689s-9.365,1.986-13.338,3.547-9.79,6.1-9.79,6.1-12.628.426-12.628.283-2.412-5.817-2.554-5.959Z" transform="translate(-705.478 -185.924)" strokeLinejoin="round"/>
+                                    <Path d="M918.584,205.173l24.546,4.682s2.7-3.121,1.277-4.824c3.689-.851,2.7-5.676,2.7-5.676s4.256-1.844.709-6.1c2.413-2.412-.568-4.256-.568-4.256s.993-4.257-2.128-4.682c.852-3.405-5.391-4.54-5.391-4.54s-12.911,3.547-21.993,3.831c2.98,2.98-1.135,4.824-1.135,4.824s2.412,1.7,1.7,3.121.426,2.98-2.7,3.973c4.115,1.845-.426,4.966-.426,4.966s4.541,3.121,3.406,4.682Z" transform="translate(-810.328 -179.776)"/>
+                                </G>
+                                <G fill="none" stroke="#000" strokeWidth="1.72" transform="translate(26.015 4.429)">
                                     <Path d="M738.885,293.72,735.6,308.375" transform="translate(-726.495 -189.249)"/>
                                     <Path d="M747.229,304.83l-1.011,4.8" transform="translate(-731.804 -194.804)"/>
                                     <Path d="M779.064,312.41l-1.516,4.548" transform="translate(-747.469 -198.594)"/>
@@ -4398,24 +4505,48 @@ class FlagComponent extends Component {
                         </G>
                     </Svg>,              
                 au: <Svg width='100%' height='100%' viewBox="0 0 500 300">
-                    {this.roundCornerDef}
+                        {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#00008b"/>
-                            <G transform="translate(295.092 23.81)">
-                                <Path d="M-182.591-205.144l3.444,10.707,10.518-3.983-6.224,9.367,9.672,5.74-11.2.975,1.543,11.14-7.748-8.152-7.748,8.152,1.543-11.14-11.2-.975,9.672-5.74-6.224-9.368,10.518,3.983Z" transform="translate(262.5 421.811)" fill="#fff"/>
-                                <Path d="M-182.591-205.144l3.444,10.707,10.518-3.983-6.224,9.367,9.672,5.74-11.2.975,1.543,11.14-7.748-8.152-7.748,8.152,1.543-11.14-11.2-.975,9.672-5.74-6.224-9.368,10.518,3.983Z" transform="translate(200 293.165)" fill="#fff"/>
-                                <Path d="M-182.591-205.144l3.444,10.707,10.518-3.983-6.224,9.367,9.672,5.74-11.2.975,1.543,11.14-7.748-8.152-7.748,8.152,1.543-11.14-11.2-.975,9.672-5.74-6.224-9.368,10.518,3.983Z" transform="translate(262.5 205.144)" fill="#fff"/>
-                                <Path d="M-182.591-205.144l3.444,10.707,10.518-3.983-6.224,9.367,9.672,5.74-11.2.975,1.543,11.14-7.748-8.152-7.748,8.152,1.543-11.14-11.2-.975,9.672-5.74-6.224-9.368,10.518,3.983Z" transform="translate(318.056 271.498)" fill="#fff"/>
-                                <Path d="M-103.9-119.667l2.721,6.671,7.186.527-5.5,4.65,1.72,7-6.123-3.8-6.123,3.8,1.72-7-5.5-4.65,7.186-.527Z" transform="translate(208.813 248.692)" fill="#fff"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M250.889-.022,500,0V299.978H0V149.92l250.89,0Z"/>
+                            <Image width="251" height="150" href={require('../assets/flag_badges/na/gb.png')}/>
+                            <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="2" transform="translate(299.061 25)">
+                                <Path d="M-182.591-205.144l3.444,10.707,10.518-3.983-6.224,9.367,9.672,5.74-11.2.975,1.543,11.14-7.748-8.152-7.748,8.152,1.543-11.14-11.2-.975,9.672-5.74-6.224-9.368,10.518,3.983Z" transform="translate(262.5 421.811)"/>
+                                <Path d="M-182.591-205.144l3.444,10.707,10.518-3.983-6.224,9.367,9.672,5.74-11.2.975,1.543,11.14-7.748-8.152-7.748,8.152,1.543-11.14-11.2-.975,9.672-5.74-6.224-9.368,10.518,3.983Z" transform="translate(200 293.165)"/>
+                                <Path d="M-182.591-205.144l3.444,10.707,10.518-3.983-6.224,9.367,9.672,5.74-11.2.975,1.543,11.14-7.748-8.152-7.748,8.152,1.543-11.14-11.2-.975,9.672-5.74-6.224-9.368,10.518,3.983Z" transform="translate(262.5 205.144)"/>
+                                <Path d="M-182.591-205.144l3.444,10.707,10.518-3.983-6.224,9.367,9.672,5.74-11.2.975,1.543,11.14-7.748-8.152-7.748,8.152,1.543-11.14-11.2-.975,9.672-5.74-6.224-9.368,10.518,3.983Z" transform="translate(318.056 271.498)"/>
+                                <Path d="M-103.9-119.667l2.721,6.671,7.186.527-5.5,4.65,1.72,7-6.123-3.8-6.123,3.8,1.72-7-5.5-4.65,7.186-.527Z" transform="translate(208.813 248.692)"/>
                             </G>
-                            <Path d="M-383.44-430.8l7.231,22.484,22.087-8.365-13.07,19.672,20.311,12.053-23.529,2.047,3.24,23.395-16.271-17.12-16.271,17.12,3.24-23.395L-420-384.955l20.311-12.053-13.07-19.672,22.087,8.365Z" transform="translate(508.44 620.2)" fill="#fff"/>
-                            <Image height="150" y="-5" href={require('../assets/flag_badges/na/gb.png')}/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" d="M-383.44-430.8l7.231,22.484,22.087-8.365-13.07,19.672,20.311,12.053-23.529,2.047,3.24,23.395-16.271-17.12-16.271,17.12,3.24-23.395L-420-384.955l20.311-12.053-13.07-19.672,22.087,8.365Z" transform="translate(512.4 620.15)"/>
                         </G>
+                    </Svg>,
+                ck: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                    {this.roundCornerDef}
+                    <G clipPath="url(#clip-path)">
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M238.889-.022,500,0V300H0V140.289l238.85,2.646Z" transform="translate(0 0.022)"/>
+                        <Image width="239" height="143" href={require('../assets/flag_badges/na/gb.png')}/>
+                        <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="2">
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(18.971 -140.536)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="matrix(0.914, 0.407, -0.407, 0.914, 167.063, -259.206)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(351.32 -306.813) rotate(48)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(95.526 -84.259)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="matrix(0.914, 0.407, -0.407, 0.914, 214.913, -176.206)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(361.32 -211.563) rotate(48)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(65.977 6.541)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(-27.573 6.641)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(-57.273 -84.259)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="matrix(0.914, -0.407, 0.407, 0.914, -67.81, 28.268)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(211.976 -243.813) rotate(48)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="matrix(0.914, 0.407, -0.407, 0.914, 75.413, -239.206)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="matrix(-0.105, 0.995, -0.995, -0.105, 633.635, -99.283)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="translate(714.51 28.996) rotate(120)"/>
+                            <Path d="M353.161,191.459l10.684,32.883-27.972-20.323h34.575l-27.972,20.323Z" transform="matrix(-0.105, 0.995, -0.995, -0.105, 548.234, -138.183)"/>
+                        </G>
+                    </G>
                     </Svg>,
                 fj: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#00247d"/>
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M238.889-.022,500,0V300H0V140.289l238.85,2.646Z" transform="translate(0 0.022)"/>
                             <Image width="101" height="129" transform="translate(325.247 85.298)" href={require('../assets/flag_badges/oc/fj.png')}/>
                             <Image height="143" href={require('../assets/flag_badges/na/gb.png')}/>
                         </G>
@@ -4423,9 +4554,9 @@ class FlagComponent extends Component {
                 pf: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="80" fill="#ce1126"/>
-                            <Path d="M0,0H500V136.666H0Z" y="80" fill="#fff"/>
-                            <Rect width="500" height="80" y="216.667" fill="#ce1126"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="80"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="80" y="216.667"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,0H500V136.666H0Z" y="80"/>
                             <G transform="translate(194 91)">
                                 <G transform="translate(-2.705 -1.553)">
                                     <Path d="M272.2,188.862l-9.488-.273v-3.751l9.488,4.024Z" transform="translate(-228.397 -136.398)" fill="#ff9c10"/>
@@ -4495,11 +4626,11 @@ class FlagComponent extends Component {
                 gu: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#c62139"/>
-                            <Rect width="475.61" height="275.61" transform="translate(12 12)" fill="#00297b"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="475.61" height="275.61" transform="translate(12 12)"/>
                             <G transform="translate(201 77)">
-                                <Path d="M378.938,100S330,133.36,330,172.7s48.938,73.646,48.938,73.646,48.624-31.475,48.624-73.646S378.938,100,378.938,100" transform="translate(-330 -100)" fill="#c62139"/>
-                                <Path d="M423.632,190.141a52.263,52.263,0,0,0,1.683-13.012c0-37.763-42.942-65.77-42.942-65.77s-43.57,28.955-43.57,65.77a50.727,50.727,0,0,0,1.715,12.9l83.114.11" transform="translate(-333.435 -104.433)" fill="#66afeb"/>
+                                <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="3" d="M378.938,100S330,133.36,330,172.7s48.938,73.646,48.938,73.646,48.624-31.475,48.624-73.646S378.938,100,378.938,100" transform="translate(-330 -100)"/>
+                                <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" d="M423.632,190.141a52.263,52.263,0,0,0,1.683-13.012c0-37.763-42.942-65.77-42.942-65.77s-43.57,28.955-43.57,65.77a50.727,50.727,0,0,0,1.715,12.9l83.114.11" transform="translate(-333.435 -104.433)"/>
                                 <Path d="M383.094,293.884s33.68-22.3,41.6-53.5H341.563c8.043,30.6,41.531,53.5,41.531,53.5" transform="translate(-334.512 -154.783)" fill="#007bde"/>
                                 <Path d="M447.6,226.452c-7.368,5.249-48.834,2.728-48.834,2.728l-2.318,5.876h49.676c.207-.805.4-1.612.567-2.426l.909-6.177" transform="translate(-355.931 -149.347)" fill="#9c8431"/>
                                 <G transform="translate(16.07 97.896)">
@@ -4523,54 +4654,74 @@ class FlagComponent extends Component {
                                     <Path d="M384.64,244.879h1.783v-19.2H384.64Z" transform="translate(-370.981 -225.683)"/>
                                     <Path d="M384.466,262.318s-.731.129-1.893.277v-1.5h-1.184v1.627c-1.213.123-2.682.223-4.223.223-1.637,0-3.288-.12-4.651-.258v-1.551H371.21v1.4c-1.127-.142-1.854-.265-1.854-.265s-.357,1.967,7.7,1.967,7.418-1.926,7.418-1.926" transform="translate(-365.016 -239.503)" fill="#7b4800"/>
                                     <Path d="M374.047,256.4a71.617,71.617,0,0,0,12-1.045s.838,4.191-12,4.191-11.787-3.562-11.787-3.562,5.264.415,11.787.415" transform="translate(-362.24 -237.263)" fill="#7b4800"/>
-                                    <Path d="M370.472,227.479s10.1,3.779,14.1,17c0,0-9.262-1.885-14.526.211h-2.946a25.182,25.182,0,0,0,3.367-17.21" transform="translate(-364.138 -226.384)" fill="#fff"/>
+                                    <Path d="M370.472,227.479s10.1,3.779,14.1,17c0,0-9.262-1.885-14.526.211h-2.946a25.182,25.182,0,0,0,3.367-17.21" transform="translate(-364.138 -226.384)" fill="#FFF"/>
                                 </G>
-                                <G transform="translate(18.987 63.803)">
-                                    <Path d="M369.574,208.614H367.7a2.256,2.256,0,0,0-1.059-1.684,2.055,2.055,0,0,0-1.041-.264,2.084,2.084,0,0,0-1.808,1.07,5.894,5.894,0,0,0-.71,3.226,4.822,4.822,0,0,0,.767,3.081,2.263,2.263,0,0,0,1.744.9,1.967,1.967,0,0,0,1.569-.715,3.481,3.481,0,0,0,.756-1.876h-2.111v-1.96H369.6V216.7h-1.259l-.193-1.469a5.144,5.144,0,0,1-.988,1.186,2.882,2.882,0,0,1-1.854.6,3.5,3.5,0,0,1-2.964-1.624,7.331,7.331,0,0,1-1.205-4.45,7.789,7.789,0,0,1,1.22-4.585,3.747,3.747,0,0,1,3.216-1.721,3.624,3.624,0,0,1,2.789,1.139,4.678,4.678,0,0,1,1.209,2.838" transform="translate(-361.139 -204.637)" fill="#c62139"/>
-                                    <Path d="M389.588,212.367v-7.235h1.933v7.235a5.2,5.2,0,0,0,.225,1.769,1.638,1.638,0,0,0,3.01,0,5.139,5.139,0,0,0,.218-1.769v-7.235h1.937v7.235a7.634,7.634,0,0,1-.449,2.92,3.655,3.655,0,0,1-6.423,0,7.613,7.613,0,0,1-.449-2.92" transform="translate(-372.241 -204.83)" fill="#c62139"/>
-                                    <Path d="M421.04,205.125,417.781,216.9h2l.629-2.42h3.354l.591,2.42h2.058l-3.24-11.776Zm1.048,2.687,1.143,4.63h-2.305Z" transform="translate(-383.243 -204.827)" fill="#c62139"/>
-                                    <Path d="M448.826,214.381l1.644-9.249H453.2V216.9h-1.773v-7.952c0-.233,0-.554.007-.966s.007-.73.007-.951l-1.726,9.869h-1.848l-1.712-9.869c0,.22,0,.538.007.951s.007.733.007.966V216.9H444.4V205.132h2.768l1.655,9.249" transform="translate(-393.632 -204.83)" fill="#c62139"/>
+                                <G onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="1" transform="translate(18.987 63.803)">
+                                    <Path d="M369.574,208.614H367.7a2.256,2.256,0,0,0-1.059-1.684,2.055,2.055,0,0,0-1.041-.264,2.084,2.084,0,0,0-1.808,1.07,5.894,5.894,0,0,0-.71,3.226,4.822,4.822,0,0,0,.767,3.081,2.263,2.263,0,0,0,1.744.9,1.967,1.967,0,0,0,1.569-.715,3.481,3.481,0,0,0,.756-1.876h-2.111v-1.96H369.6V216.7h-1.259l-.193-1.469a5.144,5.144,0,0,1-.988,1.186,2.882,2.882,0,0,1-1.854.6,3.5,3.5,0,0,1-2.964-1.624,7.331,7.331,0,0,1-1.205-4.45,7.789,7.789,0,0,1,1.22-4.585,3.747,3.747,0,0,1,3.216-1.721,3.624,3.624,0,0,1,2.789,1.139,4.678,4.678,0,0,1,1.209,2.838" transform="translate(-361.139 -204.637)"/>
+                                    <Path d="M389.588,212.367v-7.235h1.933v7.235a5.2,5.2,0,0,0,.225,1.769,1.638,1.638,0,0,0,3.01,0,5.139,5.139,0,0,0,.218-1.769v-7.235h1.937v7.235a7.634,7.634,0,0,1-.449,2.92,3.655,3.655,0,0,1-6.423,0,7.613,7.613,0,0,1-.449-2.92" transform="translate(-372.241 -204.83)"/>
+                                    <Path d="M421.04,205.125,417.781,216.9h2l.629-2.42h3.354l.591,2.42h2.058l-3.24-11.776Zm1.048,2.687,1.143,4.63h-2.305Z" transform="translate(-383.243 -204.827)"/>
+                                    <Path d="M448.826,214.381l1.644-9.249H453.2V216.9h-1.773v-7.952c0-.233,0-.554.007-.966s.007-.73.007-.951l-1.726,9.869h-1.848l-1.712-9.869c0,.22,0,.538.007.951s.007.733.007.966V216.9H444.4V205.132h2.768l1.655,9.249" transform="translate(-393.632 -204.83)"/>
                                 </G>
                             </G>
                         </G>
-                        </Svg>,
+                    </Svg>,
                 ki: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18V155.592H0Z" transform="translate(0 -154.713)" fill="#ce1126"/>
-                            <G transform="translate(185.542 13.522)">
-                            <Path d="M328.267,130.045c7.3,1.958,18.342,1.467,23.3,7.258-7.292-1.958-16.292,9.842-23.3,7.258,6.192,4.333-90.033,0-82.317,0-7.3-1.958-18.342-1.467-23.3-7.258,7.292,1.958,16.292-9.842,23.3-7.258-6.192-4.333-16.925-7.692-19.417-14.792,6.192,4.333,18.783-3.7,24.383,1.15-4.333-6.183-13.392-12.975-13.192-20.533,4.333,6.192,18.925,2.875,22.517,9.417-1.95-7.3-7.842-16.708-5.367-23.808,1.958,7.3,16.65,9.111,17.942,16.55.658-7.526-2-18.419,3.1-24.207-.658,7.527,12.608,14.247,11.192,21.688,3.192-6.848,4.958-17.91,11.192-21.688-3.192,6.848,7.225,17.666,3.1,24.207,5.342-5.341,10.5-15.238,17.942-16.55-5.342,5.342.35,18.95-5.367,23.808,6.842-3.192,14.925-10.731,22.517-9.417-6.85,3.192-6.175,17.95-13.192,20.533,7.533-.658,17.642-4.925,24.383-1.15C340.158,115.912,335.983,130.045,328.267,130.045Z" transform="translate(-222.65 -25.826)" fill="#fcd116" stroke="#bd9c08" strokeWidth="1.5"/>
-                            <Path d="M253.095,137.608,226.77,126.849l28.417-1.108-21.058-19.117,27.083,8.683-13.25-25.165,22.483,17.415L266.6,79.384l15.167,24.058L287.8,75.647l6.025,27.794,15.167-24.058-3.842,28.174L327.62,90.143l-13.242,25.165,27.075-8.683L320.4,125.741l28.408,1.108L322.5,137.608l26.317,10.758H226.77L253.1,137.608Z" transform="translate(-223.337 -26.13)" fill="#fcd116" stroke="#bd9c08" strokeLinejoin="round" strokeWidth="1.5"/>
-                            <Circle cx="34.465" cy="34.465" r="34.465" transform="translate(29.993 77.012)" fill="#fcd116" stroke="#bd9c08" strokeWidth="1.8"/>
-                            <Path d="M313.6,49.333l18.483.122c.117-.782-1.583-2.337-3.042-2.565-4.675-.735-8.183.78-13.867.838l-1.575,1.6Z" transform="translate(-237.808 -21.304)" fill="#fcd116" stroke="#bd9c08" strokeWidth="1.2"/>
-                            <Path d="M266.9,43.421c4.342,5.483,12.758,9.294,20.792,9.344,10.833.067,22.85-8.7,37.375-11.385L277.638,40.4c-6.142-4.2-10.8-3.671-13.975-1.064l-9.067.274c-1.283.7,1.058,3.619,2.958,3.726Z" transform="translate(-227.913 -19.741)" fill="#fcd116" stroke="#bd9c08" strokeWidth="1.2"/>
-                            <Path d="M283.472,37.144c-1.725-7.932-8.092-11.35-15.742-12.364-8.842-1.172-29.183-2.372-42.7-6.254,5.85,5.751,18.092,8.622,26.6,9.92,9.008,1.375,17.775,3.378,24.725,8.626l7.117.073Z" transform="translate(-223.047 -16.61)" fill="#fcd116" stroke="#bd9c08" strokeWidth="1.2"/>
-                            <Path d="M288.27,42.055c2.825,3.628,7.208,3.423,11.925.257,4.7-3.155,9.808-12.039,12.275-12.185,17.242-1,38.1-8.28,48.05-13.9-12.617,1.786-25.117,3.811-37.842,3.861-21.708.087-24.275,9.973-33.125,16.9" transform="translate(-233.587 -16.227)" fill="#fcd116" stroke="#bd9c08" strokeLinecap="round" strokeWidth="1.2"/>
-                            <Path d="M292.31,37.956c4.625-2.947,8.383-6.793,12.717-10.005,7.175-5.318,15.458-5.474,24.358-5.584,7.883-.1,21.7-3.391,29.2-5.148" transform="translate(-234.26 -16.392)" fill="none" stroke="#bd9c08" strokeLinecap="round" strokeWidth="1.2"/>
-                            <Path d="M276.438,36.885c-1.358-7.093-8-9.221-16.383-10.5-9.125-1.386-18.433-2.158-27.533-4.673a66.034,66.034,0,0,1-6.542-2.587" transform="translate(-223.205 -16.711)" fill="none" stroke="#bd9c08" strokeWidth="1.2"/>
-                            <Path d="M290.02,51.865c8.567.628,14.925-1.947,22.233-5.588" transform="translate(-233.878 -21.235)" fill="none" stroke="#bd9c08" strokeLinecap="round" strokeWidth="1.2"/>
-                            <Path d="M254.63,41.831h10.8" transform="translate(-227.98 -20.494)" fill="none" stroke="#bd9c08" strokeLinecap="round" strokeWidth="1.2"/>
-                            <Circle cx="1.35" cy="1.35" r="1.35" transform="translate(39.567 18.825)" fill="#bd9c08"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18V155.592H0Z" y="-154.713"/>
+                            <G stroke={this.state.applyStroke[1]} strokeWidth="5" transform="translate(185.542 13.522)">
+                                <Path d="M328.267,130.045c7.3,1.958,18.342,1.467,23.3,7.258-7.292-1.958-16.292,9.842-23.3,7.258,6.192,4.333-90.033,0-82.317,0-7.3-1.958-18.342-1.467-23.3-7.258,7.292,1.958,16.292-9.842,23.3-7.258-6.192-4.333-16.925-7.692-19.417-14.792,6.192,4.333,18.783-3.7,24.383,1.15-4.333-6.183-13.392-12.975-13.192-20.533,4.333,6.192,18.925,2.875,22.517,9.417-1.95-7.3-7.842-16.708-5.367-23.808,1.958,7.3,16.65,9.111,17.942,16.55.658-7.526-2-18.419,3.1-24.207-.658,7.527,12.608,14.247,11.192,21.688,3.192-6.848,4.958-17.91,11.192-21.688-3.192,6.848,7.225,17.666,3.1,24.207,5.342-5.341,10.5-15.238,17.942-16.55-5.342,5.342.35,18.95-5.367,23.808,6.842-3.192,14.925-10.731,22.517-9.417-6.85,3.192-6.175,17.95-13.192,20.533,7.533-.658,17.642-4.925,24.383-1.15C340.158,115.912,335.983,130.045,328.267,130.045Z" transform="translate(-222.65 -25.826)"/>
+                                <Path d="M253.095,137.608,226.77,126.849l28.417-1.108-21.058-19.117,27.083,8.683-13.25-25.165,22.483,17.415L266.6,79.384l15.167,24.058L287.8,75.647l6.025,27.794,15.167-24.058-3.842,28.174L327.62,90.143l-13.242,25.165,27.075-8.683L320.4,125.741l28.408,1.108L322.5,137.608l26.317,10.758H226.77L253.1,137.608Z" transform="translate(-223.337 -26.13)" strokeLinejoin="round"/>
+                                <Circle cx="34.465" cy="34.465" r="34.465" transform="translate(29.993 77.012)"/>
+                                <Path d="M313.6,49.333l18.483.122c.117-.782-1.583-2.337-3.042-2.565-4.675-.735-8.183.78-13.867.838l-1.575,1.6Z" transform="translate(-237.808 -21.304)"/>
+                                <Path d="M266.9,43.421c4.342,5.483,12.758,9.294,20.792,9.344,10.833.067,22.85-8.7,37.375-11.385L277.638,40.4c-6.142-4.2-10.8-3.671-13.975-1.064l-9.067.274c-1.283.7,1.058,3.619,2.958,3.726Z" transform="translate(-227.913 -19.741)"/>
+                                <Path d="M283.472,37.144c-1.725-7.932-8.092-11.35-15.742-12.364-8.842-1.172-29.183-2.372-42.7-6.254,5.85,5.751,18.092,8.622,26.6,9.92,9.008,1.375,17.775,3.378,24.725,8.626l7.117.073Z" transform="translate(-223.047 -16.61)"/>
+                                <Path d="M288.27,42.055c2.825,3.628,7.208,3.423,11.925.257,4.7-3.155,9.808-12.039,12.275-12.185,17.242-1,38.1-8.28,48.05-13.9-12.617,1.786-25.117,3.811-37.842,3.861-21.708.087-24.275,9.973-33.125,16.9" transform="translate(-233.587 -16.227)" strokeLinecap="round"/>
+                                <Path d="M292.31,37.956c4.625-2.947,8.383-6.793,12.717-10.005,7.175-5.318,15.458-5.474,24.358-5.584,7.883-.1,21.7-3.391,29.2-5.148" transform="translate(-234.26 -16.392)" strokeLinecap="round"/>
+                                <Path d="M276.438,36.885c-1.358-7.093-8-9.221-16.383-10.5-9.125-1.386-18.433-2.158-27.533-4.673a66.034,66.034,0,0,1-6.542-2.587" transform="translate(-223.205 -16.711)"/>
+                                <Path d="M290.02,51.865c8.567.628,14.925-1.947,22.233-5.588" transform="translate(-233.878 -21.235)" strokeLinecap="round"/>
+                                <Path d="M254.63,41.831h10.8" transform="translate(-227.98 -20.494)" strokeLinecap="round"/>
+                                <Circle cx="1.35" cy="1.35" r="1.35" transform="translate(39.567 18.825)"/>
                             </G>
-                            <Rect width="500" height="162.498" transform="translate(0 137.5)" fill="#003f87"/>
-                            <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18v-30c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" transform="translate(0 -17.249)" fill="#fff"/>
-                            <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18v-30c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" transform="translate(0 -71.481)" fill="#fff"/>
-                            <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18v-30c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" transform="translate(0 -125.714)" fill="#fff"/>
+                            <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} transform="translate(185.542 13.522)">
+                                <Path d="M328.267,130.045c7.3,1.958,18.342,1.467,23.3,7.258-7.292-1.958-16.292,9.842-23.3,7.258,6.192,4.333-90.033,0-82.317,0-7.3-1.958-18.342-1.467-23.3-7.258,7.292,1.958,16.292-9.842,23.3-7.258-6.192-4.333-16.925-7.692-19.417-14.792,6.192,4.333,18.783-3.7,24.383,1.15-4.333-6.183-13.392-12.975-13.192-20.533,4.333,6.192,18.925,2.875,22.517,9.417-1.95-7.3-7.842-16.708-5.367-23.808,1.958,7.3,16.65,9.111,17.942,16.55.658-7.526-2-18.419,3.1-24.207-.658,7.527,12.608,14.247,11.192,21.688,3.192-6.848,4.958-17.91,11.192-21.688-3.192,6.848,7.225,17.666,3.1,24.207,5.342-5.341,10.5-15.238,17.942-16.55-5.342,5.342.35,18.95-5.367,23.808,6.842-3.192,14.925-10.731,22.517-9.417-6.85,3.192-6.175,17.95-13.192,20.533,7.533-.658,17.642-4.925,24.383-1.15C340.158,115.912,335.983,130.045,328.267,130.045Z" transform="translate(-222.65 -25.826)" stroke="#bd9c08" strokeWidth="1.5"/>
+                                <Path d="M253.095,137.608,226.77,126.849l28.417-1.108-21.058-19.117,27.083,8.683-13.25-25.165,22.483,17.415L266.6,79.384l15.167,24.058L287.8,75.647l6.025,27.794,15.167-24.058-3.842,28.174L327.62,90.143l-13.242,25.165,27.075-8.683L320.4,125.741l28.408,1.108L322.5,137.608l26.317,10.758H226.77L253.1,137.608Z" transform="translate(-223.337 -26.13)" stroke="#bd9c08" strokeLinejoin="round" strokeWidth="1.5"/>
+                                <Circle cx="34.465" cy="34.465" r="34.465" transform="translate(29.993 77.012)" stroke="#bd9c08" strokeWidth="1.8"/>
+                                <Path d="M313.6,49.333l18.483.122c.117-.782-1.583-2.337-3.042-2.565-4.675-.735-8.183.78-13.867.838l-1.575,1.6Z" transform="translate(-237.808 -21.304)"/>
+                                <Path d="M266.9,43.421c4.342,5.483,12.758,9.294,20.792,9.344,10.833.067,22.85-8.7,37.375-11.385L277.638,40.4c-6.142-4.2-10.8-3.671-13.975-1.064l-9.067.274c-1.283.7,1.058,3.619,2.958,3.726Z" transform="translate(-227.913 -19.741)"/>
+                                <Path d="M283.472,37.144c-1.725-7.932-8.092-11.35-15.742-12.364-8.842-1.172-29.183-2.372-42.7-6.254,5.85,5.751,18.092,8.622,26.6,9.92,9.008,1.375,17.775,3.378,24.725,8.626l7.117.073Z" transform="translate(-223.047 -16.61)"/>
+                                <Path d="M288.27,42.055c2.825,3.628,7.208,3.423,11.925.257,4.7-3.155,9.808-12.039,12.275-12.185,17.242-1,38.1-8.28,48.05-13.9-12.617,1.786-25.117,3.811-37.842,3.861-21.708.087-24.275,9.973-33.125,16.9" transform="translate(-233.587 -16.227)" stroke="#bd9c08" strokeLinecap="round" strokeWidth="1.2"/>
+                                <Path d="M292.31,37.956c4.625-2.947,8.383-6.793,12.717-10.005,7.175-5.318,15.458-5.474,24.358-5.584,7.883-.1,21.7-3.391,29.2-5.148" transform="translate(-234.26 -16.392)" fill="none" stroke="#bd9c08" strokeLinecap="round" strokeWidth="1.2"/>
+                                <Path d="M276.438,36.885c-1.358-7.093-8-9.221-16.383-10.5-9.125-1.386-18.433-2.158-27.533-4.673a66.034,66.034,0,0,1-6.542-2.587" transform="translate(-223.205 -16.711)" fill="none" stroke="#bd9c08" strokeWidth="1.2"/>
+                                <Path d="M290.02,51.865c8.567.628,14.925-1.947,22.233-5.588" transform="translate(-233.878 -21.235)" fill="none" stroke="#bd9c08" strokeLinecap="round" strokeWidth="1.2"/>
+                                <Path d="M254.63,41.831h10.8" transform="translate(-227.98 -20.494)" fill="none" stroke="#bd9c08" strokeLinecap="round" strokeWidth="1.2"/>
+                                <Circle cx="1.35" cy="1.35" r="1.35" transform="translate(39.567 18.825)" fill="#bd9c08"/>
+                            </G>
+                            <G onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5">
+                                <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18v-30c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" y="-12.6"/>
+                                <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18v-30c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" y="-127.145"/>
+                                <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18v-30c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" y="-69.906"/>
+                            </G>
+                            <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]}>
+                                <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18v-30c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" y="-98.297"/>
+                                <Path d="M0,265.708c16.667,0,33.333,18,50,18s33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18,33.333,18,50,18,33.333-18,50-18v-30c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" y="-41.057"/>
+                                <Path d="M0,283.71H500v-48c-16.667,0-33.333,18-50,18s-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18-33.333,18-50,18-33.333-18-50-18Z" y="17.169"/>
+                            </G>
                         </G>
                     </Svg>,
                 nr: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="139" y="161" fill="#002b7f"/>
-                            <Path d="M0,0H500V21H0Z" y="140" fill="#ffc61e"/>
-                            <Path d="M141.667,245.833l-5.393-21.543-15.441,15.961,6.1-21.353L105.582,225l15.961-15.441L100,204.167l21.543-5.392-15.961-15.441,21.353,6.1-6.1-21.353,15.441,15.961,5.393-21.543,5.392,21.543L162.5,168.082l-6.1,21.353,21.352-6.1L161.79,198.774l21.543,5.392-21.543,5.393L177.751,225,156.4,218.9l6.1,21.353L147.059,224.29Z" transform="translate(-16.667 -1.083)" fill="#fff"/>
-                            <Rect width="500" height="140" fill="#002b7f"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="140"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="20" y="140"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="140" y="160"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M141.667,245.833l-5.393-21.543-15.441,15.961,6.1-21.353L105.582,225l15.961-15.441L100,204.167l21.543-5.392-15.961-15.441,21.353,6.1-6.1-21.353,15.441,15.961,5.393-21.543,5.392,21.543L162.5,168.082l-6.1,21.353,21.352-6.1L161.79,198.774l21.543,5.392-21.543,5.393L177.751,225,156.4,218.9l6.1,21.353L147.059,224.29Z" x="-16.667" y="-1.083"/>
                         </G>
                     </Svg>,
                 nc: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
                             <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="101" y="199"/>
                             <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="101" y="99"/>
                             <Circle stroke={this.state.applyStroke[3]} strokeWidth="15" cx="98.32" cy="98.32" r="98.32" transform="translate(91.68 51.68)" fill="#fae600"/>
@@ -4592,34 +4743,61 @@ class FlagComponent extends Component {
                         </G>
                     </Svg>,
                 nz: <Svg width='100%' height='100%' viewBox="0 0 500 300">
-                        {this.roundCornerDef}
-                        <G clip-path="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#00247d"/>
-                            <Path d="M14.124,0l8.729,26.865L0,10.262H28.248L5.395,26.865Z" transform="translate(405.966 102.611)" fill="#fff" stroke="#fff" strokeWidth="1"/>
-                            <Path d="M10.044,0l6.207,19.1L0,7.3H20.087L3.836,19.1Z" transform="translate(410.671 107.108)" fill="#cc142b"/>
-                            <Path d="M354.666,191.459l11.615,35.747-30.408-22.093H373.46l-30.408,22.093Z" transform="translate(20.465 13.977)" fill="#fff" stroke="#fff" strokeWidth="1"/>
-                            <Path d="M349.361,191.459l8.336,25.655-21.824-15.856h26.976l-21.824,15.856Z" transform="translate(25.77 19.464)" fill="#cc142b"/>
-                            <Path d="M17.529,0,28.363,33.343,0,12.736H35.058L6.7,33.343Z" transform="translate(299.338 114.436)" fill="#fff" stroke="#fff" strokeWidth="1"/>
-                            <Path d="M12.224,0l7.555,23.251L0,8.881H24.448L4.669,23.251Z" transform="translate(304.644 119.923)" fill="#cc142b"/>
-                            <Path d="M354.666,191.459l11.615,35.747-30.408-22.093H373.46l-30.408,22.093Z" transform="translate(20.465 -136.023)" fill="#fff" stroke="#fff" strokeWidth="1"/>
-                            <Path d="M349.361,191.459l8.336,25.655-21.824-15.856h26.976l-21.824,15.856Z" transform="translate(25.77 -130.536)" fill="#cc142b"/>
-                            <Image height="150" y="-4" href={require('../assets/flag_badges/na/gb.png')}/>
+                    {this.roundCornerDef}
+                    <G clipPath="url(#clip-path)">
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M250.889-.022,500,0V299.978H0V149.92l250.89,0Z"/>
+                        <Image width="251" height="150" href={require('../assets/flag_badges/na/gb.png')}/>
+                        <G transform="translate(293.506 55)">
+                            <G transform="translate(147.854 38.149) rotate(82)">
+                                <Path d="M14.124,0l8.729,26.865L0,10.262H28.248L5.395,26.865Z" transform="translate(8.148 31.462) rotate(-82)" fill="#fff" stroke="#fff" strokeWidth="1"/>
+                                <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="2" d="M10.044,0l6.207,19.1L0,7.3H20.087L3.836,19.1Z" transform="translate(12.911 28.011) rotate(-82)"/>
+                            </G>
                         </G>
-                    </Svg>,
+                        <Path d="M354.666,191.459l11.615,35.747-30.408-22.093H373.46l-30.408,22.093Z" transform="translate(21.465 15.977)" fill="#fff" stroke="#fff" strokeWidth="1"/>
+                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="2" d="M349.361,191.459l8.336,25.655-21.824-15.856h26.976l-21.824,15.856Z" transform="translate(26.771 21.464)"/>
+                        <Path d="M17.529,0,28.363,33.343,0,12.736H35.058L6.7,33.343Z" transform="translate(300.338 116.436)" fill="#fff" stroke="#fff" strokeWidth="1"/>
+                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="2" d="M12.224,0l7.555,23.251L0,8.881H24.448L4.669,23.251Z" transform="translate(305.644 121.923)"/>
+                        <Path d="M354.666,191.459l11.615,35.747-30.408-22.093H373.46l-30.408,22.093Z" transform="translate(21.465 -134.023)" fill="#fff" stroke="#fff" strokeWidth="1"/>
+                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="2" d="M349.361,191.459l8.336,25.655-21.824-15.856h26.976l-21.824,15.856Z" transform="translate(26.771 -128.536)"/>
+                    </G>
+                </Svg>,
                 nf: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="152" height="300" fill="#007934"/>
-                            <Rect width="195.652" height="300" transform="translate(152)" fill="#fff"/>
-                            <Path d="M406.371,30.575q-.656,7.1-1.312,14.193l-4.805.723s3.337,1.874,3.92,3.757a.809.809,0,0,1-.079.739,1.055,1.055,0,0,1-.174.173c-.967.743-3.825.393-3.825.393s3.787,3.2,4.078,4.354a.377.377,0,0,1,.016.079.515.515,0,0,1,0,.079c0,.017-.025.047-.032.063a.6.6,0,0,1-.126.173c-.89.822-5.09,1.053-5.09,1.053s4.656,3.32,4.948,5.2a7.632,7.632,0,0,1,0,2.876c-.325-.278-7.834-6.588-12.678-4.747a.984.984,0,0,0-.443.362.3.3,0,0,0-.016.189c.339,1.05,7.189,2.125,11.966,6.256C402.6,67.525,389.1,63.2,388.6,65.909c.422.763,14.527,2.8,15.57,4.637-5.194.193-15.926-1.143-15.57.566-1.086,1.973,10.135.859,14.843,2.468,1.38,1.559,1.247,2.869-1.154,3.034-4.537-2.157-14.692-3.76-14.717-1.006,0,0,0,.013,0,.016s.015.013.016.016a.143.143,0,0,0,.016.031.443.443,0,0,0,.079.047c1.147.572,10.6.293,14.164,2.641-5.048,1.142-22.164-2.316-22.273-.629a9.364,9.364,0,0,0,7.857,4.1c4.66-.145,15.442,1.884,16.171,3.332a.2.2,0,0,1,.016.126c-.316,1.01-14.2-3.081-19.538-.566-5.534,2.607,15.868,1.027,19.364,4.212s-6.987-.3-6.987-.3-14.556-2.019-16.74-1.006a22.337,22.337,0,0,0-4.663,3.332s1.452,2.889,2.909,2.311a.76.76,0,0,1,.458-.079s.014,0,.016,0,.014.015.016.016.013.013.016.016.013.013.016.016l.016.016a.293.293,0,0,1,.016.063c.034.434-1,1.7-1,1.7s20.4,4.914,24.913,9.258-25.924-6.806-25.924-6.806-12.234,4.488.727,4.778a2.335,2.335,0,0,0,.727,3.474s21.559,4.493,23.743,7.969-14.708-3.336-18.495-5.218c-3.653-1.816-13.822.961-14.4,1.808a.3.3,0,0,0-.016.031s0,.013,0,.016a.208.208,0,0,0,0,.031s0,.013,0,.016,0,.013,0,.016.014.013.016.016,0,.013,0,.016a.5.5,0,0,0,.032.047s.013.013.016.016c.651.714,5.19,1.7,5.327,2.924,0,.005,0,.011,0,.016a.469.469,0,0,1-.048.2c-.572,1.1-5.987,1.571-6.212,2.609a.431.431,0,0,0-.016.063c0,1.159,27.242,6.807,34.523,12.889s-21.4-7.246-21.4-7.246,1.6,2.171,0,2.751-7.293-8.109-16.614-2.751c-1.7,2.2,8.138,3.954,10.639,4.2-.854,2.183-1.6,2.905,1.9,5.077a6.423,6.423,0,0,1,.68.456l.016.016.016.016a.136.136,0,0,1,0,.016s0,.015,0,.016h-.032c-.541-.084-6.821-3.293-7.477-3.427-.007,0-.027,0-.032,0h-.016c0,.29.727,3.772.727,3.772-3.227-2.606-7.127-3.392-10.78-.723-.005.154-.032,2.654,3.636,4.2-2.067,4.2,2.336,2.9,9.327,6.806-10.389-2.7-11.221,2.315-3.794,3.474s27.821,1.884,32.627,8.11c1.014,1.313,1.289,1.974,1.091,2.185-.8.722-8.176-4.581-9.247-4.778,0,0-.014,0-.016,0l-.016.016a.491.491,0,0,0-.048.079,19.307,19.307,0,0,0-.506,3.081c-3.107-1.788-5.958-3.392-9.674-4.15-.291.579-.23,1.4-.522,1.98-3.372-2.418-6.31-4.118-11.208-4.354l-.585,2.326s-4.083-5.068-12.093,0c-4.473,3.188,16.9,1.154,20.391,4.92s.727,4.338.727,4.338c-2.913-1.062-5.813-2.113-8.726-3.175,0,0-10.35-1.892-13.263.424s42.523,7.966,43.834,14.193c.884,3.377-10.675-3.536-20.676-6.507-.387,1.105-.783,2.211-1.17,3.316-.237-.233-4.106-3.975-8.441-4.621,0,0-.015.012-.016.016s0,.024,0,.032c.007.475.885,3.867.885,3.867s-11.2-5.219-16.882-2.468,19.8,4.2,22.13,6.806c.255.285.361.493.348.629a.3.3,0,0,1-.032.078c-.563.82-8.161-2.207-8.915-.707-.874,1.738-13.25-3.181-13.1-.865a5.355,5.355,0,0,0,1.755,3.615s25.777,2.46,26.651,5.5-14.274-1.729-14.274-1.729-1.465,2.162-.3,3.175a.838.838,0,0,1,.095.094s0,.015,0,.016h-.016c-.526-.173-8.734-5.518-7.935-1.415-3.212-1.272-11.5-5.21-10.338-2.169,1.148,3,22.774,7.263,23.411,7.387-.572.045-9.718.806-9.295,3.191-12.258-7.426-12.229-2.973-11.951-2.625,0,0,0,.015,0,.016-.689-.108-15.77-3.844-3.778,2.609,6.431,3.461,8,4.81,8.03,5.328,0,.011,0,.036,0,.047a.284.284,0,0,1-.016.047s-.014.013-.016.016-.01.024-.016.031l-.016.016-.016.016-.016.016s-.013.014-.016.016a2.4,2.4,0,0,1-1.027.094H357a.073.073,0,0,0-.016.016l.016.016a14.339,14.339,0,0,1,1.059,3.254.255.255,0,0,1-.016.031s0,.013,0,.016-.015,0-.016,0,0,.015,0,.016H358c-.526-.132-8.468-4.352-11.192-4.637-2.767-.29-15.878,3.616-1.9,9.7s22.568-1.451,30.287-.582,11.366,2.175,10.639,4.637-7.9-8.071-15.428,1.037c-8.568-1.686-14.382-2.662-9.959,3.6-13.993-5.2-22.538,1.586-4.916,4.338,17.316.507,27.963-4.2,27.963-4.2s2.921,5.368,7.145,1.6c4.025-3.588,4.342.979,4.489,1.415,0,.007.014.012.016.016s0,.015,0,.016h.016c.311-.078,4.063-1.745,4.063-1.745h1.027V247.2q7.063.072,14.116.141s-4.515-30.258-2.039-34.312c2.4-3.928,4.666-3.5,4.805-3.474,0,0,9.177,2.745,10.2,2.311.012-.005.036-.01.047-.016l.032-.016c.018-.011.047-.034.063-.047s.013-.013.016-.016c.746-.677-.014-3.348,4.647-2.939,1.439-.521.89-2.8,1.818-3.364.016-.01.046-.023.063-.031a1.075,1.075,0,0,1,.126-.047,1.178,1.178,0,0,1,.19-.031c1.456-.145,29.561,7.813,35.677.283-1.6-4.2-7.143-.286-8.6-.141-1.311,0-6.849-2.606-10.053,0-2.913-2.172-16.155-3.615-16.155-3.615-1.748-1.738,31.6.863,33.5-.44,3.932-3.91-7.278-3.472-9.026-2.169a9.9,9.9,0,0,0-9.39-.44c-1.141-2.713-11.97-1.538-17.989-2.311-1.927-1.124-1.606-1.769-.3-2.468,12.573.531,25.082,2.164,37.716,1.6,3.415-4.427-4.3-6.1-9.026-2.326-2.775-4.538-8.448-.147-12.235-.582s-2.039-5.062,2.766-4.338,13.4-.3,15-2.468-.956-4.372-8.884-2.311c-2.683-2.607-8.583,0-11.35.865-3.681-2.042-12.247-.284-15.159.44-2.851-1.762,15-4.637,15-4.637a47.308,47.308,0,0,0,12.962-1.886c10.417-5.552-.145-6.141-5.611-2.106-3.393-2.634-6.616.228-9.674,1.242-2.867.95-8.17,1.642-8.821,1.367l-.032-.016-.016-.016-.016-.016s0-.014,0-.016,0-.014,0-.016a.258.258,0,0,1,.016-.031c.43-.662,8.283-5.454,8.283-5.454s10.2-.732,12.235-1.022c1.242-.177,5.6-2.226,5.6-2.986-.036-.472-1.851-.428-7.351.959-4.952.435-7.86.154-9.753.3-3.045-.313-4.328-.632-4.584-.912a.36.36,0,0,1-.032-.047.154.154,0,0,1,.032-.157.631.631,0,0,1,.047-.047c.746-.593,5.564-1.022,5.564-1.022s14.708-1.341,15.681-2.106l.016-.016a.246.246,0,0,0,.016-.031s.015-.013.016-.016c.3-5.979-12.478-3.218-12.82-3.175.037-4.2-11.535-.062-12.077,0h-.016a1.353,1.353,0,0,1-.759-.88.794.794,0,0,1,.032-.33c.29-.867,2.039-1.54,2.039-1.54,3.2-.772,7.995-1.013,9.247-2.028,0,0,9.043-.079,10.117-2.468-2.219-6.087-19.138,1.078-21.4,2.169a1.031,1.031,0,0,1-.869-.3c-.744-1.081,2.927-4.64,3.051-4.763a.147.147,0,0,1,.016-.016c.56-.158,14.067-.845,20.518-9.541.455-5.377-7.714,3.034-7.714,3.034-.61-6.973-8.883.442-13.689,1.022s-4.946-2.175-1.6-2.609,7.133-.15,9.026-5.218,7.58.3,8.6-1.587c.987-1.824-1.861-3.378-2.039-3.474,0,0,4.22-4.357-2.624-4.212a141.691,141.691,0,0,1-15.712-.864c.425-.161,7.326-2.75,13.816-2.609,6.7.145,3.057-4.778-3.351-4.778s-9.753-2.169-9.753-2.169l10.923-4.055-.727-3.034s6.405-5.072-2.624-3.914-10.053,1.3-10.053,1.3-17.774,2.708-18.195,2.751h-.016c-.172-.027-1.933-.571-2.26-1.242-.01-.022-.025-.056-.032-.079a.615.615,0,0,1-.016-.094.534.534,0,0,1,0-.11c.073-.354.622-.736,2.023-1.085,4.66-1.158,21.125-4.484,23.6-3.615a.705.705,0,0,0,.7-.031c.928-.835-2.16-6.162-9.737-6.916-8.738-.869-14.116,2.169-14.116,2.169s-5.686-2.035-.443-3.772,13.547.582,13.547.582,9.315-2.755,1.6-3.914-10.152,1.042-13.689,1.163c-1.412-1.752,12.118-2.166,12.962-3.615-1.427-2.607-9.8,0-14.7,0-2.086-.88-2.224-2.311.142-3.191,5-.193,9.7.1,14.7-.094-.146-2.655,0-5.8-.142-8.456-6.342-1.152-13.78.844-17.341.676.953-2.9,14.646-3.644,16.171-4.432,3.146-3.91-13.134-.06-13.531,0-2.89-.425-2.715-2.241-.885-3.332,4.223-.483,13.694.615,12.978-2.232-.549-2.668-6.566-1.24-9.042-.66a21.823,21.823,0,0,1-6.117.141c-1.585-2.122,14.277-1.255,14.132-2.892-.207-1.88-10.055-.585-13.4-.44-2.576-1.768,12.112-2.943,12.8-3.175,0,0,.014-.014.016-.016.549-4.814-10.2,0-12.235,0a1.276,1.276,0,0,1-.806-.236,1.207,1.207,0,0,1-.126-.126c-.7-.812-.079-2.672-.079-2.672s3.829-1.711,4.063-2.122c0,0,.015-.013.016-.016s0-.014,0-.016,0-.014,0-.016-.014-.013-.016-.016a.311.311,0,0,0-.047-.047,16.977,16.977,0,0,0-3.43-1.242h-.016s-.014-.015-.016-.016a.122.122,0,0,1-.016-.016.2.2,0,0,1-.016-.016,17.511,17.511,0,0,1,.047-3.285s3.034-2.261,3.225-3.159c0-.008,0-.024,0-.031s0-.025,0-.031,0-.025,0-.031,0-.025,0-.031,0-.013,0-.016a.317.317,0,0,0-.016-.031s0-.013,0-.016-.014-.013-.016-.016-.012-.011-.016-.016-.01-.025-.016-.031l-.016-.016a.517.517,0,0,0-.047-.031l-.032-.016c-.766-.366-3.936.723-3.936.723V48.824s2.775-.3,3.067-1.6a.631.631,0,0,0,0-.22.753.753,0,0,0-.016-.094.734.734,0,0,0-.079-.173c-.005-.008-.026-.024-.032-.031-.635-.815-3.225-.927-3.225-.927q-.728-7.6-1.454-15.2Zm-2.592,49.637v2s-3.266-.166-3.873-.676c0,0-.013-.013-.016-.016l-.016-.016-.016-.016-.016-.016a.3.3,0,0,1-.016-.031s0-.013,0-.016-.015-.013-.016-.016,0-.013,0-.016,0-.026,0-.031,0-.013,0-.016,0-.013,0-.016a.327.327,0,0,1,.016-.047s.014-.013.016-.016a.5.5,0,0,1,.032-.047l.016-.016.032-.031a.956.956,0,0,1,.079-.063c1.1-.763,3.283-.745,3.715-.864,0,0,.013,0,.016,0s.013-.015.016-.016.014,0,.016,0,.014-.014.016-.016Zm4.632,2.656c.113,0,6.505.055,7.066.88,0,.007.012.024.016.031s.013.036.016.047,0,.024,0,.031a.369.369,0,0,1,0,.047c0,.012-.011.035-.016.047-.488,1.031-6.955,1.65-6.955,1.65l-.126-2.735Zm-.364,3.945s.013,0,.016,0,.013,0,.016,0c.38.1,3.027.185,3.351.629,0,0,.013.012.016.016s0,.014,0,.016.014.011.016.016,0,.014,0,.016,0,.013,0,.016,0,.013,0,.016,0,.013,0,.016,0,.013,0,.016-.015.013-.016.016,0,.013,0,.016-.011.024-.016.031l-.016.016s0,.013,0,.016c-.549.667-2.992.849-3.114.849h-.016s0-.015,0-.016-.014-.012-.016-.016a11.505,11.505,0,0,1-.221-1.666Zm-19.491,5.25c2.087-.108,6.229.381,14.005,2.515,0,.165.157,2.169.095,2.5,0,0-.015.013-.016.016s0,.014,0,.016a.145.145,0,0,1-.016.016c-.122-.061-14.147-4.068-15.428-4.008a.939.939,0,0,1-.111,0c-.028,0-.068-.01-.095-.016a.74.74,0,0,1-.111-.047c-.011-.005-.037-.01-.047-.016s-.012-.014-.016-.016a.449.449,0,0,1-.111-.11s-.014-.013-.016-.016l-.016-.031s0-.012,0-.016-.014-.025-.016-.031,0-.012,0-.016,0-.025,0-.031,0-.025,0-.031a.38.38,0,0,1,.016-.063.474.474,0,0,1,.095-.141,2.951,2.951,0,0,1,1.786-.472Zm7.271,5.926c2.236-.08,7.592,1.2,7.888,1.132,0,.425.237,2.432-.032,2.845,0,0-.013.013-.016.016a.186.186,0,0,1-.016.016s-.013.014-.016.016l-.032.016a.141.141,0,0,1-.016,0h-.032a.141.141,0,0,1-.016,0c-.455-.113-8.36-2.61-8.663-3.631a.28.28,0,0,1,0-.063.208.208,0,0,1,.048-.11l.016-.016.016-.016a1.634,1.634,0,0,1,.869-.2Zm22,5.5c2.135-.042,3.642.14,3.082.786-1.525,1.758-12.061,3.206-12.061,3.206l-.19-3.206c.226-.033,5.58-.716,9.168-.786Zm-30.16,10c1.792-.095,5.964.884,15.254,4.794l.063,2.311s-15.733-4.745-16.281-5.533c-.27-.388-.772-1.48.964-1.572Zm30.824,3.442a1.459,1.459,0,0,1,.933.141l.016.016a.309.309,0,0,1,.016.047.327.327,0,0,1,.016.047.508.508,0,0,1-.142.251c-1.464,1.638-9.327,3.269-9.327,3.269v-2.122h.016c.358-.012,6.13-1.532,8.473-1.65ZM384,117.212c2.349-.124,7.652,1.115,19.538,6.711,0,.058.106,1.988.063,2.169h-.016c-.7-.226-21.387-7.45-21.387-7.45-.022-.079-.333-1.318,1.8-1.43Zm39.376,9.038c.6-.025,1,.027,1.091.157a.18.18,0,0,1,.016.063.394.394,0,0,1-.158.236c-1.876,1.684-13.833,3.725-14.258,3.757h-.016a.143.143,0,0,1-.016,0l-.016-.016a.223.223,0,0,1-.016-.031s0-.013,0-.016-.014-.024-.016-.031a11.28,11.28,0,0,1,.19-1.949s0-.014,0-.016h.016s.013.016.016.016h.016c.765-.013,9.929-2.035,13.152-2.169Zm-35.155,5.265c3.56-.183,14.346,4.735,14.875,4.888h.016c-.055.22-.065,2-.111,2.279,0,.008,0,.027,0,.031a.145.145,0,0,1-.016,0c-.291-.155-15.074-6.255-15.728-5.768-.408-.961.015-1.382.964-1.43Zm31.8,1.289a4.024,4.024,0,0,1,1.454.094.056.056,0,0,1,.047.063s0,.013,0,.016,0,.025,0,.031-.013.012-.016.016a.422.422,0,0,1-.047.047c-1.1.97-11.286,2.971-11.286,2.971s-.047-1.877-.047-2.059c.289-.062,6.867-1.046,9.9-1.179Zm-.822,6.491a2.645,2.645,0,0,1,1.344.141l.016.016c0,.005,0,.026,0,.031s.016.013.016.016-.015.013-.016.016,0,.025,0,.031-.014.012-.016.016a.361.361,0,0,1-.032.047c-.01.011-.035.036-.048.047-1.1.944-9.737,2.751-9.737,2.751s-.237-2.061-.237-2.122c.24.005,6.015-.9,8.71-.99Zm-36.452.519c2.084-.131,7.248.723,20,5.328l.427,2.483s-21.226-6.813-21.83-7.026a.129.129,0,0,0,0-.016.723.723,0,0,1,0-.079.536.536,0,0,1,.111-.251c.15-.182.491-.389,1.3-.44Zm27.963,5.391c.256.054,3.815.172,4.474.723,0,0,.013.013.016.016l.016.016.016.016c.007.009.011.023.016.031s.014.013.016.016a.335.335,0,0,1,.016.047s0,.013,0,.016,0,.013,0,.016,0,.025,0,.031,0,.013,0,.016-.014.025-.016.031,0,.012,0,.016-.012.025-.016.031c-.549.849-4.268,1.163-4.268,1.163s-.183-1.664-.269-2.185Zm8.615,4.841c.829-.02,1.424.075,1.549.314.071.163-.065.4-.458.723-3.049,2.486-9.69,2.971-9.69,2.971V151.32h.016a73.53,73.53,0,0,1,8.584-1.273Zm8.457,2.546c1.053-.04,1.506.136,1.644.377a.5.5,0,0,1,.032.079.509.509,0,0,1,.016.141,1.905,1.905,0,0,1-.632.927c-1.037.97-17.562,6.177-17.562,6.177s-.124-3.454-.063-3.757c9.661-2.911,14.387-3.863,16.566-3.945ZM417.1,162.369a3.777,3.777,0,0,1,2.118.267.406.406,0,0,1,.047.063.414.414,0,0,1,.016.047.347.347,0,0,1,0,.047.35.35,0,0,1,0,.079.591.591,0,0,1-.079.157c-1.414,1.38-8.283,1.587-8.283,1.587V162.9c1.29-.043,4.161-.46,6.18-.534Zm6.876,2.813c.327-.008.526.045.553.141a.15.15,0,0,1,0,.031c-.017.08-.112.2-.316.346-2.744,1.94-13.057,3.929-13.057,3.929s.128-1.356.19-1.682c.287,0,10.163-2.706,12.63-2.766Zm5.785,2.153a4.7,4.7,0,0,1,2.671.55h.016s0,.014,0,.016,0,.014,0,.016,0,.025,0,.031c-.052.376-.824,2.144-3.541,2.908-3.388-.3-17.768,3.926-18.052,3.992,0,0-.015,0-.016,0s0-.024,0-.031c-.008-.271.19-1.729.19-1.729,4.957-2.947,13.965-5.708,18.732-5.753Zm-36.815,8.3h.095c6.22.667,8.543,2.982,9.2,3.914-1.24,2.164-11.071-2.689-10.038-3.725a1.2,1.2,0,0,1,.743-.189Zm35.646.409a1.122,1.122,0,0,1,.632.141.638.638,0,0,1,.174.173.836.836,0,0,1,.111.377c-.65,1-4.01.563-4.221.534A10.788,10.788,0,0,1,428.6,176.044Zm-13.326,6.727a2.071,2.071,0,0,1,1.059.157.59.59,0,0,1,.079.063c.007.007.026.024.032.031a.567.567,0,0,1,.032.047.481.481,0,0,1,.016.047.608.608,0,0,1-.079.472c-.976,1.819-5.248,1.147-5.248,1.147v-1.273h.016c.241.02,2.6-.63,4.094-.692Zm-25.165,4.794c1.314-.066,2.463.791,3.667,1.477,2.683-.546,8.188.424,8.188.424v2.421a.061.061,0,0,1-.016.016s-.013,0-.016,0c-.5.087-6.953-.194-8.393-1.1-1.175,0-4.5-1.746-4.758-2.641,0-.008-.014-.024-.016-.031s0-.036,0-.047,0-.024,0-.032,0-.025,0-.031,0-.012,0-.016.014-.025.016-.031,0-.013,0-.016a3.19,3.19,0,0,1,1.328-.393Zm28.216,1.195c1.009-.054,1.437.256.648,1.367-2.2,3.092-7.872,1.823-7.872,1.823l-.237-1.918c2,.078,5.662-1.177,7.461-1.273Zm-21.214,6.271a14.406,14.406,0,0,1,4.79.8c.059.116,1.234,2.419.19,3.191a1.06,1.06,0,0,1-.126.079c-1.281.667-7.4-.521-7.761-2.971a4.174,4.174,0,0,1,2.909-1.1Zm-23.664,1.195a10.329,10.329,0,0,1,4.711,1.289.136.136,0,0,0,.016,0c0,.073-.079,2.326-.079,2.326s-4.156-1.152-5.47-3.474a4.122,4.122,0,0,1,.822-.141Zm39.977.314c2.341-.015,5.17.532,5.58,1.32a.461.461,0,0,1-.095.519c-1.159,1.394-7.746.126-7.746.126v-1.7a8.745,8.745,0,0,1,2.26-.267Z" transform="translate(-154.574 11.426)" fill="#007934"/>
-                            <Rect width="152" height="300" transform="translate(348)" fill="#007934"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="152" height="300"/>
+                            <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="152" height="302" x="346"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="195.652" height="301" x="151"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="2" d="M406.371,30.575q-.656,7.1-1.312,14.193l-4.805.723s3.337,1.874,3.92,3.757a.809.809,0,0,1-.079.739,1.055,1.055,0,0,1-.174.173c-.967.743-3.825.393-3.825.393s3.787,3.2,4.078,4.354a.377.377,0,0,1,.016.079.515.515,0,0,1,0,.079c0,.017-.025.047-.032.063a.6.6,0,0,1-.126.173c-.89.822-5.09,1.053-5.09,1.053s4.656,3.32,4.948,5.2a7.632,7.632,0,0,1,0,2.876c-.325-.278-7.834-6.588-12.678-4.747a.984.984,0,0,0-.443.362.3.3,0,0,0-.016.189c.339,1.05,7.189,2.125,11.966,6.256C402.6,67.525,389.1,63.2,388.6,65.909c.422.763,14.527,2.8,15.57,4.637-5.194.193-15.926-1.143-15.57.566-1.086,1.973,10.135.859,14.843,2.468,1.38,1.559,1.247,2.869-1.154,3.034-4.537-2.157-14.692-3.76-14.717-1.006,0,0,0,.013,0,.016s.015.013.016.016a.143.143,0,0,0,.016.031.443.443,0,0,0,.079.047c1.147.572,10.6.293,14.164,2.641-5.048,1.142-22.164-2.316-22.273-.629a9.364,9.364,0,0,0,7.857,4.1c4.66-.145,15.442,1.884,16.171,3.332a.2.2,0,0,1,.016.126c-.316,1.01-14.2-3.081-19.538-.566-5.534,2.607,15.868,1.027,19.364,4.212s-6.987-.3-6.987-.3-14.556-2.019-16.74-1.006a22.337,22.337,0,0,0-4.663,3.332s1.452,2.889,2.909,2.311a.76.76,0,0,1,.458-.079s.014,0,.016,0,.014.015.016.016.013.013.016.016.013.013.016.016l.016.016a.293.293,0,0,1,.016.063c.034.434-1,1.7-1,1.7s20.4,4.914,24.913,9.258-25.924-6.806-25.924-6.806-12.234,4.488.727,4.778a2.335,2.335,0,0,0,.727,3.474s21.559,4.493,23.743,7.969-14.708-3.336-18.495-5.218c-3.653-1.816-13.822.961-14.4,1.808a.3.3,0,0,0-.016.031s0,.013,0,.016a.208.208,0,0,0,0,.031s0,.013,0,.016,0,.013,0,.016.014.013.016.016,0,.013,0,.016a.5.5,0,0,0,.032.047s.013.013.016.016c.651.714,5.19,1.7,5.327,2.924,0,.005,0,.011,0,.016a.469.469,0,0,1-.048.2c-.572,1.1-5.987,1.571-6.212,2.609a.431.431,0,0,0-.016.063c0,1.159,27.242,6.807,34.523,12.889s-21.4-7.246-21.4-7.246,1.6,2.171,0,2.751-7.293-8.109-16.614-2.751c-1.7,2.2,8.138,3.954,10.639,4.2-.854,2.183-1.6,2.905,1.9,5.077a6.423,6.423,0,0,1,.68.456l.016.016.016.016a.136.136,0,0,1,0,.016s0,.015,0,.016h-.032c-.541-.084-6.821-3.293-7.477-3.427-.007,0-.027,0-.032,0h-.016c0,.29.727,3.772.727,3.772-3.227-2.606-7.127-3.392-10.78-.723-.005.154-.032,2.654,3.636,4.2-2.067,4.2,2.336,2.9,9.327,6.806-10.389-2.7-11.221,2.315-3.794,3.474s27.821,1.884,32.627,8.11c1.014,1.313,1.289,1.974,1.091,2.185-.8.722-8.176-4.581-9.247-4.778,0,0-.014,0-.016,0l-.016.016a.491.491,0,0,0-.048.079,19.307,19.307,0,0,0-.506,3.081c-3.107-1.788-5.958-3.392-9.674-4.15-.291.579-.23,1.4-.522,1.98-3.372-2.418-6.31-4.118-11.208-4.354l-.585,2.326s-4.083-5.068-12.093,0c-4.473,3.188,16.9,1.154,20.391,4.92s.727,4.338.727,4.338c-2.913-1.062-5.813-2.113-8.726-3.175,0,0-10.35-1.892-13.263.424s42.523,7.966,43.834,14.193c.884,3.377-10.675-3.536-20.676-6.507-.387,1.105-.783,2.211-1.17,3.316-.237-.233-4.106-3.975-8.441-4.621,0,0-.015.012-.016.016s0,.024,0,.032c.007.475.885,3.867.885,3.867s-11.2-5.219-16.882-2.468,19.8,4.2,22.13,6.806c.255.285.361.493.348.629a.3.3,0,0,1-.032.078c-.563.82-8.161-2.207-8.915-.707-.874,1.738-13.25-3.181-13.1-.865a5.355,5.355,0,0,0,1.755,3.615s25.777,2.46,26.651,5.5-14.274-1.729-14.274-1.729-1.465,2.162-.3,3.175a.838.838,0,0,1,.095.094s0,.015,0,.016h-.016c-.526-.173-8.734-5.518-7.935-1.415-3.212-1.272-11.5-5.21-10.338-2.169,1.148,3,22.774,7.263,23.411,7.387-.572.045-9.718.806-9.295,3.191-12.258-7.426-12.229-2.973-11.951-2.625,0,0,0,.015,0,.016-.689-.108-15.77-3.844-3.778,2.609,6.431,3.461,8,4.81,8.03,5.328,0,.011,0,.036,0,.047a.284.284,0,0,1-.016.047s-.014.013-.016.016-.01.024-.016.031l-.016.016-.016.016-.016.016s-.013.014-.016.016a2.4,2.4,0,0,1-1.027.094H357a.073.073,0,0,0-.016.016l.016.016a14.339,14.339,0,0,1,1.059,3.254.255.255,0,0,1-.016.031s0,.013,0,.016-.015,0-.016,0,0,.015,0,.016H358c-.526-.132-8.468-4.352-11.192-4.637-2.767-.29-15.878,3.616-1.9,9.7s22.568-1.451,30.287-.582,11.366,2.175,10.639,4.637-7.9-8.071-15.428,1.037c-8.568-1.686-14.382-2.662-9.959,3.6-13.993-5.2-22.538,1.586-4.916,4.338,17.316.507,27.963-4.2,27.963-4.2s2.921,5.368,7.145,1.6c4.025-3.588,4.342.979,4.489,1.415,0,.007.014.012.016.016s0,.015,0,.016h.016c.311-.078,4.063-1.745,4.063-1.745h1.027V247.2q7.063.072,14.116.141s-4.515-30.258-2.039-34.312c2.4-3.928,4.666-3.5,4.805-3.474,0,0,9.177,2.745,10.2,2.311.012-.005.036-.01.047-.016l.032-.016c.018-.011.047-.034.063-.047s.013-.013.016-.016c.746-.677-.014-3.348,4.647-2.939,1.439-.521.89-2.8,1.818-3.364.016-.01.046-.023.063-.031a1.075,1.075,0,0,1,.126-.047,1.178,1.178,0,0,1,.19-.031c1.456-.145,29.561,7.813,35.677.283-1.6-4.2-7.143-.286-8.6-.141-1.311,0-6.849-2.606-10.053,0-2.913-2.172-16.155-3.615-16.155-3.615-1.748-1.738,31.6.863,33.5-.44,3.932-3.91-7.278-3.472-9.026-2.169a9.9,9.9,0,0,0-9.39-.44c-1.141-2.713-11.97-1.538-17.989-2.311-1.927-1.124-1.606-1.769-.3-2.468,12.573.531,25.082,2.164,37.716,1.6,3.415-4.427-4.3-6.1-9.026-2.326-2.775-4.538-8.448-.147-12.235-.582s-2.039-5.062,2.766-4.338,13.4-.3,15-2.468-.956-4.372-8.884-2.311c-2.683-2.607-8.583,0-11.35.865-3.681-2.042-12.247-.284-15.159.44-2.851-1.762,15-4.637,15-4.637a47.308,47.308,0,0,0,12.962-1.886c10.417-5.552-.145-6.141-5.611-2.106-3.393-2.634-6.616.228-9.674,1.242-2.867.95-8.17,1.642-8.821,1.367l-.032-.016-.016-.016-.016-.016s0-.014,0-.016,0-.014,0-.016a.258.258,0,0,1,.016-.031c.43-.662,8.283-5.454,8.283-5.454s10.2-.732,12.235-1.022c1.242-.177,5.6-2.226,5.6-2.986-.036-.472-1.851-.428-7.351.959-4.952.435-7.86.154-9.753.3-3.045-.313-4.328-.632-4.584-.912a.36.36,0,0,1-.032-.047.154.154,0,0,1,.032-.157.631.631,0,0,1,.047-.047c.746-.593,5.564-1.022,5.564-1.022s14.708-1.341,15.681-2.106l.016-.016a.246.246,0,0,0,.016-.031s.015-.013.016-.016c.3-5.979-12.478-3.218-12.82-3.175.037-4.2-11.535-.062-12.077,0h-.016a1.353,1.353,0,0,1-.759-.88.794.794,0,0,1,.032-.33c.29-.867,2.039-1.54,2.039-1.54,3.2-.772,7.995-1.013,9.247-2.028,0,0,9.043-.079,10.117-2.468-2.219-6.087-19.138,1.078-21.4,2.169a1.031,1.031,0,0,1-.869-.3c-.744-1.081,2.927-4.64,3.051-4.763a.147.147,0,0,1,.016-.016c.56-.158,14.067-.845,20.518-9.541.455-5.377-7.714,3.034-7.714,3.034-.61-6.973-8.883.442-13.689,1.022s-4.946-2.175-1.6-2.609,7.133-.15,9.026-5.218,7.58.3,8.6-1.587c.987-1.824-1.861-3.378-2.039-3.474,0,0,4.22-4.357-2.624-4.212a141.691,141.691,0,0,1-15.712-.864c.425-.161,7.326-2.75,13.816-2.609,6.7.145,3.057-4.778-3.351-4.778s-9.753-2.169-9.753-2.169l10.923-4.055-.727-3.034s6.405-5.072-2.624-3.914-10.053,1.3-10.053,1.3-17.774,2.708-18.195,2.751h-.016c-.172-.027-1.933-.571-2.26-1.242-.01-.022-.025-.056-.032-.079a.615.615,0,0,1-.016-.094.534.534,0,0,1,0-.11c.073-.354.622-.736,2.023-1.085,4.66-1.158,21.125-4.484,23.6-3.615a.705.705,0,0,0,.7-.031c.928-.835-2.16-6.162-9.737-6.916-8.738-.869-14.116,2.169-14.116,2.169s-5.686-2.035-.443-3.772,13.547.582,13.547.582,9.315-2.755,1.6-3.914-10.152,1.042-13.689,1.163c-1.412-1.752,12.118-2.166,12.962-3.615-1.427-2.607-9.8,0-14.7,0-2.086-.88-2.224-2.311.142-3.191,5-.193,9.7.1,14.7-.094-.146-2.655,0-5.8-.142-8.456-6.342-1.152-13.78.844-17.341.676.953-2.9,14.646-3.644,16.171-4.432,3.146-3.91-13.134-.06-13.531,0-2.89-.425-2.715-2.241-.885-3.332,4.223-.483,13.694.615,12.978-2.232-.549-2.668-6.566-1.24-9.042-.66a21.823,21.823,0,0,1-6.117.141c-1.585-2.122,14.277-1.255,14.132-2.892-.207-1.88-10.055-.585-13.4-.44-2.576-1.768,12.112-2.943,12.8-3.175,0,0,.014-.014.016-.016.549-4.814-10.2,0-12.235,0a1.276,1.276,0,0,1-.806-.236,1.207,1.207,0,0,1-.126-.126c-.7-.812-.079-2.672-.079-2.672s3.829-1.711,4.063-2.122c0,0,.015-.013.016-.016s0-.014,0-.016,0-.014,0-.016-.014-.013-.016-.016a.311.311,0,0,0-.047-.047,16.977,16.977,0,0,0-3.43-1.242h-.016s-.014-.015-.016-.016a.122.122,0,0,1-.016-.016.2.2,0,0,1-.016-.016,17.511,17.511,0,0,1,.047-3.285s3.034-2.261,3.225-3.159c0-.008,0-.024,0-.031s0-.025,0-.031,0-.025,0-.031,0-.025,0-.031,0-.013,0-.016a.317.317,0,0,0-.016-.031s0-.013,0-.016-.014-.013-.016-.016-.012-.011-.016-.016-.01-.025-.016-.031l-.016-.016a.517.517,0,0,0-.047-.031l-.032-.016c-.766-.366-3.936.723-3.936.723V48.824s2.775-.3,3.067-1.6a.631.631,0,0,0,0-.22.753.753,0,0,0-.016-.094.734.734,0,0,0-.079-.173c-.005-.008-.026-.024-.032-.031-.635-.815-3.225-.927-3.225-.927q-.728-7.6-1.454-15.2Zm-2.592,49.637v2s-3.266-.166-3.873-.676c0,0-.013-.013-.016-.016l-.016-.016-.016-.016-.016-.016a.3.3,0,0,1-.016-.031s0-.013,0-.016-.015-.013-.016-.016,0-.013,0-.016,0-.026,0-.031,0-.013,0-.016,0-.013,0-.016a.327.327,0,0,1,.016-.047s.014-.013.016-.016a.5.5,0,0,1,.032-.047l.016-.016.032-.031a.956.956,0,0,1,.079-.063c1.1-.763,3.283-.745,3.715-.864,0,0,.013,0,.016,0s.013-.015.016-.016.014,0,.016,0,.014-.014.016-.016Zm4.632,2.656c.113,0,6.505.055,7.066.88,0,.007.012.024.016.031s.013.036.016.047,0,.024,0,.031a.369.369,0,0,1,0,.047c0,.012-.011.035-.016.047-.488,1.031-6.955,1.65-6.955,1.65l-.126-2.735Zm-.364,3.945s.013,0,.016,0,.013,0,.016,0c.38.1,3.027.185,3.351.629,0,0,.013.012.016.016s0,.014,0,.016.014.011.016.016,0,.014,0,.016,0,.013,0,.016,0,.013,0,.016,0,.013,0,.016,0,.013,0,.016-.015.013-.016.016,0,.013,0,.016-.011.024-.016.031l-.016.016s0,.013,0,.016c-.549.667-2.992.849-3.114.849h-.016s0-.015,0-.016-.014-.012-.016-.016a11.505,11.505,0,0,1-.221-1.666Zm-19.491,5.25c2.087-.108,6.229.381,14.005,2.515,0,.165.157,2.169.095,2.5,0,0-.015.013-.016.016s0,.014,0,.016a.145.145,0,0,1-.016.016c-.122-.061-14.147-4.068-15.428-4.008a.939.939,0,0,1-.111,0c-.028,0-.068-.01-.095-.016a.74.74,0,0,1-.111-.047c-.011-.005-.037-.01-.047-.016s-.012-.014-.016-.016a.449.449,0,0,1-.111-.11s-.014-.013-.016-.016l-.016-.031s0-.012,0-.016-.014-.025-.016-.031,0-.012,0-.016,0-.025,0-.031,0-.025,0-.031a.38.38,0,0,1,.016-.063.474.474,0,0,1,.095-.141,2.951,2.951,0,0,1,1.786-.472Zm7.271,5.926c2.236-.08,7.592,1.2,7.888,1.132,0,.425.237,2.432-.032,2.845,0,0-.013.013-.016.016a.186.186,0,0,1-.016.016s-.013.014-.016.016l-.032.016a.141.141,0,0,1-.016,0h-.032a.141.141,0,0,1-.016,0c-.455-.113-8.36-2.61-8.663-3.631a.28.28,0,0,1,0-.063.208.208,0,0,1,.048-.11l.016-.016.016-.016a1.634,1.634,0,0,1,.869-.2Zm22,5.5c2.135-.042,3.642.14,3.082.786-1.525,1.758-12.061,3.206-12.061,3.206l-.19-3.206c.226-.033,5.58-.716,9.168-.786Zm-30.16,10c1.792-.095,5.964.884,15.254,4.794l.063,2.311s-15.733-4.745-16.281-5.533c-.27-.388-.772-1.48.964-1.572Zm30.824,3.442a1.459,1.459,0,0,1,.933.141l.016.016a.309.309,0,0,1,.016.047.327.327,0,0,1,.016.047.508.508,0,0,1-.142.251c-1.464,1.638-9.327,3.269-9.327,3.269v-2.122h.016c.358-.012,6.13-1.532,8.473-1.65ZM384,117.212c2.349-.124,7.652,1.115,19.538,6.711,0,.058.106,1.988.063,2.169h-.016c-.7-.226-21.387-7.45-21.387-7.45-.022-.079-.333-1.318,1.8-1.43Zm39.376,9.038c.6-.025,1,.027,1.091.157a.18.18,0,0,1,.016.063.394.394,0,0,1-.158.236c-1.876,1.684-13.833,3.725-14.258,3.757h-.016a.143.143,0,0,1-.016,0l-.016-.016a.223.223,0,0,1-.016-.031s0-.013,0-.016-.014-.024-.016-.031a11.28,11.28,0,0,1,.19-1.949s0-.014,0-.016h.016s.013.016.016.016h.016c.765-.013,9.929-2.035,13.152-2.169Zm-35.155,5.265c3.56-.183,14.346,4.735,14.875,4.888h.016c-.055.22-.065,2-.111,2.279,0,.008,0,.027,0,.031a.145.145,0,0,1-.016,0c-.291-.155-15.074-6.255-15.728-5.768-.408-.961.015-1.382.964-1.43Zm31.8,1.289a4.024,4.024,0,0,1,1.454.094.056.056,0,0,1,.047.063s0,.013,0,.016,0,.025,0,.031-.013.012-.016.016a.422.422,0,0,1-.047.047c-1.1.97-11.286,2.971-11.286,2.971s-.047-1.877-.047-2.059c.289-.062,6.867-1.046,9.9-1.179Zm-.822,6.491a2.645,2.645,0,0,1,1.344.141l.016.016c0,.005,0,.026,0,.031s.016.013.016.016-.015.013-.016.016,0,.025,0,.031-.014.012-.016.016a.361.361,0,0,1-.032.047c-.01.011-.035.036-.048.047-1.1.944-9.737,2.751-9.737,2.751s-.237-2.061-.237-2.122c.24.005,6.015-.9,8.71-.99Zm-36.452.519c2.084-.131,7.248.723,20,5.328l.427,2.483s-21.226-6.813-21.83-7.026a.129.129,0,0,0,0-.016.723.723,0,0,1,0-.079.536.536,0,0,1,.111-.251c.15-.182.491-.389,1.3-.44Zm27.963,5.391c.256.054,3.815.172,4.474.723,0,0,.013.013.016.016l.016.016.016.016c.007.009.011.023.016.031s.014.013.016.016a.335.335,0,0,1,.016.047s0,.013,0,.016,0,.013,0,.016,0,.025,0,.031,0,.013,0,.016-.014.025-.016.031,0,.012,0,.016-.012.025-.016.031c-.549.849-4.268,1.163-4.268,1.163s-.183-1.664-.269-2.185Zm8.615,4.841c.829-.02,1.424.075,1.549.314.071.163-.065.4-.458.723-3.049,2.486-9.69,2.971-9.69,2.971V151.32h.016a73.53,73.53,0,0,1,8.584-1.273Zm8.457,2.546c1.053-.04,1.506.136,1.644.377a.5.5,0,0,1,.032.079.509.509,0,0,1,.016.141,1.905,1.905,0,0,1-.632.927c-1.037.97-17.562,6.177-17.562,6.177s-.124-3.454-.063-3.757c9.661-2.911,14.387-3.863,16.566-3.945ZM417.1,162.369a3.777,3.777,0,0,1,2.118.267.406.406,0,0,1,.047.063.414.414,0,0,1,.016.047.347.347,0,0,1,0,.047.35.35,0,0,1,0,.079.591.591,0,0,1-.079.157c-1.414,1.38-8.283,1.587-8.283,1.587V162.9c1.29-.043,4.161-.46,6.18-.534Zm6.876,2.813c.327-.008.526.045.553.141a.15.15,0,0,1,0,.031c-.017.08-.112.2-.316.346-2.744,1.94-13.057,3.929-13.057,3.929s.128-1.356.19-1.682c.287,0,10.163-2.706,12.63-2.766Zm5.785,2.153a4.7,4.7,0,0,1,2.671.55h.016s0,.014,0,.016,0,.014,0,.016,0,.025,0,.031c-.052.376-.824,2.144-3.541,2.908-3.388-.3-17.768,3.926-18.052,3.992,0,0-.015,0-.016,0s0-.024,0-.031c-.008-.271.19-1.729.19-1.729,4.957-2.947,13.965-5.708,18.732-5.753Zm-36.815,8.3h.095c6.22.667,8.543,2.982,9.2,3.914-1.24,2.164-11.071-2.689-10.038-3.725a1.2,1.2,0,0,1,.743-.189Zm35.646.409a1.122,1.122,0,0,1,.632.141.638.638,0,0,1,.174.173.836.836,0,0,1,.111.377c-.65,1-4.01.563-4.221.534A10.788,10.788,0,0,1,428.6,176.044Zm-13.326,6.727a2.071,2.071,0,0,1,1.059.157.59.59,0,0,1,.079.063c.007.007.026.024.032.031a.567.567,0,0,1,.032.047.481.481,0,0,1,.016.047.608.608,0,0,1-.079.472c-.976,1.819-5.248,1.147-5.248,1.147v-1.273h.016c.241.02,2.6-.63,4.094-.692Zm-25.165,4.794c1.314-.066,2.463.791,3.667,1.477,2.683-.546,8.188.424,8.188.424v2.421a.061.061,0,0,1-.016.016s-.013,0-.016,0c-.5.087-6.953-.194-8.393-1.1-1.175,0-4.5-1.746-4.758-2.641,0-.008-.014-.024-.016-.031s0-.036,0-.047,0-.024,0-.032,0-.025,0-.031,0-.012,0-.016.014-.025.016-.031,0-.013,0-.016a3.19,3.19,0,0,1,1.328-.393Zm28.216,1.195c1.009-.054,1.437.256.648,1.367-2.2,3.092-7.872,1.823-7.872,1.823l-.237-1.918c2,.078,5.662-1.177,7.461-1.273Zm-21.214,6.271a14.406,14.406,0,0,1,4.79.8c.059.116,1.234,2.419.19,3.191a1.06,1.06,0,0,1-.126.079c-1.281.667-7.4-.521-7.761-2.971a4.174,4.174,0,0,1,2.909-1.1Zm-23.664,1.195a10.329,10.329,0,0,1,4.711,1.289.136.136,0,0,0,.016,0c0,.073-.079,2.326-.079,2.326s-4.156-1.152-5.47-3.474a4.122,4.122,0,0,1,.822-.141Zm39.977.314c2.341-.015,5.17.532,5.58,1.32a.461.461,0,0,1-.095.519c-1.159,1.394-7.746.126-7.746.126v-1.7a8.745,8.745,0,0,1,2.26-.267Z" x="-154.574" y="11.426"/>
                         </G>
                     </Svg>,
+                nu: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M500,0V300H0V166.086H250V0Z"/>
+                            <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,0V166.667H250V0Z"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" d="M0,0V20.031l94.953,63.3L0,146.636v20.031H30.045L125,103.364l94.953,63.3H250v-20.03l-94.953-63.3L250,20.031V0H219.952L125,63.3,30.045,0Z" fillRule="evenodd"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M0,166.667l83.333-55.555h18.634L18.634,166.667ZM0,0,83.333,55.555H64.7L0,12.423ZM148.033,55.555,231.367,0H250L166.667,55.555ZM250,166.669l-83.333-55.555H185.3L250,154.246Z"/>
+                            <Path stroke={this.state.applyStroke[2]} strokeWidth="55" d="M125,0V166.667M0,83.334H250"/>
+                            <Path onPress={() => this.applySelectedColor(2)} stroke={this.state.appliedColors[2]} d="M125,0V166.667M0,83.334H250" strokeWidth="50"/>
+                            <Path stroke={this.state.applyStroke[3]} strokeWidth="35" d="M125,0V166.667M0,83.334H250"/>
+                            <Path onPress={() => this.applySelectedColor(3)} stroke={this.state.appliedColors[3]} d="M125,0V166.667M0,83.334H250" strokeWidth="30"/>
+                            <G onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" transform="translate(11.778 12.722)">
+                                <G transform="translate(84.867 42.256)">
+                                    <Circle cx="28.356" cy="28.356" r="28.356" fill="#012169"/>
+                                    <Path d="M2.722-25.52,19.735,25.52-24.5-5.671H29.376L-14.291,25.52" transform="translate(25.633 25.52)"/>
+                                </G>
+                                <Path d="M1.6-15l10,30-26-18.333H17.267L-8.4,15" transform="translate(14.4 70.556)"/>
+                                <Path d="M1.6-15l10,30-26-18.333H17.267L-8.4,15" transform="translate(208.844 70.556)"/>
+                                <Path d="M1.6-15l10,30-26-18.333H17.267L-8.4,15" transform="translate(111.622 126.111)"/>
+                                <Path d="M1.6-15l10,30-26-18.333H17.267L-8.4,15" transform="translate(111.622 15)"/>
+                            </G>
+                        </G>
+                    </Svg>,              
                 pw: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#4aadd6"/>
-                            <Circle cx="93.75" cy="93.75" r="93.75" x="125" y="56" fill="#ffde00"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                            <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" cx="93.75" cy="93.75" r="93.75" x="125" y="56"/>
                         </G>
                     </Svg>,
                 pg: <Svg width='100%' height='100%' viewBox="0 0 500 300">
@@ -4637,21 +4815,120 @@ class FlagComponent extends Component {
                             </G>
                         </G>
                     </Svg>,
-                ws: <Svg width='100%' height='100%' viewBox="0 0 500 300">
-                    {this.roundCornerDef}
-                    <G clipPath="url(#clip-path)">
-                        <Rect width="500" height="300" fill="#ce1126"/>
-                        <Rect width="250" height="150" fill="#002b7f"/>
-                        <G transform="translate(72.917 17.999)">
-                        <Path d="M-66.111,0l8.584,26.418L-80,10.091h27.778L-74.695,26.418Z" transform="translate(118.194)" fill="#fff"/>
-                        <Path d="M-66.111,0l8.584,26.418L-80,10.091h27.778L-74.695,26.418Z" transform="translate(80 31.25)" fill="#fff"/>
-                        <Path d="M-61.979,0l8.047,24.767L-75,9.46h26.042L-70.026,24.767Z" transform="translate(153.125 26.042)" fill="#fff"/>
-                        <Path d="M-41.319,0l5.365,16.511L-50,6.307h17.361l-14.045,10.2Z" transform="translate(112.5 58.141)" fill="#fff"/>
-                        <Path d="M-82.639,0l10.73,33.023L-100,12.614h34.722L-93.369,33.023Z" transform="translate(134.722 81.561)" fill="#fff"/>
+                pn: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M238.889-.022,500,0V300H0V140.289l238.85,2.646Z" transform="translate(0 0.022)"/>
+                            <Image width="239" height="143" href={require('../assets/flag_badges/na/gb.png')}/>
+                            <G transform="translate(292.325 60)">
+                                <Path d="M43.5,7.614c-5.105,4.323-9.971,10.641-11.167,16.352C28.966,40.03,24.5,43.6,17.608,40.158c0,8.631,7.562,9.285,10.88,4.244,0,8.088,2.935,15.108,9.556,21.09,2.792,2.521,3.318.8,1.994-1.994s-1.324-11.805-3.972-16.974c4.244,3.047,10.481,1.324,9.955-7.035-5.44,3.191-10.848,3.063-11.407-4.515C33.928,26.087,37.39,13.181,43.5,7.614Z" transform="translate(-5.839 90.073)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M45.016,14.094c.367-3.191-.319-6.461-2.648-8.519-4.5-3.956-8.9-2.648-12.188.542-4.914-2.648-7.514,6.748-13.082,5.169.925,3.047,2.393,4.371,5.169,3.318-2.919,2.648,0,5.839-3.446,9.014,6.238,1.994,9.556-1.452,9.285-7.434a5.675,5.675,0,0,0,8.088-.4c-3.318-1.069-3.334-3.94-1.994-6.637C36.194,5.176,45.543,5.335,45.016,14.094Z" transform="translate(-13.817 19.7)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M62.491,56.926C55.456,60.643,42.6,59.048,41.4,49.891S49.09,36.618,51.483,35.437c3.717-1.867,6.637,1.452,5.44,5.312a6.013,6.013,0,0,0,3.047-9.014c5.44.4,10.481-3.717,12.6-9.556-1.914,1.819-7.115.59-11.391.319,1.324-1.452,1.308-4.291.909-5.759-4.5,4.626-11.008,2.5-19.622,15.905C43.794,28,46.314,18.718,47.782,12.608a17.658,17.658,0,0,0,.335-1.835c.51-8.758-8.822-8.918-10.816-4.93,2.186,2.457,1.037,5.328.255,9.684-.925,5.169-2.919,17.118-4.642,21.09-.526-6.238-4.642-6.637-5.44-9.684a4.841,4.841,0,0,0-1.6,4.371c-1.468-1.6-6.509.4-8.359-1.994-1.994,3.972,1.2,7.961,4.515,9.684-1.93.128-2.393,2.457-4.515,2.457a12.764,12.764,0,0,0,9.157,4.914c3.382.271,5.9,1.532,7.961,5.631C37.955,58.649,50.59,62.956,62.491,56.926Z" transform="translate(-16.901 23.02)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M71.513,14.056C67.54,25.063,56.66,32.9,51.746,34.093c-8.359,2.026-25.4,10.306-29.96,14.565a5.3,5.3,0,0,1-1.883-.766c-2.249-1.6-4.116-6.764-.128-11.151,12.475-11.678,25.876-6.637,34.236-14.6-7.035,3.717-19.894,2.122-21.09-7.035a32.361,32.361,0,0,0,32.1-9.556C66.471,7.164,70.715,12.205,71.513,14.056Z" transform="translate(-8.406 57.786)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M27.61,31.412c-6.3,5.344-9.572,18.474-8.9,27.36.191,2.473.877,4.148,1.93,5.169C21.1,58.9,24.611,45.866,33.56,40.059c7.562-4.914,19.367-15.921,23.754-28.524a10.112,10.112,0,0,0-4.642-5.44C48.317,18,36.687,23.707,27.61,31.412Z" transform="translate(10.051 66.274)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M52.941,8.921a29.582,29.582,0,0,1-12.268,9.891,6.434,6.434,0,0,0,1.452-3.972c-6.238,2.393-18.713,2.122-23.754.271a32.361,32.361,0,0,0,32.1-9.556A12.316,12.316,0,0,1,52.941,8.921Z" transform="translate(6.113 57.816)" fill="#316d3a" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.608,7.424c-10.146,9.492-3.446,17.772.526,19.638C22.082,33.7,28.3,32.9,28.176,38.469c2.521-1.452,3.191-5.312,2.792-8.359,3.191,3.446,11.279-.4,13,5.966,1.069-7.035-4.371-14.055-11.135-13.4,2.792-2.521,1.2-6.637-1.452-7.689-.526,5.169-6.365,5.169-8.631,3.589C20.486,16.98,18.62,11.811,22.608,7.424Z" transform="translate(-11.238 87.104)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M19.691,11.383a2,2,0,0,0-.335,2.983c1.388,1.851-.989,6.062,3.51,6.972,1.324.271,2.345-.542,2.856-2.058,1.388-4.18-3.047-4.642-3.446-6.637S20.617,10.857,19.691,11.383Z" transform="translate(13.63 143.511)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.682,11.8c-1.484.686-2.792,1.659-2.186,6.429.239,1.978.128,6.764-1.6,6.828,1.053.526,3.318,1.1,4.244-.128.893,1.5,2.919,1.069,3.717-.8,1.053.861,2.521-.59,2.521-1.851.925.59,2.792-.271,2.313-3.111a3.107,3.107,0,0,0,3.111-1.133c-1.659-.335-5.839-2.584-6.828-4.371A4.4,4.4,0,0,0,22.682,11.8Z" transform="translate(14.421 150.931)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <G transform="translate(14.114 25.817)">
+                                    <Path d="M17.748,6.029A17.8,17.8,0,0,1,20,3.3" transform="translate(-17.748 -3.301)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                    <Path d="M19.263,5.152a9.279,9.279,0,0,1,4.93-.622" transform="translate(5.975 15.141)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                    <Path d="M19.6,17.132c-.463-.67-.638-3.446-.3-5.137" transform="translate(3.848 132.908)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                    <Path d="M21.6,16.185a7.863,7.863,0,0,1-2.361-4.18" transform="translate(5.571 133.057)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                    <Path d="M22.994,17.064c-.925-.431-3.191-3.35-3.685-5.233" transform="translate(6.695 130.328)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                    <Path d="M25.157,16.411a13.159,13.159,0,0,1-5.839-4.738" transform="translate(6.845 127.854)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                </G>
+                                <Path d="M23.593,7.433C39.913,21.1,40.966,31.969,38.446,38.35,37.122,32.383,30.357,23.1,23.322,20.706Z" transform="translate(83.687 87.239)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M57.518,6.97H87.765V42.785c0,30.519-16.974,48.562-34.236,58.1-17.245-9.556-34.236-27.6-34.236-58.1V6.97H40.528A11.628,11.628,0,0,0,42.921,14.4C47.93,13.91,53.594,10.161,57.518,6.97Z" transform="translate(20.584 79.995)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="3" d="M87.735,6.97V42.785a68.96,68.96,0,0,1-4.18,24.329L53.516,12,23.476,67.114A69.025,69.025,0,0,1,19.3,42.785V6.97H87.735Z" transform="translate(20.614 79.995)"/>
+                                <Path d="M81.391,64.377c-.526,1.627-1.5,4.26-2.233,5.887L50.441,16.884,21.726,70.263c-.75-1.627-1.707-4.26-2.233-5.887l30.965-57.4Z" transform="translate(23.688 80.1)" fill="#f7e017"/>
+                                <Path d="M51.585,47.77c.8.4,2.265,1.133,2.919,1.4,1.6-3.191,1.851-7.689,1.324-11.678-1.723,4.387-7.562,4.244-9.157,6.892a21.226,21.226,0,0,1,2.664,1.691c-1.994,1.994-6.653,5.328-9.3,6.126V23.744c0-1.994-.67-3.653-.67-5.312V12.545c0-1.324-.271-3.254-1.452-3.254-1.2,0-1.452,1.93-1.452,3.254v5.887c0,1.659-.67,3.589-.67,5.312V52.2c-1.452-4.244-7.179-2.792-9.827-7.035a7.43,7.43,0,0,1,3.191-.128c-1.994-6.764-7.434-7.291-8.487-9.285,0,2.792-1.2,9.285.67,12.077a6.97,6.97,0,0,1,1.8-1.468c2.249,4.914,12.4,4.93,14.789,13.018C39.843,56.4,46.751,52.954,51.585,47.77Z" transform="translate(36.185 116.346)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M33.795,15.787c2.249,0,9.412-.734,12.013-.734.67,0,1.228-1.005,1.228-2.249s-.542-2.249-1.228-2.249c-2.584,0-9.747-.734-12.013-.734-2.249,0-9.412.734-12.013.734-.67,0-1.228,1.005-1.228,2.249s.542,2.249,1.228,2.249C24.383,15.053,31.546,15.787,33.795,15.787Z" transform="translate(40.319 124.654)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M26.96,11.384a2.867,2.867,0,0,0-1.8-.622,2.623,2.623,0,0,0-2.728,2.489,2.731,2.731,0,0,0,5.44,0,.774.774,0,1,1,1.547,0,4.091,4.091,0,0,1-4.26,3.893A4.08,4.08,0,0,1,20.9,13.25a4.091,4.091,0,0,1,4.26-3.893,4.71,4.71,0,0,1,1.962.431A12.155,12.155,0,0,0,26.96,11.384Z" transform="translate(45.703 117.396)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20.628,14.364c.67,0,1.212-1.005,1.212-2.249S21.3,9.865,20.628,9.865" transform="translate(41.489 125.343)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20.688,14.364c.67,0,1.212-1.005,1.212-2.249s-.542-2.249-1.212-2.249" transform="translate(42.418 125.343)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.081,15.261c.814,0,1.468-1.212,1.468-2.712s-.654-2.712-1.468-2.712" transform="translate(48.582 124.909)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.172,15.508c.846,0,1.532-1.276,1.532-2.84s-.686-2.84-1.532-2.84" transform="translate(50.006 124.774)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.478,15.57c.861,0,1.547-1.292,1.547-2.872s-.7-2.872-1.547-2.872" transform="translate(54.805 124.744)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.574,15.385c.846,0,1.531-1.244,1.531-2.776s-.686-2.776-1.531-2.776" transform="translate(56.305 124.849)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22,14.456c.686,0,1.244-1.021,1.244-2.3s-.558-2.3-1.244-2.3" transform="translate(63.008 125.283)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20.461,12.625a9.861,9.861,0,0,1,2.84-1.181" transform="translate(38.864 150.087)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.815,12.056c-.239-.175-.51-.351-.782-.558" transform="translate(63.503 150.927)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.168,18.018a18.962,18.962,0,0,0,4.26-6.828" transform="translate(65.602 146.098)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20.984,10.575c0-.654.526-.925,1.149-1.388.75-.558,1.053-.83,1.723-.83h8.71c.638,0,.8.16.8.766V20.944c0,.59-.144.766-.8.766H20.984V10.447" transform="translate(47.052 101.725)" fill="#fff" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M29.947,22.3c1.149,0,.941-.032,1.739-.83.846-.83.766-.766.766-1.532V9.1c0-.558-.144-.718-.734-.718H23.661c-.638,0-.909.255-1.6.782-.574.431-1.053.7-1.053,1.308V22.3h8.934Z" transform="translate(47.517 102.175)" fill="#e5e5e5" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M31.273,21.052c0,.59-.144.766-.8.766h-8.71c-.654,0-.782-.16-.782-.766V9.215c0-.59.144-.766.782-.766h8.71c.654,0,.8.16.8.766Z" transform="translate(47.052 103.164)" fill="#fff" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M67.017,37.936a6.681,6.681,0,0,1,1.324,6.924H65.82c1.053-3.191.4-6.222-4.116-6.621-6.748-.59-14.6,12.475-26.4,14.055-3.446-4.116-3.27-11.949,1.117-15.666-2.265-6.525-7.035-13.7-10.354-16.8a32.39,32.39,0,0,0-6.286-.431c1.723-3.717,6.637-7.626,10.625-9.221.638-.941,1.34-1.851,1.978-2.664.4-5.105,24.68-2.712,29.848.463C62.247,13.7,64.5,32.767,67.017,37.936Z" transform="translate(28.187 42.091)" fill="#96877d" stroke="#000" strokeWidth="0.014"/>
+                                <G transform="translate(56.613 54.339)">
+                                    <Path d="M29.471,34.194A32.286,32.286,0,0,0,20.3,13.1c2.393.67,7.291.67,10.609-1.723C35.278,8.461,46.7,3.356,50.881,5.542a6.585,6.585,0,0,1,.271,3.446c-.989-2.648-12.013,1.452-15.124,2.712-2.983,1.388-4.307,3.254-3.254,7.434-1.723-1.452-1.133-2.856-2.919-3.909A28.429,28.429,0,0,1,31.37,22.58c-.67-1.787-1.851-5.631-4.451-7.9,2.249,4.371,4.212,14.884,3.286,20.468,1.787,0,5.743-1.755,7.322-3.015-1.388,1.994-5.408,3.382-7.993,3.909-1.165,1.388-1.962,4.977-1.9,6.972C27.461,40.559,28.227,34.577,29.471,34.194Z" transform="translate(-20.298 -5.013)"/>
+                                    <Path d="M33.456,22.045c-2.2-2.441-6.3-3.765-11.534-2.345a16.473,16.473,0,0,1,4.052-1.324c-.191-1.388-1.452-7.37-1.659-8.822l1.468-.59c.734,3.589,1.659,7.689,2.249,9.349a12.372,12.372,0,0,1,2.457.8C30.09,17.721,27.84,7.7,27.9,6.634L29.9,5.565C30.68,11.005,31.94,18.9,33.456,22.045Z" transform="translate(5.135 3.643)"/>
+                                </G>
+                                <Path d="M37.479,13.211c1.053-3.191.4-6.222-4.116-6.621-3.494-.3-7.291,3.095-11.773,6.621Z" transform="translate(56.545 73.754)" fill="#96877d" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M33.08,7.834a26.3,26.3,0,0,1-8.694-.861A10.208,10.208,0,0,1,25.04,5.09a27.7,27.7,0,0,0-5.041,4C23.189,9.765,29.762,10.1,33.08,7.834Z" transform="translate(31.621 50.543)" fill="#96877d" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20.779,6.476a21.118,21.118,0,0,1,1.276,5.982" transform="translate(43.843 72.258)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.862,4.889a16.642,16.642,0,0,0-2.6,5.233,26.258,26.258,0,0,0,8.694.861" transform="translate(35.745 47.394)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20.158,16.6a23.013,23.013,0,0,1,2.345.495c2.393.67,7.291.67,10.609-1.723S45.443,5.556,55.669,4.758" transform="translate(34.111 45.34)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20,14.688c3.191.67,9.763.989,13.066-1.26,7.689-5.233,15.124-8.3,22.558-8.695" transform="translate(31.636 44.95)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M23.338,7.433C34.474,15.122,42.705,22.556,45.1,34.489s6.908,15.124,12.475,11.933c-1.324,6.892-8.232,7.689-14.055,2.393.526,7.961-2.648,17.517-10.88,20.963-.526-4.77,2.632-8.551,1.723-12.475-.4-1.723-.526-5.711,1.723-7.562-4.371,1.452-11.279-1.324-11.933-7.833C29.193,44.3,35.686,44.7,38.207,38.318,40.711,31.969,39.658,21.089,23.338,7.433Z" transform="translate(83.942 87.239)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M24.183,10.312C27.628,1.3,36.658,2.223,39.7,6.068c8.886-5.041,10.082,6.365,17.644,4.116-.128,2.122-2.648,4.116-5.44,3.972,2.919,2.648-1.2,6.637,5.041,9.014-5.312,2.648-12.731-.128-14.725-7.434-1.723,3.446-7.961,3.446-10.481.67,5.44-1.452,5.041-6.493,1.994-8.487C30.66,5.908,25.235,6.722,24.183,10.312Z" transform="translate(97.169 22.27)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M37.569,8.678A48.317,48.317,0,0,0,50.682,29.146c6.365,5.839,15.985,4.371,21.361-1.2.128,11.1-11.375,11.965-17.772,8.487-2.824-1.532-5.105-.734-2.393,1.723,4.116,3.717,13.114,6.477,23.738,8.758,18.57,3.972,11.949,18.713,6.509,18.57,1.563-.032,2.84-1.659.59-3.685C66.6,47.3,33.836,53.012,34.362,20.643c-3.446,8.487-17.644,5.169-11.008-4.914,2.122,1.723,5.839,1.851,6.908-.8.83-2.058.287-5.647-3.43-8.742.606-.048,1.93,0,1.787-1.532a2.3,2.3,0,0,0,3.063,1.771c.59.941,1.228,1.563,2.074,1.228.16-.064.67-.319.463-1.26C34.378,8.183,36.468,8.806,37.569,8.678Z" transform="translate(56.87 43.765)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M34.682,54.558c7.689,5.041,16.4,5.041,24.408-4.244,2.521-2.919,6.493-5.44,9.285-5.711s2.648-2.919,4.77-3.446c-1.324-.4-1.851-1.994-3.845-1.787,4.977-1.723,3.51-5.711,5.966-7.626-1.994.734-5.105-2.249-7.961,1.532a4.8,4.8,0,0,0-.989-4.579c.271,1.994-3.909,2.393-4.706,7.434-.447,2.824-1.994,2.648-2.249-1.723-.191-3.207-1.723-12.077-3.574-16.575-1.851-4.515-2.281-10.7.239-11.63a4.911,4.911,0,0,0-1.563-1.627c-3.079-2.01-8.487-1.2-9.556,2.393-3.446,9.014,6.238,14.2,5.44,24.01-1.452-7.291-13.273-9.157-13.129-16.32-3.845,1.723-3.318,4.914-1.851,7.434-2.393-3.717-7.833,2.393-12.475-2.648-.526,6.637,5.312,9.157,10.082,9.412-2.393,4.244.8,7.833,3.972,9.014.128-7.434,15.363-4.387,15.522,8.359C52.6,57.078,40.92,58,34.682,54.558Z" transform="translate(76.443 25.644)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M36.518,7.193c18.57,3.972,11.949,18.713,6.509,18.57-3.462-.08-6.764-2.983-6.972-5.5-3.972,2.122-2.919,6.3.128,7.961-8.359-.989-11.869,4.515-12.077,10.545,1.531-2.792,6.174-2.983,7.9-2.393s6.174.925,7.961-1.069c-1.468,1.26.925,4.18-1.133,6.429,6.972-.271,10.019-6.764,8.822-9.62C56.682,23.912,54.959,10.512,36.518,7.193Z" transform="translate(95.969 83.49)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M30.885,11.4a2.226,2.226,0,0,1,.239,3.35c-1.643,2.01.83,6.812-4.228,7.626-1.5.239-2.6-.718-3.095-2.425-1.372-4.722,3.605-5.041,4.132-7.259C28.476,10.493,29.864,10.765,30.885,11.4Z" transform="translate(87.467 142.311)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M36.715,11.861c1.627.83,3.031,1.978,2.17,7.275-.367,2.2-.447,7.546,1.484,7.689-1.212.542-3.749,1.069-4.738-.335-1.069,1.627-3.3,1.053-4.116-1.053-1.228.909-2.792-.782-2.728-2.186-1.069.622-3.095-.415-2.457-3.574A3.5,3.5,0,0,1,22.9,18.29c1.867-.3,6.621-2.632,7.817-4.595A4.95,4.95,0,0,1,36.715,11.861Z" transform="translate(77.074 150.42)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M23.663,17.751c.542-.718.861-3.829.558-5.727" transform="translate(89.026 159.174)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M23.417,16.594a8.7,8.7,0,0,0,2.808-4.563" transform="translate(85.172 159.279)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M23.252,17.527c1.053-.447,3.7-3.605,4.339-5.7" transform="translate(82.593 156.16)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M23.1,16.7a14.536,14.536,0,0,0,6.716-5.041" transform="translate(80.283 153.416)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.381,5.618C22.158,19.21,27.805,26.1,35.638,30.569c-2.9-1.739-1.643-7.705-5.568-9.636.925-.064,2.393,1.26,4.706.734-1.133-2.521-2.983-6.365-7.291-6.892,1.133-.128,3.589.271,5.169-.335C30.406,10.978,24.439,12.637,22.381,5.618Z" transform="translate(68.85 58.806)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M31.326,7.691a2.823,2.823,0,0,1-1.276-1.26A2.3,2.3,0,0,1,26.986,4.66c.128,1.532-1.181,1.468-1.8,1.516,3.733,3.095,4.275,6.684,3.446,8.742-1.069,2.648-4.77,2.521-6.908.8-.271,5.631,7.035,7.5,9.684.4,0,1.2,1.531,1.069,1.93,2.648C35.218,15.715,33.782,11.328,31.326,7.691Z" transform="translate(58.502 43.795)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M42.525,26.309a15.851,15.851,0,0,1-4.706-11.072c.128-2.919,1.324-6.11,5.568-4.77-1.324,0-.4,2.648-1.787,2.919a2.677,2.677,0,0,0,2.856-1.133c.271.925,1.994.67,2.122,1.723.67-.526-.064-3.111-1.053-3.653.734-.4,1.133-2.457.8-3.446a2.893,2.893,0,0,0-1.851,2.393c.335-1.069-.064-3.717-1.93-4.116a3.5,3.5,0,0,0,.064,3.51c-1.723-.4-4.244.734-4.85,2.186.128-1.755.383-4.26,1.468-5.839.367-.526-.527-1.452-1.228-.191C36.7,2.3,33.256.975,31.724,2.236s-3.574-.59-4.834,1.388c-1.26,1.994-5.536,2.2-5.312,4.307a6.393,6.393,0,0,1-.8,3.909c-1.531,1.723.734,2.983,1.133,4.515C21.642,11.313,29.666,1.5,37.707,5.347a17.769,17.769,0,0,0-1.6,6.828c-.335,4.515.335,10.88,4.706,14.6Z" transform="translate(35.641 -1.752)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.735,4.828c-.048-1.2,2.026-2.744,4.8-2.712,3.35.032,5.935,3.079,8.615,2.792,2.68-.3,1.356,1.2.8,1.6a1.56,1.56,0,0,0-.7,1.723c.191.734-.144,1.212-1.228.526-2.393-1.5-4.77.59-7.929-.558C23.394,7.173,21.815,6.615,21.735,4.828Z" transform="translate(58.808 3.935)" fill="#cf142b" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M29.327,28.151c-1.324-4.18-6.365-8.758-8.822-9.811l-.128-2.249a29.46,29.46,0,0,0,5.966-4.451c9.955,4.77,23.483-1.994,29.721-9.014l2.393,1.452-1.2,1.6L56,5a76.2,76.2,0,0,1-8.95,8.344,31.828,31.828,0,0,0,6.365.941c5.568-3.988,9.939-7.562,12.061-7.833l1.787,2.393-1.6,1.133-1.26-.734C58.442,14.16,51.678,24.9,49.014,32.059,45.313,31.262,32.039,31.788,29.327,28.151Z" transform="translate(37.56 11.928)" fill="#96877d" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M30.586,3.944a9.681,9.681,0,0,1-2.058-.718c-1.069.989-3.717,1.851-7.1,1.994" transform="translate(54.025 21.331)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.2,15.736c-.893-4.945.526-10.417,3.047-12.077,5.5,3.653,14.932,3.653,20.5-.335" transform="translate(46.215 22.876)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20.946,3.928a141.5,141.5,0,0,1,15.714.925c2.249.335,6.03,1.26,5.5,2.393" transform="translate(46.467 32.099)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.2,6.151l1.228-1.212L22.2,3.726l-1.212,1.2Z" transform="translate(47.172 29.174)" fill="none" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M30.009,4.121C28.477,2,24.282,1.329,23.372,4.185a5.633,5.633,0,0,1-1.994,3.191c-.989.59-.766,2.409-.335,3.191,1.053,1.93.128,3.781,2.186,5.041,0-1.532,2.249-3.111,4.18-3.51s4.834-2.122,5.233-4.052C33.056,6.1,33.726,4.5,30.009,4.121Z" transform="translate(42.255 6.508)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M24.158,3.536h.526L24.7,7.157a1.2,1.2,0,0,1,.319.16l3.127-1.8.271.463L25.275,7.8a1.3,1.3,0,0,1,.016.351l3.127,1.8-.271.463L24.987,8.625a.755.755,0,0,1-.3.191v3.605h-.526V8.8a1.2,1.2,0,0,1-.319-.16l-3.127,1.8-.271-.463,3.143-1.819a1.3,1.3,0,0,1-.016-.351l-3.127-1.8.271-.463,3.143,1.8a.756.756,0,0,1,.3-.191V3.536Z" transform="translate(38.549 26.19)" fill="#96877d" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M31.055,14.145A6.294,6.294,0,1,1,31.581,5.9a14.149,14.149,0,0,0-.734,3.366,4.294,4.294,0,1,0-4.275,4.722,4.4,4.4,0,0,0,4.2-3.223A16.2,16.2,0,0,0,31.055,14.145Z" transform="translate(36.375 24.45)" fill="#96877d" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.516,12.03a4.5,4.5,0,0,1-1.053-2.648,3.47,3.47,0,0,1,2.249.861,12.652,12.652,0,0,1-.191-2.792,6.071,6.071,0,0,1,2.792,2.122,9.621,9.621,0,0,1-.128-3.446,6.414,6.414,0,0,1,2.393,2.584A11.422,11.422,0,0,1,28.5,4.66a17.882,17.882,0,0,1,2.122,1.93c.128-1.069.67-2.329,1.452-2.648A7.7,7.7,0,0,1,33.8,7.85a4.819,4.819,0,0,0,1.723-1.723,3.638,3.638,0,0,1,.463,2.584,5.9,5.9,0,0,0,1.787-2.393,5.087,5.087,0,0,1,1.787,2.457,25.007,25.007,0,0,0-.335-3.254,3.841,3.841,0,0,1,1.994,2.457,7.987,7.987,0,0,1,1.388-2.983,7.266,7.266,0,0,1,.989,3.382c.335-.67.861-1.851,1.388-2.122a5.817,5.817,0,0,1,.271,3.191A6.389,6.389,0,0,1,47.1,7.723a5.558,5.558,0,0,1,0,1.787,8.213,8.213,0,0,0,1.93-3.047,4.618,4.618,0,0,1,1.93,2.856A7.216,7.216,0,0,0,53.358,7.2a9.324,9.324,0,0,1-.064,2.712,7.928,7.928,0,0,0,.989-1.532,6.213,6.213,0,0,1-.207,3.111,3.493,3.493,0,0,1,1.994-.861A11.759,11.759,0,0,1,54.6,15.2C48.253,13.434,34.916,12.764,21.516,12.03Z" transform="translate(38.799 32.548)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.853,3.8c-.032-.495,1.053-1.6,3.015-1.579,2.345.016,4.515,1.739,6.381,1.611,1.883-.128.957.495.558.654s-.622.415-.495.7c.144.3-.1.495-.861.223-1.675-.606-3.35.239-5.552-.223C23,4.761,21.9,4.538,21.853,3.8Z" transform="translate(60.668 5.645)" fill="#f7e017"/>
+                                <Path d="M24.818,9.1c-1.994,2.393-3.972,1.994-4.371.463s1.069-2.249.527-3.589c-.527-1.324.861-1.93,1.531-1.324.67.59,2.792-1.324,3.717.67S27.881,8.7,27.355,9.5C26.812,10.294,25.217,9.9,24.818,9.1Z" transform="translate(37.554 39.469)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.2,6.117c-.367-.877,1.691-2.553,2.76-1.356s2.728-1.292,3.653.59c.925,1.9,1.228,2.888,1.691,3.94.463,1.069-2.521,1.627-3.446.7.128.622-2.584,1.117-3.318-.67C22.139,8.382,21.708,7.282,21.2,6.117Z" transform="translate(49.726 38.86)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.046,5.807c-.495-.925,1.93-2.249,3.191-.558.335-.7,2.728-.83,2.888,1.2s.239,3.223.3,4.02S26.976,12,25.875,9.971A2.326,2.326,0,0,1,22.8,8.12,8.63,8.63,0,0,0,22.046,5.807Z" transform="translate(62.676 40.271)" fill="#f7e017" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M20.75,5.709c-.3-.67,1.691-1.994,3.047-.989,1.356.989,3.238-.861,4.052.925,1.627,3.621,1.723,3.877,1.228,4.579s-2.616.431-3.159-.526c-.1.67-1.93.558-2.888.032C21.947,9.123,21.181,6.906,20.75,5.709Z" transform="translate(42.914 39.044)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M21.6,5.534c-.463-1.021,2.648-1.93,4.02-.128.7-.638,2.218-.67,3.079,1.292s.989,3.047.367,3.542c-.447.351-2.058.622-2.584-.271-.734.463-2.983.064-3.478-1.2A33.106,33.106,0,0,0,21.6,5.534Z" transform="translate(56.021 39.379)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <Path d="M22.353,5.376c-.064-.925,1.627-1.356,2.249,0,.638,1.356,2.648.128,2.824,2.393a5.8,5.8,0,0,1-.861,2.888c-.622.8-3.717,0-3.909-1.691C22.449,7.259,22.385,6.3,22.353,5.376Z" transform="translate(68.48 41.499)" fill="#337321" stroke="#000" strokeWidth="0.014"/>
+                                <G fill="none" stroke="#000" strokeWidth="0.014" transform="translate(59.389 44.785)">
+                                    <Path d="M23.448,6.194c-.734-.989-1.723-2.584-2.983-.861" transform="translate(-20.465 -2.413)"/>
+                                    <Path d="M22.157,6.76a7.822,7.822,0,0,1-1.2-2.217" transform="translate(-12.697 -2.82)"/>
+                                    <Path d="M22.876,6.274a5.5,5.5,0,0,1-1.532-1.691" transform="translate(-6.683 -2.19)"/>
+                                    <Path d="M21.4,4.475A3.659,3.659,0,0,1,23.713,6.2c.367.495,1.133,1.388,1.723,1.5" transform="translate(-5.814 -3.885)"/>
+                                    <Path d="M22.692,6.274A6.39,6.39,0,0,1,21.8,4.615" transform="translate(0.425 -1.695)"/>
+                                    <Path d="M21.8,4.439A7.713,7.713,0,0,1,22.725,6" transform="translate(0.455 -4.439)"/>
+                                    <Path d="M24.148,6.91A5.5,5.5,0,0,0,22.09,4.629" transform="translate(4.998 -1.47)"/>
+                                    <Path d="M22.2,4.547c.064,1.962,2.68,2.09,2.792,3.478" transform="translate(6.693 -2.76)"/>
+                                    <Path d="M22.486,4.565a3.8,3.8,0,0,1,.4,1.819" transform="translate(11.207 -2.475)"/>
+                                </G>
+                            </G>
                         </G>
-                    </G>
-                </Svg>,
-            sb: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                    </Svg>,
+                ws: <Svg width='100%' height='100%' viewBox="0 0 500 300">
+                        {this.roundCornerDef}
+                        <G clipPath="url(#clip-path)">
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M249.924.037,500,0V300H0L-.011,149.8l249.918.127Z"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="250" height="150"/>
+                            <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="2" transform="translate(72.917 17.999)">
+                                <Path d="M-66.111,0l8.584,26.418L-80,10.091h27.778L-74.695,26.418Z" transform="translate(118.194)"/>
+                                <Path d="M-66.111,0l8.584,26.418L-80,10.091h27.778L-74.695,26.418Z" transform="translate(80 31.25)"/>
+                                <Path d="M-61.979,0l8.047,24.767L-75,9.46h26.042L-70.026,24.767Z" transform="translate(153.125 26.042)"/>
+                                <Path d="M-41.319,0l5.365,16.511L-50,6.307h17.361l-14.045,10.2Z" transform="translate(112.5 58.141)"/>
+                                <Path d="M-82.639,0l10.73,33.023L-100,12.614h34.722L-93.369,33.023Z" transform="translate(134.722 81.561)"/>
+                            </G>
+                        </G>
+                    </Svg>,
+                sb: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clip-path="url(#clip-path)">
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,300V0H500Z"/>
@@ -4667,98 +4944,90 @@ class FlagComponent extends Component {
                 tk: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clip-path="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#00247d"/>
-                            <G transform="translate(84.722 37.36)">
-                                <Path d="M328.509,268.843c-4.982-.041,46.84-27.62,90.214-62.944C475.568,159.6,598,85.48,633.994,73.435c3.762-1.259-7.716,6.409-9.206,8.893-38.428,45.483-7.757,131.312,40.27,174.458,14.442,11.045,13.7,11.625,40.474,12.707v2.5l-377.022-3.15Z" transform="translate(-321.738 -73.297)" fill="#fed100"/>
-                                <Path d="M308.646,795.325s-3.656,2.612-3.646,4.557c.012,2.159,4.1,5.013,4.1,5.013L680.974,809l6.836-4.557-9.57-5.924-369.594-3.19Z" transform="translate(-305 -594.762)" fill="#fed100"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                            <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="3" transform="translate(84.722 37.36)">
+                                <Path d="M328.509,268.843c-4.982-.041,46.84-27.62,90.214-62.944C475.568,159.6,598,85.48,633.994,73.435c3.762-1.259-7.716,6.409-9.206,8.893-38.428,45.483-7.757,131.312,40.27,174.458,14.442,11.045,13.7,11.625,40.474,12.707v2.5l-377.022-3.15Z" transform="translate(-321.738 -73.297)"/>
+                                <Path d="M308.646,795.325s-3.656,2.612-3.646,4.557c.012,2.159,4.1,5.013,4.1,5.013L680.974,809l6.836-4.557-9.57-5.924-369.594-3.19Z" transform="translate(-305 -594.762)"/>
                             </G>
-                            <G transform="translate(22.028 33.567)">
+                            <G fill="#000" transform="translate(22.028 33.567)">
                                 <G transform="translate(57.766)">
-                                    <G id="arm" transform="translate(14.186 5.588)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                    <G transform="translate(14.186 5.588)">
+                                        <G id="star1">
+                                            <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
+                                            <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        </G>
                                     </G>
                                     <G transform="translate(23.746 10.665) rotate(72)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        <Use href="#star1"/>
                                     </G>
                                     <G transform="matrix(-0.809, 0.588, -0.588, -0.809, 21.872, 21.326)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        <Use href="#star1"/>
                                     </G>
                                     <G transform="matrix(-0.809, -0.588, 0.588, -0.809, 11.154, 22.839)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        <Use href="#star1"/>
                                     </G>
                                     <G transform="translate(6.403 13.112) rotate(-72)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        <Use href="#star1"/>
                                     </G>
                                 </G>
                                 <G transform="translate(109.858 45.492)">
-                                    <G id="arm-2" transform="translate(11.821 4.657)">
-                                        <Path d="M10.417,0H0V5.208Z" transform="translate(1.072 4.214)"/>
-                                        <Path d="M10.417,5.208H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 6.123)"/>
+                                    <G transform="translate(11.821 4.657)">
+                                        <G id="star2">
+                                            <Path d="M10.417,0H0V5.208Z" transform="translate(1.072 4.214)"/>
+                                            <Path d="M10.417,5.208H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 6.123)"/>
+                                        </G>
                                     </G>
                                     <G transform="translate(19.789 8.887) rotate(72)">
-                                        <Path d="M10.417,0H0V5.208Z" transform="translate(1.072 4.214)"/>
-                                        <Path d="M10.417,5.208H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 6.123)"/>
+                                        <Use href="#star2"/>
                                     </G>
                                     <G transform="matrix(-0.809, 0.588, -0.588, -0.809, 18.227, 17.772)">
-                                        <Path d="M10.417,0H0V5.208Z" transform="translate(1.072 4.214)"/>
-                                        <Path d="M10.417,5.208H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 6.123)"/>
+                                        <Use href="#star2"/>
                                     </G>
                                     <G transform="matrix(-0.809, -0.588, 0.588, -0.809, 9.295, 19.032)">
-                                        <Path d="M10.417,0H0V5.208Z" transform="translate(1.072 4.214)"/>
-                                        <Path d="M10.417,5.208H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 6.123)"/>
+                                        <Use href="#star2"/>
                                     </G>
                                     <G transform="translate(5.336 10.926) rotate(-72)">
-                                        <Path d="M10.417,0H0V5.208Z" transform="translate(1.072 4.214)"/>
-                                        <Path d="M10.417,5.208H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 6.123)"/>
+                                        <Use href="#star2"/>
                                     </G>
                                 </G>
                                 <G transform="translate(0 58.118)">
-                                    <G id="arm-3" transform="translate(14.186 5.588)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                    <G transform="translate(14.186 5.588)">
+                                        <G id="star3">
+                                            <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
+                                            <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        </G>
                                     </G>
                                     <G transform="translate(23.746 10.665) rotate(72)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        <Use href="#star3"/>
                                     </G>
                                     <G transform="matrix(-0.809, 0.588, -0.588, -0.809, 21.872, 21.326)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        <Use href="#star3"/>
                                     </G>
                                     <G transform="matrix(-0.809, -0.588, 0.588, -0.809, 11.154, 22.839)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        <Use href="#star3"/>
                                     </G>
                                     <G transform="translate(6.403 13.112) rotate(-72)">
-                                        <Path d="M12.5,0H0V6.25Z" transform="translate(1.286 5.056)"/>
-                                        <Path d="M12.5,6.25H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 7.347)"/>
+                                        <Use href="#star3"/>
                                     </G>
                                 </G>
                                 <G transform="translate(55.187 147.549)">
-                                    <G id="arm-4" transform="translate(16.55 6.519)">
-                                        <Path d="M14.583,0H0V7.292Z" transform="translate(1.501 5.899)"/>
-                                        <Path d="M14.583,7.292H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 8.572)"/>
+                                    <G transform="translate(16.55 6.519)">
+                                        <G id="star4">
+                                            <Path d="M14.583,0H0V7.292Z" transform="translate(1.501 5.899)"/>
+                                            <Path d="M14.583,7.292H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 8.572)"/>
+                                        </G>
                                     </G>
                                     <G transform="translate(27.704 12.442) rotate(72)">
-                                        <Path d="M14.583,0H0V7.292Z" transform="translate(1.501 5.899)"/>
-                                        <Path d="M14.583,7.292H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 8.572)"/>
+                                        <Use href="#star4"/>
                                     </G>
                                     <G transform="matrix(-0.809, 0.588, -0.588, -0.809, 25.518, 24.881)">
-                                        <Path d="M14.583,0H0V7.292Z" transform="translate(1.501 5.899)"/>
-                                        <Path d="M14.583,7.292H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 8.572)"/>
+                                        <Use href="#star4"/>
                                     </G>
                                     <G transform="matrix(-0.809, -0.588, 0.588, -0.809, 13.012, 26.645)">
-                                        <Path d="M14.583,0H0V7.292Z" transform="translate(1.501 5.899)"/>
-                                        <Path d="M14.583,7.292H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 8.572)"/>
+                                        <Use href="#star4"/>
                                     </G>
                                     <G transform="translate(7.47 15.297) rotate(-72)">
-                                        <Path d="M14.583,0H0V7.292Z" transform="translate(1.501 5.899)"/>
-                                        <Path d="M14.583,7.292H0V0Z" transform="matrix(0.809, -0.588, 0.588, 0.809, 0, 8.572)"/>
+                                        <Use href="#star4"/>
                                     </G>
                                 </G>
                             </G>
@@ -4767,41 +5036,41 @@ class FlagComponent extends Component {
                 to: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Rect width="500" height="300" fill="#c10000"/>
-                            <Rect width="208.333" height="150" fill="#fff"/>
-                            <Rect width="31.25" height="93.75" transform="translate(89 28.001)" fill="#c10000"/>
-                            <Rect width="93.75" height="31.25" transform="translate(57 59.001)" fill="#c10000"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M.125,149.961l208.216.033L208.113.043,500,0V300H0Z"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="208.333" height="150"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,0H31.992V-31.013l31.237-.031V0H93.75V31.25H63.272V62.724H31.992L31.938,31.06,0,31.25Z" x="57" y="59"/>
                         </G>
                     </Svg>,
                 vu: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500l-.782,123.874H237.784Z"/>
+                            <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500V123.874H237.784Z"/>
                             <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M238.344,26.055H500V150H0Z" transform="translate(0 150)"/>
-                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,0,290.954,150,0,300Z"/>
-                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,0H209V53.684H-52.611V0Z" transform="translate(291 123.158)"/>
-                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M0,40.5,249.606,169.185,0,297.868Z" transform="translate(0 -19.185)"/>
-                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M-16,0H250.395V15.789H123.262L-16,15.954-.733,7.647Z" transform="translate(249.605 142.105)"/>
-                            <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M0,74.255,215.148,185.173,0,296.092Z" transform="translate(0 -35.173)"/>
-                            <Path onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" d="M84.464,272.486v17.093c14.87,0,44.053-11.395,44.053-48.082S97.388,198,88.077,198,50,204.671,50,234.687s28.211,32.8,33.769,32.8,26.4-5,24.042-27.516c0,6.393-7.226,19.873-22.374,19.873s-24.6-11.257-24.6-22.374,9.172-25.987,25.153-25.987,27.654,14.174,27.654,28.488S102.391,272.486,84.464,272.486Z" transform="translate(-23.684 -93.789)"/>
-                            <G transform="translate(47.752 126.918)">
-                                <Path d="M90.728,273.044l.886.573s7.035-16.051,25.952-27.463C115.169,247.457,102.505,253.762,90.728,273.044Z" transform="translate(-90.728 -243.518)" fill="#fdce12" stroke="#fdce12" strokeWidth="1"/>
-                                <Path d="M93.244,267.909s-2.188-4.482-.261-6.462,1.043,5.263,1.043,5.263l.834-1.2s-1.3-5.472.156-6.618.729,5.263.729,5.263l.886-1.146s-.938-5.315.469-6.306.522,5,.522,5l1.042-1.2s-.782-5.055.938-6.253.208,4.794.208,4.794l1.146-1.251s-.521-4.638.938-5.681.208,4.377.208,4.377l1.042-1.094s-.313-4.325,1.094-5.315.1,4.117.1,4.117l1.095-1.043s-.261-4.325,1.511-5.159-.313,4.065-.313,4.065l1.2-1.042s.365-5.055,1.876-5.524-.677,4.482-.677,4.482l1.094-.886s.573-4.325,2.241-4.846-1.042,3.961-1.042,3.961l1.094-.834s1.2-4.325,2.762-4.794-1.615,4.065-1.615,4.065l1.042-.729s1.719-3.909,3.127-4.169-1.564,3.231-1.564,3.231l1.3-.782s2.241-4.065,3.023-2.814-3.127,3.075-3.127,3.075l-1.3.729s4.743-2.241,5.316-1.094-6.514,1.876-6.514,1.876l-1.146.782s4.742-1.3,4.169-.1-5.263.938-5.263.938l-1.095.782s4.742-1.146,4.117-.052-5.263.99-5.263.99l-1.146.938s4.638-1.2,3.961.208-5.941,1.355-5.941,1.355l-1.3,1.2s4.9-1.667,4.482-.365-5.993,1.981-5.993,1.981l-1.251,1.251s5.263-1.772,3.7-.156-5.367,2.033-5.367,2.033l-1.512,1.824s5.212-3.127,4.482-1.355-5.836,2.971-5.836,2.971l-1.042,1.251s4.69-2.71,4.221-1.2-5.472,3.126-5.472,3.126l-.834,1.147s5.524-3.283,5.055-1.616-5.732,2.866-5.732,2.866l-.677,1.042s5.107-2.918,5.159-1.511-5.993,2.814-5.993,2.814Z" transform="translate(-91.42 -241.145)" fill="#fdce12"/>
+                            <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,0,239.32,123.38,500,123.145l-.072,18.968H233.61V157.99l266.258.068-.039,10.351-.032,8.444-260.405-.27L0,300V278.225L233.61,157.99V142.113L.023,21.371Z"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M0,74.255,215.148,185.173,0,296.092Z" transform="translate(0 -35.173)"/>
+                            <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M84.464,272.486v17.093c14.87,0,44.053-11.395,44.053-48.082S97.388,198,88.077,198,50,204.671,50,234.687s28.211,32.8,33.769,32.8,26.4-5,24.042-27.516c0,6.393-7.226,19.873-22.374,19.873s-24.6-11.257-24.6-22.374,9.172-25.987,25.153-25.987,27.654,14.174,27.654,28.488S102.391,272.486,84.464,272.486Z" transform="translate(-23.684 -93.789)"/>
+                            <G onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="0.5">
+                                <G transform="translate(47.752 126.918)">
+                                    <Path d="M90.728,273.044l.886.573s7.035-16.051,25.952-27.463C115.169,247.457,102.505,253.762,90.728,273.044Z" transform="translate(-90.728 -243.518)" fill={this.state.appliedColors[4]}/>
+                                    <Path d="M93.244,267.909s-2.188-4.482-.261-6.462,1.043,5.263,1.043,5.263l.834-1.2s-1.3-5.472.156-6.618.729,5.263.729,5.263l.886-1.146s-.938-5.315.469-6.306.522,5,.522,5l1.042-1.2s-.782-5.055.938-6.253.208,4.794.208,4.794l1.146-1.251s-.521-4.638.938-5.681.208,4.377.208,4.377l1.042-1.094s-.313-4.325,1.094-5.315.1,4.117.1,4.117l1.095-1.043s-.261-4.325,1.511-5.159-.313,4.065-.313,4.065l1.2-1.042s.365-5.055,1.876-5.524-.677,4.482-.677,4.482l1.094-.886s.573-4.325,2.241-4.846-1.042,3.961-1.042,3.961l1.094-.834s1.2-4.325,2.762-4.794-1.615,4.065-1.615,4.065l1.042-.729s1.719-3.909,3.127-4.169-1.564,3.231-1.564,3.231l1.3-.782s2.241-4.065,3.023-2.814-3.127,3.075-3.127,3.075l-1.3.729s4.743-2.241,5.316-1.094-6.514,1.876-6.514,1.876l-1.146.782s4.742-1.3,4.169-.1-5.263.938-5.263.938l-1.095.782s4.742-1.146,4.117-.052-5.263.99-5.263.99l-1.146.938s4.638-1.2,3.961.208-5.941,1.355-5.941,1.355l-1.3,1.2s4.9-1.667,4.482-.365-5.993,1.981-5.993,1.981l-1.251,1.251s5.263-1.772,3.7-.156-5.367,2.033-5.367,2.033l-1.512,1.824s5.212-3.127,4.482-1.355-5.836,2.971-5.836,2.971l-1.042,1.251s4.69-2.71,4.221-1.2-5.472,3.126-5.472,3.126l-.834,1.147s5.524-3.283,5.055-1.616-5.732,2.866-5.732,2.866l-.677,1.042s5.107-2.918,5.159-1.511-5.993,2.814-5.993,2.814Z" transform="translate(-91.42 -241.145)"/>
+                                </G>
+                                <G transform="translate(77.775 157.018) rotate(180)">
+                                    <Path d="M0,.573.886,0S7.921,16.051,26.838,27.463C24.441,26.161,11.777,19.855,0,.573Z" fill={this.state.appliedColors[4]}/>
+                                    <Path d="M1.055,1.2S-1.134,5.681.794,7.661,1.837,2.4,1.837,2.4L2.67,3.6s-1.3,5.472.156,6.618.729-5.263.729-5.263L4.442,6.1S3.5,11.413,4.911,12.4s.522-5,.522-5L6.475,8.6s-.782,5.055.938,6.253.208-4.794.208-4.794l1.146,1.251s-.521,4.638.938,5.681.208-4.377.208-4.377l1.042,1.094s-.313,4.325,1.094,5.315.1-4.117.1-4.117l1.095,1.043s-.261,4.325,1.511,5.159-.313-4.065-.313-4.065l1.2,1.042s.365,5.055,1.876,5.524-.677-4.482-.677-4.482l1.094.886s.573,4.325,2.241,4.846S19.138,20.9,19.138,20.9l1.094.834s1.2,4.325,2.762,4.794-1.615-4.065-1.615-4.065l1.042.729s1.719,3.909,3.127,4.169-1.564-3.231-1.564-3.231l1.3.782s2.241,4.065,3.023,2.814-3.127-3.075-3.127-3.075l-1.3-.729s4.743,2.241,5.316,1.094-6.514-1.876-6.514-1.876l-1.146-.782s4.742,1.3,4.169.1-5.263-.938-5.263-.938l-1.095-.782s4.742,1.146,4.117.052S18.2,19.8,18.2,19.8l-1.146-.938s4.638,1.2,3.961-.208S15.073,17.3,15.073,17.3l-1.3-1.2s4.9,1.667,4.482.365-5.993-1.981-5.993-1.981l-1.251-1.251s5.263,1.772,3.7.156-5.367-2.033-5.367-2.033L7.829,9.537s5.212,3.127,4.482,1.355S6.475,7.921,6.475,7.921L5.433,6.671s4.69,2.71,4.221,1.2S4.182,4.743,4.182,4.743L3.348,3.6S8.872,6.879,8.4,5.212,2.67,2.345,2.67,2.345L1.993,1.3S7.1,4.221,7.152,2.814,1.159,0,1.159,0Z" transform="translate(0.769 2.136)"/>
+                                </G>
                             </G>
-                            <G transform="translate(77.775 157.018) rotate(180)">
-                                <Path d="M0,.573.886,0S7.921,16.051,26.838,27.463C24.441,26.161,11.777,19.855,0,.573Z" transform="translate(0)" fill="#fdce12" stroke="#fdce12" strokeWidth="1"/>
-                                <Path d="M1.055,1.2S-1.134,5.681.794,7.661,1.837,2.4,1.837,2.4L2.67,3.6s-1.3,5.472.156,6.618.729-5.263.729-5.263L4.442,6.1S3.5,11.413,4.911,12.4s.522-5,.522-5L6.475,8.6s-.782,5.055.938,6.253.208-4.794.208-4.794l1.146,1.251s-.521,4.638.938,5.681.208-4.377.208-4.377l1.042,1.094s-.313,4.325,1.094,5.315.1-4.117.1-4.117l1.095,1.043s-.261,4.325,1.511,5.159-.313-4.065-.313-4.065l1.2,1.042s.365,5.055,1.876,5.524-.677-4.482-.677-4.482l1.094.886s.573,4.325,2.241,4.846S19.138,20.9,19.138,20.9l1.094.834s1.2,4.325,2.762,4.794-1.615-4.065-1.615-4.065l1.042.729s1.719,3.909,3.127,4.169-1.564-3.231-1.564-3.231l1.3.782s2.241,4.065,3.023,2.814-3.127-3.075-3.127-3.075l-1.3-.729s4.743,2.241,5.316,1.094-6.514-1.876-6.514-1.876l-1.146-.782s4.742,1.3,4.169.1-5.263-.938-5.263-.938l-1.095-.782s4.742,1.146,4.117.052S18.2,19.8,18.2,19.8l-1.146-.938s4.638,1.2,3.961-.208S15.073,17.3,15.073,17.3l-1.3-1.2s4.9,1.667,4.482.365-5.993-1.981-5.993-1.981l-1.251-1.251s5.263,1.772,3.7.156-5.367-2.033-5.367-2.033L7.829,9.537s5.212,3.127,4.482,1.355S6.475,7.921,6.475,7.921L5.433,6.671s4.69,2.71,4.221,1.2S4.182,4.743,4.182,4.743L3.348,3.6S8.872,6.879,8.4,5.212,2.67,2.345,2.67,2.345L1.993,1.3S7.1,4.221,7.152,2.814,1.159,0,1.159,0Z" transform="translate(0.769 2.136)" fill="#fdce12"/>
-                            </G>
+                            <Path onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" d="M0,40.5,233.791,161.008,500,161.247v15.838H234.328L0,297.868V278.641L215.058,169.185,0,58.709Z" transform="translate(0 -19.185)"/>
                         </G>
                     </Svg>,
                 wf: <Svg width='100%' height='100%' viewBox="0 0 500 300">
                         {this.roundCornerDef}
                         <G clipPath="url(#clip-path)">
-                            <Path d="M0,0H500V300H0Z" fill="#ed2939"/>
-                            <Path d="M0,0H133.333V120H0Z" fill="#fff"/>
-                            <Path d="M0,0H66.667V120H0Z" fill="#002395"/>
+                            <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                             <Path d="M0,120H200V0" fill="none" stroke="#fff" strokeWidth="1"/>
-                            <Path d="M142.333,74l-40-40h80ZM129,87.333l-40-40v80Zm13.333,13.333-40,40h80Zm13.333-13.333,40-40v80Z" transform="translate(207.667 79.333)" fill="#fff"/>
+                            <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="66.666" height="120"/>
+                            <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="66.666" height="120" x="66.667"/>
+                            <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="66.666" height="120" x="132.667"/>
+                            <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M142.333,74l-40-40h80ZM129,87.333l-40-40v80Zm13.333,13.333-40,40h80Zm13.333-13.333,40-40v80Z" x="207.667" y="79.333"/>
                         </G>
                     </Svg>
             }
