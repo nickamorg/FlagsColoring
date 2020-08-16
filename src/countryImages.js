@@ -59,6 +59,7 @@ const countryImages = {
         dm: [require('..//assets/flags/na/dm.png'), require('..//assets/countries_background/na/dm.png')],
         do: [require('..//assets/flags/na/do.png'), require('..//assets/countries_background/na/do.png')],
         sv: [require('..//assets/flags/na/sv.png'), require('..//assets/countries_background/na/sv.png')],
+        gl: [require('..//assets/flags/na/gl.png'), require('..//assets/countries_background/na/gl.png')],
         gd: [require('..//assets/flags/na/gd.png'), require('..//assets/countries_background/na/gd.png')],
         gp: [require('..//assets/flags/na/gp.png'), require('..//assets/countries_background/na/gp.png')],
         gt: [require('..//assets/flags/na/gt.png'), require('..//assets/countries_background/na/gt.png')],
