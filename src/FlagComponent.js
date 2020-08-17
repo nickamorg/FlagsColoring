@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Svg, {G, Path, Rect, Circle, Image, Use, Polygon, Defs, ClipPath, Ellipse, Stop, RadialGradient, Line} from 'react-native-svg';
 import localStorage from 'react-native-sync-localstorage'
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 import { flagColors } from '../src/flagColors';
 
 class FlagComponent extends Component {
@@ -20,10 +20,19 @@ class FlagComponent extends Component {
             continentID: props.route.params.continentID,
             isCompleted: props.route.params.isCompleted,
             isSolved: false,
+            hints: 0
         }
         
+        this.retrieveHints();
         this.initflagColors(this.state.continentID, this.state.countryID);
     }
+
+    retrieveHints = async () => {
+        try {
+            const value = await AsyncStorage.getItem('hints');
+            if (value !== null) this.state.hints = parseInt(value);
+        } catch (error) {}
+    };
 
     initflagColors(continentID, countryID) {
         if (flagColors[continentID][countryID] === undefined) {
@@ -113,13 +122,54 @@ class FlagComponent extends Component {
     }
 
     help() {
+        Alert.alert(
+            "Hint",
+            this.state.hints > 0 ? "Use a hint ("  + this.state.hints + ") or watch an advertisement to see the wrong colored parts of the flag." :
+            "No hints available. Watch an advertisement to see the wrong colored parts of the flag.",
+            [
+                {
+                    text: "Watch",
+                    onPress: () => { this.hint(); }
+                },
+                this.state.hints > 0 && {
+                    text: "Hint",
+                    onPress: () => {
+                        this.hint();
+                        this.state.hints--;
+
+                        AsyncStorage.setItem('hints', this.state.hints.toString());
+                        this.setState(this.state.appliedColors);
+
+                    }
+                },
+                {
+                    text: "Cancel",
+                    onPress: () => {}
+                }
+            ],
+            {cancelable: true}
+        );
+    }
+
+    hint() {
         var strokeColors = [];
         for (var i = 0; i < this.state.correctColors.length; i++) {
-            strokeColors[i] = this.state.appliedColors[i] === this.state.correctColors[i] ? "none": "red";
+            strokeColors[i] = this.state.appliedColors[i] === this.state.correctColors[i] ? 'none': 'red';
         }
 
         this.state.applyStroke = strokeColors;
         this.setState(this.state.applyStroke);
+
+        setTimeout(function(self) {
+
+            var strokeColors = [];
+            for (var i = 0; i < self.state.correctColors.length; i++) {
+                strokeColors[i] = 'none';
+            }
+
+            self.state.applyStroke = strokeColors;
+            self.setState(self.state.applyStroke);
+        }, 10000, this);
 
     }
 
@@ -145,6 +195,9 @@ class FlagComponent extends Component {
                 };
 
                 _storeData(JSON.stringify(savedStatus));
+                
+                this.state.hints++;
+                AsyncStorage.setItem('hints', this.state.hints.toString());
             }
 
             setTimeout( function(self) {

@@ -1,23 +1,31 @@
 import React from 'react';
-import { Text, View, ScrollView, TouchableOpacity, ImageBackground, Image as RNImage } from 'react-native';
+import { Text, View, ScrollView, TouchableOpacity, ImageBackground, Image as RNImage, StatusBar } from 'react-native';
 import Svg, {G, Path, Pattern, Defs, Image} from 'react-native-svg';
 import localStorage from 'react-native-sync-localstorage'
 import { AsyncStorage } from 'react-native';
 import { countryImages } from '../src/countryImages';
 import { status } from '../src/status';
 import { continentDefs } from '../src/continentDefs';
+import { ResizeMode } from 'expo-av';
 
 class HomeScreen extends React.Component {
+
+    componentDidMount() {
+        StatusBar.setHidden(true);
+     }
 
     constructor(props) {
         super(props);
         this.savedStatus = null;
         this.areDataFetched = false;
+        this.hints = 0;
 
         this._retrieveData().then(() => {
             this.areDataFetched = true;
             this.setState({areDataFetched: true});
         });
+
+        this.setupHints();
     
         this.countryPngPatterns = {};
     
@@ -33,6 +41,19 @@ class HomeScreen extends React.Component {
                 );
             }
         }
+    }
+
+    setupHints = async() => {
+        try {
+            const value = await AsyncStorage.getItem('hints');
+            if (value === null) {
+                localStorage.setItem('hints', '10');
+                this.hints = 10;
+            } else {
+                this.hints = parseInt(value);
+                this.setState({hints: this.hints});
+            }
+        } catch (error) {}
     }
 
     _retrieveData = async () => {
@@ -51,6 +72,7 @@ class HomeScreen extends React.Component {
 
     refresh() {
         savedStatus = JSON.parse(localStorage.getItem('savedStatus'));
+        this.setupHints();
         this.setState({savedStatus: JSON.parse(localStorage.getItem('savedStatus'))});
         this.setState({areDataFetched: true});
     }
@@ -76,6 +98,9 @@ class HomeScreen extends React.Component {
             <View style={{height: '100%', backgroundColor: '#0FBEBE'}}>
                 <ImageBackground source={require('..//assets/world.png')} style={{height: '100%', width:'100%', backgroundColor:"#0FBEBE"}} imageStyle={{ width:'100%', height:'100%', opacity:0.3, resizeMode: "cover", alignSelf: "flex-end", overflow : 'visible', backfaceVisibility: 'visible', flex : 2}}>
                     <View style={{height: '10%'}}>
+                        <Text style={{position: 'absolute', left: 0, textAlign: 'left', fontWeight: 'bold', color: '#E3E340', paddingLeft: 50, paddingTop: 30}}>{this.hints}</Text>
+                        <RNImage style={{position: 'absolute', left: 0, height: 30, width: 25, marginLeft: 20, marginTop: 25}} source={require('../assets/hint.png')}></RNImage>
+
                         <Text style={{position: 'absolute', right: 0, textAlign: 'right', fontWeight: 'bold', color: '#E3E340', paddingRight: 50, paddingTop: 30}}>{savedStatus.completedCountries} / {continentDefs.total}</Text>
                         <RNImage style={{ position: 'absolute', right: 0, height: 30, width: 30, marginRight: 20, marginTop: 25}} source={require('../assets/earth.png')}></RNImage>
                     </View>
