@@ -220,6 +220,13 @@ class FlagComponent extends Component {
         console.log(continentID + " " + countryID);
         var flagSvgs = {
             EU: {
+                ax: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="96.154" height="300" x="153.846"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="96.154" y="101.922"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="38.462" height="300" x="182.691"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="38.462" y="130.77"/>
+                    </G>,
                 al: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                         <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="2">
@@ -518,6 +525,13 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" y="74"/>
                         <Image width="114" height="114" transform="translate(103 93)" href={require('../assets/flag_badges/eu/es.png')}/>
                     </G>,
+                sj: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="90.909" height="300" transform="translate(136.364)"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="75" transform="translate(0 112.5)"/>
+                        <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="45.455" height="300" transform="translate(159.091)"/>
+                        <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" width="500" height="37.5" transform="translate(0 131.25)"/>
+                    </G>,
                 fi: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                         <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="3" width="500" height="81.818" transform="translate(0 109.091)"/>
@@ -534,6 +548,64 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" x="333.333" width="166.667" height="300"/>
                         <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" x="166.667" width="166.667" height="300"/>
+                    </G>,
+                gi: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="200"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="101" y="199"/>
+                        <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke="#000" strokeLinecap="square" strokeWidth="1">
+                            <Rect width="62.5" height="42.962" transform="translate(191.965 143.578)" fill="#000"/>
+                            <Path d="M228.7,153.865H190.547l-8.457,5.565v5.9H228.7" transform="translate(-4.268 26.395)"/>
+                            <Path d="M212.937,127.873a10.117,10.117,0,0,1,9.979,10.224v14.435h7.171V97.844H190.75v54.688h12.207V138.1A10.209,10.209,0,0,1,212.937,127.873Z" transform="translate(-4.469 27.707)"/>
+                            <Rect width="18.089" height="33.163" transform="translate(199.734 88.557)" fill="#000"/>
+                            <Path d="M222.04,88.522H206.211V82.906H194.6v5.615h-7.873V82.906h-4.7V93.1H222.04m-35.309-.037h34.15v4.431h-34.15Z" transform="translate(-4.266 28.058)"/>
+                            <Path d="M200.719,47.625V82.079h5.93v-9.46a6.4,6.4,0,0,1,6-6.622c.112-.006.221,0,.335,0a6.621,6.621,0,0,1,6.623,6.622v9.46h5.646V47.625Z" transform="translate(-4.703 28.885)"/>
+                            <Path d="M198.531,42.844v4.669H227.1V42.844Z" transform="translate(-4.652 28.996)"/>
+                            <Path d="M194.781,33.688v8.942h34.271V33.688h-5.279v4.547H217.4V33.688H207.66v4.547h-6.378V33.688Z" transform="translate(-4.564 29.211)"/>
+                            <Path d="M182.09,159.564h46.787" transform="translate(-4.268 26.261)"/>
+                            <Path d="M260.01,156.813H228.334l-9.553,4.607v6.867H260.01" transform="translate(-5.127 26.325)"/>
+                            <Path d="M218.771,161.519h42.216" transform="translate(-5.127 26.215)"/>
+                            <Rect width="62.5" height="42.962" transform="translate(308.037 186.539) rotate(180)" fill="#000"/>
+                            <Path d="M46.61,11.464H8.457L0,5.9V0H46.61" transform="translate(322.18 191.723) rotate(180)"/>
+                            <Path d="M22.187,24.658a10.117,10.117,0,0,0,9.979-10.224V0h7.171V54.688H0V0H12.207V14.435A10.209,10.209,0,0,0,22.187,24.658Z" transform="translate(313.723 180.238) rotate(180)"/>
+                            <Rect width="18.089" height="33.163" transform="translate(300.268 121.72) rotate(180)" fill="#000"/>
+                            <Path d="M40.009,8.972H24.18v5.615H12.573V8.972H4.7v5.615H0V4.395H40.009M4.7,4.431h34.15V0H4.7Z" transform="translate(322.236 125.551) rotate(180)"/>
+                            <Path d="M0,34.454V0H5.93V9.46a6.4,6.4,0,0,0,6,6.622c.112.006.221,0,.335,0A6.621,6.621,0,0,0,18.891,9.46V0h5.646V34.454Z" transform="translate(303.986 110.963) rotate(180)"/>
+                            <Path d="M0,4.669V0H28.564V4.669Z" transform="translate(306.123 76.509) rotate(180)"/>
+                            <Path d="M0,8.942V0H34.271V8.942H28.992V4.395H22.614V8.942H12.879V4.395H6.5V8.942Z" transform="translate(309.785 71.84) rotate(180)"/>
+                            <Path d="M0,0H46.787" transform="translate(322.18 185.824) rotate(180)"/>
+                            <Path d="M41.229,11.475H9.553L0,6.867V0H41.229" transform="translate(286.348 194.612) rotate(180)"/>
+                            <Path d="M0,0H42.216" transform="translate(286.357 187.733) rotate(180)"/>
+                            <Rect width="28.641" height="52.006" transform="translate(235.16 67.452)" fill="#000"/>
+                            <Path d="M238.75,38.375V81.893h9.095V68.984c0-2.978,1.906-7.111,7.751-7.111s7.752,4.133,7.752,7.111V81.893h9.094V38.375Zm15.442,4.883H257V58.15h-2.808Zm-8.057,2.93h2.838V57.082h-2.838Zm16.082,0h2.839V57.082h-2.839Z" transform="translate(-5.594 29.101)"/>
+                            <Path d="M235.594,31.969v6.2h39.855v-6.2Z" transform="translate(-5.521 29.251)"/>
+                            <Path d="M231.75,24.594v7.2h47.363v-7.2h-5.951v3.967h-6.714V24.594h-7.659v3.967h-6.714V24.594h-7.66v3.967H237.7V24.594Z" transform="translate(-5.43 29.424)"/>
+                            <Path d="M222.75,97.844v4.487h64.941V97.844Z" transform="translate(-5.219 27.707)"/>
+                            <Path d="M220.031,82.906V97.494h70.252V82.906H283.63v5.615h-8.85V82.906H262.909v5.615h-15.5V82.906H235.534v5.615h-8.85V82.906Z" transform="translate(-5.156 28.057)"/>
+                            <Path d="M228.688,102.438v53.069H241.23V135.641c0-9.358,6.247-13.764,14.13-13.764,7.577,0,14.13,4.405,14.13,13.764v19.866h12.543V102.438Z" transform="translate(-5.359 27.6)"/>
+                        </G>
+                        <G>
+                            <Path d="M272.806,150.031a41.131,41.131,0,0,0-7.294,3.665,71.106,71.106,0,0,0-8.7,5.956,11.716,11.716,0,0,0-2.626,2.22c-1,.857-2.016,2.007-1.825,3.431.051.628.853-.738,1.381-.8a4.286,4.286,0,0,1,3.069-.46,44.677,44.677,0,0,1,4.224-3.326,77.467,77.467,0,0,1,9.3-5.821,25.965,25.965,0,0,1,3.442-1.564l-.976-3.3Z" transform="translate(-5.914 26.483)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="0.768"/>
+                            <Path d="M260.4,157.391v3.82" transform="translate(-6.104 26.312)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M262.817,155.685v3.792" transform="translate(-6.16 26.352)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M265.233,154.18v3.768" transform="translate(-6.217 26.387)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M267.65,152.694v3.888" transform="translate(-6.273 26.421)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M238.863,150.156l-1.16,3.235a84.685,84.685,0,0,1,15.428,7.871,22.034,22.034,0,0,1,4.684,3.756.98.98,0,0,1-1.283,1.215,2.22,2.22,0,0,0-2.174,0c-1.08.491-2.057,2.091-.416,2.628,2.261,1.518,5.939.859,7.026-1.8a3.925,3.925,0,0,0-.5-4.243c-2.014-2.309-4.685-3.914-7.248-5.539a87.1,87.1,0,0,0-14.361-7.117Z" transform="translate(-5.57 26.48)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="0.768"/>
+                            <Path d="M254.043,158.035l-.306,3.262" transform="translate(-5.947 26.296)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M256.812,159.739l-.842,3.193" transform="translate(-5.998 26.256)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M259.762,162.012,258,164.49" transform="translate(-6.047 26.203)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M260.654,168.148l-2.549-1.368" transform="translate(-6.049 26.091)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M261.458,165.429l-2.925.273" transform="translate(-6.059 26.123)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M257.66,169.7l-.2-2.571" transform="translate(-6.033 26.083)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M256.51,166.756l-2.415,1.779" transform="translate(-5.955 26.092)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M244.677,152.937v3.042" transform="translate(-5.734 26.416)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M250.963,156.244V159.7" transform="translate(-5.881 26.338)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M247.82,154.593v3.241" transform="translate(-5.809 26.377)" fill="#f8d80e" stroke="#000" strokeLinecap="round" strokeWidth="1"/>
+                            <Path d="M235.781,227.563v7.843H240.7v-3.937h6.683v3.937h5.28v-7.843Zm0,10.8v7.874h16.877v-7.874h-5.28V242.3H240.7v-3.937Z" transform="translate(-5.525 24.666)" fill="#f8d80e" stroke="#000" strokeWidth="1"/>
+                            <Rect width="4.873" height="56.753" transform="translate(247.121 219.112)" fill="#f8d80e" stroke="#000" strokeWidth="1"/>
+                            <Rect width="4.873" height="48.887" transform="translate(247.121 224.022)" fill="#f8d80e" stroke="#000" strokeWidth="1"/>
+                            <Path d="M255.149,179.306l10.376,6.043-10.376,6.012-10.376-6.012Zm-13.886,3.876h-2.716v4.334h2.716l13.886,8.057,13.886-8.057h2.716v-4.334h-2.716l-13.886-8.057Z" transform="translate(-5.59 25.896)" fill="#f8d80e" stroke="#000" strokeWidth="1.024"/>
+                            <Path d="M255.248,164.281a4.878,4.878,0,0,0-4,5.014c.009,3.65-.018,7.3.014,10.951a4.894,4.894,0,0,0,9.264,1.766L258.849,181a2.953,2.953,0,0,1-5.646-1.321c.01-3.626-.019-7.254.014-10.88a2.783,2.783,0,0,1,2.977-2.539c.612-.176,1.453.661,1.831-.061.57-.81-.4-1.443-.946-1.892-.6-.082-1.225-.008-1.831-.031Zm5.646,3.815a4.526,4.526,0,0,1-1.831,1.543v7.337l1.953,1.129c-.008-3.129.015-6.258-.011-9.386-.031-.193-.008-.487-.111-.624Z" transform="translate(-5.887 26.149)" fill="#f8d80e" stroke="#000" strokeWidth="1.024"/>
+                        </G>
                     </G>,
                 gb: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
@@ -562,6 +634,16 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" width="76" height="67.66" x="107"/>
                         <Path onPress={() => this.applySelectedColor(6)} fill={this.state.appliedColors[6]} stroke={this.state.applyStroke[6]} strokeWidth="5" d="M0,.146H74.707V-66.57h32.826V.146H183V34.551H107.538l-.005,65.933H74.707l-.372-65.933H0Z" y="66.668"/>
                     </G>,
+                gg: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,0,204.969.011,204.957-105h90.1L295,0H500V90l-204.781.262-.1,104.716-90.219.1L204.75,90.23,0,90Z" y="105"/>
+                        <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" >
+                            <Path d="M-9,53.556,4.889,39.667h125V11.889h-125L-9-2Z" transform="translate(134 124.223)"/>
+                            <Path d="M0,55.556,13.889,41.667h125V13.889h-125L0,0Z" transform="translate(277.777 41.667) rotate(90)"/>
+                            <Path d="M0,55.556,13.889,41.667h125V13.889h-125L0,0Z" transform="translate(222.223 258.333) rotate(-90)"/>
+                            <Path d="M0,55.556,13.889,41.667h125V13.889h-125L0,0Z" transform="translate(375 177.777) rotate(180)"/>
+                        </G>
+                    </G>,
                 hu: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="101" y="199"/>
@@ -578,6 +660,60 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3" width="500" height="75" transform="translate(0 112.5)"/>
                         <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" width="45.455" height="300" transform="translate(159.091)"/>
                         <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" width="500" height="37.5" transform="translate(0 131.25)"/>
+                    </G>,
+                im: <G clipPath="url(#clip-path)">
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500V300H0Z"/>
+                        <G fill="none" stroke="#000" strokeWidth="1.121">
+                            <Path d="M146.6,191.153a21.717,21.717,0,0,0,.2-3.479c-.1,0-4.809-5.525-4.706-5.525s6.036,1.33,6.036,1.125,2.353-5.831,2.353-5.934,2.865,6.855,2.865,6.855l5.831,2.558-4.093,3.376s.921,6.548.921,6.651-4.093-3.888-4.093-3.888l-4.5.512a15.559,15.559,0,0,0-.818-2.251Z" transform="translate(115.176 23.834)" fill="rgba(249,221,22,0.99)" stroke="#000" strokeWidth="1.121" fillRule="evenodd"/>
+                            <Path d="M114.9,105.176c-3.888,2-18.808,19.056-20.854,21.716a39.275,39.275,0,0,1-8.521,11.891c-3.687,2.789-5.736,6.6-5.228,10.207-.041,4.489,2.476,7.546,4.481,10.7a6.47,6.47,0,0,0,4.481,2.489c3.483.46,3.792,1.532,5.535,2.2,6.866,9.348,17.108,16.242,24.485,21.7,4.7,2.478,7.972,4.957,9.092,6.31a16.308,16.308,0,0,1,1.466,10.121q-2.738,10.332-5.477,20.663c-.921,5.627,3.969,4.362,4.232,3.236,2.207-2.865,5.5-.853,10.206-17.427l6.473-8.713s2.49-1,2.49-1.245c3.786-4.546.9-7.147-1.245-7.966l-4.73-1.743s-5.477-5.477-5.725-5.477c-2.6-7.571-15.377-23.734-18.345-25.984a21.764,21.764,0,0,0-4.981-4.243c-3-1.434-3.965-1.9-5.8-2.633-1.529-.613-.44-2.292.532-3.059,10.118-5.508,18.139-11.629,27.848-17.853l1.493-1q-1.742-9.957-3.485-19.915l-16.181-5.726C116.294,104.014,115.649,104.6,114.9,105.176Z" transform="translate(115.176 23.834)" fill="#fff" stroke="#000" strokeWidth="1.3" fillRule="evenodd"/>
+                            <Path d="M128.441,210.03c.051-.2,10.128-2.046,10.128-2.046s-1.177,3.735-1.228,3.735l-10.026,3.018,1.125-4.706Z" transform="translate(115.176 23.834)" fill="#f9dd16" fillRule="evenodd"/>
+                            <Path d="M102.181,172.087c1.944-5.167,7.34-9.258,10.964-10.386" transform="translate(115.176 23.834)"/>
+                            <Path d="M128.079,210.121c.65-.183,3.539-1.026,4.38-1.157.9-.21,1.791-.445,2.654-.724,1-.2,1.619-.391,2.654-.579a18.8,18.8,0,0,1,2.477-.724m-13.99,9.414a7.328,7.328,0,0,1,1.264-1.013c.581-.183,2.567-1.026,3.318-1.157.8-.21,1.6-.445,2.37-.724.89-.2,1.446-.391,2.371-.579a15.468,15.468,0,0,1,2.212-.724" transform="translate(115.176 23.834)" fill="none" stroke="#000" strokeWidth="1.239"/>
+                            <Path d="M130.347,173.549H130.2c.453,0,.175-.038-.434.724a4.936,4.936,0,0,1-3.472,1.881c-.675.072-1.712.145-2.388.145-.192,0-.458-.145-.651-.145" transform="translate(115.176 23.834)"/>
+                            <Path d="M130.2,203.356h.723c.75,0,1.5.134,2.171.145.724,0,1.447.205,2.171.205.73.1,1.61.07,2.366.177.847.029,1.527.2,2.409.2.711.027,1.094.145,1.882.145l-1.882-.145c.711.027,1.094.145,1.882.145" transform="translate(115.176 23.834)"/>
+                            <Path d="M125.283,221.007a6.894,6.894,0,0,1,1.157-1.013c.532-.183,2.351-1.026,3.039-1.157.734-.21,1.464-.445,2.17-.724.815-.2,1.324-.391,2.171-.579a13.375,13.375,0,0,1,2.025-.724" transform="translate(115.176 23.834)"/>
+                            <Path d="M138.832,195.858c-.409,1.188.121,1.487.34,2a6.076,6.076,0,0,0,2.894,1.736,16.266,16.266,0,0,1,1.736.579,3.064,3.064,0,0,1,1.013.289" transform="translate(115.176 23.834)"/>
+                            <Path d="M81.586,152.28h.145c-.454,0-.182.029.579-.579.47-.525.862-.763,1.3-1.3" transform="translate(115.176 23.834)"/>
+                            <Path d="M90.955,162.587c.1,0,8.417-4.193,9.306-5.089.629-.456,1.106-.938,1.872-1.456.491-.256.843-.585,1.3-.868.382-.554.882-.888,1.157-1.4.511-.443.292-.923.706-1.456.2-.546.562-1.466.682-1.966" transform="translate(115.176 23.834)"/>
+                            <Path d="M116.576,156.579c.045.3-.133,1.221-.12,1.923a6.83,6.83,0,0,1-2.34,4.077" transform="translate(115.176 23.834)"/>
+                            <Path d="M101.627,156.485c.049,0,1.315.412,3.432,1.063a50.65,50.65,0,0,1,8.374,4.715c.537.423,1.5.8,1.866,1.3a14.223,14.223,0,0,1,1.447,1.592,14.788,14.788,0,0,1,1.3,1.736c1.609,1.305,5.938,10.342,6.077,10.852.243.477.544,1.142.724,1.592a10.758,10.758,0,0,1,.868,1.447,7.784,7.784,0,0,0,1.014,1.592,20.56,20.56,0,0,0,1.736,1.3c.652.558,1.264.785,1.736,1.158.682.29,8.308,5.11,8.662,5.352.7.56,2.824,2.764,1.33,4.367a16.109,16.109,0,0,1-1.745,1.566,6.142,6.142,0,0,1-1.952,1.085,14.462,14.462,0,0,1-5.861.651h-.724" transform="translate(115.176 23.834)"/>
+                            <Path d="M84.786,139.438c.977.382.582.1,1.461.5.591.259.98.266,1.561.477.616.2,2.337.508,3.164,1.338a11.6,11.6,0,0,0,4.071,2.6,8.768,8.768,0,0,0,2.58.68c.866.05,1.074.008,1.905.008h2.026" transform="translate(115.176 23.834)"/>
+                            <Path d="M84.553,149.1a33.08,33.08,0,0,1,5.859.507l4.775-.072c2.509-.242,3.062-1.206,3.472-1.882.94-1.446,1.592-1.953,2.315-3.038,1.157-.868,2.75,1.157,2.822,1.157,4.051,3.835.795,8.537.578,8.681-2.025,1.857-2.46,1.977-3.689.8-1.23-1.447-1.592-2.1-2.6-2.6-1.953-.94-6-.217-6.078-.217s-2.1.8-2.1.8c-.989.361-1.616,1.23-3.328,1.519-1.736.121-2.315-.048-3.183-1.446-1.157-1.808-.579-3.979,1.158-4.2Z" transform="translate(115.176 23.834)" fill="#ffe606" stroke="#000" strokeWidth="1.121" fillRule="evenodd"/>
+                            <Path d="M197.835,61.341a21.719,21.719,0,0,0-3.133,1.527c.05.089-2.459,6.9-2.509,6.81s-1.8-5.914-1.978-5.813-6.236.807-6.326.857,4.571-5.857,4.571-5.857l-.628-6.337,4.948,1.913s5.257-4.012,5.346-4.062-1.384,5.473-1.384,5.473l2.652,3.673a15.558,15.558,0,0,0-1.561,1.816Z" transform="translate(115.176 23.834)" fill="rgba(249,221,22,0.99)" stroke="#000" strokeWidth="1.121" fillRule="evenodd"/>
+                            <Path d="M138.426,131.109c3.65,2.408,25.828,7.055,29.15,7.535a39.275,39.275,0,0,1,14.542,1.6c4.238,1.847,8.564,1.765,11.46-.445,3.933-2.164,5.364-5.856,7.135-9.152a6.47,6.47,0,0,0-.026-5.126c-1.306-3.261-.523-4.056-.8-5.9,4.784-10.566,5.773-22.873,6.918-31.979-.144-5.313.414-9.378,1.044-11.018a16.308,16.308,0,0,1,8.1-6.238l20.7-5.353c5.356-1.955,1.857-5.6.747-5.275-3.579-.52-3.439-4.376-20.193-.356l-10.767-1.372s-2.088-1.682-2.305-1.561c-5.818-1.072-6.673,2.715-6.333,4.99q.4,2.488.8,4.977s-2.09,7.458-1.968,7.675c-5.324,5.979-13.249,25.179-13.756,28.868-.24,3.467-1.55,2.841-1.2,6.211.013,2.633-.293.989.586,6.414.214,1.633-1.782,1.507-2.927,1.035-9.76-6.12-19.026-10.112-29.21-15.525l-1.6-.814L132.87,113.1l2.939,16.911c.922.455,1.745.732,2.617,1.1Z" transform="translate(115.176 23.834)" fill="#fff" stroke="#000" strokeWidth="1.3" fillRule="evenodd"/>
+                            <Path d="M223.19,67.92c-.2.055-6.747-7.826-6.747-7.826s3.832-.8,3.857-.76l7.544,7.26L223.19,67.92Z" transform="translate(115.176 23.834)" fill="#f9dd16" fillRule="evenodd"/>
+                            <Path d="M202.985,109.405c-5.456.838-11.667-1.861-14.427-4.467" transform="translate(115.176 23.834)"/>
+                            <Path d="M223.446,68.191c-.478-.477-2.629-2.582-3.155-3.251-.623-.679-1.266-1.343-1.931-1.959-.665-.768-1.134-1.22-1.805-2.03a18.8,18.8,0,0,1-1.845-1.8m15.062,7.581a7.328,7.328,0,0,1-1.5-.605c-.444-.416-2.152-1.734-2.635-2.325-.576-.6-1.172-1.176-1.792-1.711-.613-.676-1.049-1.069-1.667-1.783a15.471,15.471,0,0,1-1.715-1.573" transform="translate(115.176 23.834)" fill="none" stroke="#000" strokeWidth="1.239"/>
+                            <Path d="M190.457,84.138l.071.126c-.222-.395-.119-.134.844.024a4.936,4.936,0,0,1,3.341,2.105c.394.553.965,1.421,1.3,2.01.094.168.1.47.193.639" transform="translate(115.176 23.834)"/>
+                            <Path d="M216.509,69.656l-.071-.126-.283-.5c-.368-.654-.62-1.376-.938-1.963-.355-.631-.53-1.362-.885-1.993-.268-.687-.728-1.438-1-2.149-.39-.752-.578-1.427-1.01-2.2-.325-.633-.41-1.025-.8-1.711l.8,1.711c-.325-.633-.41-1.025-.8-1.711" transform="translate(115.176 23.834)"/>
+                            <Path d="M234.306,65.294a6.9,6.9,0,0,1-1.45-.512c-.42-.374-2.046-1.546-2.5-2.082-.543-.537-1.106-1.058-1.694-1.537-.577-.611-.99-.963-1.569-1.608a13.371,13.371,0,0,1-1.623-1.411" transform="translate(115.176 23.834)"/>
+                            <Path d="M205.744,65.808c1.236-.226,1.237-.834,1.576-1.276a6.075,6.075,0,0,0,.095-3.374,16.262,16.262,0,0,1-.346-1.8,3.063,3.063,0,0,1-.244-1.024" transform="translate(115.176 23.834)"/>
+                            <Path d="M195.813,137.065l-.071-.126c.222.4.115.144-.788-.221-.688-.152-1.088-.378-1.773-.5" transform="translate(115.176 23.834)"/>
+                            <Path d="M200.207,123.847c-.047-.084-7.781-5.282-9-5.617-.706-.325-1.36-.5-2.187-.918-.464-.3-.923-.448-1.4-.71-.67-.062-1.206-.333-1.783-.325-.636-.228-.947.2-1.615.1-.572.1-1.554.229-2.048.37" transform="translate(115.176 23.834)"/>
+                            <Path d="M182.412,104.458c.239-.186,1.129-.483,1.735-.838a6.83,6.83,0,0,1,4.7.041" transform="translate(115.176 23.834)"/>
+                            <Path d="M189.657,117.534c-.024-.042-.286-1.348-.755-3.513a50.653,50.653,0,0,1,.007-9.61,10.706,10.706,0,0,1,.22-2.264,14.223,14.223,0,0,1,.678-2.041,14.786,14.786,0,0,1,.875-1.986c.349-2.042,6.1-10.244,6.481-10.615.3-.446.729-1.034,1.033-1.411a10.761,10.761,0,0,1,.836-1.466,7.786,7.786,0,0,0,.891-1.663,20.559,20.559,0,0,0,.284-2.151c.167-.842.065-1.486.159-2.081-.082-.737.383-9.746.42-10.173.146-.882,1.025-3.816,3.155-3.3a16.107,16.107,0,0,1,2.221.754,6.142,6.142,0,0,1,1.9,1.17,14.462,14.462,0,0,1,3.44,4.79l.355.631" transform="translate(115.176 23.834)"/>
+                            <Path d="M183.013,140.278l-.071-.126c.191.341.085.171-.158-.576-.064-.642-.262-1.51-.362-2.12a6.539,6.539,0,0,1-.346-1.8,3.863,3.863,0,0,1-.023-1.813,10.213,10.213,0,0,0,.284-2.151c.088-.954.017-1.629.072-2.531a13.038,13.038,0,0,0-.685-2.1c-.341-.709-.6-1.364-1.009-2.089l-.993-1.766.993,1.766-.993-1.766" transform="translate(115.176 23.834)"/>
+                            <Path d="M191.585,136.039a33.08,33.08,0,0,1-2.43-5.356l-2.4-4.127c-1.44-2.068-2.552-2.078-3.342-2.1-1.722-.111-2.482-.43-3.783-.529-1.324-.583-.339-2.964-.374-3.027,1.357-5.41,7.051-4.877,7.284-4.758,2.611.855,2.929,1.175,2.5,2.826-.658,1.782-1.048,2.415-.994,3.546.137,2.163,2.754,5.34,2.79,5.4s1.722,1.438,1.722,1.438c.8.685,1.864.806,2.955,2.157.956,1.454,1.093,2.042.3,3.484-1.009,1.9-3.185,2.455-4.225,1.047Z" transform="translate(115.176 23.834)" fill="#f9dd16" stroke="#000" strokeWidth="1.121" fillRule="evenodd"/>
+                            <Path d="M4.5,13.814a21.719,21.719,0,0,0,.2-3.479C4.605,10.334-.1,4.81,0,4.81S6.038,6.14,6.038,5.935,8.391.1,8.391,0s2.865,6.855,2.865,6.855l5.831,2.558L12.995,12.79s.921,6.548.921,6.651-4.093-3.888-4.093-3.888l-4.5.512A15.555,15.555,0,0,0,4.5,13.814Z" transform="translate(186.746 111.954) rotate(117.438)" fill="rgba(249,221,22,0.99)" stroke="#000" strokeWidth="1.121" fillRule="evenodd"/>
+                            <Path d="M34.68,1.743c-3.888,2-18.808,19.056-20.854,21.716A39.275,39.275,0,0,1,5.3,35.351C1.618,38.14-.431,41.95.077,45.558c-.041,4.489,2.476,7.546,4.481,10.7a6.47,6.47,0,0,0,4.481,2.489c3.483.46,3.792,1.532,5.535,2.2C21.439,70.3,31.681,77.19,39.058,82.65c4.7,2.478,7.972,4.957,9.092,6.31a16.308,16.308,0,0,1,1.466,10.121q-2.738,10.332-5.477,20.663c-.921,5.627,3.969,4.362,4.232,3.236,2.207-2.865,5.5-.853,10.206-17.427l6.473-8.713s2.49-1,2.49-1.245c3.786-4.546.9-7.147-1.245-7.966l-4.73-1.743s-5.477-5.477-5.726-5.477c-2.6-7.571-15.455-23.889-18.422-26.139-2.9-1.908-1.717-2.743-4.826-4.088-2.3-1.279-.719-.74-5.878-2.633-1.529-.613-.44-2.292.532-3.059,10.118-5.508,18.139-11.629,27.848-17.853l1.493-1Q54.845,15.684,53.1,5.726L36.92,0c-.849.581-1.493,1.162-2.24,1.743Z" transform="translate(280.852 91.093) rotate(117.438)" fill="#fff" stroke="#000" strokeWidth="1.3" fillRule="evenodd"/>
+                            <Path d="M1.125,2.046C1.177,1.842,11.254,0,11.254,0s-1.177,3.735-1.228,3.735L0,6.752Z" transform="translate(166.361 84.714) rotate(117.438)" fill="#f9dd16" fillRule="evenodd"/>
+                            <Path d="M0,10.386C1.944,5.22,7.34,1.129,10.964,0" transform="translate(219.02 83.733) rotate(117.438)"/>
+                            <Path d="M1.824,3.183C2.475,3,5.363,2.157,6.2,2.026,7.1,1.816,8,1.581,8.858,1.3c1-.2,1.619-.391,2.654-.579A18.8,18.8,0,0,1,13.99,0M0,9.414A7.326,7.326,0,0,1,1.264,8.4c.581-.183,2.567-1.026,3.318-1.157.8-.21,1.6-.445,2.37-.724.89-.2,1.446-.391,2.371-.579a15.471,15.471,0,0,1,2.212-.724" transform="translate(167.779 84.254) rotate(117.438)" fill="none" stroke="#000" strokeWidth="1.239"/>
+                            <Path d="M7.09,0H6.946c.453,0,.175-.038-.434.724A4.936,4.936,0,0,1,3.039,2.6c-.675.072-1.712.145-2.388.145C.459,2.749.193,2.6,0,2.6" transform="translate(198.793 96.978) rotate(117.438)"/>
+                            <Path d="M0,0H.723c.75,0,1.5.134,2.171.145.724,0,1.447.205,2.171.205.73.1,1.61.07,2.366.177.847.029,1.527.2,2.409.2.711.027,1.094.145,1.882.145L9.838.723c.711.027,1.094.145,1.882.145" transform="translate(169.139 89.408) rotate(117.438)"/>
+                            <Path d="M0,4.2A6.894,6.894,0,0,1,1.157,3.183C1.689,3,3.508,2.157,4.2,2.026c.734-.21,1.464-.445,2.17-.724C7.181,1.1,7.69.912,8.537.724A13.372,13.372,0,0,1,10.562,0" transform="translate(159.465 78.842) rotate(117.438)"/>
+                            <Path d="M.151,0c-.409,1.188.121,1.487.34,2A6.076,6.076,0,0,0,3.385,3.735a16.266,16.266,0,0,1,1.736.579A3.064,3.064,0,0,1,6.134,4.6" transform="translate(171.887 100.388) rotate(117.438)"/>
+                            <Path d="M.076,1.881H.221c-.454,0-.182.029.579-.579C1.269.777,1.662.539,2.1,0" transform="translate(238.574 70.595) rotate(117.438)"/>
+                            <Path d="M0,12.232c.1,0,8.417-4.193,9.305-5.089.629-.456,1.106-.938,1.872-1.456.491-.256.843-.585,1.3-.868.382-.554.882-.888,1.157-1.4.511-.443.292-.923.706-1.456C14.539,1.42,14.9.5,15.024,0" transform="translate(234.262 78.997) rotate(117.438)"/>
+                            <Path d="M2.46,0c.045.3-.133,1.221-.12,1.923A6.83,6.83,0,0,1,0,6" transform="translate(218.066 96.686) rotate(117.438)"/>
+                            <Path d="M0,0C.049,0,1.315.412,3.432,1.063a50.651,50.651,0,0,1,8.374,4.715c.537.423,1.5.8,1.866,1.3a14.228,14.228,0,0,1,1.447,1.592,14.792,14.792,0,0,1,1.3,1.736C18.029,11.713,22.358,20.75,22.5,21.26c.243.477.544,1.142.724,1.592a10.761,10.761,0,0,1,.868,1.447A7.784,7.784,0,0,0,25.1,25.89a20.562,20.562,0,0,0,1.736,1.3c.652.558,1.264.785,1.736,1.158.682.29,8.308,5.11,8.662,5.352.7.56,2.824,2.764,1.33,4.367a16.108,16.108,0,0,1-1.745,1.566,6.143,6.143,0,0,1-1.952,1.085,14.463,14.463,0,0,1-5.861.651h-.724" transform="translate(223.904 85.645) rotate(117.438)"/>
+                            <Path d="M.05,0H.195C-.2,0,0-.009.774.145,1.364.4,2.218.656,2.8.868a6.538,6.538,0,0,1,1.736.579,3.863,3.863,0,0,1,1.592.868,10.21,10.21,0,0,0,1.736,1.3c.788.544,1.412.813,2.171,1.3a13.037,13.037,0,0,0,2.17.434c.785.05,1.484.145,2.315.145h2.026" transform="translate(246.594 78.7) rotate(117.438)"/>
+                            <Path d="M29.372,0h-.29c.535,0,.385-.019-.434.145C27.794.586,26.656.92,25.9,1.3a19.227,19.227,0,0,0-2.6,1.013,29.027,29.027,0,0,0-2.6,1.591c-.833.446-1.651,1-2.46,1.447A12.4,12.4,0,0,0,16.06,6.8a14.958,14.958,0,0,0-2.026,1.3,4.393,4.393,0,0,0-1.446,1.013c-.766.678-1.235,1.03-2.026,1.736-.416.393-.969.856-1.592,1.446a19.914,19.914,0,0,0-1.881,1.736,6.92,6.92,0,0,1-1.3,1.3,7.716,7.716,0,0,1-1.3,1.447c-.3.444-.82,1.022-1.3,1.592-.391.478-.929.96-1.3,1.446A15.9,15.9,0,0,1,.434,21.414,2.921,2.921,0,0,1,0,22.138" transform="translate(253.596 101.955) rotate(117.438)"/>
+                            <Path d="M1.76,4.7a33.08,33.08,0,0,1,5.859.507l4.775-.072c2.509-.242,3.062-1.206,3.472-1.882.94-1.446,1.592-1.953,2.315-3.038C19.339-.652,20.932,1.374,21,1.374c4.051,3.835.795,8.537.578,8.681-2.025,1.857-2.46,1.977-3.689.8-1.23-1.447-1.592-2.1-2.6-2.6-1.953-.94-6-.217-6.078-.217s-2.1.8-2.1.8c-.989.361-1.616,1.23-3.328,1.519C2.049,10.465,1.47,10.3.6,8.9-.555,7.089.023,4.918,1.76,4.7Z" transform="translate(243.313 74.499) rotate(117.438)" fill="#f9dd16" stroke="#000" strokeWidth="1.121" fillRule="evenodd"/>
+                            <Path d="M116.239,101.494c-.8-.723,14.975,5.715,17.145,5.788,2.967-1.085,15.193-11.43,15.193-11.43.121,1.013.554,3.641,1.735,4.2-4.726,3.835-9.019,7.523-13.745,11.357.338,6.077-.771,12.516,2.315,19.316,0,0-3.689.072-3.689,0-3.256-3.256-4.414-18.954-4.414-18.954-5.184-2.315-10.369-4.558-15.554-6.873a3.409,3.409,0,0,0,1.013-3.4Z" transform="translate(115.176 23.834)" fill="rgba(249,221,22,0.99)" stroke="#000" strokeWidth="1.121" fillRule="evenodd"/>
+                            <Path d="M131.245,117.586c.252-.183-2.845,1.439-3.64,1.846a68.129,68.129,0,0,0-22.161,19.181c-.248.474-.7,1.105-1.121,1.724-.336.519-.818,1.056-1.135,1.58-.439.608-1.362,1.808-1.866,2.342-.063.344.239-.118.14.111" transform="translate(115.176 23.834)"/>
+                            <Path d="M141.035,108.5c-.278-.141,2.581,1.872,3.307,2.393a68.128,68.128,0,0,0,27.194,10.934c.535,0,1.3.12,2.046.208.615.061,1.313.244,1.925.287.741.112,2.231.383,2.936.588.334-.1-.214-.158.034-.176" transform="translate(115.176 23.834)"/>
+                        </G>
                     </G>,
                 it: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
@@ -723,6 +859,10 @@ class FlagComponent extends Component {
                                 <Path d="M49.8 46.3a7.6 7.6 0 00-6.3 8.3 6.1 6.1 0 01-2.3-4c-.4-3 1.8-5.3 5.1-5.3a6.7 6.7 0 013.5 1z"/>
                             </G>
                         </G>
+                    </G>,
+                mc: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="150"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" y="150"/>
                     </G>,
                 me: <G clipPath="url(#clip-path)">
                         <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500V300H0Z"/>
@@ -978,6 +1118,11 @@ class FlagComponent extends Component {
                             <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13669 14310.2)"/>
                             <Circle cx="1.1" cy="1.1" r="1.1" fill="#FFF" transform="translate(13675.2 14310.2)"/>
                         </G>
+                    </G>,
+                sm: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="150"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="150" y="150"/>
+                        <Image width="189" height="227" transform="translate(156 37)" href={require('../assets/flag_badges/eu/sm.png')}/>
                     </G>,
                 ro: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
@@ -1946,6 +2091,11 @@ class FlagComponent extends Component {
                         <Path onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="5" d="M240,150,0,0V300Z"/>
                         <Path onPress={() => this.applySelectedColor(6)} fill={this.state.appliedColors[6]} stroke={this.state.applyStroke[6]} strokeWidth="3" d="M101.213,140l26.513,81.375L58.35,171.125H144l-69.375,50.25Z" x="-14.588" y="-35"/>
                     </G>,
+                bl: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" x="333.333" width="166.667" height="300"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" x="166.667" width="166.667" height="300"/>
+                    </G>,
                 kn: <G clipPath="url(#clip-path)">
                         <G transform="translate(-39.723 -68.069)">
                             <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M346.307.12,0,0V208.875" transform="translate(39.728 68.102)"/>
@@ -1962,6 +2112,11 @@ class FlagComponent extends Component {
                         <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M200,274l29.4-35.807,70.6-177.525,71.713,178.521L400,274,300,27,225.388,211.291Z" x="-50"/>
                         <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M228.219,240.411,300,151.451l72.34,88.961L300,60Z" x="-50"/>
                         <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M200,274H400L300,150Z" x="-50"/>
+                    </G>,
+                pm: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" x="333.333" width="166.667" height="300"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" x="166.667" width="166.667" height="300"/>
                     </G>,
                 vc: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="127" height="300" x="373"/>
@@ -2335,6 +2490,11 @@ class FlagComponent extends Component {
                             <Use href="#loweyecontour" transform="translate(-19.181)"/>
                         </G>
                     </G>,
+                bq: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="101" y="199"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="101" y="99"/>
+                    </G>,
                 aw: <G clipPath="url(#clip-path)">
                         <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500V300H0Z"/>
                         <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,12H500V28.667H0V45.333H500V62H0Z" transform="translate(0 188)"/>
@@ -2601,6 +2761,25 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="166.6" height="300" x="333.2"/>
                         <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="166.6" height="300" x="166.6"/>
                         <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M380.169,191.459l27.376,84.256-71.672-52.073h88.592l-71.672,52.073Z" transform="translate(-129.873 -83.459)"/>
+                    </G>,
+                cv: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="150"/>
+                        <Rect onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" width="500" height="76" y="224"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="26" y="149"/>
+                        <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="500" height="26" y="199"/>
+                        <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,0H500V26H0Z" y="174"/>
+                        <G onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="3">
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(155.887 79.5)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(200 93.801)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(111.801 93.801)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(200 215.15)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(111.801 215.15)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(84.6 131.301)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(84.6 177.699)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(227.199 131.301)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(227.199 177.6)"/>
+                            <Path d="M18,28.372H28.922L32.3,18l3.381,10.372H46.605l-8.842,6.421,3.381,10.372L32.3,38.743l-8.842,6.421,3.381-10.372Z" transform="translate(155.887 229.5)"/>
+                        </G>
                     </G>,
                 cf: <G clipPath="url(#clip-path)">
                     <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="213" height="76" y="224"/>
@@ -2937,6 +3116,12 @@ class FlagComponent extends Component {
                         <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M159.642,2.92a93.751,93.751,0,0,1-187.5,0,96.9,96.9,0,1,0,187.5,0Z" transform="translate(184.108 93.705)"/>
                         <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M24.252-9.24l-8.42,25.911H-11.413L10.628,32.687,2.21,58.6,24.252,42.585,46.294,58.6,37.876,32.687,59.916,16.672H32.672Z" transform="translate(225.748 67.865)"/>
                     </G>,
+                mu: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="75"/>
+                        <Rect onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" width="500" height="76" y="224"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="76" y="74"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="75" y="150"/>
+                    </G>,
                 yt: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" x="333.333" width="166.667" height="300"/>
@@ -2995,6 +3180,11 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" x="333.333" width="166.667" height="300"/>
                         <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" x="166.667" width="166.667" height="300"/>
                     </G>,
+                re: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="166.667" height="300"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" x="333.333" width="166.667" height="300"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" x="166.667" width="166.667" height="300"/>
+                    </G>,
                 rw: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="150"/>
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="76" y="224"/>
@@ -3010,6 +3200,17 @@ class FlagComponent extends Component {
                             </G>
                             <Circle cx="14.292" cy="14.292" r="14.292" transform="translate(34.083 34.083)" stroke={this.state.appliedColors[0]} strokeWidth="3.4"/>
                         </G>
+                    </G>,
+                sh: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                        <Path stroke={this.state.applyStroke[1]} d="M0,0,499.523,300m0-300L0,300" strokeWidth="60.896"/>
+                        <Path onPress={() => this.applySelectedColor(1)} stroke={this.state.appliedColors[1]} d="M0,0,499.523,300m0-300L0,300" strokeWidth="50.896"/>
+                        <Path stroke={this.state.applyStroke[2]} d="M0,0,499.523,300m0-300L0,300" strokeWidth="30.93"/>
+                        <Path onPress={() => this.applySelectedColor(2)} d="M0,0,499.523,300m0-300L0,300" stroke={this.state.appliedColors[2]} strokeWidth="23.93"/>
+                        <Path stroke={this.state.applyStroke[3]} d="M249.762,0V300M0,150H499.523" strokeWidth="94.826"/>
+                        <Path onPress={() => this.applySelectedColor(3)} d="M249.762,0V300M0,150H499.523" stroke={this.state.appliedColors[3]} strokeWidth="84.826"/>
+                        <Path stroke={this.state.applyStroke[4]} d="M249.762,0V300M0,150H499.523" strokeWidth="60.896"/>
+                        <Path onPress={() => this.applySelectedColor(4)} d="M249.762,0V300M0,150H499.523" stroke={this.state.appliedColors[4]} strokeWidth="50.896"/> 
                     </G>,
                 sd: <G clipPath="url(#clip-path)">
                         <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0H500V100H124Z"/>
@@ -3030,6 +3231,13 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="166.6" height="300" x="333.2"/>
                         <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="166.6" height="300" x="166.6"/>
                         <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M380.169,191.459l27.376,84.256-71.672-52.073h88.592l-71.672,52.073Z" transform="translate(-129.873 -83.459)"/>
+                    </G>,
+                sc: <G clipPath="url(#clip-path)">
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,300V0H166.667Z"/>
+                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,300,166.566-.021,333.333,0Z"/>
+                        <Path onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" d="M0,300,500,133V0H333.3Z"/>
+                        <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M0,316.667l499.994-83.3L500,150Z" y="-16.666"/>
+                        <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M0,383.333H500V300Z" y="-83.334"/>
                     </G>,
                 sl: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="100"/>
@@ -3254,6 +3462,10 @@ class FlagComponent extends Component {
                             <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M655,250l4.784,13.452,12.894-6.129-6.129,12.894L680,275l-13.452,4.784,6.129,12.894-12.894-6.129L655,300l-4.784-13.452-12.894,6.129,6.129-12.894L630,275l13.452-4.784-6.129-12.894,12.894,6.129Z" transform="translate(-327 -125)"/>
                         </G>
                     </G>,
+                bh: <G clipPath="url(#clip-path)">
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0,124.105-.031l76.645,29.9L124.283,60.027,200.75,90.016l-76.467,29.523,76.467,29.629-76.467,30.98,76.467,29.133-76.467,30.84L200.75,270l-76.588,29.836L0,300"/>
+                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M413.667,0H37l76.667,30L37,60l76.667,30L37,120l76.667,30L37,180l76.667,30L37,240l76.667,30L37,300H413.667" x="86.334"/>
+                    </G>,
                 bd: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                         <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" cx="100" cy="100" r="100" transform="translate(125 50)"/>
@@ -3406,6 +3618,35 @@ class FlagComponent extends Component {
                             <Use href="#s" transform="translate(12,7) rotate(69.945396)"/>
                             <Use href="#s" transform="translate(10,9) rotate(20.659808)"/>
                         </G>
+                    </G>,
+                cx: <G clipPath="url(#clip-path)">
+                        <Path onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" d="M0,0,500,300H0Z"/>
+                        <Path onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" d="M0,0H500V300Z"/>
+                        <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" cx="45.16" cy="45.16" r="45.16" transform="translate(204.84 104.84)"/>
+                        <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M435.982,200.684c3.089,4.238,7.771,11.345,11.536,9.49,2.938.01,4.455.217,4.853,2.172,6.93,1.179,18.577-1.744,25.824-11.183,0,0,.61.081.4-3.508.04-1.562,2.137-1.25,2.187-.741.292.776.242,1.356.635,1.376.892-.3,2.112-2.3,3.135-3.568a5.167,5.167,0,0,0,.191-1.855,1.176,1.176,0,0,1,2.167-.343c.257.449.262.791.514,1.24,1.366.912,3.83.06,4.022.06.242-1.114.958-1.008.958-1.008.912-.2.554-.121,1.154.191-.529,6,1.179,6.27,1.038,9.349.06,3.437-1.038,4.415-1.038,5.725.348,1.6,5.418,1.658,3.634,3.014-1.567.837.005,2.4-2.354,3.014-6.864,3.482-8.18,6.471-8.18,6.471a28.823,28.823,0,0,1-1.915,3.256c-1.149,2.172-2.605.988-3.417,2.046-.4,1.331-.857,4.279-.05,5.811.4,2.107-.05,3.256-.554,5.362-.454,4.395-2.2,5.06-2.4,6.6-.806,1.648.171,9.389-.595,9.389a45.045,45.045,0,0,1-11.047-1.381,58.548,58.548,0,0,0,1.2-16.717c-.5-6.073-9.1-4.6-10.412-5.4a4.384,4.384,0,0,1-2.157-1.5c-1.215-.131-1.668-.408-2.883-.534-.6.3-.242.615-1.593,1.033-3.427.413-4.939-2.989-4.939-2.989.166-1.144-7.706.232-11.984-.761-1.754.978-2.52,3.87-3.956,4.213-.04.9-2.364-.736-2.832-1.618a4.15,4.15,0,0,1,2.238-3.7c1.855-1.305,2.953-1.517,3.845-2.419.449-2.233.222-3.886,1.174-5.564.806-1.28,2-.68,2.8-1.255.867-.575,1.235-4.334.433-5.362,0,0-3.467-3.13-3.659-3.321-1.129-3.235,1.32-5.322,2.021-5.085Z" transform="translate(-213.563 -70.564)"/>
+                        <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M752.273,59.811c-2.046-8.1-20.36-25.535-34.123-36.632-3.286-2.239-5.427-.905-5,2.286,1.714,2.858,3,6,4.712,8.858.479,1.9,1.381,3.239,1.86,5.143,0,0,.141,3.286.428,3.572,4.284,4.717,4.858,8.716,4.858,8.716,2.474,4.763,4.667,8.239,9,12.145,4.858,3.049,1.285,12.524,1.426,17.574,0,3.19-2.283,2.812-4.284,2.429C715.388,69.422,699.765,69.377,686,65.184c-5.383-.569-5.478,2-3.714,3.427C691.909,78.9,700.954,85.9,712.863,91.758l6,3.719q3.425,2.857,6.854,5.715c5.286,3.427,5.72,6.572,5.72,6.854.141,6.43-3.291,11.43-4.289,13.43-1.8,6.818-5.427,8-5.427,8-29.437,19.862-44.869,25-92.59,18.859-.716-.378-5.286.383,0,2.288,12.146,4.047,41.98,10.538,70.845-3.13,6.93-4.858,11.566-3.266,16.586-6.174,8.245-5.085,20.018-11.415,22.159-12.126,6.431-3.432,24.432-7.288,28.58-10.719,4.757-.383,9.7-1.008,10.029-5.1,1.562-1.013,3.85-.272,5.548-3.608,3.775-.655,3.14-2.006,3.14-2.006-.953-2.666-4.48-3.765-7-5.715-3.719-1.24-6.289-1.623-9.006-.287-.857.383-1.714.761-2.57,1.144,0,0-4-.575-4-.857-8.89-.489-8.023-29.951-11.168-42.239Z" transform="translate(-313.309 -11.033)"/>
+                        <G onPress={() => this.applySelectedColor(5)} fill={this.state.appliedColors[5]} stroke={this.state.applyStroke[5]} strokeWidth="3">
+                            <Path id="s" d="M167.4,162.8l-6.376-5.968-6.452,5.885.691-8.7-8.625-1.377,7.238-4.887-4.3-7.6,8.334,2.61,3.259-8.1,3.155,8.143,8.367-2.5-4.4,7.543,7.174,4.98-8.642,1.266.579,8.712Z" transform="translate(-73.32 -17.33)"/>
+                            <Path d="M215.383,315.316l-6.876-4.583-6.7,4.832,2.356-7.784-6.791-4.708,8.334-.223L208.2,295.1l2.8,7.65,8.333-.078-6.6,4.951,2.654,7.691Z" transform="translate(-98.688 -97.551)"/>
+                            <Path d="M167.4,162.8l-6.376-5.968-6.452,5.885.691-8.7-8.625-1.377,7.238-4.887-4.3-7.6,8.334,2.61,3.259-8.1,3.155,8.143,8.367-2.5-4.4,7.543,7.174,4.98-8.642,1.266.579,8.712Z" transform="translate(-72.059 117.199)"/>
+                            <Path d="M167.4,162.8l-6.376-5.968-6.452,5.885.691-8.7-8.625-1.377,7.238-4.887-4.3-7.6,8.334,2.61,3.259-8.1,3.155,8.143,8.367-2.5-4.4,7.543,7.174,4.98-8.642,1.266.579,8.712Z" transform="translate(-129.352 44.281)"/>
+                            <Path d="M167.4,162.8l-6.376-5.968-6.452,5.885.691-8.7-8.625-1.377,7.238-4.887-4.3-7.6,8.334,2.61,3.259-8.1,3.155,8.143,8.367-2.5-4.4,7.543,7.174,4.98-8.642,1.266.579,8.712Z" transform="translate(-19.105 25.184)"/>
+                        </G>
+                    </G>,
+                cc: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                        <Circle onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" cx="51.63" cy="51.63" r="51.63" transform="translate(198.641 98.574)"/>
+                        <Circle onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} cx="42.485" cy="42.485" r="42.485" transform="translate(224.08 107.715)"/>
+                        <Circle onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" cx="54.089" cy="54.089" r="54.089" transform="translate(30.951 18.193)"/>
+                        <G onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3">
+                            <Path d="M-332.532-358.786l3.414,10.613,10.426-3.949-6.17,9.286,9.588,5.69-11.107.966,1.53,11.044-7.681-8.081-7.681,8.081,1.53-11.044-11.107-.966,9.588-5.69-6.17-9.286,10.426,3.949Z" transform="translate(709.193 600.08)"/>
+                            <Path d="M-332.532-358.786l3.414,10.613,10.426-3.949-6.17,9.286,9.588,5.69-11.107.966,1.53,11.044-7.681-8.081-7.681,8.081,1.53-11.044-11.107-.966,9.588-5.69-6.17-9.286,10.426,3.949Z" transform="translate(647.238 470.824)"/>
+                            <Path d="M-332.532-358.786l3.414,10.613,10.426-3.949-6.17,9.286,9.588,5.69-11.107.966,1.53,11.044-7.681-8.081-7.681,8.081,1.53-11.044-11.107-.966,9.588-5.69-6.17-9.286,10.426,3.949Z" transform="translate(709.193 382.387)"/>
+                            <Path d="M-332.532-358.786l3.414,10.613,10.426-3.949-6.17,9.286,9.588,5.69-11.107.966,1.53,11.044-7.681-8.081-7.681,8.081,1.53-11.044-11.107-.966,9.588-5.69-6.17-9.286,10.426,3.949Z" transform="translate(764.266 449.057)"/>
+                            <Path d="M-189.228-209.292l2.7,6.613,7.123.522-5.456,4.609,1.7,6.936-6.07-3.765-6.07,3.765,1.7-6.936-5.456-4.609,7.123-.522Z" transform="translate(590.672 362.416)"/>
+                        </G>
+                        <Path d="M1648.521,1392.5h11.969s.539-.93-.121-1.4-3.234-.567-2.539-2.212c1.429-3.382,1.628-2.339,2.526-10.372s1.33-20.632,1.33-20.632h-1.729a36.114,36.114,0,0,1-.664,9.02,81.645,81.645,0,0,1-2.394,9.47,35.287,35.287,0,0,1-2.26,6.539,16.058,16.058,0,0,1-2.66,4.509c-1.563,2.114-1,1.325-1.862,2.594-.432.634-.965.465-1.255.926a4.331,4.331,0,0,0-.341,1.553Z" transform="translate(-1571.646 -1287.781)" fill="#802000" stroke="#7b3100" strokeWidth="1"/>
+                        <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="3" d="M962.814,666.334a15.89,15.89,0,0,1-.839,6.182,19.364,19.364,0,0,0-1.553,6.618c-1.214.413-2.466-2.628-3.635-.839.879,2.472,2.907,4.429,4.3,6.656.234.691,2.234,2.493,1.077,2.913-2.921-1-3.629-4.7-5.44-6.947a12.728,12.728,0,0,0-10.4-6.639c-1.642.043-6.979-.407-5.59,2.4,2.045,1.39,4.565,2.3,6.584,3.858,1.5.141,4.231,2.652,4.073,3.6-2.646-1.072-3.885-2.356-6.736-3.484-3.863-1.492-9.206-.595-11.345,3.239-.4,1-.987,3.909.267,4.186,1.465-2.288,3.561-4.845,6.666-4.159,2.439.19-2.722,4.544-.748,3.668a11.935,11.935,0,0,1,3.072-1.325c1-.1,1.562.651,2.322.755,1.521.208,1.939.845,1.8,1.216-.166.438-.649.064-2.2.554-.773.245-1.177.924-2.078,1.235a7.009,7.009,0,0,1-3.478.057c-2.452-1.065-6.472-.88-7.236,2.193,0,1.351-1.2-.149-1.759.434-.417,1.474-.525,2.988-2.711,2.854a21,21,0,0,1-4.372,3.825c.989,2.27,4.909-2.28,4.725-.361-1.713,2.336.882,2.828,2.018,1.03,1.921-2.03,4.3-4.5,7.167-2.455,1.365,1.285,2.159-.68,3.147-.574.623,1.6,1.406.079,2.113-.373,1.157-.144.831,1.445,2.206.466,2.739-1.813,6.11-.29,8.786-2.054,2.848-1.3.4,1.045-.386,1.961-1.252,2.427-.166,5.614-2.881,7.122-1.09,2.893,1.288,6.707-1.138,8.847-.353,1.342,3.12,1.188,4.1,1.74,1.708.068-.073-3.91,1.621-4.443,2.273,1.407,2.167-2.516,1.7-3.726.22-2.751.375-5.758,1.742-8.249,1.453-3.053,2.8,1.243,1.171,2.452-.924,2.808-2.269,6.321-.168,8.932.605.135,1.1,1.6,1.887,2.054s1.855-.114,2.05-1.45c1.006-4.021.5-8.345,1.935-12.255,1.014-1.211,2.412-.2,3.04.919,2.012,2.336,3.427,5.257,5.863,7.182a10.168,10.168,0,0,1,5.2,4.892c-.014,1.762,5,2.032,3.5.074-1.439-1.907-.49-3.814.968-5.081.781.193.55-1.205-.062-.652-.98-.231-1.042-2.024.319-1.172,2.294.74-.179-1.66-1.008-1.734-1.939-1.2-4.168-2.585-5.122-4.675,2.525.026,5.146,1.388,7.726.543a3.484,3.484,0,0,1,4.888,1.912c1.6-.255.917-1.858,0-2.392,1.169-.483,1.978-1.483.56-2.365-.749-.977,1-2.644-1.151-2.574a3.419,3.419,0,0,0-2.372-3.721c-1.8-1.522-7.071,2.242-6.918-1.188-.531-1.867,2.142-.249,2.889-1.181.772-1.968-3.679-1.776-2.21-3.3.959-.618,5.46-1.5,1.93-2.165a5.569,5.569,0,0,1-4.66-.746c-1.264,2.114-4.872-1.148-4.229,2.61-.494,1.416-3.719,5.095-4.592,2.276.742-2.209,4.563-2.931,3.378-5.91-.182-1.859-1.723.323-2.449.185-.368-1.157,1.112-2.521,2.144-2.8,2.047,1.574,2.109-1.986,4.056-1.7,1.421-.316-.459-.925-.855-1.193.39-1.04,2.571-1.572.432-2.475-1.887-1.4-3.287,1.394-4.844,1.543-1.494-1.687,1.357-2.5,2.144-3.387.042-.662-1.662-.2-1.15-.777.446-.8,3.464-.856,2.051-2.05a9.845,9.845,0,0,0-6.919.4c-1.287.417-1.665,3.326-2.775,3.206-.521-1.3.17-3.851-1.615-4.225Zm10.066,28.428c1.622-.275.034,2.464-.746,2.423.069-.984-2.346-.889-.848-1.746A4.885,4.885,0,0,1,972.881,694.762Z" transform="translate(-875.563 -627.457)"/>
                     </G>,
                 ge: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300" transform="translate(0 0)"/>
@@ -3742,6 +3983,20 @@ class FlagComponent extends Component {
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="75" y="225"/>
                         <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="3" d="M324.382,125c-3.22,6.78-9.283,11.519-15.079,16-.953.832-3.324,2.445-1.6,3.673,1.473-1.647,5.517.534,3.167,2.3-2.105,1.971-5,2.692-7.342,4.318a22.792,22.792,0,0,0-5.811,4.021c-.112,2.69,3.337,1.2,4.736,2.321,1.823,1.948-.773,5.233-3.164,4.481-3.058.094-5.171,2.785-6.327,5.352-2.392,3.7-6.926,4.795-10.534,6.9a69.592,69.592,0,0,0-5.991,3.94c-2.479,1.694-.322,5.05,2.315,4.226,2.846-.284,5.408-2.521,8.355-1.876,2.673.939,3.423,4.432,2.512,6.871-.674,1.952-2.309,3.328-3.62,4.853a15.938,15.938,0,0,1-7.84,4.22,15.559,15.559,0,0,0-7.24,5.031,58.2,58.2,0,0,1-6.787,6.19c-.783,2,1.427,3.7,3.271,3.649,3.883-.245,6.575-3.423,9.882-5.056,2.745-1.234,5.975,1.724,5.3,4.584-.212,2.782-2.817,4.193-5.132,5.049a67.056,67.056,0,0,0-17.966,13.861c-1.085,2.214-4.07,1.562-5.677,3.106-1.046,1.953,1.58,2.983,3.148,2.782,6.735-.81,13.019-3.656,18.973-6.788,2.214-1.059,4.293-2.452,6.6-3.3,2.162-.534,5.177.406,5.564,2.867,0,2.6-2.576,4.036-4.615,5.051-6.285,3.3-13.183,5.128-19.9,7.31-2.515-.7-4.409,3.771-1.651,4.576,2.917,1,6.019.2,9,.067,9.227-1.414,17.3-6.406,25.922-9.634a8.194,8.194,0,0,1,9.588,3.823,9.529,9.529,0,0,1-.26,9.843c-2.964,6.341-7.47,12.169-13.519,15.815-3.8,1.88-8.229,2.6-11.483,5.477-3.01.992,1.508,5.059,2.162,1.831,1.808-2.467,5-3.2,7.892-3.306,4.348-.473,8.966-1.276,12.344-4.286,3.029-2.352,6.014-5.6,10.127-5.648,2.273.27,4.521,2.1,6.83.982,2.02-.924,5.189-.383,5.716,2.1.964,2.905,3.959,4.227,6.334,5.782.86,1.207,3.716,4.32,4.375,1.576-.532-1.958.228-4.953,2.8-4.3,2.243.1,4.38.928,6.619,1.063a11.9,11.9,0,0,1,7.161,5.123c1.165,1.608,3.715,4.372,5.611,2.239,1.176-2.206-1.069-4.045-2.9-4.833a53.909,53.909,0,0,1-7.274-5.933c-3.434-3.208-6.4-7.288-6.946-12.08a51.116,51.116,0,0,1,.273-14.416,5.224,5.224,0,0,1,7.451-3.112c3.86,1.761,7.693,4.281,12.118,4.007,6.394.138,12.965-1.087,19.213.767,6.081,1.915,10.429,7.046,16.352,9.267a2.439,2.439,0,0,0,3.508-1.377,2.865,2.865,0,0,0-1.054-3.626c-6.865-6.929-16.247-10.3-24.189-15.71-2.5-.635-2.956-4.658-.644-5.819,3.039-2.209,7.339-1.181,10.036,1.1a15.124,15.124,0,0,0,7.514,2.335c2.737-.857,1.41-4.816-1.04-5.114-4.439-2.506-7.619-6.62-11.465-9.88-2.214-1.875-4.638-3.773-7.614-4.138a20.12,20.12,0,0,0-4.939-.25c-1.546-1.68.514-4.252,2.513-4.042a29.738,29.738,0,0,0,6.139,0c2.289-.167,4.576-.4,6.873-.42,1.855,1.262,5.56-.919,3.886-3.1-1.828-1.6-4.472-1.463-6.656-2.285a102.582,102.582,0,0,0-11.7-3.075c-2.767-.165-2.426-3.806.006-4.208,1.591-.593,2.975.629,4.5.819,2.609.56,5.3.553,7.91,1.121,2.211-1.091.5-4.322-1.5-4.51-4.72-1.688-8.8-4.733-12.785-7.7-4.4-3.311-8.4-7.139-12.852-10.373-1.616-1-4.267-1.291-4.692-3.511-.15-2.043,2.254-2.973,3.959-2.5,2.418.714,4.672,1.957,7.136,2.568,1.934.329,3.927.9,5.791.657,2.366-1.486-1.015-2.437-2.239-2.952a68.825,68.825,0,0,1-8.8-6.13c-2.4-2.048,2.035-2.953,3.56-2.164,2.55,1.067,2.84-2.649.935-3.584a38.139,38.139,0,0,1-6.214-3.923,27.681,27.681,0,0,0-12.371-5.269,16.847,16.847,0,0,1-12.5-7.763A48.541,48.541,0,0,1,324.382,125Zm-16.654,28.451c2.614.077,2.212,4.788-.361,4.474C304.867,157.764,305.02,152.944,307.727,153.451Zm24.654,2.537c2.543-.455,3.082,4.186.541,4.4C330.275,160.866,329.294,155.694,332.381,155.988Zm-7.221.6c2.579.507,2.12,5-.482,5.038-1.9.424-3.956,1.723-5.882.749-1.566-1.657.7-4.106,2.446-4.645C322.583,157.465,323.817,156.856,325.16,156.592Zm16.619.019c2.485.907,1.608,5.293-1.013,5.237-2.479.332-3.632-3.8-1.321-4.783A6.24,6.24,0,0,1,341.78,156.612Zm-28.035,4.976c1.827,1.739.748,5.094-1.5,5.9-1.624.9-3.838,3.04-5.606,1.282-.96-2.147,1.449-3.765,2.866-4.957A10.86,10.86,0,0,1,313.745,161.588Zm20.867,9.7c2.616,1.235,1.288,5.95-1.583,5.657-2.358-.6-2.05-4.642.325-4.964A6.343,6.343,0,0,0,334.612,171.286Zm-8.3.469c2.446,1.145.578,5.228-1.886,4.64-2.555-.3-2.508-4.792.31-4.387A4.5,4.5,0,0,0,326.311,171.754ZM344.2,174.1c2.681-.832,5.91,1.931,5.039,4.732-1.195,2.172-4.15,2.447-6.267,1.635-2.431-.12-4.066-3.774-1.9-5.321A5.953,5.953,0,0,1,344.2,174.1Zm-39.61.7c2.217-1.206,4.571,2.419,2.686,4.019-1.249,1.836-4.456,2.586-5.87.544C300.235,177.367,302.135,174.016,304.595,174.8Zm-10.23,1.717c2.515.344,4.154,2.629,5.084,4.8.227,2.651-3.685,4.105-5.391,2.176-1.919-1.2-3.6-3.679-2.593-5.977A2.709,2.709,0,0,1,294.365,176.515Zm61.2,9.581c2.73-.719,4.712,3.643,2.368,5.221-2.143,1.946-6.31-.632-5.192-3.41A3.59,3.59,0,0,1,355.567,186.1Zm-34.742,4.976c2.289.292,1.547,4.258-.569,4.125C317.984,194.777,318.5,190.849,320.824,191.073Zm-11.61,2.107c1.867-1.321,4.274,1.9,2.722,3.406C310.075,197.9,307.66,194.724,309.214,193.18Zm18.46.391a8.336,8.336,0,0,1,3.718,6.24c-1.037,2.311-5.042,1.754-5.494-.707A4.585,4.585,0,0,1,327.674,193.57Zm6.442,3.824c2.789-.7,1.788,5.128-.541,3.106A2.277,2.277,0,0,1,334.116,197.395Zm-40.459,4.059c1.847-.541,4.538.028,5.048,2.147.215,1.991-1.975,3.028-3.58,3.521-2.572.793-5.087,2.1-7.853,1.921-2.073-1.185-2.818-3.61-3.557-5.725,2-1.876,4.947-1.325,7.427-1.8C291.98,201.48,292.819,201.46,293.657,201.454Zm62.759,9.132c2.356-1.154,4.888,2.584,2.917,4.33a7.609,7.609,0,0,1-10.164.982c-.355-2.512,2.155-4.337,4.384-4.7A9.1,9.1,0,0,1,356.416,210.586Zm13.238,2.869c2.677-.46,4.784,3.358,2.873,5.333a5.947,5.947,0,0,1-8.588,1.207c-.961-2.261.989-4.617,3.065-5.342C367.9,214.272,368.741,213.786,369.655,213.454Zm-66.564,4.059a4.27,4.27,0,0,1,4.423,4.658c1.795,1.765-1.383,5.054-3.17,3.226-1.575-1.909-1.567-4.5-2.177-6.782C302.14,218.108,302.515,217.451,303.091,217.513Zm19.026,1.424c2.562-1.108,5.877,1.958,4.482,4.553-1,2.113-4.882,1.4-4.753-1.043A10.954,10.954,0,0,1,322.117,218.938ZM312.86,220.6c2.569-.589,4.927,2.741,3.5,4.964C313.8,225.788,312.467,222.748,312.86,220.6Z" transform="translate(-76.27 -50)"/>
                     </G>,
+                mo: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
+                        <G onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="3">
+                            <Path d="M303.023,264.429H231.858q-1.345-1.364-2.642-2.778h73.807a1.469,1.469,0,0,1,0,2.778Zm0-21.761a9,9,0,0,0,.852-5.243,8.6,8.6,0,0,0-.852-2.645,56.9,56.9,0,0,1-22.564,13.183,56.277,56.277,0,0,1-16.324,2.4H220.292q1.939,2.849,4.064,5.555h42.383A56.092,56.092,0,0,0,303.023,242.668Zm-76.107-17.149a22.421,22.421,0,0,1-6.733,1.459,56.3,56.3,0,0,0,82.839,1.725,306.21,306.21,0,0,0,3.157-40.908,306.2,306.2,0,0,0-3.157-46.994,58.717,58.717,0,0,0-17.2,26.575A56.409,56.409,0,0,0,293,214.749a56.33,56.33,0,0,1-6.364-58.513,22.562,22.562,0,0,1-5.23-9.017A56.32,56.32,0,0,0,285.14,208.4a66.03,66.03,0,0,0-47.917-20.53c-1.012,0-2.02.026-3.022.07a22.67,22.67,0,0,1,4.688,6.18,66.03,66.03,0,0,1,47.7,20.416,66.255,66.255,0,0,0-67.87-10.308,56.382,56.382,0,0,0,52.708,36.42c1.56,0,3.106-.07,4.633-.2a56.4,56.4,0,0,1-49.144-14.93Zm76.107,61.653H266.141a99.64,99.64,0,0,0,36.882,7.031,7.549,7.549,0,0,0,0-7.031Zm0-17.014H238q2.639,2.261,5.431,4.34h59.592a3.105,3.105,0,0,0,0-4.34Zm0,8.68H249.762a99.735,99.735,0,0,0,10.032,5.555h43.229a5.184,5.184,0,0,0,0-5.555Z" transform="translate(-53.023 -52.043)"/>
+                            <Path d="M84.3,29.773H13.139q-1.345,1.364-2.642,2.778H84.3a1.469,1.469,0,0,0,0-2.778Zm0,21.761a9,9,0,0,1,.852,5.243,8.6,8.6,0,0,1-.852,2.645A56.9,56.9,0,0,0,61.739,46.241a56.277,56.277,0,0,0-16.324-2.4H1.573q1.939-2.849,4.064-5.555H48.019A56.092,56.092,0,0,1,84.3,51.535ZM8.2,68.684a22.421,22.421,0,0,0-6.733-1.459A56.3,56.3,0,0,1,84.3,65.5a306.212,306.212,0,0,1,3.157,40.908A306.2,306.2,0,0,1,84.3,153.4a58.717,58.717,0,0,1-17.2-26.575,56.409,56.409,0,0,1,7.178-47.373,56.33,56.33,0,0,0-6.364,58.513,22.562,22.562,0,0,0-5.23,9.017,56.32,56.32,0,0,1,3.738-61.177A66.03,66.03,0,0,1,18.5,106.336c-1.012,0-2.02-.026-3.022-.07a22.67,22.67,0,0,0,4.688-6.18A66.03,66.03,0,0,0,67.87,79.67,66.255,66.255,0,0,1,0,89.979a56.382,56.382,0,0,1,52.708-36.42c1.56,0,3.106.07,4.633.2A56.4,56.4,0,0,0,8.2,68.684ZM84.3,7.031H47.422A99.64,99.64,0,0,1,84.3,0a7.549,7.549,0,0,1,0,7.031Zm0,17.014H19.281q2.639-2.261,5.431-4.34H84.3a3.105,3.105,0,0,1,0,4.34Zm0-8.68H31.043A99.737,99.737,0,0,1,41.075,9.809H84.3a5.184,5.184,0,0,1,0,5.555Z" transform="translate(334.305 242.162) rotate(180)"/>
+                        </G>
+                        <G onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="3">
+                            <Path d="M324.425,82.958l-10.764,33.133,28.184-20.475H307.005l28.184,20.475Z" transform="translate(-74.426 -27.09)"/>
+                            <Path d="M233.471,150.67l-10.183,21.848,21.077-11.692-23.92-2.935,17.627,16.439Z" transform="translate(-53.441 -54.434)"/>
+                            <Path d="M259.111,112.27l7.048,23.052,7.85-22.8L254.26,126.354l24.105.418Z" transform="translate(-61.641 -45.125)"/>
+                            <Path d="M13.027,23.66,2.843,1.812,23.92,13.5,0,16.439,17.627,0Z" transform="translate(332.998 119.896) rotate(180)"/>
+                            <Path d="M4.851,23.052,11.9,0l7.85,22.8L0,8.968,24.105,8.55Z" transform="translate(307.379 90.199) rotate(180)"/>
+                        </G>
+                    </G>,
                 lk: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="300"/>
                         <G transform="translate(5, 30) scale(0.4)">
@@ -3825,7 +4080,7 @@ class FlagComponent extends Component {
                         <Use transform="translate(0,-256.8)" id="use3068" href="#white"/>
                         <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="250" height="172"/>
                         <G transform="translate(-10 10) scale(0.2)">
-                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M 576,100 C 409.85356,100 275,234.40553 275,400 C 275,565.59446 409.85356,699.99999 576,700 C 636.02725,700 691.95466,682.43566 738.92693,652.21675 C 711.57383,661.65623 682.2175,666.81914 651.65599,666.81914 C 504.3291,666.81915 384.75944,547.64674 384.75944,400.80929 C 384.75944,253.97184 504.32908,134.79944 651.65599,134.79944 C 684.21403,134.79944 715.40185,140.61419 744.2578,151.26671 C 696.21698,118.90999 638.30493,100 576,100 z" id="path4945" style="fill:#fc0"/>
+                            <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M 576,100 C 409.85356,100 275,234.40553 275,400 C 275,565.59446 409.85356,699.99999 576,700 C 636.02725,700 691.95466,682.43566 738.92693,652.21675 C 711.57383,661.65623 682.2175,666.81914 651.65599,666.81914 C 504.3291,666.81915 384.75944,547.64674 384.75944,400.80929 C 384.75944,253.97184 504.32908,134.79944 651.65599,134.79944 C 684.21403,134.79944 715.40185,140.61419 744.2578,151.26671 C 696.21698,118.90999 638.30493,100 576,100 z"/>
                             <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M 914.28574,471.42858 L 814.74817,418.17806 L 844.17832,527.16068 L 777.60261,435.99589 L 756.83247,546.9551 L 736.40474,435.93234 L 669.5481,526.89131 L 699.31432,418.00001 L 599.61295,470.94319 L 673.67755,385.75059 L 560.87853,390.19195 L 664.57212,345.5715 L 561.01668,300.63137 L 673.80146,305.42069 L 600.00003,220.00001 L 699.53759,273.25053 L 670.10745,164.26791 L 736.68316,255.4327 L 757.4533,144.47349 L 777.88103,255.49624 L 844.73767,164.53728 L 814.97145,273.42858 L 914.67282,220.4854 L 840.60822,305.67799 L 953.40723,301.23664 L 849.71365,345.85709 L 953.26909,390.79722 L 840.48431,386.0079 z" transform="matrix(1.2737922,0,0,1.2422928,-89.4427,-29.478379)"/>
                         </G>
                     </G>,
@@ -3862,6 +4117,15 @@ class FlagComponent extends Component {
                             <Path d="M14.294,0,7.147,16.867,0,0" transform="matrix(-0.866, 0.5, -0.5, -0.866, 181.473, 190.562)"/>
                             <Path d="M14.294,0,7.147,16.867,0,0" transform="matrix(0.866, -0.5, 0.5, 0.866, 195.767, 243.908)"/>
                         </G>
+                    </G>,
+                kp: <G clipPath="url(#clip-path)">
+                        <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="500" height="42"/>
+                        <Rect fill="#FFF" width="500" height="6.667" y="41.666"/>
+                        <Rect onPress={() => this.applySelectedColor(1)} fill={this.state.appliedColors[1]} stroke={this.state.applyStroke[1]} strokeWidth="5" width="500" height="202.778" y="48.611"/>
+                        <Rect fill="#FFF" width="500" height="6.667" y="251.666"/>
+                        <Rect onPress={() => this.applySelectedColor(2)} fill={this.state.appliedColors[2]} stroke={this.state.applyStroke[2]} strokeWidth="5" width="500" height="42" y="258"/>
+                        <Path onPress={() => this.applySelectedColor(3)} fill={this.state.appliedColors[3]} stroke={this.state.applyStroke[3]} strokeWidth="5" d="M55.556,0A55.556,55.556,0,1,1,0,55.556,55.556,55.556,0,0,1,55.556,0Z" transform="translate(111.111 94.445)"/>
+                        <Path onPress={() => this.applySelectedColor(4)} fill={this.state.appliedColors[4]} stroke={this.state.applyStroke[4]} strokeWidth="5" d="M109.634,140l31.722,97.363L58.35,177.24H160.828L77.823,237.363Z" transform="translate(56.998 -43)"/>
                     </G>,
                 om: <G clipPath="url(#clip-path)">
                         <Rect onPress={() => this.applySelectedColor(0)} fill={this.state.appliedColors[0]} stroke={this.state.applyStroke[0]} strokeWidth="5" width="150" height="300"/>
