@@ -91,7 +91,7 @@ class WorldScreen extends React.Component {
     }
 
     go2Country(continentID, countryID) {
-        if (Math.floor(Math.random() * 10) == 5) {
+        if (Math.floor(Math.random() * 3) == 1) {
             AdMobInterstitial.setAdUnitID('ca-app-pub-1936572611542740/4804211951');
             AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());   
         }
@@ -364,7 +364,7 @@ class WorldScreen extends React.Component {
                                             <View style={{position: 'absolute', height: '100%', width: '100%', borderRadius: 26, backgroundColor: '#B5B5B5', opacity: 0.8}}/>
                                             <RNImage source={require('../assets/locked.png')}></RNImage>
                                             <Text style={{position: 'absolute', bottom:30, color: '#E3E340', backgroundColor: '#006994', fontWeight: 'bold', padding: 5, borderRadius: 100, paddingVertical: 10}}>{savedStatus.completedCountries} / {continentDefs.AF.min2unlock}</Text>
-                                            <Text style={{position: 'absolute', bottom:10, color: '#E3E340', backgroundColor: '#006994', fontWeight: 'bold', padding: 5, paddingHorizontal:40, borderRadius: 5}}>Aftica</Text>
+                                            <Text style={{position: 'absolute', bottom:10, color: '#E3E340', backgroundColor: '#006994', fontWeight: 'bold', padding: 5, paddingHorizontal:40, borderRadius: 5}}>Africa</Text>
                                         </View>
                                         :
                                         <View style={{position: 'absolute', width: '100%', height: '100%', flex: 1, justifyContent: 'center', alignItems:'center'}}>

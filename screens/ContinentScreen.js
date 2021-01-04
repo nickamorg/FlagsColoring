@@ -28,7 +28,7 @@ function ContinentScreen({ route, navigation }) {
     for (let i = 0; i < countryDefs[continentID].length; i++) {
         countrySvgs.push(
             <TouchableOpacity key={countryDefs[continentID][i][0]} onPress={() => {
-                if (Math.floor(Math.random() * 10) == 5) {
+                if (Math.floor(Math.random() * 3) == 1) {
                     AdMobInterstitial.setAdUnitID('ca-app-pub-1936572611542740/1483736437');
                     AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());   
                 }
