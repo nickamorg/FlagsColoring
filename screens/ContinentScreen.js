@@ -29,11 +29,18 @@ function ContinentScreen({ route, navigation }) {
         countrySvgs.push(
             <TouchableOpacity key={countryDefs[continentID][i][0]} onPress={() => {
                 if (Math.floor(Math.random() * 3) == 1) {
+                    // AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712');
                     AdMobInterstitial.setAdUnitID('ca-app-pub-1936572611542740/1483736437');
-                    AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());   
+                    AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());
+
+                    setTimeout(function(){
+                        navigation.navigate('Country', {screen: 'Continent', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryDefs[continentID][i][0], continentID: continentID, isCompleted: savedStatus[continentID][countryDefs[continentID][i][0]]});
+                    }, 2000);
+                } else {
+                    navigation.navigate('Country', {screen: 'Continent', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryDefs[continentID][i][0], continentID: continentID, isCompleted: savedStatus[continentID][countryDefs[continentID][i][0]]});
                 }
-                navigation.navigate('Country', {screen: 'Continent', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryDefs[continentID][i][0], continentID: continentID, isCompleted: savedStatus[continentID][countryDefs[continentID][i][0]]})}
-            } activeOpacity={1} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: 36, borderWidth: 10, backgroundColor: '#006994', marginRight:(i == countryDefs[continentID].length - 1) ? 50 : 0}}>
+            }}
+            activeOpacity={1} style={{ flex: 1, justifyContent: 'center', alignItems:'center', height: 250, width: 250, marginLeft: 50, borderColor: '#E3E340', borderRadius: 36, borderWidth: 10, backgroundColor: '#006994', marginRight:(i == countryDefs[continentID].length - 1) ? 50 : 0}}>
                 <CountryComponent isCompleted={savedStatus[continentID][countryDefs[continentID][i][0]]} countryID={countryDefs[continentID][i][0]} continentID={continentID}></CountryComponent>
                 <Text style={{position: 'absolute', bottom:10, color: '#E3E340', fontWeight: 'bold', padding: 5, borderRadius: 5}}>{countryDefs[continentID][i][1]}</Text>
             </TouchableOpacity>

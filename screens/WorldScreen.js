@@ -92,11 +92,16 @@ class WorldScreen extends React.Component {
 
     go2Country(continentID, countryID) {
         if (Math.floor(Math.random() * 3) == 1) {
+            // AdMobInterstitial.setAdUnitID('ca-app-pub-3940256099942544/1033173712');
             AdMobInterstitial.setAdUnitID('ca-app-pub-1936572611542740/4804211951');
-            AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());   
-        }
+            AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());  
 
-        this.props.navigation.navigate('Country', {refresh: () => this.refresh(), screen: 'World', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryID, continentID: continentID, isCompleted: savedStatus[continentID][countryID]});
+            setTimeout(function(self){
+                self.props.navigation.navigate('Country', {refresh: () => this.refresh(), screen: 'World', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryID, continentID: continentID, isCompleted: savedStatus[continentID][countryID]});
+            }, 2000, this);
+        } else {
+            this.props.navigation.navigate('Country', {refresh: () => this.refresh(), screen: 'World', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryID, continentID: continentID, isCompleted: savedStatus[continentID][countryID]});
+        }
     }
 
     render() {
