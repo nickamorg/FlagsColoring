@@ -3,6 +3,7 @@ import { View, ImageBackground, Text, BackHandler  } from 'react-native';
 import Svg, {G, Path, Circle, Defs, Stop, LinearGradient} from 'react-native-svg';
 import { countryImages } from '../src/countryImages';
 import FlagComponent from '../src/FlagComponent';
+import ReactNativeZoomableView from '@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView';
 
 class CountryScreen extends React.Component {
 
@@ -192,7 +193,16 @@ class CountryScreen extends React.Component {
                             </Svg>
                         </View>
                         <View style={{height:'100%', width: '70%'}}>
-                            <FlagComponent ref='child' {...this.props} getColor={this.getColor} screen={this.state.screen} isCompleted={this.state.isCompleted} isLastCountry={this.state.isLastCountry} countryID={this.state.countryID} continentID={this.state.continentID}></FlagComponent>
+                            <ReactNativeZoomableView
+                                maxZoom={4}
+                                minZoom={0.5}
+                                zoomStep={0.5}
+                                initialZoom={1}
+                                bindToBorders={true}
+                                onZoomAfter={this.logOutZoomState}
+                            >
+                                <FlagComponent ref='child' {...this.props} getColor={this.getColor} screen={this.state.screen} isCompleted={this.state.isCompleted} isLastCountry={this.state.isLastCountry} countryID={this.state.countryID} continentID={this.state.continentID}></FlagComponent>
+                            </ReactNativeZoomableView>
                         </View>
                         { this.state.isSolved ?
                             <View style={{height:'100%', width: '15%', flex: 1, justifyContent: 'center', alignItems: 'center'}}>

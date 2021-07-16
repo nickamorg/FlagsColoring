@@ -97,7 +97,7 @@ class WorldScreen extends React.Component {
             AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());  
 
             setTimeout(function(self){
-                self.props.navigation.navigate('Country', {refresh: () => this.refresh(), screen: 'World', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryID, continentID: continentID, isCompleted: savedStatus[continentID][countryID]});
+                self.props.navigation.navigate('Country', {refresh: () => self.refresh(), screen: 'World', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryID, continentID: continentID, isCompleted: savedStatus[continentID][countryID]});
             }, 2000, this);
         } else {
             this.props.navigation.navigate('Country', {refresh: () => this.refresh(), screen: 'World', isLastCountry: continentDefs[continentID].total - savedStatus[continentID].completedCountries == 1, countryID: countryID, continentID: continentID, isCompleted: savedStatus[continentID][countryID]});
